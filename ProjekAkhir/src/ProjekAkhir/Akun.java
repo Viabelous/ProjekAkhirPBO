@@ -67,6 +67,9 @@ class Customer extends Akun implements MultiableAcc{
     private String NoHP;
     private String Alamat;
     
+    Customer(int ID){
+        setID(ID);
+    }
     
     @Override
     public void TambahAkun(ArrayList <Akun> data){
@@ -101,7 +104,7 @@ class Customer extends Akun implements MultiableAcc{
             if (Email == null) throw new IllegalArgumentException();
             
             
-            System.out.print(" noHP   : ");
+            System.out.print(" noHP     : ");
             Nomor = br.readLine();
             if (Nomor != null){
                 for (char ch : Nomor.toCharArray()){

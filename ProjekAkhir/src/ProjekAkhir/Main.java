@@ -9,6 +9,17 @@ import java.util.ArrayList;
  *
  * @author Viabel
  */
+
+/*
+    Di sini letakkan catatan, apa yang kurang atau semacamnya
+    [Belum]
+        -.
+
+    [Butuh Konfirmasi]
+        -.
+
+*/
+
 public class Main {
     
     // Deklarasi Variabel "Global"
@@ -20,7 +31,6 @@ public class Main {
     // Deklarasi Variabel Array
     static ArrayList<Akun> DaftarAkun = new ArrayList<>(); //Untuk menyimpan data toko
     static ArrayList<Toko> DaftarToko = new ArrayList<>(); //Untuk menyimpan data toko
-    
     
     public static int CheckInt(){
         try{
@@ -88,6 +98,9 @@ public class Main {
                     
                     // Registus
                     case 2 -> {
+                        Customer User = new Customer(0);
+                        User.TambahAkun(DaftarAkun);
+                        if(User.getUsn() != null) DaftarAkun.add(User);
                     }
                     
                     // Exto
