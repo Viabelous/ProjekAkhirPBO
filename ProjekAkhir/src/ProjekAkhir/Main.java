@@ -27,6 +27,7 @@ public class Main {
     static BufferedReader br = new BufferedReader(isr); //Untuk inputan
     static String Menu = "Login"; //Untuk penampil menu terpisah
     static int Opsi; //Untuk menyimpan segala macam pilihan tipe integer, misal: Pilihan Menu
+    static int capIDAkun; //Untuk menyimpan ID tertinggi Data Akun
     
     // Deklarasi Variabel Array
     static ArrayList<Akun> DaftarAkun = new ArrayList<>(); //Untuk menyimpan data toko
@@ -98,10 +99,13 @@ public class Main {
                     
                     // Registus
                     case 2 -> {
-                        Customer User = new Customer(0);
-                        User.TambahAkun(DaftarAkun);
-                        if(User.getUsn() != null) DaftarAkun.add(User);
-                    }
+                        Customer User = new Customer();
+                        User.TambahAkun(DaftarAkun, capIDAkun);
+                        if(User.getUsn() == null) break;
+                        DaftarAkun.add(User);
+                        capIDAkun+=1;
+                        System.out.println(" Akun Berhasil Ditambahkan! :KEKW:");
+                        }
                     
                     // Exto
                     case 3 -> System.exit(0);

@@ -12,6 +12,6 @@ import java.util.ArrayList;
  * @author Viabel
  */
 public interface MultiableAcc {
-    void TambahAkun(ArrayList <Akun> data) throws IOException;
+    void TambahAkun(ArrayList <Akun> data, int ID) throws IOException;
     boolean HapusAkun() throws IOException;
 }

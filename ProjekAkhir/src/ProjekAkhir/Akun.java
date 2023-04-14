@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * @author Viabel
  */
 abstract class Akun {
-    private int ID;
+    int ID;
     private String Nama;
     private String Usn;
     private String Pass;
@@ -67,12 +67,8 @@ class Customer extends Akun implements MultiableAcc{
     private String NoHP;
     private String Alamat;
     
-    Customer(int ID){
-        setID(ID);
-    }
-    
     @Override
-    public void TambahAkun(ArrayList <Akun> data){
+    public void TambahAkun(ArrayList <Akun> data, int ID){
         String Nama, Usn = null, Pass, Email, Nomor, Addr;
 
         try{
@@ -127,12 +123,14 @@ class Customer extends Akun implements MultiableAcc{
                 return;
         }
         
+        setID(ID);
         setUsn(Usn);
         setPass(Pass);
         setNama(Nama);
         setEmail(Email);
         this.NoHP = Nomor;
         this.Alamat = Addr;
+        
         
     }
     
@@ -151,10 +149,10 @@ class Customer extends Akun implements MultiableAcc{
 class Seller extends Akun implements MultiableAcc{
     final String Otoritas = "Seller";
     
-    
     @Override
-    public void TambahAkun(ArrayList <Akun> data) throws IOException{
+    public void TambahAkun(ArrayList <Akun> data, int ID) throws IOException{
         String Nama, Usn = null, Pass, Email;
+        
         
         try{
             
@@ -193,10 +191,12 @@ class Seller extends Akun implements MultiableAcc{
             return;
         }
         
+        setID(ID);
         setUsn(Usn);
         setPass(Pass);
         setNama(Nama);
         setEmail(Email);
+        
     }
     
     
