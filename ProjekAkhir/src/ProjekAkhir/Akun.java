@@ -3,18 +3,18 @@ package ProjekAkhir;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 
 /**
  *
  * @author Viabel
  */
 abstract class Akun {
-    int ID;
+    private int ID;
     private String Nama;
     private String Usn;
     private String Pass;
     private String Email;
+    String Otoritas;
     
     InputStreamReader isr = new InputStreamReader(System.in);
     BufferedReader br = new BufferedReader(isr);
@@ -68,14 +68,14 @@ class Customer extends Akun implements MultiableAcc{
     private String Alamat;
     
     @Override
-    public void TambahAkun(ArrayList <Akun> data, int ID){
+    public void TambahAkun(){
         String Nama, Usn = null, Pass, Email, Nomor, Addr;
 
         try{
             System.out.print(" Username : ");
             Usn = br.readLine();
             
-            for (Akun daftarAkun : data) {
+            for (Akun daftarAkun : Main.DaftarAkun) {
                 if (daftarAkun.getUsn() != null){
                     if(daftarAkun.getUsn().equals(Usn)){
                         System.out.println(" Username tersebut sudah ada.");
@@ -123,15 +123,13 @@ class Customer extends Akun implements MultiableAcc{
                 return;
         }
         
-        setID(ID);
+        setID(Main.capIDAkun);
         setUsn(Usn);
         setPass(Pass);
         setNama(Nama);
         setEmail(Email);
         this.NoHP = Nomor;
         this.Alamat = Addr;
-        
-        
     }
     
     
@@ -150,7 +148,7 @@ class Seller extends Akun implements MultiableAcc{
     final String Otoritas = "Seller";
     
     @Override
-    public void TambahAkun(ArrayList <Akun> data, int ID) throws IOException{
+    public void TambahAkun() throws IOException{
         String Nama, Usn = null, Pass, Email;
         
         
@@ -160,7 +158,7 @@ class Seller extends Akun implements MultiableAcc{
             Usn = br.readLine();
 
 
-            for (Akun daftarAkun : data) {
+            for (Akun daftarAkun : Main.DaftarAkun) {
                 if (daftarAkun.getUsn() != null){
                     if(daftarAkun.getUsn().equals(Usn)){
                         System.out.println(" Username tersebut sudah ada.");
@@ -191,7 +189,7 @@ class Seller extends Akun implements MultiableAcc{
             return;
         }
         
-        setID(ID);
+        setID(Main.capIDAkun);
         setUsn(Usn);
         setPass(Pass);
         setNama(Nama);

@@ -57,8 +57,18 @@ public class Main {
     }
     
     
+    public static int USNSequential(String Username){
+        int i = 0;
+        for (Akun dataAkun : DaftarAkun){
+            if(Username.equals(dataAkun.getUsn())) return i;
+            i += 1;
+        }
+        return -1;
+    }
+    
+    
     // --------------------------------------- MAIN ZONE ---------------------------------------
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         
         DaftarAkun.add(new Admin());
         
@@ -95,12 +105,35 @@ public class Main {
                     
                     // Logun
                     case 1 -> {
+                        System.out.println("Masukkin Username: ");
+                        String Username = br.readLine();
+                        System.out.println("Masukkin Password: ");
+                        String Password = br.readLine();
+                        
+                        // Anti Null Value
+                        if(Username == null || Password == null) break;
+                        
+                        // Cek Username dan Password
+                        Opsi = USNSequential(Username);
+                        
+                        if(Opsi == -1) System.out.println("Username atau Password salah");
+                        
+                        else{
+                            if(!DaftarAkun.get(Opsi).getPass().equals(Password)){
+                                System.out.println("Username atau Password salah");
+                                break;
+                            }
+                            
+                            Menu = DaftarAkun.get(Opsi).Otoritas;
+                            System.out.println("Kamu berhasil login " + Menu + "!");
+                            
+                        }
                     }
                     
                     // Registus
                     case 2 -> {
                         Customer User = new Customer();
-                        User.TambahAkun(DaftarAkun, capIDAkun);
+                        User.TambahAkun();
                         if(User.getUsn() == null) break;
                         DaftarAkun.add(User);
                         capIDAkun+=1;
