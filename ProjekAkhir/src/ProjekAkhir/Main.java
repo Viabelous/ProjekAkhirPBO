@@ -70,9 +70,6 @@ public class Main {
     // --------------------------------------- MAIN ZONE ---------------------------------------
     public static void main(String[] args) throws IOException {
         
-        DaftarAkun.add(new Admin());
-        
-        
         DaftarToko.add(new Toko(1, "Toko Sukamiskin", 1));
         
         DaftarToko.get(0).TambahProduk(new Album(1, "Asterium"));
@@ -81,6 +78,7 @@ public class Main {
         
         DaftarToko.get(0).TampilDeskripsi();
         DaftarToko.get(0).TampilProduk();
+        
         
         // Visual Program Berjalan
         while(true){
@@ -105,9 +103,9 @@ public class Main {
                     
                     // Logun
                     case 1 -> {
-                        System.out.println("Masukkin Username: ");
+                        System.out.print("Masukkin Username: ");
                         String Username = br.readLine();
-                        System.out.println("Masukkin Password: ");
+                        System.out.print("Masukkin Password: ");
                         String Password = br.readLine();
                         
                         // Anti Null Value
@@ -115,6 +113,7 @@ public class Main {
                         
                         // Cek Username dan Password
                         Opsi = USNSequential(Username);
+                        System.out.println(Opsi);
                         
                         if(Opsi == -1) System.out.println("Username atau Password salah");
                         

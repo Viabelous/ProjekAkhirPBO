@@ -14,7 +14,11 @@ abstract class Akun {
     private String Usn;
     private String Pass;
     private String Email;
-    String Otoritas;
+    final protected String Otoritas;
+    
+    protected Akun(String Otoritas){
+        this.Otoritas = Otoritas;
+    }
     
     InputStreamReader isr = new InputStreamReader(System.in);
     BufferedReader br = new BufferedReader(isr);
@@ -60,10 +64,18 @@ abstract class Akun {
     public void setPass(String Pass) {
         this.Pass = Pass;
     }
+    
+    public String getOtoritas() {
+        return Pass;
+    }
 }
 
 class Customer extends Akun implements MultiableAcc{
-    final String Otoritas = "Customer";
+    
+    Customer(){
+        super("Customer");
+    }
+    
     private String NoHP;
     private String Alamat;
     
@@ -145,7 +157,10 @@ class Customer extends Akun implements MultiableAcc{
 }
 
 class Seller extends Akun implements MultiableAcc{
-    final String Otoritas = "Seller";
+    
+    Seller(){
+        super("Seller");
+    }
     
     @Override
     public void TambahAkun() throws IOException{
@@ -213,5 +228,8 @@ class Seller extends Akun implements MultiableAcc{
 
 
 class Admin extends Akun{
-    final String Otoritas = "Admin";
+    
+    Admin(){
+        super("Admin");
+    }
 }
