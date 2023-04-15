@@ -29,6 +29,7 @@ public class Main {
                                    "SolidSolid", "NTLee@gmail.com"); //Untuk object dari class Admin
     static String Menu = "Login"; //Untuk penampil menu terpisah
     static int Opsi; //Untuk menyimpan segala macam pilihan tipe integer, misal: Pilihan Menu
+    static int IDAktif; //Untuk menyimpan ID User yang sedang aktif
     static int capIDAkun = 1; //Untuk menyimpan ID terakhir tersimpan di Data Akun
     
     // Deklarasi Variabel Array
@@ -68,6 +69,21 @@ public class Main {
             System.out.print("\n");
         }
     }
+    
+    //
+    public static int Tokoku(){
+        int i = 0;
+        for(Toko TokoTerhubung : DaftarToko){
+            for(int id : TokoTerhubung.IDSeller){
+                if(id == IDAktif){
+                    return i;
+                }
+            i++;
+            }
+        }
+        
+        return -1;
+    }
 
     
     // Hapus nanti
@@ -92,10 +108,12 @@ public class Main {
         // Untuk Uji Coba, Mohon hapus nanti
         DaftarAkun.add(DefaultSellerAcc("Agus", "Sun1004", "Tina", "AgusNumeroUno@Naver.com", "1004", "Bumbum"));
         
-        DaftarToko.add(new Toko(1, "Toko Sukamiskin", 1));
-        DaftarToko.get(0).TambahProduk(new Album(1, "Birthday", "Red Velvet","Smini Ver", 300000 ));
-        DaftarToko.get(0).TambahProduk(new Album(1, "Birthday", "Red Velvet","Digipack Ver", 280000 ));
+        DaftarToko.add(new Toko(1, "Toko Sukamiskin"));
+        DaftarToko.get(0).TambahProduk(new Album(1, "Birthday (Smini Ver)", "Red Velvet","Smini Ver", 300000 ));
+        DaftarToko.get(0).TambahProduk(new Album(2, "Birthday (Digipack Ver)", "Red Velvet","Digipack Ver", 280000 ));
         DaftarToko.get(0).TambahProduk(new LightStick(3, "LightStick EXO", "EXO", true, "Ver 2", 826000));
+        DaftarToko.get(0).TambahProduk(new Album(4, "Asterum", "PLAVE","", 180000 ));
+        DaftarToko.get(0).TambahSeller(1);
         
         // DaftarToko.get(0).TampilDeskripsi();
         // DaftarToko.get(0).TampilProduk();
@@ -191,6 +209,7 @@ public class Main {
                             break;
                         }
 
+                        IDAktif = DaftarAkun.get(Opsi).ID;
                         Menu = DaftarAkun.get(Opsi).Otoritas;
                         System.out.println("\n\tSelamat Datang, " + Menu + " " +  Username + " !");
                         br.readLine();
@@ -281,7 +300,12 @@ public class Main {
                     Opsi = CheckInt();
                     
                     switch (Opsi) {
-                        case 1 -> Toko.ManajemenToko();
+                        case 1 -> {
+                            int IndexToko = Tokoku();
+                            if(IndexToko == -1)
+                                System.out.println("Datamu belum terhubung dengan toko manapun.");
+                            else DaftarToko.get(IndexToko).TampilProduk();
+                        }
                         case 2 -> {
                     }
                         case 3 -> Menu = "Login";
