@@ -68,6 +68,11 @@ public class Main {
         return -1;
     }
     
+    // Fungsi Untuk Clear Screen
+    public static void clear() throws IOException, InterruptedException{
+        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+    }
+
     
     // Hapus nanti
     public static Seller DefaultSellerAcc(String UsnA, String PassA, String NamaA, String EmailA, String Nomor, String Addr){
@@ -85,7 +90,7 @@ public class Main {
     
     
     // --------------------------------------- MAIN ZONE ---------------------------------------
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         DaftarAkun.add(Adminian);
         
         // Untuk Uji Coba, Mohon hapus nanti
@@ -96,8 +101,8 @@ public class Main {
         DaftarToko.get(0).TambahProduk(new Album(2, "Espergo", "PLAVE"));
         DaftarToko.get(0).TambahProduk(new LightStick(3, "LightStick EXO", "EXO", true));
         
-        DaftarToko.get(0).TampilDeskripsi();
-        DaftarToko.get(0).TampilProduk();
+        // DaftarToko.get(0).TampilDeskripsi();
+        // DaftarToko.get(0).TampilProduk();
         
         // Visual Program Berjalan
         while(true){
@@ -106,14 +111,19 @@ public class Main {
             // --------------------------------------- BAGIAN MENU LOGIN ---------------------------------------
             if(Menu.equals("Login")){
                 // Isi Menu Login
+                clear();
                 System.out.println("""
-                                    Selamat Datang atau Semacamnya!
-                                    (1) Login
-                                    (2) Register
-                                    (3) Keluar
-                                    """);
+                                    | ------------------------------------------ |
+                                    |   //      Selamat Datang, Kawan :)     \\\\  |
+                                    |  ||                                     || |
+                                    |  ||           (1) Login                 || |
+                                    |  ||           (2) Register              || |
+                                    |  ||           (3) Keluar                || |
+                                    |   \\\\                                   //  |
+                                    | ------------------------------------------ |
+                                        """);
                 
-                System.out.print(" :>> ");
+                System.out.print("\t\t :>> ");
                 Opsi = CheckInt();
                 
                 
@@ -122,11 +132,51 @@ public class Main {
                     
                     // Logun
                     case 1 -> {
+                        clear();
+                        System.out.println("""
+                                    | ------------------------------------------ |
+                                    |   //      Silahkan Login, Kawan :)     \\\\  |
+                                    |  ||                                     || |
+                                    |  ||           Username  :               || |
+                                    |  ||           Password  :               || |
+                                    |  ||                                     || |
+                                    |   \\\\                                   //  |
+                                    | ------------------------------------------ |
+                                            """);
+
                         System.out.print("Masukkin Username: ");
                         String Username = br.readLine();
+
+                        clear();
+                        System.out.println("""
+                                    | ------------------------------------------ |
+                                    |   //      Silahkan Login, Kawan :)     \\\\  |
+                                    |  ||                                     || |
+                                                Username  :   """ + Username + """      
+
+                                    |  ||       Password  :                   || |
+                                    |  ||                                     || |
+                                    |   \\\\                                   //  |
+                                    | ------------------------------------------ |
+                                            """);
+                        
                         System.out.print("Masukkin Password: ");
                         String Password = br.readLine();
                         
+                        clear();
+                        System.out.println("""
+                                    | ------------------------------------------ |
+                                    |   //      Silahkan Login, Kawan :)     \\\\  |
+                                    |  ||                                     || |
+                                                Username  : """ + Username + """      
+                                                                
+                                                \t    Password  :   """ + Password + """ 
+
+                                    |  ||                                     || |
+                                    |   \\\\                                   //  |
+                                    | ------------------------------------------ |
+                                            """);
+
                         // Anti Null Value
                         if(Username.equals("") || Password.equals("")) break;
                         
@@ -134,17 +184,20 @@ public class Main {
                         Opsi = USNSequential(Username);
                         
                         if(Opsi == -1){
-                            System.out.println("Username atau Password salah");
+                            System.out.println("\n\tUsername atau Password salah");
+                            br.readLine();
                             break;
                         }
                         
                         if(!DaftarAkun.get(Opsi).getPass().equals(Password)){
-                            System.out.println("Username atau Password salah");
+                            System.out.println("\n\tUsername atau Password salah");
+                            br.readLine();
                             break;
                         }
 
                         Menu = DaftarAkun.get(Opsi).Otoritas;
-                        System.out.println("Kamu berhasil login " + Menu + "!");
+                        System.out.println("\n\tSelamat Datang, " + Menu + " " +  Username + " !");
+                        br.readLine();
                         
                     }
                     
