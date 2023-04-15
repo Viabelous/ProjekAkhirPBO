@@ -35,4 +35,8 @@ public class Toko {
         }
     }
     
+    static public void ManajemenToko(){
+        
+    }
+    
 }

@@ -25,10 +25,11 @@ public class Main {
     // Deklarasi Variabel "Global"
     static InputStreamReader isr = new InputStreamReader(System.in); //Untuk inputan
     static BufferedReader br = new BufferedReader(isr); //Untuk inputan
-    static Admin admin = new Admin(); //Untuk object dari class Admin
+    static Admin Adminian = new Admin(0, "Fuad", "NTLee", 
+                                   "SolidSolid", "NTLee@gmail.com"); //Untuk object dari class Admin
     static String Menu = "Login"; //Untuk penampil menu terpisah
     static int Opsi; //Untuk menyimpan segala macam pilihan tipe integer, misal: Pilihan Menu
-    static int capIDAkun; //Untuk menyimpan ID tertinggi Data Akun
+    static int capIDAkun = 1; //Untuk menyimpan ID terakhir tersimpan di Data Akun
     
     // Deklarasi Variabel Array
     static ArrayList<Akun> DaftarAkun = new ArrayList<>(); //Untuk menyimpan data toko
@@ -116,18 +117,19 @@ public class Main {
                         Opsi = USNSequential(Username);
                         System.out.println(Opsi);
                         
-                        if(Opsi == -1) System.out.println("Username atau Password salah");
-                        
-                        else{
-                            if(!DaftarAkun.get(Opsi).getPass().equals(Password)){
-                                System.out.println("Username atau Password salah");
-                                break;
-                            }
-                            
-                            Menu = DaftarAkun.get(Opsi).Otoritas;
-                            System.out.println("Kamu berhasil login " + Menu + "!");
-                            
+                        if(Opsi == -1){
+                            System.out.println("Username atau Password salah");
+                            break;
                         }
+                        
+                        if(!DaftarAkun.get(Opsi).getPass().equals(Password)){
+                            System.out.println("Username atau Password salah");
+                            break;
+                        }
+
+                        Menu = DaftarAkun.get(Opsi).Otoritas;
+                        System.out.println("Kamu berhasil login " + Menu + "!");
+                        
                     }
                     
                     // Registus
@@ -185,24 +187,22 @@ public class Main {
                     Opsi = CheckInt();
                     
                     switch (Opsi) {
-                        case 1:
-                            admin.manajemenToko();
-                            break;
-                        case 2:
-                            admin.manajemenSatff();
-                            break;
-                        case 3:
-                            admin.riwayatPembelian();
-                            break;
-                        case 4:
-                            admin.ubahProfil();
-                            break;
-                        case 5:
-                            break;
-                        default:
-                            break;
+                        case 1 -> Toko.ManajemenToko();
+                        case 2 -> {
+                        //admin.manajemenSatff();
                     }
-                    
+                        case 3 -> {
+                        //admin.riwayatPembelian();
+                    }
+                        case 4 -> {
+                        //admin.ubahProfil();
+                    }
+                        case 5 -> {
+                    }
+                        default -> {
+                    }
+                    }
+                                    
                 }
                     
             // --------------------------------------- BAGIAN MENU SELLER ---------------------------------------

@@ -9,11 +9,11 @@ import java.io.InputStreamReader;
  * @author Viabel
  */
 abstract class Akun {
-    private int ID;
-    private String Nama;
-    private String Usn;
-    private String Pass;
-    private String Email;
+    protected int ID;
+    protected String Nama;
+    protected String Usn;
+    protected String Pass;
+    protected String Email;
     final protected String Otoritas;
     
     protected Akun(String Otoritas){
@@ -72,24 +72,25 @@ abstract class Akun {
 
 class Customer extends Akun implements MultiableAcc{
     
+    private String NoHP;
+    private String Alamat;
+    
     Customer(){
         super("Customer");
     }
     
-    private String NoHP;
-    private String Alamat;
-    
     @Override
     public void TambahAkun(){
-        String Nama, Usn = null, Pass, Email, Nomor, Addr;
+        String NamaA, UsnA, PassA, EmailA, Nomor, Addr;
 
         try{
             System.out.print(" Username : ");
-            Usn = br.readLine();
+            UsnA = br.readLine();
+            if (UsnA.equals("")) throw new IllegalArgumentException();
             
             for (Akun daftarAkun : Main.DaftarAkun) {
                 if (daftarAkun.getUsn() != null){
-                    if(daftarAkun.getUsn().equals(Usn)){
+                    if(daftarAkun.getUsn().equals(UsnA)){
                         System.out.println(" Username tersebut sudah ada.");
                         return;
                     }
@@ -98,48 +99,47 @@ class Customer extends Akun implements MultiableAcc{
             
             
             System.out.print(" Pass     : ");
-            Pass = br.readLine();
-            if (Pass == null) throw new IllegalArgumentException();
+            PassA = br.readLine();
+            if (PassA.equals("")) throw new IllegalArgumentException();
             
             
             System.out.print(" Nama     : ");
-            Nama = br.readLine();
-            if (Nama == null) throw new IllegalArgumentException();
+            NamaA = br.readLine();
+            if (NamaA.equals("")) throw new IllegalArgumentException();
 
             
             System.out.print(" Email    : ");
-            Email = br.readLine();
-            if (Email == null) throw new IllegalArgumentException();
+            EmailA = br.readLine();
+            if (EmailA.equals("")) throw new IllegalArgumentException();
             
             
             System.out.print(" noHP     : ");
             Nomor = br.readLine();
-            if (Nomor != null){
+            
+            // Check apa ada yang selain integer
+            if (!Nomor.equals("")){
                 for (char ch : Nomor.toCharArray()){
                     if((int)ch < 48 || (int)ch > 57){
                         throw new IllegalArgumentException();
                     }
                 }
             }
-            else{
-                throw new IllegalArgumentException();
-            }
             
             
             System.out.print(" Alamat   : ");
             Addr = br.readLine();
-            if (Addr == null) throw new IllegalArgumentException();
+            if (Addr.equals("")) throw new IllegalArgumentException();
             
         } catch (IOException | IllegalArgumentException e){
                 System.out.println(" Terjadi error saat menginput data.");
                 return;
         }
         
-        setID(Main.capIDAkun);
-        setUsn(Usn);
-        setPass(Pass);
-        setNama(Nama);
-        setEmail(Email);
+        this.ID = Main.capIDAkun;
+        this.Usn = UsnA;
+        this.Pass = PassA;
+        this.Nama = NamaA;
+        this.Email = EmailA;
         this.NoHP = Nomor;
         this.Alamat = Addr;
     }
@@ -164,18 +164,19 @@ class Seller extends Akun implements MultiableAcc{
     
     @Override
     public void TambahAkun() throws IOException{
-        String Nama, Usn = null, Pass, Email;
+        String NamaA, UsnA, PassA, EmailA;
         
         
         try{
             
             System.out.print(" Username : ");
-            Usn = br.readLine();
-
+            UsnA = br.readLine();
+            if (UsnA.equals("")) throw new IllegalArgumentException();
+            
 
             for (Akun daftarAkun : Main.DaftarAkun) {
                 if (daftarAkun.getUsn() != null){
-                    if(daftarAkun.getUsn().equals(Usn)){
+                    if(daftarAkun.getUsn().equals(UsnA)){
                         System.out.println(" Username tersebut sudah ada.");
                         return;
                     }
@@ -185,18 +186,18 @@ class Seller extends Akun implements MultiableAcc{
             
             
             System.out.print(" Pass     : ");
-            Pass = br.readLine();
-            if (Pass == null) throw new IllegalArgumentException();
+            PassA = br.readLine();
+            if (PassA.equals("")) throw new IllegalArgumentException();
             
             
             System.out.print(" Nama     : ");
-            Nama = br.readLine();
-            if (Nama == null) throw new IllegalArgumentException();
+            NamaA = br.readLine();
+            if (NamaA.equals("")) throw new IllegalArgumentException();
 
             
             System.out.print(" Email    : ");
-            Email = br.readLine();
-            if (Email == null) throw new IllegalArgumentException();
+            EmailA = br.readLine();
+            if (EmailA.equals("")) throw new IllegalArgumentException();
            
             
         } catch (IOException | IllegalArgumentException e){
@@ -204,11 +205,11 @@ class Seller extends Akun implements MultiableAcc{
             return;
         }
         
-        setID(Main.capIDAkun);
-        setUsn(Usn);
-        setPass(Pass);
-        setNama(Nama);
-        setEmail(Email);
+        this.ID = Main.capIDAkun;
+        this.Usn = UsnA;
+        this.Pass = PassA;
+        this.Nama = NamaA;
+        this.Email = EmailA;
         
     }
     
@@ -222,14 +223,22 @@ class Seller extends Akun implements MultiableAcc{
         String Conf = br.readLine();
         if(Conf == null) Conf = "N";
         
-        return Conf.equals("Y");     
+        return Conf.equals("Y");
+        
+        
     }
 }
 
 
 class Admin extends Akun{
     
-    Admin(){
+    Admin(int ID, String NamaAdmin, String Username,
+          String Pass, String Email){
         super("Admin");
+        this.ID = ID;
+        this.Nama = NamaAdmin;
+        this.Usn = Username;
+        this.Pass = Pass;
+        this.Email = Email;
     }
 }
