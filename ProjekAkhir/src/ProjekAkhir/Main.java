@@ -13,10 +13,10 @@ import java.util.ArrayList;
 /*
     Di sini letakkan catatan, apa yang kurang atau semacamnya
     [Belum]
-        -. admin bisa update data akunnya sendiri di menu ubah profil kah? buat user lain mereka cmn apus akun aja?
+        -. 
 
     [Butuh Konfirmasi]
-        -. class Admin yg ada di class akun ini aku pindah ke class admin yg baru boleh?
+        -. 
 
 */
 
@@ -205,13 +205,13 @@ public class Main {
                     switch (Opsi) {
                         case 1 -> Toko.TampilSemuaToko();
                         case 2 -> {
-                        //admin.manajemenSatff();
+                        Adminian.manajemenSeller();
                     }
                         case 3 -> {
                         //admin.riwayatPembelian();
                     }
                         case 4 -> {
-                        //admin.ubahProfil();
+                        Adminian.ubahProfil();
                     }
                         case 5 -> Menu = "Login";
                         default -> {

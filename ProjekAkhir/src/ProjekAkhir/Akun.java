@@ -1,5 +1,7 @@
 package ProjekAkhir;
 
+import static ProjekAkhir.Main.CheckInt;
+import static ProjekAkhir.Main.Opsi;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -262,6 +264,8 @@ class Seller extends Akun implements MultiableAcc{
 
 class Admin extends Akun{
     
+    Seller seller = new Seller();
+    
     Admin(int ID, String NamaAdmin, String Username,
           String Pass, String Email){
         super("Admin");
@@ -270,5 +274,43 @@ class Admin extends Akun{
         this.Usn = Username;
         this.Pass = Pass;
         this.Email = Email;
+    }
+    
+    
+    void manajemenSeller() throws IOException {
+        System.out.println("""
+                            Menu Manajemen Seller
+                            (1) Tambah Seller
+                            (2) Lihat Seller
+                            (3) Ubah Seller
+                            (4) Hapus Seller
+                            (5) Kembali
+                            """);
+
+        System.out.print(" :>> ");
+        Opsi = CheckInt();
+        
+        switch (Opsi) {
+            case 1:
+                seller.TambahAkun();
+                break;
+            case 2:
+                // seller.UbahAkun();
+                break;
+            case 3:
+                // seller.HapusAkun();
+                break;
+            case 4:
+                seller.HapusAkun();
+                break;
+            case 5:
+                break;
+            default:
+                break;
+        }
+    }
+    
+    void ubahProfil() throws IOException {
+        
     }
 }
