@@ -1,6 +1,7 @@
 package ProjekAkhir;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -19,10 +20,12 @@ public class Toko {
     }
     
     public static void TampilSemuaToko(){
+        int i  = 1;
+        HashMap<Integer, Integer> MenuPick = new HashMap<Integer, Integer>(); 
+        
         for (Toko namaToko : Main.DaftarToko){
-            
-            System.out.println("(" + namaToko.ID + ") " + namaToko.Nama);
-            
+            MenuPick.put(i, namaToko.ID);
+            System.out.println("(" + i + ") " + namaToko.Nama);
         }
     }
     
@@ -37,9 +40,14 @@ public class Toko {
     }
     
     public void TampilProduk(){
+        int i  = 1;
+        HashMap<Integer, Integer> MenuPick = new HashMap<Integer, Integer>(); 
+        
         System.out.println("Produk Dijual:");
         for (Produk Dagangan : DaftarProduk) {
-            System.out.println("- " + Dagangan.ID + " // " + Dagangan.Nama);
+            
+            MenuPick.put(i, Dagangan.ID);
+            System.out.println("(" + i + ") " + Dagangan.Nama);
         }
     }
     
