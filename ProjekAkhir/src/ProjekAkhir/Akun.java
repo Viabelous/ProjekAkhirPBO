@@ -124,6 +124,9 @@ class Customer extends Akun implements MultiableAcc{
                     }
                 }
             }
+            else{
+                throw new IllegalArgumentException();
+            }
             
             
             System.out.print(" Alamat   : ");
