@@ -1,5 +1,7 @@
 package ProjekAkhir;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -18,6 +20,9 @@ public class Toko {
         this.Nama = NamaToko;
         this.IDPenjual = IDPenjual;
     }
+    
+    InputStreamReader isr = new InputStreamReader(System.in);
+    BufferedReader br = new BufferedReader(isr);
     
     public static void TampilSemuaToko(){
         int i  = 1;
@@ -49,6 +54,23 @@ public class Toko {
             MenuPick.put(i, Dagangan.ID);
             System.out.println("(" + i + ") " + Dagangan.Nama);
         }
+        
+        int Opsi = Main.CheckInt();
+        if(Opsi != -1){
+            switch(Main.Menu){
+                case "Customer" -> {
+                    
+                }
+                case "Seller", "Admin" -> {
+                    // Opsi 0 untuk Manajemen Toko
+                    if(Opsi == 0){
+                        ManajemenToko();
+                    }
+                }
+                    
+            }
+        }
+        
     }
     
     static public void ManajemenToko(){

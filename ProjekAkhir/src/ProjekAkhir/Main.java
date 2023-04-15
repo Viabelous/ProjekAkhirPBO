@@ -46,19 +46,7 @@ public class Main {
     }
     
     
-    public static int TampilToko(){
-        int i = 0;
-        
-        for (Toko TokoToko : DaftarToko){
-            System.out.println("("+i+") "+ TokoToko.Nama);
-            
-        }
-        
-        System.out.print(":>> ");
-        return CheckInt();
-    }
-    
-    
+    // Fungsi mencari index dari suatu Username
     public static int USNSequential(String Username){
         int i = 0;
         for (Akun dataAkun : DaftarAkun){
@@ -68,9 +56,17 @@ public class Main {
         return -1;
     }
     
-    // Fungsi Untuk Clear Screen
+    // Prosedur Untuk Clear Screen
     public static void clear() throws IOException, InterruptedException{
-        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        if (System.console() != null){
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            return;
+        }
+        
+        int i;
+        for(i = 0; i <= 30; i++){
+            System.out.print("\n");
+        }
     }
 
     
@@ -144,7 +140,7 @@ public class Main {
                                     | ------------------------------------------ |
                                             """);
 
-                        System.out.print("Masukkin Username: ");
+                        System.out.print("Masukkan Username: ");
                         String Username = br.readLine();
 
                         clear();
@@ -152,7 +148,7 @@ public class Main {
                                     | ------------------------------------------ |
                                     |   //      Silahkan Login, Kawan :)     \\\\  |
                                     |  ||                                     || |
-                                                Username  :   """ + Username + """      
+                                                Username  :   """ + " " + Username + """      
 
                                     |  ||       Password  :                   || |
                                     |  ||                                     || |
@@ -160,7 +156,7 @@ public class Main {
                                     | ------------------------------------------ |
                                             """);
                         
-                        System.out.print("Masukkin Password: ");
+                        System.out.print("Masukkan Password: ");
                         String Password = br.readLine();
                         
                         clear();
@@ -168,9 +164,9 @@ public class Main {
                                     | ------------------------------------------ |
                                     |   //      Silahkan Login, Kawan :)     \\\\  |
                                     |  ||                                     || |
-                                                Username  : """ + Username + """      
+                                                Username  : """ + " " + Username + """      
                                                                 
-                                                \t    Password  :   """ + Password + """ 
+                                                \t    Password  :   """ + " " + Password + """ 
 
                                     |  ||                                     || |
                                     |   \\\\                                   //  |
@@ -267,8 +263,6 @@ public class Main {
                         Adminian.ubahProfil();
                     }
                         case 5 -> Menu = "Login";
-                        default -> {
-                    }
                     }
                                     
                 }
