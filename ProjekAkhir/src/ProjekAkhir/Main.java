@@ -13,10 +13,10 @@ import java.util.ArrayList;
 /*
     Di sini letakkan catatan, apa yang kurang atau semacamnya
     [Belum]
-        -.
+        -. admin bisa update data akunnya sendiri di menu ubah profil kah? buat user lain mereka cmn apus akun aja?
 
     [Butuh Konfirmasi]
-        -.
+        -. class Admin yg ada di class akun ini aku pindah ke class admin yg baru boleh?
 
 */
 
@@ -25,6 +25,7 @@ public class Main {
     // Deklarasi Variabel "Global"
     static InputStreamReader isr = new InputStreamReader(System.in); //Untuk inputan
     static BufferedReader br = new BufferedReader(isr); //Untuk inputan
+    static Admin admin = new Admin(); //Untuk object dari class Admin
     static String Menu = "Login"; //Untuk penampil menu terpisah
     static int Opsi; //Untuk menyimpan segala macam pilihan tipe integer, misal: Pilihan Menu
     static int capIDAkun; //Untuk menyimpan ID tertinggi Data Akun
@@ -169,7 +170,7 @@ public class Main {
                                        """);
                     
             // --------------------------------------- BAGIAN MENU ADMIN ---------------------------------------
-                case "Admin" ->
+                case "Admin" -> {
                     //Isi Menu Utama Untuk Admin
                     System.out.println("""
                                         Adalah Menu Admin
@@ -179,6 +180,30 @@ public class Main {
                                         (4) Ubah Profil
                                         (5) Log Out
                                         """);
+                    
+                    System.out.print(" :>> ");
+                    Opsi = CheckInt();
+                    
+                    switch (Opsi) {
+                        case 1:
+                            admin.manajemenToko();
+                            break;
+                        case 2:
+                            admin.manajemenSatff();
+                            break;
+                        case 3:
+                            admin.riwayatPembelian();
+                            break;
+                        case 4:
+                            admin.ubahProfil();
+                            break;
+                        case 5:
+                            break;
+                        default:
+                            break;
+                    }
+                    
+                }
                     
             // --------------------------------------- BAGIAN MENU SELLER ---------------------------------------
                 case "Seller" ->
