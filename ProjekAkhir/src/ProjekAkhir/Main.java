@@ -74,9 +74,9 @@ public class Main {
         
         DaftarToko.add(new Toko(1, "Toko Sukamiskin", 1));
         
-        DaftarToko.get(0).TambahProduk(new Album(1, "Asterium"));
-        DaftarToko.get(0).TambahProduk(new Album(2, "Espergo"));
-        DaftarToko.get(0).TambahProduk(new LightStick(3, "EXO"));
+        DaftarToko.get(0).TambahProduk(new Album(1, "Asterium", "PLAVE"));
+        DaftarToko.get(0).TambahProduk(new Album(2, "Espergo", "PLAVE"));
+        DaftarToko.get(0).TambahProduk(new LightStick(3, "LightStick EXO", "EXO", true));
         
         DaftarToko.get(0).TampilDeskripsi();
         DaftarToko.get(0).TampilProduk();

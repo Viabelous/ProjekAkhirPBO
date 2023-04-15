@@ -9,18 +9,26 @@ abstract class Produk {
     String Nama;
 }
 
-class Album extends Produk{
-    Album(int ID, String NamaProduk){
+abstract class ProdukKPOP extends Produk{
+    String NamaGrup;
+}
+
+class Album extends ProdukKPOP{
+    
+    Album(int ID, String NamaProduk, String Grup){
         this.ID = ID;
         this.Nama = NamaProduk;
+        this.NamaGrup = Grup;
     }
 }
 
-class LightStick extends Produk{
-    final String Jenis = "LightStick";
+class LightStick extends ProdukKPOP{
+    Boolean Baterai;
     
-    LightStick(int ID, String Grup){
+    LightStick(int ID, String Nama, String Grup, Boolean DilengkapiBaterai){
         this.ID = ID;
-        this.Nama = "Lightstick " + Grup;
+        this.Nama = Nama;
+        this.NamaGrup = Grup;
+        this.Baterai = DilengkapiBaterai;
     }
 }
