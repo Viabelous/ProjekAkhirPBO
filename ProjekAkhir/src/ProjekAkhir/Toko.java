@@ -51,8 +51,8 @@ public class Toko {
         System.out.println("Produk Dijual:");
         for (Produk Dagangan : DaftarProduk) {
             
-            MenuPick.put(i, Dagangan.ID);
-            System.out.println("(" + i + ") " + Dagangan.Nama);
+            MenuPick.put(i, Dagangan.getID());
+            System.out.println("(" + i + ") " + Dagangan.getNama());
         }
         
         int Opsi = Main.CheckInt();

@@ -93,9 +93,9 @@ public class Main {
         DaftarAkun.add(DefaultSellerAcc("Agus", "Sun1004", "Tina", "AgusNumeroUno@Naver.com", "1004", "Bumbum"));
         
         DaftarToko.add(new Toko(1, "Toko Sukamiskin", 1));
-        DaftarToko.get(0).TambahProduk(new Album(1, "Asterium", "PLAVE"));
-        DaftarToko.get(0).TambahProduk(new Album(2, "Espergo", "PLAVE"));
-        DaftarToko.get(0).TambahProduk(new LightStick(3, "LightStick EXO", "EXO", true));
+        DaftarToko.get(0).TambahProduk(new Album(1, "Birthday", "Red Velvet","Smini Ver", 300000 ));
+        DaftarToko.get(0).TambahProduk(new Album(1, "Birthday", "Red Velvet","Digipack Ver", 280000 ));
+        DaftarToko.get(0).TambahProduk(new LightStick(3, "LightStick EXO", "EXO", true, "Ver 2", 826000));
         
         // DaftarToko.get(0).TampilDeskripsi();
         // DaftarToko.get(0).TampilProduk();
@@ -283,7 +283,6 @@ public class Main {
                     switch (Opsi) {
                         case 1 -> Toko.ManajemenToko();
                         case 2 -> {
-                        
                     }
                         case 3 -> Menu = "Login";
                         default -> {
