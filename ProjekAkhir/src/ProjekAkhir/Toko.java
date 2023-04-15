@@ -18,6 +18,14 @@ public class Toko {
         this.IDPenjual = IDPenjual;
     }
     
+    public static void TampilSemuaToko(){
+        for (Toko namaToko : Main.DaftarToko){
+            
+            System.out.println("(" + namaToko.ID + ") " + namaToko.Nama);
+            
+        }
+    }
+    
     public void TampilDeskripsi(){
         System.out.println("ID Toko   : " + this.ID);
         System.out.println("Nama Toko : " + this.Nama);

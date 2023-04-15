@@ -143,11 +143,12 @@ class Customer extends Akun implements MultiableAcc{
         this.Pass = PassA;
         this.Nama = NamaA;
         this.Email = EmailA;
-        this.NoHP = Nomor;
-        this.Alamat = Addr;
+        this.setNoHP(Nomor);
+        this.setAlamat(Addr);
     }
     
     
+    @Override
     public boolean HapusAkun() throws IOException{
         System.out.println("Yakin hapus akun (Y/N)?");
         System.out.println(":>> ");
@@ -157,9 +158,27 @@ class Customer extends Akun implements MultiableAcc{
         
         return Conf.equals("Y");
     }
+
+    public String getNoHP() {
+        return NoHP;
+    }
+
+    public void setNoHP(String NoHP) {
+        this.NoHP = NoHP;
+    }
+
+    public String getAlamat() {
+        return Alamat;
+    }
+
+    public void setAlamat(String Alamat) {
+        this.Alamat = Alamat;
+    }
 }
 
+
 class Seller extends Akun implements MultiableAcc{
+    private String TokoKu;
     
     Seller(){
         super("Seller");
@@ -229,6 +248,14 @@ class Seller extends Akun implements MultiableAcc{
         return Conf.equals("Y");
         
         
+    }
+
+    public String getTokoKu() {
+        return TokoKu;
+    }
+
+    public void setTokoKu(String TokoKu) {
+        this.TokoKu = TokoKu;
     }
 }
 

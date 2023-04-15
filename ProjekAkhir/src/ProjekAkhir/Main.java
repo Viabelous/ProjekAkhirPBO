@@ -69,18 +69,35 @@ public class Main {
     }
     
     
+    // Hapus nanti
+    public static Seller DefaultSellerAcc(String UsnA, String PassA, String NamaA, String EmailA, String Nomor, String Addr){
+        Seller User = new Seller();
+        
+        User.setID(capIDAkun);
+        User.setUsn(UsnA);
+        User.setPass(PassA);
+        User.setNama(NamaA);
+        User.setEmail(EmailA);
+        capIDAkun+=1;
+        
+        return User;
+    }
+    
+    
     // --------------------------------------- MAIN ZONE ---------------------------------------
     public static void main(String[] args) throws IOException {
+        DaftarAkun.add(Adminian);
+        
+        // Untuk Uji Coba, Mohon hapus nanti
+        DaftarAkun.add(DefaultSellerAcc("Agus", "Sun1004", "Tina", "AgusNumeroUno@Naver.com", "1004", "Bumbum"));
         
         DaftarToko.add(new Toko(1, "Toko Sukamiskin", 1));
-        
         DaftarToko.get(0).TambahProduk(new Album(1, "Asterium", "PLAVE"));
         DaftarToko.get(0).TambahProduk(new Album(2, "Espergo", "PLAVE"));
         DaftarToko.get(0).TambahProduk(new LightStick(3, "LightStick EXO", "EXO", true));
         
         DaftarToko.get(0).TampilDeskripsi();
         DaftarToko.get(0).TampilProduk();
-        
         
         // Visual Program Berjalan
         while(true){
@@ -111,11 +128,10 @@ public class Main {
                         String Password = br.readLine();
                         
                         // Anti Null Value
-                        if(Username == null || Password == null) break;
+                        if(Username.equals("") || Password.equals("")) break;
                         
                         // Cek Username dan Password
                         Opsi = USNSequential(Username);
-                        System.out.println(Opsi);
                         
                         if(Opsi == -1){
                             System.out.println("Username atau Password salah");
@@ -187,7 +203,7 @@ public class Main {
                     Opsi = CheckInt();
                     
                     switch (Opsi) {
-                        case 1 -> Toko.ManajemenToko();
+                        case 1 -> Toko.TampilSemuaToko();
                         case 2 -> {
                         //admin.manajemenSatff();
                     }
@@ -197,8 +213,7 @@ public class Main {
                         case 4 -> {
                         //admin.ubahProfil();
                     }
-                        case 5 -> {
-                    }
+                        case 5 -> Menu = "Login";
                         default -> {
                     }
                     }
@@ -206,7 +221,7 @@ public class Main {
                 }
                     
             // --------------------------------------- BAGIAN MENU SELLER ---------------------------------------
-                case "Seller" ->
+                case "Seller" -> {
                     //Isi Menu Utama Untuk Seller
                     System.out.println("""
                                         Adalah Menu Seller
@@ -214,6 +229,20 @@ public class Main {
                                         (2) Ubah Profil
                                         (3) Log Out
                                         """);
+                    
+                    System.out.print(" :>> ");
+                    Opsi = CheckInt();
+                    
+                    switch (Opsi) {
+                        case 1 -> Toko.ManajemenToko();
+                        case 2 -> {
+                        
+                    }
+                        case 3 -> Menu = "Login";
+                        default -> {
+                    }
+                    }
+                }
                     
                 default -> {
                 }
