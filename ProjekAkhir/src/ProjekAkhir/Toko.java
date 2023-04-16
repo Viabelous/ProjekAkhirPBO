@@ -52,12 +52,15 @@ public class Toko {
         // Tampilkan semua penjual (lengkap dengan nama ygy)
     }
     
-    //2 Void di bawah ini akan diubah nti
-    static protected void TambahProduk(Toko NamaToko, Produk Item){
+    
+    void TambahProduk(Produk Item){
         if(Item == null) return;
-        NamaToko.DaftarProduk.add(Item);
+        this.DaftarProduk.add(Item);
+        Main.capIDProduk += 1;
+        DaftarProduk.add(Item);
     }
     
+    //Void di bawah ini akan diubah nti
     public void TambahSeller(int IDPenjual){
         IDSeller.add(IDPenjual);
     }
@@ -75,8 +78,8 @@ public class Toko {
             System.out.println("\nProduk Dijual:");
             for (Produk Dagangan : DaftarProduk) {
 
-                MenuPick.put(i, Dagangan.getID());
-                System.out.println("\t(" + i + ") " + Dagangan.getNama());
+                MenuPick.put(i, Dagangan.ID);
+                System.out.println("\t(" + i + ") " + Dagangan.Nama);
 
                 i++;
             }
@@ -132,7 +135,7 @@ public class Toko {
         switch (pilihan) {
             case 1 -> {
                 Album AlbumBaru = null;
-                TambahProduk(this, AlbumBaru.TambahProduk());
+                this.TambahProduk(AlbumBaru.TambahProduk());
             }
             
             case 2 -> {
