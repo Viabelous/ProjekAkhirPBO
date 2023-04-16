@@ -53,12 +53,13 @@ public class Toko {
     }
     
     //2 Void di bawah ini akan diubah nti
-    public void TambahProduk(Produk Item){
-        this.DaftarProduk.add(Item);
+    static protected void TambahProduk(Toko NamaToko, Produk Item){
+        if(Item == null) return;
+        NamaToko.DaftarProduk.add(Item);
     }
     
     public void TambahSeller(int IDPenjual){
-        this.IDSeller.add(IDPenjual);
+        IDSeller.add(IDPenjual);
     }
     
     public void TampilProduk(){
@@ -100,13 +101,14 @@ public class Toko {
         
     }
     
-    public void ManajemenToko(){
+    public void ManajemenToko() throws IOException{
         this.TampilDeskripsi();
+        // Menu tambah produk nti dsni
         
     }
     
     
-    static void TambahProduk() throws IOException{
+    void MenuTambahProduk() throws IOException{
         System.out.println("""
 		| ------------------------------------------ |
 		|   //     Create Produk Toko          \\\\  |	
@@ -129,23 +131,10 @@ public class Toko {
 
         switch (pilihan) {
             case 1 -> {
-                System.out.println("Masukan Id Album : ");
-                int ID =  Integer.parseInt(br.readLine());
-                System.out.println("Masukkan Nama Produk : ");
-                String NamaProduk = br.readLine();
-                System.out.println("Masukkan Nama Grup : ");
-                String Grup = br.readLine();
-                System.out.println("Masukkan Versi Album: ");
-                String VersiAlbum = br.readLine();
-                System.out.println("Masukkan Harga Album :Rp. ");
-                int Harga =  Integer.parseInt(br.readLine());           
-                
-     
-                Album.add(new Album(ID, NamaProduk, Grup, VersiAlbum, Harga));  
-                
-           
-                break;
+                Album AlbumBaru = null;
+                TambahProduk(this, AlbumBaru.TambahProduk());
             }
+            
             case 2 -> {
                 System.out.println("Masukan Id LightStick : ");
                 int ID =  Integer.parseInt(br.readLine());

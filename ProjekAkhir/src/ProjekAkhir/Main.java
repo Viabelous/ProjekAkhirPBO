@@ -31,6 +31,8 @@ public class Main {
     static int Opsi; //Untuk menyimpan segala macam pilihan tipe integer, misal: Pilihan Menu
     static int IDAktif; //Untuk menyimpan ID User yang sedang aktif
     static int capIDAkun = 1; //Untuk menyimpan ID terakhir tersimpan di Data Akun
+    static int capIDProduk = 0; //Untuk menyimpan ID terakhir tersimpan di Data Produk
+    static int capIDToko = 0; //Untuk menyimpan ID terakhir tersimpan di Data Toko
     
     // Deklarasi Variabel Array
     static ArrayList<Akun> DaftarAkun = new ArrayList<>(); //Untuk menyimpan data toko
@@ -119,13 +121,15 @@ public class Main {
         
         // Untuk Uji Coba, Mohon hapus nanti
         DaftarAkun.add(DefaultSellerAcc("Agus", "Sun1004", "Tina", "AgusNumeroUno@Naver.com", "1004", "Bumbum"));
-        DaftarAkun.add(DefaultCostumerAcc("Yupi", "Moon502", "Ibnu", "YupiKenyalnya@Naver.com", "502", "BoomBoom"));
+        DaftarAkun.add(DefaultCostumerAcc("Viabel", "Vivin", "Youvi", "YupiKenyalnya@Naver.com", "08122222", "BoomBoom"));
 
         DaftarToko.add(new Toko(1, "Toko Sukamiskin"));
         DaftarToko.get(0).TambahProduk(new Album(1, "Birthday (Smini Ver)", "Red Velvet","Smini Ver", 300000 ));
         DaftarToko.get(0).TambahProduk(new Album(2, "Birthday (Digipack Ver)", "Red Velvet","Digipack Ver", 280000 ));
         DaftarToko.get(0).TambahProduk(new LightStick(3, "LightStick EXO", "EXO", true, "Ver 2", 826000));
         DaftarToko.get(0).TambahProduk(new Album(4, "Asterum", "PLAVE","", 180000 ));
+        capIDProduk += 4;
+        
         DaftarToko.get(0).TambahSeller(1);
         
         // DaftarToko.get(0).TampilDeskripsi();
