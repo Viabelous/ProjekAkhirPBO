@@ -105,7 +105,7 @@ class Poster extends ProdukKPOP{
         this.ID = ID;
         this.Nama = NamaProduk;        
         this.NamaGrup = Grup;
-        this.VersiPoster =VersiPoster;
+        this.VersiPoster = VersiPoster;
         this.Harga = Harga;
     }
 
@@ -123,7 +123,7 @@ class Postcard extends ProdukKPOP{
     private String VersiMember;
     private String Size;
 
-    Postcard(int ID, String NamaProduk, String Grup, String VersiPostcard, String VersiMember, int Harga, String Size){
+    Postcard(int ID, String NamaProduk, String Grup, String Size, String VersiPostcard, String VersiMember, int Harga){
         this.ID = ID;
         this.Nama = NamaProduk;
         this.NamaGrup = Grup;
@@ -163,7 +163,7 @@ class Photocard extends ProdukKPOP{
     private String VersiMember;
     private String Size;
 
-    Photocard(int ID, String NamaProduk, String Grup, String VersiPhotocard, String VersiMember, int Harga, String Size){
+    Photocard(int ID, String NamaProduk, String Grup, String Size, String VersiPhotocard, String VersiMember, int Harga){
         this.ID = ID;
         this.Nama = NamaProduk;
         this.NamaGrup = Grup;
@@ -202,7 +202,7 @@ class Keyring extends ProdukKPOP{
     private String VersiMember;
     private String Size;
 
-    Keyring(int ID, String NamaProduk, String Grup, String VersiMember, int Harga, String Size){
+    Keyring(int ID, String NamaProduk, String Grup,  String Size, String VersiMember, int Harga){
         this.ID = ID;
         this.Nama = NamaProduk;
         this.NamaGrup = Grup;
@@ -231,7 +231,7 @@ class Keyring extends ProdukKPOP{
 class Lanyard extends ProdukKPOP{
     private String Bahan;
 
-    Lanyard(int ID, String NamaProduk, String Grup, int Harga, String Bahan){
+    Lanyard(int ID, String NamaProduk, String Grup, String Bahan, int Harga){
         this.ID = ID;
         this.Nama = NamaProduk;
         this.NamaGrup = Grup;

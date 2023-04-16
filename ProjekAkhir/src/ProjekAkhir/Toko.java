@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.io.IOException;
+
 
 /**
  *
@@ -20,8 +22,18 @@ public class Toko {
         this.Nama = NamaToko;
     }
     
-    InputStreamReader isr = new InputStreamReader(System.in);
-    BufferedReader br = new BufferedReader(isr);
+    static InputStreamReader isr = new InputStreamReader(System.in);
+    static BufferedReader br = new BufferedReader(isr);
+    static ArrayList<Album> Album = new ArrayList<> ();
+    static ArrayList<LightStick> LightStick = new ArrayList<> ();
+    static ArrayList<Poster> Poster = new ArrayList<> ();
+    static ArrayList<Postcard> Postcard = new ArrayList<> ();
+    static ArrayList<Photocard> Photocard = new ArrayList<> ();
+    static ArrayList<Keyring> Keyring = new ArrayList<> ();
+    static ArrayList<Lanyard> Lanyard = new ArrayList<> ();
+
+
+    
     
     public static void TampilSemuaToko(){
         int i  = 1;
@@ -90,6 +102,181 @@ public class Toko {
     
     public void ManajemenToko(){
         this.TampilDeskripsi();
+        
     }
     
+    
+    static void TambahProduk() throws IOException{
+        System.out.println("""
+		| ------------------------------------------ |
+		|   //     Create Produk Toko          \\\\  |	
+		|  ||                                     || |
+                            Menu Manajemen Produk
+                            (1) Album
+                            (2) Lightstick 
+                            (3) Poster 
+                            (4) Postcard
+                            (5) Photocard
+                            (6) Keyring
+                            (7) Lanyard
+		|  ||                                     || |
+		|   \\\\                                   //  |
+		| ------------------------------------------ |
+                            """);
+
+        System.out.print(" :>> ");
+        int pilihan = Integer.parseInt(br.readLine());
+
+        switch (pilihan) {
+            case 1 -> {
+                System.out.println("Masukan Id Album : ");
+                int ID =  Integer.parseInt(br.readLine());
+                System.out.println("Masukkan Nama Produk : ");
+                String NamaProduk = br.readLine();
+                System.out.println("Masukkan Nama Grup : ");
+                String Grup = br.readLine();
+                System.out.println("Masukkan Versi Album: ");
+                String VersiAlbum = br.readLine();
+                System.out.println("Masukkan Harga Album :Rp. ");
+                int Harga =  Integer.parseInt(br.readLine());           
+                
+     
+                Album.add(new Album(ID, NamaProduk, Grup, VersiAlbum, Harga));  
+                
+           
+                break;
+            }
+            case 2 -> {
+                System.out.println("Masukan Id LightStick : ");
+                int ID =  Integer.parseInt(br.readLine());
+                System.out.println("Masukkan Nama Produk : ");
+                String Nama = br.readLine();
+                System.out.println("Masukkan Nama Grup : ");
+                String Grup = br.readLine();
+                System.out.println("Berisikan Baterai (Y/N)?");
+                boolean DilengkapiBaterai = ((br.readLine().equals("Y")));
+                System.out.println("Masukkan Versi LightStick: ");
+                String VersiLightstick = br.readLine();
+                System.out.println("Masukkan Harga Lightstick :Rp. ");
+                int Harga =  Integer.parseInt(br.readLine());           
+                
+     
+                LightStick.add(new LightStick(ID, Nama, Grup, DilengkapiBaterai, VersiLightstick, Harga));  
+                
+           
+                break;
+            }
+            case 3 -> {
+                System.out.println("Masukan Id Poster : ");
+                int ID =  Integer.parseInt(br.readLine());
+                System.out.println("Masukkan Nama Produk : ");
+                String NamaProduk = br.readLine();
+                System.out.println("Masukkan Nama Grup : ");
+                String Grup = br.readLine();
+                System.out.println("Masukkan Versi Poster: ");
+                String VersiPoster = br.readLine();
+                System.out.println("Masukkan Harga Poster :Rp. ");
+                int Harga =  Integer.parseInt(br.readLine());           
+                
+     
+                Poster.add(new Poster(ID, NamaProduk, Grup, VersiPoster, Harga));  
+                
+           
+                break;
+            }
+            case 4 -> {
+                System.out.println("Masukan Id Postcard : ");
+                int ID =  Integer.parseInt(br.readLine());
+                System.out.println("Masukkan Nama Produk : ");
+                String NamaProduk = br.readLine();
+                System.out.println("Masukkan Nama Grup : ");
+                String Grup = br.readLine();
+                System.out.println("Masukkan Size Postcard : ");
+                String Size = br.readLine();
+                System.out.println("Masukkan Versi Postcard: ");
+                String VersiPostcard = br.readLine();
+                System.out.println("Masukkan Versi Member: ");
+                String VersiMember = br.readLine();
+                System.out.println("Masukkan Harga Poster :Rp. ");
+                int Harga =  Integer.parseInt(br.readLine());           
+                
+                Postcard ptd = new Postcard(ID, NamaProduk, Grup, Size, VersiPostcard, VersiMember, Harga);
+     
+                Postcard.add(ptd);  
+                
+           
+                break;
+            }
+            case 5 -> {
+                System.out.println("Masukan Id Photocard : ");
+                int ID =  Integer.parseInt(br.readLine());
+                System.out.println("Masukkan Nama Produk : ");
+                String NamaProduk = br.readLine();
+                System.out.println("Masukkan Nama Grup : ");
+                String Grup = br.readLine();
+                System.out.println("Masukkan Size Photocard : ");
+                String Size = br.readLine();
+                System.out.println("Masukkan Versi Photocard: ");
+                String VersiPhotocard = br.readLine();
+                System.out.println("Masukkan Versi Member: ");
+                String VersiMember = br.readLine();
+                System.out.println("Masukkan Harga Photocard :Rp. ");
+                int Harga =  Integer.parseInt(br.readLine());           
+                
+     
+                Photocard.add( new Photocard(ID, NamaProduk, Grup, Size, VersiPhotocard, VersiMember, Harga));  
+                
+           
+                break;
+            }
+            case 6 -> {
+                System.out.println("Masukan Id Keyring : ");
+                int ID =  Integer.parseInt(br.readLine());
+                System.out.println("Masukkan Nama Produk : ");
+                String Nama = br.readLine();
+                System.out.println("Masukkan Nama Grup : ");
+                String Grup = br.readLine();
+                System.out.println("Masukkan Size Keyring : ");
+                String Size = br.readLine();
+                System.out.println("Masukkan Versi Member: ");
+                String VersiMember = br.readLine();
+                System.out.println("Masukkan Harga Keyring :Rp. ");
+                int Harga =  Integer.parseInt(br.readLine());                        
+     
+                Keyring.add(new Keyring(ID, Nama, Grup, Size, VersiMember, Harga));  
+                
+           
+                break;
+            }
+            case 7 -> {
+                System.out.println("Masukan Id Lanyard : ");
+                int ID =  Integer.parseInt(br.readLine());
+                System.out.println("Masukkan Nama Produk : ");
+                String Nama = br.readLine();
+                System.out.println("Masukkan Nama Grup : ");
+                String Grup = br.readLine();
+                System.out.println("Masukkan Bahan Lanyard : ");
+                String Bahan = br.readLine();
+                System.out.println("Masukkan Harga Keyring :Rp. ");
+                int Harga =  Integer.parseInt(br.readLine());           
+                
+                Lanyard lyr = new Lanyard(ID, Nama, Grup, Bahan, Harga);
+     
+                Lanyard.add(lyr);  
+                
+           
+                break;
+            }
+        }
+    }
 }
+
+    
+    
+    
+    
+
+
+
+
+
