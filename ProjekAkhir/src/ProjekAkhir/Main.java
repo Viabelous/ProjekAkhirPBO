@@ -64,13 +64,12 @@ public class Main {
             return;
         }
         
-        int i;
-        for(i = 0; i <= 30; i++){
+        for(int i = 0; i <= 30; i++){
             System.out.print("\n");
         }
     }
     
-    //
+    // Koneksi Jar
     public static int Tokoku(){
         int i = 0;
         for(Toko TokoTerhubung : DaftarToko){
@@ -99,6 +98,19 @@ public class Main {
         
         return User;
     }
+
+    public static Customer DefaultCostumerAcc(String UsnA, String PassA, String NamaA, String EmailA, String Nomor, String Addr){
+       Customer User = new Customer();
+        
+        User.setID(capIDAkun);
+        User.setUsn(UsnA);
+        User.setPass(PassA);
+        User.setNama(NamaA);
+        User.setEmail(EmailA);
+        capIDAkun+=1;
+        
+        return User;
+    }
     
     
     // --------------------------------------- MAIN ZONE ---------------------------------------
@@ -107,7 +119,8 @@ public class Main {
         
         // Untuk Uji Coba, Mohon hapus nanti
         DaftarAkun.add(DefaultSellerAcc("Agus", "Sun1004", "Tina", "AgusNumeroUno@Naver.com", "1004", "Bumbum"));
-        
+        DaftarAkun.add(DefaultCostumerAcc("Yupi", "Moon502", "Ibnu", "YupiKenyalnya@Naver.com", "502", "BoomBoom"));
+
         DaftarToko.add(new Toko(1, "Toko Sukamiskin"));
         DaftarToko.get(0).TambahProduk(new Album(1, "Birthday (Smini Ver)", "Red Velvet","Smini Ver", 300000 ));
         DaftarToko.get(0).TambahProduk(new Album(2, "Birthday (Digipack Ver)", "Red Velvet","Digipack Ver", 280000 ));
@@ -137,7 +150,7 @@ public class Main {
                                     | ------------------------------------------ |
                                         """);
                 
-                System.out.print("\t\t :>> ");
+                System.out.print(":>> ");
                 Opsi = CheckInt();
                 
                 
@@ -244,82 +257,109 @@ public class Main {
            
             switch (Menu) {
             // --------------------------------------- BAGIAN MENU CUSTOMER ---------------------------------------
-                case "Customer" ->
+                case "Customer" -> {
                     // Isi Menu Utama Untuk Customer
+                    clear();
+                
                     System.out.println("""
-                                       Adalah Menu Customer
-                                       (1)-. Menuju Toko
-                                       (2)-. Menuju Tas Belanjaku
-                                       (3)-. Baca Riwayat Pembelianku
-                                       (4)-. Ubah Profil
-                                       (5)-. Log Out
-                                       """);
+                        | ----------------------------------------------- |
+                        |   //        Selamat Datang,""" + " " + Menu + " :)     \\\\  |" + 
+                       """
+
+                        |  ||                                          || |
+                        |  ||      (1)-. Menuju Toko                   || |
+                        |  ||      (2)-. Menuju Tas Belanjaku          || |
+                        |  ||      (3)-. Baca Riwayat Pembelianku      || |
+                        |  ||      (4)-. Ubah Profilku                 || |
+                        |  ||      (5)-. Log Out                       || |
+                        |   \\\\                                        //  |
+                        | ----------------------------------------------- |
+                                """);
+                    
+                    System.out.print(" :>> ");
+                    Opsi = CheckInt();
+
+                    switch(Opsi) {
+                        case 1 -> {}
+                        case 2 -> {}
+                        case 3 -> {}
+                        case 4 -> {}
+                        case 5 -> Menu = "Login";
+
+                        default -> {continue;}
+                    }
+                }
                     
             // --------------------------------------- BAGIAN MENU ADMIN ---------------------------------------
                 case "Admin" -> {
                     //Isi Menu Utama Untuk Admin
+                    clear();
+
                     System.out.println("""
-                                        Adalah Menu Admin
-                                        (1) Manajemen Toko
-                                        (2) Manajemen Seller
-                                        (3) Riwayat Pembelian
-                                        (4) Ubah Profil
-                                        (5) Log Out
-                                        """);
+                        | ---------------------------------------- |
+                        |   //    Selamat Datang,""" + " " + Menu + " :)     \\\\  |" + 
+                        """
+
+                        |  ||                                   || |
+                        |  ||      (1)-. Manajemen Toko         || |
+                        |  ||      (2)-. Manajemen Seller       || |
+                        |  ||      (3)-. Riwayat Pembelian      || |
+                        |  ||      (4)-. Ubah Profil            || |
+                        |  ||      (5)-. Log Out                || |
+                        |   \\\\                               //  |
+                        | ---------------------------------------- |
+                                """);
                     
                     System.out.print(" :>> ");
                     Opsi = CheckInt();
                     
                     switch (Opsi) {
                         case 1 -> Toko.TampilSemuaToko();
-                        case 2 -> {
-                        Adminian.manajemenSeller();
+                        case 2 -> Adminian.manajemenSeller();
+                        case 3 -> {//admin.riwayatPembelian();
                     }
-                        case 3 -> {
-                        //admin.riwayatPembelian();
-                    }
-                        case 4 -> {
-                        Adminian.ubahProfil();
-                    }
+                        case 4 -> Adminian.ubahProfil();
                         case 5 -> Menu = "Login";
-                    }
-                                    
+
+                        default -> {continue;}
+                    }     
                 }
                     
             // --------------------------------------- BAGIAN MENU SELLER ---------------------------------------
                 case "Seller" -> {
                     //Isi Menu Utama Untuk Seller
+                    clear();
+
                     System.out.println("""
-                                        Adalah Menu Seller
-                                        (1) Tokoku
-                                        (2) Ubah Profil
-                                        (3) Log Out
-                                        """);
-                    
+                        | -------------------------------------- |
+                        |   //   Selamat Datang,""" + " " + Menu + " :)   \\\\  |" + 
+                        """
+
+                        |  ||                                 || |
+                        |  ||        (1)-. Tokoku             || |
+                        |  ||        (2)-. Ubah Profil        || |
+                        |  ||        (3)-. Log Out            || |
+                        |   \\\\                               //  |
+                        | -------------------------------------- |
+                                """);
+
                     System.out.print(" :>> ");
                     Opsi = CheckInt();
                     
                     switch (Opsi) {
                         case 1 -> {
                             int IndexToko = Tokoku();
-                            if(IndexToko == -1)
-                                System.out.println("Datamu belum terhubung dengan toko manapun.");
+                            if(IndexToko == -1) System.out.println("Datamu belum terhubung dengan toko manapun.");
                             else DaftarToko.get(IndexToko).TampilProduk();
                         }
-                        case 2 -> {
-                    }
+                        case 2 -> {}
                         case 3 -> Menu = "Login";
-                        default -> {
-                    }
+                        default -> {continue;}
                     }
                 }
                     
-                default -> {
-                }
-            }
-            
-            
-                    
+                default -> {continue;}
+            }      
         }
     }
 }
