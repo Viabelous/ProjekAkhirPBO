@@ -17,6 +17,8 @@ abstract class Produk {
     static BufferedReader br = new BufferedReader(isr);
 
     abstract Produk TambahProduk();
+    abstract void UbahProduk() throws IOException;
+    abstract void TampilProduk();
     
 }
 
@@ -61,6 +63,52 @@ class Album extends ProdukKPOP{
                 return null;
         }
         
+    }
+    
+    @Override
+    void UbahProduk() throws IOException{
+        System.out.println(" Kosongkan jika tidak ingin mengubah data.");
+        System.out.println(" Isi dengan 99 untuk kembali");
+
+        System.out.println("Nama Produk Baru: " + this.NamaProduk);
+        System.out.println("Nama Produk Lama: ");
+        String NamaBaru = br.readLine();
+        if (NamaBaru.equals("99")) return;
+        else if (NamaBaru.equals("")) NamaBaru = this.NamaProduk;
+
+        System.out.println("Nama Idol/Grup Lama: " + this.Idol);
+        System.out.println("Nama Idol/Grup Baru: ");
+        String IdolBaru = br.readLine();
+        if (IdolBaru.equals("99")) return;
+        else if (IdolBaru.equals("")) IdolBaru = this.Idol;
+
+        System.out.println("Versi Album Lama: " + this.VersiAlbum);
+        System.out.println("Versi Album Baru: ");
+        String VersiBaru = br.readLine();
+        if (VersiBaru.equals("99")) return;
+        else if (VersiBaru.equals("")) VersiBaru = this.VersiAlbum;
+
+        System.out.println("Masukkan Harga Album Lama: Rp. " + this.Harga);
+        System.out.println("Masukkan Harga Album Baru: Rp. ");
+        int HargaBaru =  Main.CheckInt();
+        if (HargaBaru == 99) return;
+        else if (HargaBaru <= 0) HargaBaru = this.Harga;
+        
+        this.NamaProduk = NamaBaru;
+        this.Idol = IdolBaru;
+        this.VersiAlbum = VersiBaru;
+        this.Harga = HargaBaru;
+        
+    }
+    
+    @Override
+    void TampilProduk(){
+        System.out.println("ID: " + this.ID);
+        System.out.println("Nama Produk: " + this.NamaProduk);
+        System.out.println("Jenis Produk: " + this.getClass().getSimpleName());
+        System.out.println("Idol/IdolGroup: " + this.Idol);
+        System.out.println("Versi Album: " + this.VersiAlbum);
+        System.out.println("Harga: " + this.Harga);
     }
 }
 

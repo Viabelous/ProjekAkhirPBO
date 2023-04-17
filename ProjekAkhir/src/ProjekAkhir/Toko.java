@@ -3,7 +3,6 @@ package ProjekAkhir;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.io.IOException;
 
 
@@ -19,29 +18,38 @@ public class Toko {
     ArrayList<Integer> IDSeller = new ArrayList<>();
     ArrayList<Produk> DaftarProduk = new ArrayList<>();
     
-    Toko(int ID, String NamaToko){
+    Toko(int ID, String NamaToko, String LetakKota){
         this.ID = ID;
         this.Nama = NamaToko;
+        this.Kota = LetakKota;
     }
     
     static InputStreamReader isr = new InputStreamReader(System.in);
     static BufferedReader br = new BufferedReader(isr);
-
     
     
     public static void TampilSemuaToko(){
         int i  = 1;
-        HashMap<Integer, Integer> MenuPick = new HashMap<Integer, Integer>(); 
         
         for (Toko namaToko : Main.DaftarToko){
-            MenuPick.put(i, namaToko.ID);
             System.out.println("(" + i + ") " + namaToko.Nama);
+            i++;
         }
     }
     
     public void TampilDeskripsi(){
-        System.out.println("ID Toko   : " + this.ID);
-        System.out.println("Nama Toko : " + this.Nama);
+        System.out.println("ID Toko    : " + this.ID);
+        System.out.println("Nama Toko  : " + this.Nama);
+        System.out.println("Letak Toko : " + this.Kota);
+        System.out.println("Penjual: ");
+        for (int Seller : IDSeller){
+            int index = Main.IDSequential(Seller) ;
+            System.out.print(" -. ");
+            System.out.print(" [" + Seller + "] ");
+            Main.DaftarAkun.get(index).getNama();
+            System.out.println("");
+            
+        }
         //System.out.println("ID Penjual: " + this.IDPenjual);
         // Tampilkan semua penjual (lengkap dengan nama ygy)
     }
@@ -60,10 +68,8 @@ public class Toko {
     }
     
     public void TampilProduk() throws IOException{
-        HashMap<Integer, Integer> MenuPick = new HashMap<Integer, Integer>(); 
         while(true){
             int i  = 1;
-            MenuPick.clear();
 
             if(Main.Menu.equals("Seller") || Main.Menu.equals("Admin"))
                 System.out.println("\n[99] Manajemen Toko");
@@ -71,8 +77,6 @@ public class Toko {
 
             System.out.println("\nProduk Dijual:");
             for (Produk Dagangan : DaftarProduk) {
-
-                MenuPick.put(i, Dagangan.ID);
                 System.out.println("\t(" + i + ") " + Dagangan.NamaProduk);
 
                 i++;
@@ -87,9 +91,8 @@ public class Toko {
                     }
                     case "Seller", "Admin" -> {
                         // Opsi 99 untuk Manajemen Toko
-                        if(Opsi == 99){
-                            ManajemenToko();
-                        }
+                        if(Opsi == 99) ManajemenToko();
+                        ManajemenProduk(this.DaftarProduk.get(Opsi+1));
                     }
 
                 }
@@ -98,8 +101,37 @@ public class Toko {
         
     }
     
+    public void ManajemenProduk(Produk Prod) throws IOException{
+        while(true){
+            Prod.TampilProduk();
+            System.out.println(" [1] Ubah Produk");
+            System.out.println(" [2] Hapus Produk");
+            System.out.println(" [3] Kembali");
+            int Jawab = Main.CheckInt();
+            switch(Jawab){
+                case 1 -> Prod.UbahProduk();
+                case 2 -> HapusProduk(Prod);
+            }
+        }
+    }
+    
+    // Akan dikembangkan Nanti
+    public void HapusProduk(Produk Prod) throws IOException{
+        System.out.println(" Yakin Hapus Produk (Y/N)? ");
+        System.out.print(" :>> ");
+        String Jawab = br.readLine();
+        if(!Jawab.equals("Y")) return;
+        Prod = null;
+        this.DaftarProduk.remove(Prod);
+        System.out.println(" Produk berhasil dihapus.");
+        
+    }
+    
+    
     public void ManajemenToko() throws IOException{
         this.TampilDeskripsi();
+        // Tambahkan menu di bawah ini
+        System.out.println(" Menu");
         this.MenuTambahProduk();
         
     }
@@ -153,8 +185,8 @@ public class Toko {
             }
             
             case 6 -> {
-                Keyring KeyringkBaru = null;
-                this.TambahProduk(KeyringkBaru.TambahProduk());
+                Keyring KeyringBaru = null;
+                this.TambahProduk(KeyringBaru.TambahProduk());
             }
             
             case 7 -> {
@@ -166,17 +198,17 @@ public class Toko {
     }
     
     
-    public void TambahToko() throws IOException {
+    // Error handling dungz
+    static public Toko TambahToko() throws IOException {
         String NamaToko, KotaToko;
         
         System.out.println(" Masukkan nama toko     :");
         NamaToko = br.readLine();
         System.out.println(" Masukkan kota toko     :");
         KotaToko = br.readLine();
+        Main.capIDToko++;
         
-        this.ID = Main.capIDToko;
-        this.Nama = NamaToko;
-        this.Kota = KotaToko;
+        return new Toko(Main.capIDToko-1, NamaToko, KotaToko);
     }
      
     

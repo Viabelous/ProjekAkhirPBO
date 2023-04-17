@@ -59,6 +59,16 @@ public class Main {
         return -1;
     }
     
+    // Fungsi mencari index dari suatu ID Akun
+    public static int IDSequential(int ID){
+        int i = 0;
+        for (Akun dataAkun : DaftarAkun){
+            if(ID == dataAkun.getID()) return i;
+            i += 1;
+        }
+        return -1;
+    }
+    
     // Prosedur Untuk Clear Screen
     public static void Clear() throws IOException, InterruptedException{
         if (System.console() != null){
@@ -178,10 +188,10 @@ public class Main {
 
                         Clear();
                         System.out.println("""
-                                    | ------------------------------------------ |
-                                    |   //      Silahkan Login, Kawan :)     \\\\  |
-                                    |  ||                                     || |
-                                                Username  :   """ + " " + Username + """      
+                                   | ------------------------------------------ |
+                                   |   //      Silahkan Login, Kawan :)     \\\\  |
+                                   |  ||                                     || |
+                                               Username  : """ + Username + """      
 
                                     |  ||       Password  :                   || |
                                     |  ||                                     || |
@@ -194,12 +204,12 @@ public class Main {
                         
                         Clear();
                         System.out.println("""
-                                    | ------------------------------------------ |
-                                    |   //      Silahkan Login, Kawan :)     \\\\  |
-                                    |  ||                                     || |
-                                                Username  : """ + " " + Username + """      
-                                                                
-                                                \t    Password  :   """ + " " + Password + """ 
+                                   | ------------------------------------------ |
+                                   |   //      Silahkan Login, Kawan :)     \\\\  |
+                                   |  ||                                     || |
+                                               Username  : """ + Username + """      
+
+                                        \t    Password  :   """ + " " + Password + """ 
 
                                     |  ||                                     || |
                                     |   \\\\                                   //  |
@@ -264,8 +274,8 @@ public class Main {
                     Clear();
                 
                     System.out.println("""
-                        | ----------------------------------------------- |
-                        |   //        Selamat Datang,""" + " " + Menu + " :)     \\\\  |" + 
+                       | ----------------------------------------------- |
+                       |   //        Selamat Datang, """ + Menu + " :)     \\\\  |" + 
                        """
 
                         |  ||                                          || |
@@ -298,8 +308,8 @@ public class Main {
                     Clear();
 
                     System.out.println("""
-                        | ---------------------------------------- |
-                        |   //    Selamat Datang,""" + " " + Menu + " :)     \\\\  |" + 
+                       | ---------------------------------------- |
+                       |   //    Selamat Datang, """ + Menu + " :)     \\\\  |" + 
                         """
 
                         |  ||                                   || |
@@ -333,8 +343,8 @@ public class Main {
                     Clear();
 
                     System.out.println("""
-                        | -------------------------------------- |
-                        |   //   Selamat Datang,""" + " " + Menu + " :)   \\\\  |" + 
+                       | -------------------------------------- |
+                       |   //   Selamat Datang, """ + Menu + " :)   \\\\  |" + 
                         """
 
                         |  ||                                 || |
