@@ -164,10 +164,34 @@ public class Toko {
             
         }
     }
+    
+    
+    public void TambahToko() throws IOException {
+        String NamaToko, KotaToko;
+        
+        System.out.println(" Masukkan nama toko     :");
+        NamaToko = br.readLine();
+        System.out.println(" Masukkan kota toko     :");
+        KotaToko = br.readLine();
+        
+        this.ID = Main.capIDToko;
+        this.Nama = NamaToko;
+        this.Kota = KotaToko;
+    }
+     
+    
+    public void UbahToko() throws IOException {
+        
+    }
+    
+    
+    public void HapusToko() throws IOException {
+        
+    }
 }
 
     
-    
+
     
     
 
