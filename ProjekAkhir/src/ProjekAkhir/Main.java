@@ -326,7 +326,7 @@ public class Main {
                     Opsi = CheckInt();
                     
                     switch (Opsi) {
-                        case 1 -> Toko.TampilSemuaToko();
+                        case 1 -> Toko.menuTokoToko();
                         case 2 -> Adminian.manajemenSeller();
                         case 3 -> {//admin.riwayatPembelian();
                     }
@@ -334,7 +334,7 @@ public class Main {
                         case 5 -> Menu = "Login";
 
                         default -> {continue;}
-                    }     
+                    } 
                 }
                     
             // --------------------------------------- BAGIAN MENU SELLER ---------------------------------------

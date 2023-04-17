@@ -1,5 +1,7 @@
 package ProjekAkhir;
 
+import static ProjekAkhir.Main.CheckInt;
+import static ProjekAkhir.Main.Opsi;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -137,6 +139,114 @@ public class Toko {
     }
     
     
+    public static void PilihToko() throws IOException{
+        Toko.TampilSemuaToko();
+        System.out.println("\n Pilih Toko");
+        System.out.print(" :>> ");
+        int index = CheckInt();
+    }
+    
+    
+    public static void menuTokoToko() throws IOException, InterruptedException {
+        
+        Main.Clear();
+        System.out.println("""
+            | ---------------------------------------- |
+            |   //  Menu Utama Manajemen TokoToko  \\\\  |
+            |  ||                                   || |
+            |  ||        (99)-. Kembali             || |
+            |  ||        (0)-. Tambah Toko          || |
+            |   \\\\                                 //  |
+            | ---------------------------------------- |
+                    """);
+        
+        Toko.TampilSemuaToko();
+        System.out.print("\n :>> ");
+        Opsi = CheckInt();
+
+        switch (Opsi) {
+            case 99:
+                break;
+            case 0:
+                Toko.TambahToko();
+                
+            // list produknya smentara gini dlu ya
+            default:
+                Toko.MenuPilihToko(Opsi);
+        }
+        
+    }
+    
+    
+    public static void MenuPilihToko(int index) throws IOException, InterruptedException {
+        
+        Main.Clear();
+        System.out.println("""
+            | ---------------------------------------- |
+            |   //         Menu Pilih Toko         \\\\  |
+            |  ||                                   || |
+            |  ||        (99)-. Kembali             || |
+            |  ||        (0)-. Manajemen Toko       || |
+            |   \\\\                                 //  |
+            | ---------------------------------------- |
+                    """);
+        
+        
+//        Prod.TampilProduk();
+        System.out.print("\n :>> ");
+        Opsi = CheckInt();
+        
+        switch (Opsi) {
+            case 99:
+                break;
+            case 0:
+                
+                Main.Clear();
+                System.out.println("""
+                    | ---------------------------------------- |
+                    |  //       Menu Manajemen Toko        \\\\  |
+                    | ||""" + "\t\t" + Main.DaftarToko.get(index-1).Nama + "\t\t|| |\n" + """
+                    | ||                                    || |
+                    | ||     (1)-. Ubah Informasi Toko      || |
+                    | ||     (2)-. Manajemen Seller Toko    || |
+                    | ||     (3)-. Tambah Produk            || |
+                    | ||     (4)-. Lihat Pesanan            || |
+                    | ||     (5)-. Hapus Toko               || |
+                    | ||     (99)-. Kembali                 || |
+                    |  \\\\                                  //  |
+                    | ---------------------------------------- |
+                                    """);
+
+                System.out.print(" :>> ");
+                Opsi = CheckInt();
+
+                switch (Opsi){
+                    case 1:
+//                        this.TampilDeskripsi();
+                        UbahToko(index);
+                        break;
+                    case 2:
+                        // Toko.ManajeSeller();
+                        break;
+                    case 3:
+//                        this.MenuTambahProduk();
+                        break;
+                    case 4:
+                        // lihatPesanan();
+                        break;
+                    case 5:
+                        HapusToko(index);
+                        break;
+                    case 99:
+                        break;
+                    default:
+                        break;
+
+                }
+        }
+    }
+
+    
     void MenuTambahProduk() throws IOException{
         System.out.println("""
 		| ------------------------------------------ |
@@ -198,34 +308,60 @@ public class Toko {
     }
     
     
-    // Error handling dungz
     static public Toko TambahToko() throws IOException {
         String NamaToko, KotaToko;
         
-        System.out.println(" Masukkan nama toko     :");
+        System.out.print(" Masukkan nama toko     :");
         NamaToko = br.readLine();
-        System.out.println(" Masukkan kota toko     :");
+        if (NamaToko.equals("")) throw new IllegalArgumentException();
+        
+        System.out.print(" Masukkan kota toko     :");
         KotaToko = br.readLine();
+        if (NamaToko.equals("")) throw new IllegalArgumentException();
+        
         Main.capIDToko++;
         
         return new Toko(Main.capIDToko-1, NamaToko, KotaToko);
     }
      
     
-    public void UbahToko() throws IOException {
+    static public void UbahToko(int indexToko) throws IOException {
+        String NewNamaToko, NewKotaToko;
         
+        System.out.print(" Masukkan nama toko     :");
+        NewNamaToko = br.readLine();
+        if (NewNamaToko.equals("")) throw new IllegalArgumentException();
+            
+        System.out.print(" Masukkan kota toko     :");
+        NewKotaToko = br.readLine();
+        if (NewKotaToko.equals("")) throw new IllegalArgumentException();
+        
+        Main.DaftarToko.get(indexToko-1).Nama = NewNamaToko;
+        Main.DaftarToko.get(indexToko-1).Kota = NewKotaToko;
+//        return new Toko(indexToko-1, NewNamaToko, NewKotaToko);
     }
     
     
-    public void HapusToko() throws IOException {
+    static public void HapusToko(int index) throws IOException {
+        System.out.println("Yakin hapus toko (Y/N)?");
+        System.out.println("(Menghapus toko ini akan sekaligus menghapus Seller)");
+        System.out.print(":>> ");
         
+        String Conf = br.readLine();
+        if(Conf == null) Conf = "N";
+        
+        boolean validation = Conf.equals("Y");
+
+        if (!validation){
+            Main.DaftarToko.remove(index-1);
+        }
     }
 }
 
-    
 
-    
-    
+
+
+
 
 
 

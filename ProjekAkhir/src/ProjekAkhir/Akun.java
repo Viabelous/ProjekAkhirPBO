@@ -276,43 +276,45 @@ class Admin extends Akun{
         this.Email = Email;
     }
     
-    
-    void manajemenSeller() throws IOException, InterruptedException {
+        void manajemenSeller() throws IOException, InterruptedException {
 
         Main.Clear();
+        System.out.print("""
+            | ---------------------------------------- |   
+            |   //    Menu Utama Manajemen Seller  \\\\  |
+            |  ||                                   || |
+            |  ||        (99)-. Kembali             || |
+            |  ||        (0)-. Tambah Seller        || |
+            |  ||                                   || |
+            |  ||        --. Hapus Seller .--       || |
+                           """
+       + "\n|  ||                                   || |\n");
+        
+        for (int i=0; i < Main.DaftarAkun.size(); i++){
+            System.out.println("| ||\t\t (" + i+1 + ") " + Main.DaftarAkun.get(i).Usn + "\t\t|| |");
+            }
+                
         System.out.println("""
-    | ---------------------------------------- |
-    |   //    Menu Utama Manajemen Seller  \\\\  |
-    |  ||                                   || |
-    |  ||        (1)-. Tambah Seller        || |
-    |  ||        (2)-. Lihat Seller         || |
-    |  ||        (3)-. Ubah Seller          || |
-    |  ||        (4)-. Hapus Seller         || |
-    |  ||        (5)-. Kembali              || |
-    |   \\\\                                 //  |
-    | ---------------------------------------- |
+            |  ||                                   || |
+            |   \\\\                                 //  |
+            | ---------------------------------------- |
             """);
 
         System.out.print(" :>> ");
         Opsi = CheckInt();
         
         switch (Opsi) {
-            case 1:
+            case 99:
+                break;
+            case 0:
                 seller.TambahAkun();
                 break;
-            case 2:
-                // seller.UbahAkun();
-                break;
-            case 3:
-                // seller.HapusAkun();
-                break;
-            case 4:
-                seller.HapusAkun();
-                break;
-            case 5:
-                break;
             default:
-                break;
+                boolean validation = seller.HapusAkun();
+                
+                if (!validation){
+                    Main.DaftarAkun.remove(Opsi-1);
+                }
         }
     }
     
@@ -320,3 +322,4 @@ class Admin extends Akun{
         
     }
 }
+
