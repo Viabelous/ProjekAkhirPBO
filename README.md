@@ -11,10 +11,22 @@ Anggota:
 	<k> Ketua
 ............................................  
 ```
+**Program Manajemen Korean Market** adalah sebuah program multi-user tentang pasar terkait produk-produk Korea (Selatan) berisikan banyak toko yang masing-masingnya dapat diakses oleh Costumer untuk memilih dan membeli produk diinginkan.
     
- Program ini adalah sebuah program sistem manajemen pasar (KOREAN MARKET) yang terdiri dari **tiga jenis** user yaitu **Admin, Seller, dan Customer**.
-    
-Alur Menu:
+Program ini terdiri dari **tiga jenis** user yaitu **Admin, Seller, dan Customer**:
+- Akun **Admin** dibuat secara ***default*** sementara akun **Seller dibuat** atau diregistrasikan oleh **Admin** yang nantinya akan dimasukkan ke dalam Toko, satu toko dapat memiliki lebih dari satu Seller yang memanajemen toko tersebut.
+Akun **Customer** diregistrasikan melalui menu landing.
+
+- **Admin** satu-satunya yang dapat menambah Toko dan menambahkan seller ke dalam Toko agar Seller dapat memanajemen Toko. Admin juga dapat mengeluarkan Seller dari Toko ataupun menghapus Toko.
+
+- **Admin dan Seller** dapat melakukan CRUD terhadap produk-produk yang dijual di Toko.
+- **Customer** dapat memilih toko lalu melihat produk-produk yang dijual di toko tersebut dan memasukkan produk ke Tas Belanja.
+
+       
+## Alur Menu
+Berikut ini dijabarkan alur menu utama setelah melakukan login sebagai Admin, Seller, atau Customer
+> Tanda "<>" berarti merupakan opsi 1, 2, 3, ..., n sebanyak data yang ada, misal toko
+> memiliki 5 buah produk, maka opsi <> adalah respon untuk opsi 1, 2, 3, 4, 5
     
  ### Menu Customer
 ```mermaid
@@ -27,7 +39,7 @@ BB -- <> --> BBB(Pesan Produk)
 
 A -- 2 --> C(Tas Belanja)
 C -- 99 --> CA(Kembali)
-C -- 1 --> CB(Lakukan Pembelian)
+C -- 0 --> CB(Lakukan Pembelian)
 C -- <> --> CC(Keluarkan Barang dari Tas)
 
 A -- 3 --> D(Riwayat Pembelian)
@@ -45,23 +57,24 @@ graph
 
 A[Admin] -- 1 --> B(Manajemen Toko-Toko)
 B --99 --> BA(Kembali)
-B -- <> --> BB(Pilih Toko)
-	BB -- 99 --> BBA(Kembali)
-	BB -- 0 --> BBB(Manajemen Toko)
-	BB -- <> --> BBC(Manajemen Produk Terpilih)
-		BBC -- 99 --> BBCA(Kembali)
-		BBC -- 1 --> BBCB(Ubah Produk)
-		BBC -- 2 --> BBCC(Hapus Produk)
+B -- 0 --> BB(Tambah Toko)
+B -- <> --> BC(Pilih Toko)
+	BC -- 99 --> BCA(Kembali)
+	BC -- 0 --> BCB(Manajemen Toko)
+	BC -- <> --> BCC(Manajemen Produk Terpilih)
+		BCC -- 99 --> BCCA(Kembali)
+		BCC -- 1 --> BCCB(Ubah Produk)
+		BCC -- 2 --> BCCC(Hapus Produk)
 
-BBB -- 99 --> BBBA(Kembali)
-BBB -- 1 --> BBBB(Ubah Informasi Toko)
-BBB -- 2 --> BBBC(Manajemen Seller Toko)
-	BBBC -- 99 --> BBBCA(Kembali)
-	BBBC -- 1 --> BBBCB(Tambah Seller Toko)
-	BBBC -- <> --> BBBCC(Hapus Seller Toko)
-BBB -- 3 --> BBBE(Tambah Produk)
-BBB -- 4 --> BBBF(Lihat Pesanan)
-BBB -- 5 --> BBBG(Hapus Toko)
+BCB -- 99 --> BCBA(Kembali)
+BCB -- 1 --> BCBB(Ubah Informasi Toko)
+BCB -- 2 --> BCBC(Manajemen Seller Toko)
+	BCBC -- 99 --> BCBCA(Kembali)
+	BCBC -- 0 --> BCBCB(Tambah Seller Toko)
+	BCBC -- <> --> BCBCC(Hapus Seller Toko)
+BCB -- 3 --> BCBE(Tambah Produk)
+BCB -- 4 --> BCBF(Lihat Pesanan)
+BCB -- 5 --> BCBG(Hapus Toko)
 
 A -- 2 --> C(Manajemen Seller)
 C -- 99 --> CA(Kembali)
