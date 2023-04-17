@@ -11,25 +11,6 @@ Anggota:
 	<k> Ketua
 ............................................  
 ```
-    
- Program ini adalah sebuah program sistem manajemen pasar (KOREAN MARKET) yang terdiri dari **tiga jenis** user yaitu **Admin, Seller, dan Customer**.
-    
-Alur Menu:
-    
-
-# PROJEK AKHIR PBO
-```
-............................................  
-Anggota:  
-<a> 2109106037  Agustina Dwi Maharani
-<a> 2109106039  Ibnu Yafi Arya Wardana
-<k> 2109106040  Natalie Fuad
-<a> 2109106042  Hadie Pratama Tulili
-
-	<a> Anggota
-	<k> Ketua
-............................................  
-```
 **Program Manajemen Korean Market** adalah sebuah program multi-user tentang pasar terkait produk-produk Korea (Selatan) berisikan banyak toko yang masing-masingnya dapat diakses oleh Costumer untuk memilih dan membeli produk diinginkan.
     
 Program ini terdiri dari **tiga jenis** user yaitu **Admin, Seller, dan Customer**:
