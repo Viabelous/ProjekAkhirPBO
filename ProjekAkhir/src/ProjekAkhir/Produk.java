@@ -3,7 +3,6 @@ package ProjekAkhir;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 
 /**
  *
@@ -271,7 +270,7 @@ class Poster extends ProdukKPOP{
             
             
             System.out.println("Masukkan Versi Poster: ");
-            String VerPoster = br.readLine();
+            String VersiPoster = br.readLine();
     
             System.out.println("Masukkan Harga Album :Rp. ");
             int HargaProduk =  Main.CheckInt();
