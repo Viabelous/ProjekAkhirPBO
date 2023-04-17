@@ -1,6 +1,5 @@
 # PROJEK AKHIR PBO
 
-```
 ............................................  
 Anggota:  
 <a> 2109106037  Agustina Dwi Maharani
@@ -28,14 +27,14 @@ BB -- <> --> BBB(Pesan Produk)
 
 A -- 2 --> C(Tas Belanja)
 C -- 99 --> CA(Kembali)
-C -- 0 --> CB(Lakukan Pembelian)
+C -- 1 --> CB(Lakukan Pembelian)
 C -- <> --> CC(Keluarkan Barang dari Tas)
 
 A -- 3 --> D(Riwayat Pembelian)
 A -- 4 --> E(Ubah Profil)
-E -- 0 --> EA(Kembali)
+E -- 99 --> EA(Kembali)
 E -- 1 --> EB(Ubah Data Akun)
-E -- 1 --> EC(Hapus Akun)
+E -- 2 --> EC(Hapus Akun)
 
 A -- 5 --> F(Log Out)
 ```
@@ -73,7 +72,7 @@ A -- 3 --> D(Riwayat Pembelian)
 D -- 99 --> DA(Kembali)
 D -- <> --> DB(Lihat Riwayat)
 	DB -- 99 --> DBA(Kembali)
-	DB -- 0 --> DBB(Hapus Riwayat)
+	DB -- 1 --> DBB(Hapus Riwayat)
 
 A -- 4 --> E(Ubah Profil)
 
@@ -101,7 +100,8 @@ BB -- 2 --> BBE(Tambah Produk)
 BB -- 3 --> BBF(Lihat Pesanan)
 
 A -- 2 --> C(Ubah Profil)
-C -- 0 --> CA(Kembali)
+C -- 99 --> CA(Kembali)
 C -- 1 --> CB(Ubah Data Akun)
 
 A -- 3 --> D(Log Out)
+```
