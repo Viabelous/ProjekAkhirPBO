@@ -16,7 +16,7 @@ import java.util.ArrayList;
         -. 
 
     [Butuh Konfirmasi]
-        -. Password perlu di enkripsi kah ??
+        -. Ada yang bisa bantuin masukkin data2 produk ke arraylist di class produk kah biar bisa dimasukkin ke tabel
 
 */
 
@@ -131,7 +131,7 @@ public class Main {
         DaftarAkun.add(DefaultSellerAcc("Agus", "Sun1004", "Tina", "AgusNumeroUno@Naver.com", "1004", "Bumbum"));
         DaftarAkun.add(DefaultCostumerAcc("Viabel", "Vivin", "Youvi", "YupiKenyalnya@Naver.com", "08122222", "BoomBoom"));
 
-        DaftarToko.add(new Toko(1, "Toko Sukamiskin"));
+        DaftarToko.add(new Toko(1, "Toko Sukamiskin", "Busan"));
         DaftarToko.get(0).TambahProduk(new Album(1, "Birthday (Smini Ver)", "Red Velvet","Smini Ver", 300000 ));
         DaftarToko.get(0).TambahProduk(new Album(2, "Birthday (Digipack Ver)", "Red Velvet","Digipack Ver", 280000 ));
         DaftarToko.get(0).TambahProduk(new LightStick(3, "LightStick EXO", "EXO", true, "Ver 2", 826000));

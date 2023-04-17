@@ -3,6 +3,7 @@ package ProjekAkhir;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
 /**
  *
@@ -103,6 +104,43 @@ class Album extends ProdukKPOP{
     
     @Override
     void TampilProduk(){
+
+    // // Mendefinisikan ArrayList 2 dimensi
+    // ArrayList<Album> data = new ArrayList<Album>();
+
+    // data.add(new Album(this.ID, this.NamaProduk, 
+    //             this.getClass().getSimpleName(), this.Idol, 
+    //             this.Harga));
+
+    // // Mendefinisikan lebar kolom
+    // int columnWidth = 10;
+
+    // // Mencetak judul kolom
+    // System.out.printf("%-" + columnWidth + "s", "ID");
+    // System.out.printf("%-" + columnWidth + "s", "Jenis Produk");
+    // System.out.printf("%-" + columnWidth + "s", "Idol/Idol Group");
+    // System.out.printf("%-" + columnWidth + "s", "Versi Album");
+    // System.out.printf("%-" + columnWidth + "s", "Harga Album");
+    // System.out.println();
+
+    // // Mencetak baris pemisah
+    // for (int i = 0; i < columnWidth * 6; i++) {
+    //     System.out.print("-");
+    // }
+    // System.out.println();
+
+    // // Mencetak isi tabel
+    // for (int i = 0; i < data.size(); i++) {
+    //     ArrayList<Produk> row = data.get(i);
+    //     for (int j = 0; j < row.size(); j++) {
+    //         System.out.printf("%-" + columnWidth + "d", row.get(j));
+    //     }
+    //     System.out.println();
+    // }
+
+
+
+
         System.out.println("ID: " + this.ID);
         System.out.println("Nama Produk: " + this.NamaProduk);
         System.out.println("Jenis Produk: " + this.getClass().getSimpleName());

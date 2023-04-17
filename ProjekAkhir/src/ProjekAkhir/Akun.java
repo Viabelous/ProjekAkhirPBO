@@ -278,14 +278,19 @@ class Admin extends Akun{
     
     
     void manajemenSeller() throws IOException {
+        
         System.out.println("""
-                            Menu Manajemen Seller
-                            (1) Tambah Seller
-                            (2) Lihat Seller
-                            (3) Ubah Seller
-                            (4) Hapus Seller
-                            (5) Kembali
-                            """);
+    | ---------------------------------------- |
+    |   //    Menu Utama Manajemen Seller  \\\\  |
+    |  ||                                   || |
+    |  ||        (1)-. Tambah Seller        || |
+    |  ||        (2)-. Lihat Seller         || |
+    |  ||        (3)-. Ubah Seller          || |
+    |  ||        (4)-. Hapus Seller         || |
+    |  ||        (5)-. Kembali              || |
+    |   \\\\                               //  |
+    | ---------------------------------------- |
+            """);
 
         System.out.print(" :>> ");
         Opsi = CheckInt();
