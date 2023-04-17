@@ -9,7 +9,7 @@ Anggota:
 <a> 2109106042  Hadie Pratama Tulili
 
 	<a> Anggota
-	<b> Ketua
+	<k> Ketua
 ............................................  
 ```
     
@@ -17,6 +17,7 @@ Anggota:
     
 Alur Menu:
     
+ ### Menu Customer
 ```mermaid
 graph 
 A[Customer] -- 1 --> B(Toko-Toko)
@@ -38,6 +39,8 @@ E -- 1 --> EC(Hapus Akun)
 
 A -- 5 --> F(Log Out)
 ```
+  
+### Menu Admin
 ```mermaid
 graph
 
@@ -79,7 +82,8 @@ E -- 1 --> EB(Ubah Data Akun)
 
 A -- 5 --> F(Log Out)
 ```
-
+  
+  ### Menu Seller
 ```mermaid
 graph
 
@@ -101,4 +105,3 @@ C -- 0 --> CA(Kembali)
 C -- 1 --> CB(Ubah Data Akun)
 
 A -- 3 --> D(Log Out)
-```
