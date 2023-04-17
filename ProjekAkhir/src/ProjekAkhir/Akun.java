@@ -277,8 +277,9 @@ class Admin extends Akun{
     }
     
     
-    void manajemenSeller() throws IOException {
-        
+    void manajemenSeller() throws IOException, InterruptedException {
+
+        Main.Clear();
         System.out.println("""
     | ---------------------------------------- |
     |   //    Menu Utama Manajemen Seller  \\\\  |
@@ -288,7 +289,7 @@ class Admin extends Akun{
     |  ||        (3)-. Ubah Seller          || |
     |  ||        (4)-. Hapus Seller         || |
     |  ||        (5)-. Kembali              || |
-    |   \\\\                               //  |
+    |   \\\\                                 //  |
     | ---------------------------------------- |
             """);
 

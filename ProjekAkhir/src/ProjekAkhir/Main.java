@@ -309,7 +309,7 @@ public class Main {
 
                     System.out.println("""
                        | ---------------------------------------- |
-                       |   //    Selamat Datang, """ + Menu + " :)     \\\\  |" + 
+                       |   //    Selamat Datang, """ + Menu + " :)      \\\\  |" + 
                         """
 
                         |  ||                                   || |
@@ -318,7 +318,7 @@ public class Main {
                         |  ||      (3)-. Riwayat Pembelian      || |
                         |  ||      (4)-. Ubah Profil            || |
                         |  ||      (5)-. Log Out                || |
-                        |   \\\\                               //  |
+                        |   \\\\                                 //  |
                         | ---------------------------------------- |
                                 """);
                     
