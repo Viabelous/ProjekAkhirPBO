@@ -16,7 +16,7 @@ import java.util.ArrayList;
         -. 
 
     [Butuh Konfirmasi]
-        -. Ada yang bisa bantuin masukkin data2 produk ke arraylist di class produk kah biar bisa dimasukkin ke tabel
+        -. Buat nampilin data misal album, classnya harus jadi public karena gaada getternya
 
 */
 

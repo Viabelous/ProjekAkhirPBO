@@ -3,6 +3,7 @@ package ProjekAkhir;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 /**
  *
@@ -104,40 +105,40 @@ class Album extends ProdukKPOP{
     @Override
     void TampilProduk(){
 
-    // // Mendefinisikan ArrayList 2 dimensi
-    // ArrayList<Album> data = new ArrayList<Album>();
+    // Mendefinisikan ArrayList 2 dimensi
+    ArrayList<Album> data = new ArrayList<Album>();
 
-    // data.add(new Album(this.ID, this.NamaProduk, 
-    //             this.getClass().getSimpleName(), this.Idol, 
-    //             this.Harga));
+    data.add(new Album(this.ID, this.Nama, 
+                this.getClass().getSimpleName(), this.Idol, 
+                this.Harga));
 
-    // // Mendefinisikan lebar kolom
-    // int columnWidth = 10;
+    // Mendefinisikan lebar kolom
+    int ColumnWidth = 10;
 
-    // // Mencetak judul kolom
-    // System.out.printf("%-" + columnWidth + "s", "ID");
-    // System.out.printf("%-" + columnWidth + "s", "Jenis Produk");
-    // System.out.printf("%-" + columnWidth + "s", "Idol/Idol Group");
-    // System.out.printf("%-" + columnWidth + "s", "Versi Album");
-    // System.out.printf("%-" + columnWidth + "s", "Harga Album");
-    // System.out.println();
+    // Mencetak judul kolom
+    System.out.printf("%-" + ColumnWidth + "s", "ID");
+    System.out.printf("%-" + ColumnWidth + "s", "Jenis Produk");
+    System.out.printf("%-" + ColumnWidth + "s", "Idol/Idol Group");
+    System.out.printf("%-" + ColumnWidth + "s", "Versi Album");
+    System.out.printf("%-" + ColumnWidth + "s", "Harga Album");
+    System.out.println();
 
-    // // Mencetak baris pemisah
-    // for (int i = 0; i < columnWidth * 6; i++) {
-    //     System.out.print("-");
-    // }
-    // System.out.println();
+    // Mencetak baris pemisah
+    for (int i = 0; i < ColumnWidth * 6; i++) {
+        System.out.print("-");
+    }
+    System.out.println();
 
-    // // Mencetak isi tabel
-    // for (int i = 0; i < data.size(); i++) {
-    //     ArrayList<Produk> row = data.get(i);
-    //     for (int j = 0; j < row.size(); j++) {
-    //         System.out.printf("%-" + columnWidth + "d", row.get(j));
-    //     }
-    //     System.out.println();
-    // }
-
-
+    // Mencetak isi tabel
+    for (int i = 0; i < data.size(); i++) {
+        System.out.printf("%-" + ColumnWidth + "s", data.ID);
+        System.out.printf("%-" + ColumnWidth + "d", data.Nama);
+        System.out.printf("%-" + ColumnWidth + "s", data.getClass().getSimpleName());
+        System.out.printf("%-" + ColumnWidth + "s", data.Idol);
+        System.out.printf("%-" + ColumnWidth + "s", data.VersiAlbum);
+        System.out.printf("%-" + ColumnWidth + "s", data.Harga);
+        System.out.println();
+    }
 
 
         System.out.println("ID: " + this.ID);
