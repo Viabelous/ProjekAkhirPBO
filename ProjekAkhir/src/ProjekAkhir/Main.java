@@ -16,7 +16,7 @@ import java.util.ArrayList;
         -. 
 
     [Butuh Konfirmasi]
-        -. 
+        -. Password perlu di enkripsi kah ??
 
 */
 
@@ -35,7 +35,7 @@ public class Main {
     static int capIDToko = 0; //Untuk menyimpan ID terakhir tersimpan di Data Toko
     
     // Deklarasi Variabel Array
-    static ArrayList<Akun> DaftarAkun = new ArrayList<>(); //Untuk menyimpan data toko
+    static ArrayList<Akun> DaftarAkun = new ArrayList<>(); //Untuk menyimpan data akun
     static ArrayList<Toko> DaftarToko = new ArrayList<>(); //Untuk menyimpan data toko
     
     public static int CheckInt(){
@@ -60,7 +60,7 @@ public class Main {
     }
     
     // Prosedur Untuk Clear Screen
-    public static void clear() throws IOException, InterruptedException{
+    public static void Clear() throws IOException, InterruptedException{
         if (System.console() != null){
             new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
             return;
@@ -113,8 +113,6 @@ public class Main {
         
         return User;
     }
-    
-    
     // --------------------------------------- MAIN ZONE ---------------------------------------
     public static void main(String[] args) throws IOException, InterruptedException {
         DaftarAkun.add(Adminian);
@@ -142,16 +140,16 @@ public class Main {
             // --------------------------------------- BAGIAN MENU LOGIN ---------------------------------------
             if(Menu.equals("Login")){
                 // Isi Menu Login
-                clear();
+                Clear();
                 System.out.println("""
-                                    | ------------------------------------------ |
-                                    |   //      Selamat Datang, Kawan :)     \\\\  |
-                                    |  ||                                     || |
-                                    |  ||           (1) Login                 || |
-                                    |  ||           (2) Register              || |
-                                    |  ||           (3) Keluar                || |
+                                    | -------------------------------------------- |
+                                    |   //  Selamat Datang Di Korean Market :) \\\\  |
+                                    |  ||                                       || |
+                                    |  ||            (1) Login                  || |
+                                    |  ||            (2) Register               || |
+                                    |  ||            (3) Keluar                 || |
                                     |   \\\\                                   //  |
-                                    | ------------------------------------------ |
+                                    | -------------------------------------------- |
                                         """);
                 
                 System.out.print(":>> ");
@@ -163,7 +161,7 @@ public class Main {
                     
                     // Logun
                     case 1 -> {
-                        clear();
+                        Clear();
                         System.out.println("""
                                     | ------------------------------------------ |
                                     |   //      Silahkan Login, Kawan :)     \\\\  |
@@ -178,7 +176,7 @@ public class Main {
                         System.out.print("Masukkan Username: ");
                         String Username = br.readLine();
 
-                        clear();
+                        Clear();
                         System.out.println("""
                                     | ------------------------------------------ |
                                     |   //      Silahkan Login, Kawan :)     \\\\  |
@@ -194,7 +192,7 @@ public class Main {
                         System.out.print("Masukkan Password: ");
                         String Password = br.readLine();
                         
-                        clear();
+                        Clear();
                         System.out.println("""
                                     | ------------------------------------------ |
                                     |   //      Silahkan Login, Kawan :)     \\\\  |
@@ -263,7 +261,7 @@ public class Main {
             // --------------------------------------- BAGIAN MENU CUSTOMER ---------------------------------------
                 case "Customer" -> {
                     // Isi Menu Utama Untuk Customer
-                    clear();
+                    Clear();
                 
                     System.out.println("""
                         | ----------------------------------------------- |
@@ -297,7 +295,7 @@ public class Main {
             // --------------------------------------- BAGIAN MENU ADMIN ---------------------------------------
                 case "Admin" -> {
                     //Isi Menu Utama Untuk Admin
-                    clear();
+                    Clear();
 
                     System.out.println("""
                         | ---------------------------------------- |
@@ -332,7 +330,7 @@ public class Main {
             // --------------------------------------- BAGIAN MENU SELLER ---------------------------------------
                 case "Seller" -> {
                     //Isi Menu Utama Untuk Seller
-                    clear();
+                    Clear();
 
                     System.out.println("""
                         | -------------------------------------- |
