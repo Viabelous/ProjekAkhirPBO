@@ -77,7 +77,7 @@ public class Toko {
 
             System.out.println("\nProduk Dijual:");
             for (Produk Dagangan : DaftarProduk) {
-                System.out.println("\t(" + i + ") " + Dagangan.NamaProduk);
+                System.out.println("\t(" + i + ") " + Dagangan.Nama);
 
                 i++;
             }
