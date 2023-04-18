@@ -112,70 +112,40 @@ class Album extends ProdukKPOP{
         this.Stok = StokProdukBaru;
         this.Harga = HargaBaru;
         
-    }
+    } 
     
     @Override
     void TampilProduk(){
-        System.out.println("ID: " + this.ID);
-        System.out.println("Nama Produk: " + this.Nama);
-        System.out.println("Jenis Produk: " + this.getClass().getSimpleName());
-        System.out.println("Idol/IdolGroup: " + this.Idol);
-        System.out.println("Versi Album: " + this.VersiAlbum);
-        System.out.println("Banyak Stok: " + this.Stok);
-        System.out.println("Harga: " + this.Harga);
-    }
-    
-    
-    /*
-    @Override
-    void TampilProduk(){
+        // Mendefinisikan lebar kolom
+        int ColumnWidth = 10;
 
-    // Mendefinisikan ArrayList 2 dimensi
-    ArrayList<Album> data = new ArrayList<Album>();
-
-    data.add(new Album(this.ID, this.Nama, 
-                this.getClass().getSimpleName(), this.Idol, this.VersiAlbum this.Stok,
-                this.Harga));
-
-    // Mendefinisikan lebar kolom
-    int ColumnWidth = 10;
-
-    // Mencetak judul kolom
-    System.out.printf("%-" + ColumnWidth + "s", "ID");
-    System.out.printf("%-" + ColumnWidth + "s", "Jenis Produk");
-    System.out.printf("%-" + ColumnWidth + "s", "Idol/Idol Group");
-    System.out.printf("%-" + ColumnWidth + "s", "Versi Album");
-    System.out.printf("%-" + ColumnWidth + "s", "Stok Album");
-    System.out.printf("%-" + ColumnWidth + "s", "Harga Album");
-    System.out.println();
-
-    // Mencetak baris pemisah
-    for (int i = 0; i < ColumnWidth * 6; i++) {
-        System.out.print("-");
-    }
-    System.out.println();
-
-    // Mencetak isi tabel
-    for (int i = 0; i < data.size(); i++) {
-        System.out.printf("%-" + ColumnWidth + "s", data.get(i).ID);
-        System.out.printf("%-" + ColumnWidth + "d", data.get(i).Nama);
-        System.out.printf("%-" + ColumnWidth + "s", data.get(i).getClass().getSimpleName());
-        System.out.printf("%-" + ColumnWidth + "s", data.get(i).Idol);
-        System.out.printf("%-" + ColumnWidth + "s", data.get(i).VersiAlbum);
-        System.out.printf("%-" + ColumnWidth + "s", data.get(i).Stok);
-        System.out.printf("%-" + ColumnWidth + "s", data.get(i).Harga);
+        // Mencetak judul kolom
+        System.out.printf("%-" + ColumnWidth + "s", "ID");
+        System.out.printf("%-" + ColumnWidth + "s", "Nama Produk");
+        System.out.printf("%-" + ColumnWidth + "s", "Jenis Produk");
+        System.out.printf("%-" + ColumnWidth + "s", "Idol/Idol Group");
+        System.out.printf("%-" + ColumnWidth + "s", "Versi Album");
+        System.out.printf("%-" + ColumnWidth + "s", "Stok Album");
+        System.out.printf("%-" + ColumnWidth + "s", "Harga Album");
         System.out.println();
-    }
 
+        // Mencetak baris pemisah
+        for (int i = 0; i < ColumnWidth * 7; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
 
-        System.out.println("ID: " + this.ID);
-        System.out.println("Nama Produk: " + this.Nama);
-        System.out.println("Jenis Produk: " + this.getClass().getSimpleName());
-        System.out.println("Idol/IdolGroup: " + this.Idol);
-        System.out.println("Versi Album: " + this.VersiAlbum);
-        System.out.println("Harga: " + this.Harga);
+        // Mencetak isi tabel
+            System.out.printf("%-" + ColumnWidth + "d", this.ID);
+            System.out.printf("%-" + ColumnWidth + "s", this.Nama);
+            System.out.printf("%-" + ColumnWidth + "s", this.getClass().getSimpleName());
+            System.out.printf("%-" + ColumnWidth + "s", this.Idol);
+            System.out.printf("%-" + ColumnWidth + "s", this.VersiAlbum);
+            System.out.printf("%-" + ColumnWidth + "d", this.Stok);
+            System.out.printf("%-" + ColumnWidth + "d", this.Harga);
+            System.out.println();
     }
-    */
+    
 }
 
 class LightStick extends ProdukKPOP{
@@ -266,13 +236,34 @@ class LightStick extends ProdukKPOP{
     
     @Override
     void TampilProduk(){
-        System.out.println("ID: " + this.ID);
-        System.out.println("Nama Produk: " + this.Nama);
-        System.out.println("Jenis Produk: " + this.getClass().getSimpleName());
-        System.out.println("Idol/IdolGroup: " + this.Idol);
-        System.out.println("Termasuk Baterai: " + ((this.Baterai)? "Ya" : "Tidak"));
-        System.out.println("Versi Lightstick: " + this.VersiLightstick);
-        System.out.println("Harga: " + this.Harga);
+        // Mendefinisikan lebar kolom
+        int ColumnWidth = 10;
+
+        // Mencetak judul kolom
+        System.out.printf("%-" + ColumnWidth + "s", "ID");
+        System.out.printf("%-" + ColumnWidth + "s", "Nama Produk");
+        System.out.printf("%-" + ColumnWidth + "s", "Jenis Produk");
+        System.out.printf("%-" + ColumnWidth + "s", "Idol/Idol Group");
+        System.out.printf("%-" + ColumnWidth + "s", "Termasuk Baterai");
+        System.out.printf("%-" + ColumnWidth + "s", "Versi Lightstick");
+        System.out.printf("%-" + ColumnWidth + "s", "Harga Album");
+        System.out.println();
+
+        // Mencetak baris pemisah
+        for (int i = 0; i < ColumnWidth * 7; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+
+        // Mencetak isi tabel
+        System.out.printf("%-" + ColumnWidth + "d", this.ID);
+        System.out.printf("%-" + ColumnWidth + "s", this.Nama);
+        System.out.printf("%-" + ColumnWidth + "s", this.getClass().getSimpleName());
+        System.out.printf("%-" + ColumnWidth + "s", this.Idol);
+        System.out.printf("%-" + ColumnWidth + "b", ((this.Baterai)? "Ya" : "Tidak"));
+        System.out.printf("%-" + ColumnWidth + "s", this.VersiLightstick);
+        System.out.printf("%-" + ColumnWidth + "d", this.Harga);
+        System.out.println();
     }
 }
 
@@ -352,12 +343,32 @@ class Poster extends ProdukKPOP{
     
     @Override
     void TampilProduk(){
-        System.out.println("ID: " + this.ID);
-        System.out.println("Nama Produk: " + this.Nama);
-        System.out.println("Jenis Produk: " + this.getClass().getSimpleName());
-        System.out.println("Idol/IdolGroup: " + this.Idol);
-        System.out.println("Versi Poster: " + this.VersiPoster);
-        System.out.println("Harga: " + this.Harga);
+        // Mendefinisikan lebar kolom
+        int ColumnWidth = 10;
+
+        // Mencetak judul kolom
+        System.out.printf("%-" + ColumnWidth + "s", "ID");
+        System.out.printf("%-" + ColumnWidth + "s", "Nama Produk");
+        System.out.printf("%-" + ColumnWidth + "s", "Jenis Produk");
+        System.out.printf("%-" + ColumnWidth + "s", "Idol/Idol Group");
+        System.out.printf("%-" + ColumnWidth + "s", "Versi Poster");
+        System.out.printf("%-" + ColumnWidth + "s", "Harga Poster");
+        System.out.println();
+
+        // Mencetak baris pemisah
+        for (int i = 0; i < ColumnWidth * 6; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+
+        // Mencetak isi tabel
+        System.out.printf("%-" + ColumnWidth + "d", this.ID);
+        System.out.printf("%-" + ColumnWidth + "s", this.Nama);
+        System.out.printf("%-" + ColumnWidth + "s", this.getClass().getSimpleName());
+        System.out.printf("%-" + ColumnWidth + "s", this.Idol);
+        System.out.printf("%-" + ColumnWidth + "s", this.VersiPoster);
+        System.out.printf("%-" + ColumnWidth + "d", this.Harga);
+        System.out.println();
     }
 }
 
@@ -461,14 +472,36 @@ class Postcard extends ProdukKPOP{
     
     @Override
     void TampilProduk(){
-        System.out.println("ID: " + this.ID);
-        System.out.println("Nama Produk: " + this.Nama);
-        System.out.println("Jenis Produk: " + this.getClass().getSimpleName());
-        System.out.println("Idol/IdolGroup: " + this.Idol);
-        System.out.println("Size Postcard: " + this.Size);        
-        System.out.println("Versi Postcard: " + this.VersiPostcard);
-        System.out.println("Versi Member: " + this.VersiMember);
-        System.out.println("Harga: " + this.Harga);
+        // Mendefinisikan lebar kolom
+        int ColumnWidth = 10;
+
+        // Mencetak judul kolom
+        System.out.printf("%-" + ColumnWidth + "s", "ID");
+        System.out.printf("%-" + ColumnWidth + "s", "Nama Produk");
+        System.out.printf("%-" + ColumnWidth + "s", "Jenis Produk");
+        System.out.printf("%-" + ColumnWidth + "s", "Idol/Idol Group");
+        System.out.printf("%-" + ColumnWidth + "s", "Size Postcard");
+        System.out.printf("%-" + ColumnWidth + "s", "Versi Postcard");
+        System.out.printf("%-" + ColumnWidth + "s", "Versi Member");
+        System.out.printf("%-" + ColumnWidth + "s", "Harga Postcard");
+        System.out.println();
+
+        // Mencetak baris pemisah
+        for (int i = 0; i < ColumnWidth * 8; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+
+        // Mencetak isi tabel
+        System.out.printf("%-" + ColumnWidth + "d", this.ID);
+        System.out.printf("%-" + ColumnWidth + "s", this.Nama);
+        System.out.printf("%-" + ColumnWidth + "s", this.getClass().getSimpleName());
+        System.out.printf("%-" + ColumnWidth + "s", this.Idol);
+        System.out.printf("%-" + ColumnWidth + "s", this.Size);
+        System.out.printf("%-" + ColumnWidth + "s", this.VersiPostcard);
+        System.out.printf("%-" + ColumnWidth + "s", this.VersiMember);
+        System.out.printf("%-" + ColumnWidth + "d", this.Harga);
+        System.out.println();
     }
 }
 
@@ -572,14 +605,36 @@ class Photocard extends ProdukKPOP{
     
     @Override
     void TampilProduk(){
-        System.out.println("ID: " + this.ID);
-        System.out.println("Nama Produk: " + this.Nama);
-        System.out.println("Jenis Produk: " + this.getClass().getSimpleName());
-        System.out.println("Idol/IdolGroup: " + this.Idol);
-        System.out.println("Size Photocard: " + this.Size);        
-        System.out.println("Versi Photocard: " + this.VersiPhotocard);
-        System.out.println("Versi Member: " + this.VersiMember);
-        System.out.println("Harga: " + this.Harga);
+        // Mendefinisikan lebar kolom
+        int ColumnWidth = 10;
+
+        // Mencetak judul kolom
+        System.out.printf("%-" + ColumnWidth + "s", "ID");
+        System.out.printf("%-" + ColumnWidth + "s", "Nama Produk");
+        System.out.printf("%-" + ColumnWidth + "s", "Jenis Produk");
+        System.out.printf("%-" + ColumnWidth + "s", "Idol/Idol Group");
+        System.out.printf("%-" + ColumnWidth + "s", "Size Photocard");
+        System.out.printf("%-" + ColumnWidth + "s", "Versi Photocard");
+        System.out.printf("%-" + ColumnWidth + "s", "Versi Member");
+        System.out.printf("%-" + ColumnWidth + "s", "Harga Photocard");
+        System.out.println();
+
+        // Mencetak baris pemisah
+        for (int i = 0; i < ColumnWidth * 8; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+
+        // Mencetak isi tabel
+        System.out.printf("%-" + ColumnWidth + "d", this.ID);
+        System.out.printf("%-" + ColumnWidth + "s", this.Nama);
+        System.out.printf("%-" + ColumnWidth + "s", this.getClass().getSimpleName());
+        System.out.printf("%-" + ColumnWidth + "s", this.Idol);
+        System.out.printf("%-" + ColumnWidth + "s", this.Size);
+        System.out.printf("%-" + ColumnWidth + "s", this.VersiPhotocard);
+        System.out.printf("%-" + ColumnWidth + "s", this.VersiMember);
+        System.out.printf("%-" + ColumnWidth + "d", this.Harga);
+        System.out.println();
     }
 }
 
@@ -671,13 +726,34 @@ class Keyring extends ProdukKPOP{
     
     @Override
     void TampilProduk(){
-        System.out.println("ID: " + this.ID);
-        System.out.println("Nama Produk: " + this.Nama);
-        System.out.println("Jenis Produk: " + this.getClass().getSimpleName());
-        System.out.println("Idol/IdolGroup: " + this.Idol);
-        System.out.println("Size Keyring: " + this.Size);        
-        System.out.println("Versi Member: " + this.VersiMember);
-        System.out.println("Harga: " + this.Harga);
+        // Mendefinisikan lebar kolom
+        int ColumnWidth = 10;
+
+        // Mencetak judul kolom
+        System.out.printf("%-" + ColumnWidth + "s", "ID");
+        System.out.printf("%-" + ColumnWidth + "s", "Nama Produk");
+        System.out.printf("%-" + ColumnWidth + "s", "Jenis Produk");
+        System.out.printf("%-" + ColumnWidth + "s", "Idol/Idol Group");
+        System.out.printf("%-" + ColumnWidth + "s", "Size Keyring");
+        System.out.printf("%-" + ColumnWidth + "s", "Versi Member");
+        System.out.printf("%-" + ColumnWidth + "s", "Harga Keyring");
+        System.out.println();
+
+        // Mencetak baris pemisah
+        for (int i = 0; i < ColumnWidth * 7; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+
+        // Mencetak isi tabel
+        System.out.printf("%-" + ColumnWidth + "d", this.ID);
+        System.out.printf("%-" + ColumnWidth + "s", this.Nama);
+        System.out.printf("%-" + ColumnWidth + "s", this.getClass().getSimpleName());
+        System.out.printf("%-" + ColumnWidth + "s", this.Idol);
+        System.out.printf("%-" + ColumnWidth + "s", this.Size);
+        System.out.printf("%-" + ColumnWidth + "s", this.VersiMember);
+        System.out.printf("%-" + ColumnWidth + "d", this.Harga);
+        System.out.println();
     }
 }
 
@@ -758,11 +834,32 @@ class Lanyard extends ProdukKPOP{
     
     @Override
     void TampilProduk(){
-        System.out.println("ID: " + this.ID);
-        System.out.println("Nama Produk: " + this.Nama);
-        System.out.println("Jenis Produk: " + this.getClass().getSimpleName());
-        System.out.println("Idol/IdolGroup: " + this.Idol);
-        System.out.println("Bahan Lanyard: " + this.Bahan);        
-        System.out.println("Harga: " + this.Harga);
+        // Mendefinisikan lebar kolom
+        int ColumnWidth = 10;
+
+        // Mencetak judul kolom
+        System.out.printf("%-" + ColumnWidth + "s", "ID");
+        System.out.printf("%-" + ColumnWidth + "s", "Nama Produk");
+        System.out.printf("%-" + ColumnWidth + "s", "Jenis Produk");
+        System.out.printf("%-" + ColumnWidth + "s", "Idol/Idol Group");
+        System.out.printf("%-" + ColumnWidth + "s", "Size Lanyard");
+        System.out.printf("%-" + ColumnWidth + "s", "Versi Member");
+        System.out.printf("%-" + ColumnWidth + "s", "Harga Lanyard");
+        System.out.println();
+
+        // Mencetak baris pemisah
+        for (int i = 0; i < ColumnWidth * 6; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+
+        // Mencetak isi tabel
+        System.out.printf("%-" + ColumnWidth + "d", this.ID);
+        System.out.printf("%-" + ColumnWidth + "s", this.Nama);
+        System.out.printf("%-" + ColumnWidth + "s", this.getClass().getSimpleName());
+        System.out.printf("%-" + ColumnWidth + "s", this.Idol);
+        System.out.printf("%-" + ColumnWidth + "s", this.Bahan);
+        System.out.printf("%-" + ColumnWidth + "d", this.Harga);
+        System.out.println();
     }
 }
