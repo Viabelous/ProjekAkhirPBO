@@ -45,7 +45,7 @@ public class Toko {
         System.out.println("Letak Toko : " + this.Kota);
         System.out.println("Penjual: ");
         for (int Seller : IDSeller){
-            int index = Main.IDSequential(Seller) ;
+            int index = Main.AkunSequential(Seller) ;
             System.out.print(" -. ");
             System.out.print(" [" + Seller + "] ");
             Main.DaftarAkun.get(index).getNama();
@@ -69,8 +69,9 @@ public class Toko {
         IDSeller.add(IDPenjual);
     }
     
-    public void TampilProduk() throws IOException{
+    public void TampilProduk() throws IOException, InterruptedException{
         while(true){
+            Main.Clear();
             int i  = 1;
 
             if(Main.Menu.equals("Seller") || Main.Menu.equals("Admin"))
@@ -79,7 +80,7 @@ public class Toko {
 
             System.out.println("\nProduk Dijual:");
             for (Produk Dagangan : DaftarProduk) {
-                System.out.println("\t(" + i + ") " + Dagangan.Nama);
+                System.out.println("\t(" + i + ") " + Dagangan.Nama + " ---- " + Dagangan.Harga);
 
                 i++;
             }
@@ -87,24 +88,26 @@ public class Toko {
             int Opsi = Main.CheckInt();
             if(Opsi == 0) return;
             if(Opsi != -1){
+                
                 switch(Main.Menu){
                     case "Customer" -> {
-
+                        // Buy
                     }
                     case "Seller", "Admin" -> {
                         // Opsi 99 untuk Manajemen Toko
                         if(Opsi == 99) ManajemenToko();
                         ManajemenProduk(this.DaftarProduk.get(Opsi+1));
                     }
-
                 }
+                
             }
         }
         
     }
     
-    public void ManajemenProduk(Produk Prod) throws IOException{
+    public void ManajemenProduk(Produk Prod) throws IOException, InterruptedException{
         while(true){
+            Main.Clear();
             Prod.TampilProduk();
             System.out.println(" [1] Ubah Produk");
             System.out.println(" [2] Hapus Produk");
@@ -139,112 +142,76 @@ public class Toko {
     }
     
     
-    public static void PilihToko() throws IOException{
-        Toko.TampilSemuaToko();
-        System.out.println("\n Pilih Toko");
-        System.out.print(" :>> ");
-        int index = CheckInt();
-    }
-    
-    
-    public static void menuTokoToko() throws IOException, InterruptedException {
-        
-        Main.Clear();
-        System.out.println("""
-            | ---------------------------------------- |
-            |   //  Menu Utama Manajemen TokoToko  \\\\  |
-            |  ||                                   || |
-            |  ||        (99)-. Kembali             || |
-            |  ||        (0)-. Tambah Toko          || |
-            |   \\\\                                 //  |
-            | ---------------------------------------- |
-                    """);
-        
-        Toko.TampilSemuaToko();
-        System.out.print("\n :>> ");
-        Opsi = CheckInt();
-
-        switch (Opsi) {
-            case 99:
-                break;
-            case 0:
-                Toko.TambahToko();
-                
-            // list produknya smentara gini dlu ya
-            default:
-                Toko.MenuPilihToko(Opsi);
-        }
-        
-    }
-    
-    
-    public static void MenuPilihToko(int index) throws IOException, InterruptedException {
-        
-        Main.Clear();
-        System.out.println("""
-            | ---------------------------------------- |
-            |   //         Menu Pilih Toko         \\\\  |
-            |  ||                                   || |
-            |  ||        (99)-. Kembali             || |
-            |  ||        (0)-. Manajemen Toko       || |
-            |   \\\\                                 //  |
-            | ---------------------------------------- |
-                    """);
-        
-        
-//        Prod.TampilProduk();
-        System.out.print("\n :>> ");
-        Opsi = CheckInt();
-        
-        switch (Opsi) {
-            case 99:
-                break;
-            case 0:
-                
-                Main.Clear();
-                System.out.println("""
-                    | ---------------------------------------- |
-                    |  //       Menu Manajemen Toko        \\\\  |
-                    | ||""" + "\t\t" + Main.DaftarToko.get(index-1).Nama + "\t\t|| |\n" + """
-                    | ||                                    || |
-                    | ||     (1)-. Ubah Informasi Toko      || |
-                    | ||     (2)-. Manajemen Seller Toko    || |
-                    | ||     (3)-. Tambah Produk            || |
-                    | ||     (4)-. Lihat Pesanan            || |
-                    | ||     (5)-. Hapus Toko               || |
-                    | ||     (99)-. Kembali                 || |
-                    |  \\\\                                  //  |
-                    | ---------------------------------------- |
-                                    """);
-
-                System.out.print(" :>> ");
-                Opsi = CheckInt();
-
-                switch (Opsi){
-                    case 1:
-//                        this.TampilDeskripsi();
-                        UbahToko(index);
-                        break;
-                    case 2:
-                        // Toko.ManajeSeller();
-                        break;
-                    case 3:
-//                        this.MenuTambahProduk();
-                        break;
-                    case 4:
-                        // lihatPesanan();
-                        break;
-                    case 5:
-                        HapusToko(index);
-                        break;
-                    case 99:
-                        break;
-                    default:
-                        break;
-
+    public static void PilihToko() throws IOException, InterruptedException{
+        while(true){
+            Main.Clear();
+            if(Main.Menu.equals("Admin")) System.out.println(" [0] Tambah Toko");
+            System.out.println(" [99] Kembali");
+            System.out.println("------------------------");
+            Toko.TampilSemuaToko();
+            System.out.println("\n Pilih Toko");
+            System.out.print(" :>> ");
+            int index = CheckInt();
+            switch (index) {
+                case -1 -> {continue;}
+                case 0 -> {
+                    if(Main.Menu.equals("Customer")) continue;
+                    Toko.TambahToko();
                 }
+                case 99 -> {return;}
+            }
+            Main.DaftarToko.get(index-1).TampilProduk();
         }
     }
+    
+    
+    public void MenuManajemenToko(int index) throws IOException, InterruptedException {
+        Main.Clear();
+        
+        //Sout dibedakan untuk admin dan untuk seller
+        System.out.println("""
+            | ---------------------------------------- |
+            |  //       Menu Manajemen Toko        \\\\  |
+            | ||\t\t""" + Main.DaftarToko.get(index-1).Nama + "\t\t|| |\n" + """
+            | ||                                    || |
+            | ||     (1)-. Ubah Informasi Toko      || |
+            | ||     (2)-. Manajemen Seller Toko    || |
+            | ||     (3)-. Tambah Produk            || |
+            | ||     (4)-. Lihat Pesanan            || |
+            | ||     (5)-. Hapus Toko               || |
+            | ||     (99)-. Kembali                 || |
+            |  \\\\                                  //  |
+            | ---------------------------------------- |
+                            """);
+
+        System.out.print(" :>> ");
+        Opsi = CheckInt();
+
+        switch (Opsi){
+            case 1:
+                //this.TampilDeskripsi();
+                this.UbahToko(index);
+                break;
+            case 2:
+                // Toko.ManajeSeller();
+                break;
+            case 3:
+                this.MenuTambahProduk();
+                break;
+            case 4:
+                // lihatPesanan();
+                break;
+            case 5:
+                this.HapusToko(index);
+                break;
+            case 99:
+                break;
+            default:
+                break;
+
+        }
+    }
+   
 
     
     void MenuTambahProduk() throws IOException{
@@ -325,7 +292,7 @@ public class Toko {
     }
      
     
-    static public void UbahToko(int indexToko) throws IOException {
+    public void UbahToko(int indexToko) throws IOException {
         String NewNamaToko, NewKotaToko;
         
         System.out.print(" Masukkan nama toko     :");
@@ -336,13 +303,13 @@ public class Toko {
         NewKotaToko = br.readLine();
         if (NewKotaToko.equals("")) throw new IllegalArgumentException();
         
-        Main.DaftarToko.get(indexToko-1).Nama = NewNamaToko;
-        Main.DaftarToko.get(indexToko-1).Kota = NewKotaToko;
-//        return new Toko(indexToko-1, NewNamaToko, NewKotaToko);
+        this.Nama = NewNamaToko;
+        this.Kota = NewKotaToko;
     }
     
     
-    static public void HapusToko(int index) throws IOException {
+    // Rawan error
+    public void HapusToko(int index) throws IOException {
         System.out.println("Yakin hapus toko (Y/N)?");
         System.out.println("(Menghapus toko ini akan sekaligus menghapus Seller)");
         System.out.print(":>> ");
@@ -352,9 +319,7 @@ public class Toko {
         
         boolean validation = Conf.equals("Y");
 
-        if (!validation){
-            Main.DaftarToko.remove(index-1);
-        }
+        if (validation)Main.DaftarToko.remove(index-1);
     }
 }
 

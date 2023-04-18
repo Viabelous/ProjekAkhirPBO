@@ -3,7 +3,6 @@ package ProjekAkhir;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 
 /**
  *
@@ -117,6 +116,19 @@ class Album extends ProdukKPOP{
     
     @Override
     void TampilProduk(){
+        System.out.println("ID: " + this.ID);
+        System.out.println("Nama Produk: " + this.Nama);
+        System.out.println("Jenis Produk: " + this.getClass().getSimpleName());
+        System.out.println("Idol/IdolGroup: " + this.Idol);
+        System.out.println("Versi Album: " + this.VersiAlbum);
+        System.out.println("Banyak Stok: " + this.Stok);
+        System.out.println("Harga: " + this.Harga);
+    }
+    
+    
+    /*
+    @Override
+    void TampilProduk(){
 
     // Mendefinisikan ArrayList 2 dimensi
     ArrayList<Album> data = new ArrayList<Album>();
@@ -145,13 +157,13 @@ class Album extends ProdukKPOP{
 
     // Mencetak isi tabel
     for (int i = 0; i < data.size(); i++) {
-        System.out.printf("%-" + ColumnWidth + "s", data.ID);
-        System.out.printf("%-" + ColumnWidth + "d", data.Nama);
-        System.out.printf("%-" + ColumnWidth + "s", data.getClass().getSimpleName());
-        System.out.printf("%-" + ColumnWidth + "s", data.Idol);
-        System.out.printf("%-" + ColumnWidth + "s", data.VersiAlbum);
-        System.out.printf("%-" + ColumnWidth + "s", data.Stok);
-        System.out.printf("%-" + ColumnWidth + "s", data.Harga);
+        System.out.printf("%-" + ColumnWidth + "s", data.get(i).ID);
+        System.out.printf("%-" + ColumnWidth + "d", data.get(i).Nama);
+        System.out.printf("%-" + ColumnWidth + "s", data.get(i).getClass().getSimpleName());
+        System.out.printf("%-" + ColumnWidth + "s", data.get(i).Idol);
+        System.out.printf("%-" + ColumnWidth + "s", data.get(i).VersiAlbum);
+        System.out.printf("%-" + ColumnWidth + "s", data.get(i).Stok);
+        System.out.printf("%-" + ColumnWidth + "s", data.get(i).Harga);
         System.out.println();
     }
 
@@ -163,6 +175,7 @@ class Album extends ProdukKPOP{
         System.out.println("Versi Album: " + this.VersiAlbum);
         System.out.println("Harga: " + this.Harga);
     }
+    */
 }
 
 class LightStick extends ProdukKPOP{
@@ -257,7 +270,7 @@ class LightStick extends ProdukKPOP{
         System.out.println("Nama Produk: " + this.Nama);
         System.out.println("Jenis Produk: " + this.getClass().getSimpleName());
         System.out.println("Idol/IdolGroup: " + this.Idol);
-        System.out.println("Berisikan Baterai (Y/N)? " + this.Baterai);
+        System.out.println("Termasuk Baterai: " + ((this.Baterai)? "Ya" : "Tidak"));
         System.out.println("Versi Lightstick: " + this.VersiLightstick);
         System.out.println("Harga: " + this.Harga);
     }
@@ -286,13 +299,13 @@ class Poster extends ProdukKPOP{
             
             
             System.out.print("Masukkan Versi Poster: ");
-            String VersiPoster = br.readLine();
+            String VerPoster = br.readLine();
     
             System.out.println("Masukkan Harga Album :Rp. ");
             int HargaProduk =  Main.CheckInt();
             if (HargaProduk <= 0) throw new IllegalArgumentException();
             
-            return new Poster(Main.capIDProduk, NamaProduk, NamaIdol, VersiPoster, HargaProduk);
+            return new Poster(Main.capIDProduk, NamaProduk, NamaIdol, VerPoster, HargaProduk);
             
             
         } catch (IOException | IllegalArgumentException e){

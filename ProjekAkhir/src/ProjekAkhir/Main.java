@@ -13,10 +13,10 @@ import java.util.ArrayList;
 /*
     Di sini letakkan catatan, apa yang kurang atau semacamnya
     [Belum]
-        -. 
+        -. Mangan
 
     [Butuh Konfirmasi]
-        -. Buat nampilin data misal album, classnya harus jadi public karena gaada getternya
+        -. Gaperlu ya arrayList baru
 
 */
 
@@ -50,7 +50,7 @@ public class Main {
     
     
     // Fungsi mencari index dari suatu Username
-    public static int USNSequential(String Username){
+    public static int AkunSequential(String Username){
         int i = 0;
         for (Akun dataAkun : DaftarAkun){
             if(Username.equals(dataAkun.getUsn())) return i;
@@ -60,7 +60,7 @@ public class Main {
     }
     
     // Fungsi mencari index dari suatu ID Akun
-    public static int IDSequential(int ID){
+    public static int AkunSequential(int ID){
         int i = 0;
         for (Akun dataAkun : DaftarAkun){
             if(ID == dataAkun.getID()) return i;
@@ -132,10 +132,10 @@ public class Main {
         DaftarAkun.add(DefaultCostumerAcc("Viabel", "Vivin", "Youvi", "YupiKenyalnya@Naver.com", "08122222", "BoomBoom"));
 
         DaftarToko.add(new Toko(1, "Toko Sukamiskin", "Busan"));
-        DaftarToko.get(0).TambahProduk(new Album(1, "Birthday (Smini Ver)", "Red Velvet","Smini Ver", 300000 ));
-        DaftarToko.get(0).TambahProduk(new Album(2, "Birthday (Digipack Ver)", "Red Velvet","Digipack Ver", 280000 ));
+        DaftarToko.get(0).TambahProduk(new Album(1, "Birthday (Smini Ver)", "Red Velvet","Smini Ver", 4, 300000));
+        DaftarToko.get(0).TambahProduk(new Album(2, "Birthday (Digipack Ver)", "Red Velvet","Digipack Ver", 4, 280000 ));
         DaftarToko.get(0).TambahProduk(new LightStick(3, "LightStick EXO", "EXO", true, "Ver 2", 826000));
-        DaftarToko.get(0).TambahProduk(new Album(4, "Asterum", "PLAVE","", 180000 ));
+        DaftarToko.get(0).TambahProduk(new Album(4, "Asterum", "PLAVE","", 5, 180000 ));
         capIDProduk += 4;
         
         DaftarToko.get(0).TambahSeller(1);
@@ -220,7 +220,7 @@ public class Main {
                         if(Username.equals("") || Password.equals("")) break;
                         
                         // Cek Username dan Password
-                        Opsi = USNSequential(Username);
+                        Opsi = AkunSequential(Username);
                         
                         if(Opsi == -1){
                             System.out.println("\n\tUsername atau Password salah");
@@ -326,7 +326,7 @@ public class Main {
                     Opsi = CheckInt();
                     
                     switch (Opsi) {
-                        case 1 -> Toko.menuTokoToko();
+                        case 1 -> Toko.PilihToko();
                         case 2 -> Adminian.manajemenSeller();
                         case 3 -> {//admin.riwayatPembelian();
                     }
