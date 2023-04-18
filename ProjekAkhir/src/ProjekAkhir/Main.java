@@ -326,7 +326,7 @@ public class Main {
                     Opsi = CheckInt();
                     
                     switch (Opsi) {
-                        case 1 -> Toko.PilihToko();
+                        case 1 -> Toko.MenuPilihToko();
                         case 2 -> Adminian.manajemenSeller();
                         case 3 -> {//admin.riwayatPembelian();
                     }
