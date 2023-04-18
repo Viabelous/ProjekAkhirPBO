@@ -12,6 +12,7 @@ import java.util.ArrayList;
 abstract class Produk {
     int ID;
     String Nama;
+    int Stok;
     int Harga;
     
     static InputStreamReader isr = new InputStreamReader(System.in);
@@ -31,11 +32,12 @@ class Album extends ProdukKPOP{
     
     String VersiAlbum;
      
-    Album(int ID, String NamaProduk, String NamaIdol, String VersiAlbumProduk, int HargaProduk){
+    Album(int ID, String NamaProduk, String NamaIdol, String VersiAlbumProduk, int StokProduk, int HargaProduk){
         this.ID = ID;
         this.Nama = NamaProduk;
         this.Idol = NamaIdol;
         this.VersiAlbum = VersiAlbumProduk;
+        this.Stok = StokProduk;
         this.Harga = HargaProduk;
     }
         
@@ -54,10 +56,14 @@ class Album extends ProdukKPOP{
             String VersiAlbumProduk = br.readLine();
             
             System.out.print("Masukkan Harga Album :Rp. ");
+            int StokProduk =  Main.CheckInt();
+            if (StokProduk <= 0) throw new IllegalArgumentException();
+            
+            System.out.print("Masukkan Harga Album :Rp. ");
             int HargaProduk =  Main.CheckInt();
             if (HargaProduk <= 0) throw new IllegalArgumentException();
             
-            return new Album(Main.capIDProduk, NamaProduk, NamaIdol, VersiAlbumProduk, HargaProduk);
+            return new Album(Main.capIDProduk, NamaProduk, NamaIdol, VersiAlbumProduk, StokProduk, HargaProduk);
             
         } catch (IOException | IllegalArgumentException e){
                 System.out.println(" Terjadi error saat menginput data.");
@@ -88,6 +94,12 @@ class Album extends ProdukKPOP{
         String VersiAlbumBaru = br.readLine();
         if (VersiAlbumBaru.equals("99")) return;
         else if (VersiAlbumBaru.equals("")) VersiAlbumBaru = this.VersiAlbum;
+        
+        System.out.println("Masukkan Harga Album Lama: Rp. " + this.Harga);
+        System.out.print("Masukkan Harga Album Baru: Rp. ");
+        int StokProdukBaru =  Main.CheckInt();
+        if (StokProdukBaru == 99) return;
+        else if (StokProdukBaru <= 0) StokProdukBaru = this.Harga;
 
         System.out.println("Masukkan Harga Album Lama: Rp. " + this.Harga);
         System.out.print("Masukkan Harga Album Baru: Rp. ");
@@ -98,6 +110,7 @@ class Album extends ProdukKPOP{
         this.Nama = NamaBaru;
         this.Idol = IdolBaru;
         this.VersiAlbum = VersiAlbumBaru;
+        this.Stok = StokProdukBaru;
         this.Harga = HargaBaru;
         
     }
@@ -109,7 +122,7 @@ class Album extends ProdukKPOP{
     ArrayList<Album> data = new ArrayList<Album>();
 
     data.add(new Album(this.ID, this.Nama, 
-                this.getClass().getSimpleName(), this.Idol, 
+                this.getClass().getSimpleName(), this.Idol, this.VersiAlbum this.Stok,
                 this.Harga));
 
     // Mendefinisikan lebar kolom
@@ -120,6 +133,7 @@ class Album extends ProdukKPOP{
     System.out.printf("%-" + ColumnWidth + "s", "Jenis Produk");
     System.out.printf("%-" + ColumnWidth + "s", "Idol/Idol Group");
     System.out.printf("%-" + ColumnWidth + "s", "Versi Album");
+    System.out.printf("%-" + ColumnWidth + "s", "Stok Album");
     System.out.printf("%-" + ColumnWidth + "s", "Harga Album");
     System.out.println();
 
@@ -136,6 +150,7 @@ class Album extends ProdukKPOP{
         System.out.printf("%-" + ColumnWidth + "s", data.getClass().getSimpleName());
         System.out.printf("%-" + ColumnWidth + "s", data.Idol);
         System.out.printf("%-" + ColumnWidth + "s", data.VersiAlbum);
+        System.out.printf("%-" + ColumnWidth + "s", data.Stok);
         System.out.printf("%-" + ColumnWidth + "s", data.Harga);
         System.out.println();
     }
