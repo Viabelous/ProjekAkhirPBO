@@ -42,18 +42,18 @@ class Album extends ProdukKPOP{
     @Override
     Produk TambahProduk(){
         try{
-            System.out.println("Masukkan Nama Produk : ");
+            System.out.print("Masukkan Nama Produk : ");
             String NamaProduk = br.readLine();
             if (NamaProduk.equals("")) throw new IllegalArgumentException();
             
-            System.out.println("Masukkan Nama Idol/Grup : ");
+            System.out.print("Masukkan Nama Idol/Grup : ");
             String NamaIdol = br.readLine();
             if (NamaIdol.equals("")) throw new IllegalArgumentException();
             
-            System.out.println("Masukkan Versi Album: ");
+            System.out.print("Masukkan Versi Album: ");
             String VersiAlbumProduk = br.readLine();
             
-            System.out.println("Masukkan Harga Album :Rp. ");
+            System.out.print("Masukkan Harga Album :Rp. ");
             int HargaProduk =  Main.CheckInt();
             if (HargaProduk <= 0) throw new IllegalArgumentException();
             
@@ -72,25 +72,25 @@ class Album extends ProdukKPOP{
         System.out.println(" Isi dengan 99 untuk kembali");
 
         System.out.println("Nama Produk Baru: " + this.Nama);
-        System.out.println("Nama Produk Lama: ");
+        System.out.print("Nama Produk Lama: ");
         String NamaBaru = br.readLine();
         if (NamaBaru.equals("99")) return;
         else if (NamaBaru.equals("")) NamaBaru = this.Nama;
 
         System.out.println("Nama Idol/Grup Lama: " + this.Idol);
-        System.out.println("Nama Idol/Grup Baru: ");
+        System.out.print("Nama Idol/Grup Baru: ");
         String IdolBaru = br.readLine();
         if (IdolBaru.equals("99")) return;
         else if (IdolBaru.equals("")) IdolBaru = this.Idol;
 
         System.out.println("Versi Album Lama: " + this.VersiAlbum);
-        System.out.println("Versi Album Baru: ");
+        System.out.print("Versi Album Baru: ");
         String VersiAlbumBaru = br.readLine();
         if (VersiAlbumBaru.equals("99")) return;
         else if (VersiAlbumBaru.equals("")) VersiAlbumBaru = this.VersiAlbum;
 
         System.out.println("Masukkan Harga Album Lama: Rp. " + this.Harga);
-        System.out.println("Masukkan Harga Album Baru: Rp. ");
+        System.out.print("Masukkan Harga Album Baru: Rp. ");
         int HargaBaru =  Main.CheckInt();
         if (HargaBaru == 99) return;
         else if (HargaBaru <= 0) HargaBaru = this.Harga;
@@ -166,21 +166,21 @@ class LightStick extends ProdukKPOP{
     @Override
     Produk TambahProduk(){
         try{
-            System.out.println("Masukkan Nama Produk : ");
+            System.out.print("Masukkan Nama Produk : ");
             String NamaProduk = br.readLine();
             if (NamaProduk.equals("")) throw new IllegalArgumentException();
             
-            System.out.println("Masukkan Nama Idol/Grup : ");
+            System.out.print("Masukkan Nama Idol/Grup : ");
             String NamaIdol = br.readLine();
             if (NamaIdol.equals("")) throw new IllegalArgumentException();
             
-            System.out.println("Berisikan Baterai (Y/N)?");
+            System.out.print("Berisikan Baterai (Y/N)?");
             boolean DilengkapiBaterai = ((br.readLine().equals("Y")));
             
-            System.out.println("Masukkan Versi LightStick: ");
+            System.out.print("Masukkan Versi LightStick: ");
             String VersiLightstickProduk = br.readLine();
     
-            System.out.println("Masukkan Harga Album :Rp. ");
+            System.out.print("Masukkan Harga Album :Rp. ");
             int HargaProduk =  Main.CheckInt();
             if (HargaProduk <= 0) throw new IllegalArgumentException();
             
@@ -199,31 +199,31 @@ class LightStick extends ProdukKPOP{
         System.out.println(" Isi dengan 99 untuk kembali");
 
         System.out.println("Nama Produk Baru: " + this.Nama);
-        System.out.println("Nama Produk Lama: ");
+        System.out.print("Nama Produk Lama: ");
         String NamaBaru = br.readLine();
         if (NamaBaru.equals("99")) return;
         else if (NamaBaru.equals("")) NamaBaru = this.Nama;
 
         System.out.println("Nama Idol/Grup Lama: " + this.Idol);
-        System.out.println("Nama Idol/Grup Baru: ");
+        System.out.print("Nama Idol/Grup Baru: ");
         String IdolBaru = br.readLine();
         if (IdolBaru.equals("99")) return;
         else if (IdolBaru.equals("")) IdolBaru = this.Idol;
         
         System.out.println("Berisikan Baterai (Y/N)?" + this.Baterai);
-        System.out.println("Berisikan Baterai (Y/N)?");
+        System.out.print("Berisikan Baterai (Y/N)?");
         String DilengkapiBateraiBaru = br.readLine();
         if (DilengkapiBateraiBaru.equals("99")) return;
         else if (!(DilengkapiBateraiBaru.equals("Y") || DilengkapiBateraiBaru.equals("N"))) DilengkapiBateraiBaru = "N";
 
         System.out.println("Versi Lightstick Lama: " + this.VersiLightstick);
-        System.out.println("Versi Lightstick Baru: ");
+        System.out.print("Versi Lightstick Baru: ");
         String VersiLightstickBaru = br.readLine();
         if (VersiLightstickBaru.equals("99")) return;
         else if (VersiLightstickBaru.equals("")) VersiLightstickBaru = this.VersiLightstick;
 
         System.out.println("Masukkan Harga Lightstick Lama: Rp. " + this.Harga);
-        System.out.println("Masukkan Harga Lightstick Baru: Rp. ");
+        System.out.print("Masukkan Harga Lightstick Baru: Rp. ");
         int HargaBaru =  Main.CheckInt();
         if (HargaBaru == 99) return;
         else if (HargaBaru <= 0) HargaBaru = this.Harga;
@@ -261,16 +261,16 @@ class Poster extends ProdukKPOP{
     @Override
     Produk TambahProduk(){
         try{
-            System.out.println("Masukkan Nama Produk : ");
+            System.out.print("Masukkan Nama Produk : ");
             String NamaProduk = br.readLine();
             if (NamaProduk.equals("")) throw new IllegalArgumentException();
             
-            System.out.println("Masukkan Nama Idol/Grup : ");
+            System.out.print("Masukkan Nama Idol/Grup : ");
             String NamaIdol = br.readLine();
             if (NamaIdol.equals("")) throw new IllegalArgumentException();
             
             
-            System.out.println("Masukkan Versi Poster: ");
+            System.out.print("Masukkan Versi Poster: ");
             String VersiPoster = br.readLine();
     
             System.out.println("Masukkan Harga Album :Rp. ");
@@ -292,25 +292,25 @@ class Poster extends ProdukKPOP{
         System.out.println(" Isi dengan 99 untuk kembali");
 
         System.out.println("Nama Produk Baru: " + this.Nama);
-        System.out.println("Nama Produk Lama: ");
+        System.out.print("Nama Produk Lama: ");
         String NamaBaru = br.readLine();
         if (NamaBaru.equals("99")) return;
         else if (NamaBaru.equals("")) NamaBaru = this.Nama;
 
         System.out.println("Nama Idol/Grup Lama: " + this.Idol);
-        System.out.println("Nama Idol/Grup Baru: ");
+        System.out.print("Nama Idol/Grup Baru: ");
         String IdolBaru = br.readLine();
         if (IdolBaru.equals("99")) return;
         else if (IdolBaru.equals("")) IdolBaru = this.Idol;
 
         System.out.println("Versi Poster Lama: " + this.VersiPoster);
-        System.out.println("Versi Poster Baru: ");
+        System.out.print("Versi Poster Baru: ");
         String VerPosterBaru = br.readLine();
         if (VerPosterBaru.equals("99")) return;
         else if (VerPosterBaru.equals("")) VerPosterBaru = this.VersiPoster;
 
         System.out.println("Masukkan Harga Poster Lama: Rp. " + this.Harga);
-        System.out.println("Masukkan Harga Poster Baru: Rp. ");
+        System.out.print("Masukkan Harga Poster Baru: Rp. ");
         int HargaBaru =  Main.CheckInt();
         if (HargaBaru == 99) return;
         else if (HargaBaru <= 0) HargaBaru = this.Harga;
@@ -350,25 +350,25 @@ class Postcard extends ProdukKPOP{
     @Override
     Produk TambahProduk(){
         try{
-            System.out.println("Masukkan Nama Produk : ");
+            System.out.print("Masukkan Nama Produk : ");
             String NamaProduk = br.readLine();
             if (NamaProduk.equals("")) throw new IllegalArgumentException();
             
-            System.out.println("Masukkan Nama Idol/Grup : ");
+            System.out.print("Masukkan Nama Idol/Grup : ");
             String NamaIdol = br.readLine();
             if (NamaIdol.equals("")) throw new IllegalArgumentException();
             
-            System.out.println("Masukkan Ukuran Postcard : ");
+            System.out.print("Masukkan Ukuran Postcard : ");
             String SizePostcard = br.readLine();
             if (SizePostcard.equals("")) throw new IllegalArgumentException();
             
-            System.out.println("Masukkan Versi Postcard: ");
+            System.out.print("Masukkan Versi Postcard: ");
             String VerPostcard = br.readLine();
             
-            System.out.println("Masukkan Versi Member: ");
+            System.out.print("Masukkan Versi Member: ");
             String VerMember = br.readLine();
     
-            System.out.println("Masukkan Harga Album :Rp. ");
+            System.out.print("Masukkan Harga Album :Rp. ");
             int HargaProduk =  Main.CheckInt();
             if (HargaProduk <= 0) throw new IllegalArgumentException();
             
@@ -387,37 +387,37 @@ class Postcard extends ProdukKPOP{
         System.out.println(" Isi dengan 99 untuk kembali");
 
         System.out.println("Nama Produk Baru: " + this.Nama);
-        System.out.println("Nama Produk Lama: ");
+        System.out.print("Nama Produk Lama: ");
         String NamaBaru = br.readLine();
         if (NamaBaru.equals("99")) return;
         else if (NamaBaru.equals("")) NamaBaru = this.Nama;
 
         System.out.println("Nama Idol/Grup Lama: " + this.Idol);
-        System.out.println("Nama Idol/Grup Baru: ");
+        System.out.print("Nama Idol/Grup Baru: ");
         String IdolBaru = br.readLine();
         if (IdolBaru.equals("99")) return;
         else if (IdolBaru.equals("")) IdolBaru = this.Idol;
         
         System.out.println("Size Postcard Lama: " + this.Size);
-        System.out.println("Versi Postcard Baru: ");
+        System.out.print("Versi Postcard Baru: ");
         String SizePostcardBaru = br.readLine();
         if (SizePostcardBaru.equals("99")) return;
         else if (SizePostcardBaru.equals("")) SizePostcardBaru = this.Size;
         
         System.out.println("Versi Postcard Lama: " + this.VersiPostcard);
-        System.out.println("Versi Postcard Baru: ");
+        System.out.print("Versi Postcard Baru: ");
         String VerPostcardBaru = br.readLine();
         if (VerPostcardBaru.equals("99")) return;
         else if (VerPostcardBaru.equals("")) VerPostcardBaru = this.VersiPostcard;
 
         System.out.println("Versi Member Lama: " + this.VersiMember);
-        System.out.println("Versi Member Baru: ");
+        System.out.print("Versi Member Baru: ");
         String VerMemberBaru = br.readLine();
         if (VerMemberBaru.equals("99")) return;
         else if (VerMemberBaru.equals("")) VerMemberBaru = this.VersiMember;
 
         System.out.println("Masukkan Harga Postcard Lama: Rp. " + this.Harga);
-        System.out.println("Masukkan Harga Poster Baru: Rp. ");
+        System.out.print("Masukkan Harga Poster Baru: Rp. ");
         int HargaBaru =  Main.CheckInt();
         if (HargaBaru == 99) return;
         else if (HargaBaru <= 0) HargaBaru = this.Harga;
@@ -461,25 +461,25 @@ class Photocard extends ProdukKPOP{
     @Override
     Produk TambahProduk(){
         try{
-            System.out.println("Masukkan Nama Produk : ");
+            System.out.print("Masukkan Nama Produk : ");
             String NamaProduk = br.readLine();
             if (NamaProduk.equals("")) throw new IllegalArgumentException();
             
-            System.out.println("Masukkan Nama Idol/Grup : ");
+            System.out.print("Masukkan Nama Idol/Grup : ");
             String NamaIdol = br.readLine();
             if (NamaIdol.equals("")) throw new IllegalArgumentException();
             
-            System.out.println("Masukkan Ukuran Postcard : ");
+            System.out.print("Masukkan Ukuran Postcard : ");
             String SizePhotocard = br.readLine();
             if (SizePhotocard.equals("")) throw new IllegalArgumentException();
             
-            System.out.println("Masukkan Versi Photocard: ");
+            System.out.print("Masukkan Versi Photocard: ");
             String VerPhotocard = br.readLine();
             
-            System.out.println("Masukkan Versi Member: ");
+            System.out.print("Masukkan Versi Member: ");
             String VerMember = br.readLine();
     
-            System.out.println("Masukkan Harga Photocard :Rp. ");
+            System.out.print("Masukkan Harga Photocard :Rp. ");
             int HargaProduk =  Main.CheckInt();
             if (HargaProduk <= 0) throw new IllegalArgumentException();
             
@@ -498,31 +498,31 @@ class Photocard extends ProdukKPOP{
         System.out.println(" Isi dengan 99 untuk kembali");
 
         System.out.println("Nama Produk Baru: " + this.Nama);
-        System.out.println("Nama Produk Lama: ");
+        System.out.print("Nama Produk Lama: ");
         String NamaBaru = br.readLine();
         if (NamaBaru.equals("99")) return;
         else if (NamaBaru.equals("")) NamaBaru = this.Nama;
 
         System.out.println("Nama Idol/Grup Lama: " + this.Idol);
-        System.out.println("Nama Idol/Grup Baru: ");
+        System.out.print("Nama Idol/Grup Baru: ");
         String IdolBaru = br.readLine();
         if (IdolBaru.equals("99")) return;
         else if (IdolBaru.equals("")) IdolBaru = this.Idol;
         
         System.out.println("Size Postcard Lama: " + this.Size);
-        System.out.println("Versi Postcard Baru: ");
+        System.out.print("Versi Postcard Baru: ");
         String SizePhotocardBaru = br.readLine();
         if (SizePhotocardBaru.equals("99")) return;
         else if (SizePhotocardBaru.equals("")) SizePhotocardBaru = this.Size;
         
         System.out.println("Versi Photocard Lama: " + this.VersiPhotocard);
-        System.out.println("Versi Postcard Baru: ");
+        System.out.print("Versi Postcard Baru: ");
         String VerPhotocardBaru = br.readLine();
         if (VerPhotocardBaru.equals("99")) return;
         else if (VerPhotocardBaru.equals("")) VerPhotocardBaru = this.VersiPhotocard;
 
         System.out.println("Versi Member Lama: " + this.VersiMember);
-        System.out.println("Versi Member Baru: ");
+        System.out.print("Versi Member Baru: ");
         String VerMemberBaru = br.readLine();
         if (VerMemberBaru.equals("99")) return;
         else if (VerMemberBaru.equals("")) VerMemberBaru = this.VersiMember;
@@ -570,22 +570,22 @@ class Keyring extends ProdukKPOP{
     @Override
     Produk TambahProduk(){
         try{
-            System.out.println("Masukkan Nama Produk : ");
+            System.out.print("Masukkan Nama Produk : ");
             String NamaProduk = br.readLine();
             if (NamaProduk.equals("")) throw new IllegalArgumentException();
             
-            System.out.println("Masukkan Nama Idol/Grup : ");
+            System.out.print("Masukkan Nama Idol/Grup : ");
             String NamaIdol = br.readLine();
             if (NamaIdol.equals("")) throw new IllegalArgumentException();
             
-            System.out.println("Masukkan Ukuran Keyring : ");
+            System.out.print("Masukkan Ukuran Keyring : ");
             String SizeKeyring = br.readLine();
             if (SizeKeyring.equals("")) throw new IllegalArgumentException();
             
-            System.out.println("Masukkan Versi Member: ");
+            System.out.print("Masukkan Versi Member: ");
             String VerMember = br.readLine();
     
-            System.out.println("Masukkan Harga Keyring :Rp. ");
+            System.out.print("Masukkan Harga Keyring :Rp. ");
             int HargaProduk =  Main.CheckInt();
             if (HargaProduk <= 0) throw new IllegalArgumentException();
             
@@ -604,31 +604,31 @@ class Keyring extends ProdukKPOP{
         System.out.println(" Isi dengan 99 untuk kembali");
 
         System.out.println("Nama Produk Baru: " + this.Nama);
-        System.out.println("Nama Produk Lama: ");
+        System.out.print("Nama Produk Lama: ");
         String NamaBaru = br.readLine();
         if (NamaBaru.equals("99")) return;
         else if (NamaBaru.equals("")) NamaBaru = this.Nama;
 
         System.out.println("Nama Idol/Grup Lama: " + this.Idol);
-        System.out.println("Nama Idol/Grup Baru: ");
+        System.out.print("Nama Idol/Grup Baru: ");
         String IdolBaru = br.readLine();
         if (IdolBaru.equals("99")) return;
         else if (IdolBaru.equals("")) IdolBaru = this.Idol;
         
         System.out.println("Size Keyring Lama: " + this.Size);
-        System.out.println("Versi Postcard Baru: ");
+        System.out.print("Versi Postcard Baru: ");
         String SizeKeyringBaru = br.readLine();
         if (SizeKeyringBaru.equals("99")) return;
         else if (SizeKeyringBaru.equals("")) SizeKeyringBaru = this.Size;
         
         System.out.println("Versi Member Lama: " + this.VersiMember);
-        System.out.println("Versi Member Baru: ");
+        System.out.print("Versi Member Baru: ");
         String VerMemberBaru = br.readLine();
         if (VerMemberBaru.equals("99")) return;
         else if (VerMemberBaru.equals("")) VerMemberBaru = this.VersiMember;
 
         System.out.println("Masukkan Harga Keyring Lama: Rp. " + this.Harga);
-        System.out.println("Masukkan Harga Keyring Baru: Rp. ");
+        System.out.print("Masukkan Harga Keyring Baru: Rp. ");
         int HargaBaru =  Main.CheckInt();
         if (HargaBaru == 99) return;
         else if (HargaBaru <= 0) HargaBaru = this.Harga;
@@ -666,20 +666,20 @@ class Lanyard extends ProdukKPOP{
     @Override
     Produk TambahProduk(){
         try{
-            System.out.println("Masukkan Nama Produk : ");
+            System.out.print("Masukkan Nama Produk : ");
             String NamaProduk = br.readLine();
             if (NamaProduk.equals("")) throw new IllegalArgumentException();
             
-            System.out.println("Masukkan Nama Idol/Grup : ");
+            System.out.print("Masukkan Nama Idol/Grup : ");
             String NamaIdol = br.readLine();
             if (NamaIdol.equals("")) throw new IllegalArgumentException();
             
-            System.out.println("Masukkan Bahan Lanyard : ");
+            System.out.print("Masukkan Bahan Lanyard : ");
             String BahanLanyard = br.readLine();
             if (BahanLanyard.equals("")) throw new IllegalArgumentException();
             
     
-            System.out.println("Masukkan Harga Lanyard :Rp. ");
+            System.out.print("Masukkan Harga Lanyard :Rp. ");
             int HargaProduk =  Main.CheckInt();
             if (HargaProduk <= 0) throw new IllegalArgumentException();
             
@@ -698,25 +698,25 @@ class Lanyard extends ProdukKPOP{
         System.out.println(" Isi dengan 99 untuk kembali");
 
         System.out.println("Nama Produk Baru: " + this.Nama);
-        System.out.println("Nama Produk Lama: ");
+        System.out.print("Nama Produk Lama: ");
         String NamaBaru = br.readLine();
         if (NamaBaru.equals("99")) return;
         else if (NamaBaru.equals("")) NamaBaru = this.Nama;
 
         System.out.println("Nama Idol/Grup Lama: " + this.Idol);
-        System.out.println("Nama Idol/Grup Baru: ");
+        System.out.print("Nama Idol/Grup Baru: ");
         String IdolBaru = br.readLine();
         if (IdolBaru.equals("99")) return;
         else if (IdolBaru.equals("")) IdolBaru = this.Idol;
         
         System.out.println("Versi Bahan Lanyard: " + this.Bahan);
-        System.out.println("Versi Member Baru: ");
+        System.out.print("Versi Member Baru: ");
         String BahanLanyard = br.readLine();
         if (BahanLanyard.equals("99")) return;
         else if (BahanLanyard.equals("")) BahanLanyard = this.Bahan;
 
         System.out.println("Masukkan Harga Lanyard Lama: Rp. " + this.Harga);
-        System.out.println("Masukkan Harga Lanyard Baru: Rp. ");
+        System.out.print("Masukkan Harga Lanyard Baru: Rp. ");
         int HargaBaru =  Main.CheckInt();
         if (HargaBaru == 99) return;
         else if (HargaBaru <= 0) HargaBaru = this.Harga;
