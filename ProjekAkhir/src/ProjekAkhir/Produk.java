@@ -117,35 +117,36 @@ class Album extends ProdukKPOP{
     @Override
     void TampilProduk(){
         // Mendefinisikan lebar kolom
-        int ColumnWidth = 10;
+        int IDWidth = 5;
+        int JenisWidth = 15;
+        int ColumnWidth = 25;
 
         // Mencetak judul kolom
-        System.out.printf("%-" + ColumnWidth + "s", "ID");
-        System.out.printf("%-" + ColumnWidth + "s", "Nama Produk");
-        System.out.printf("%-" + ColumnWidth + "s", "Jenis Produk");
-        System.out.printf("%-" + ColumnWidth + "s", "Idol/Idol Group");
-        System.out.printf("%-" + ColumnWidth + "s", "Versi Album");
-        System.out.printf("%-" + ColumnWidth + "s", "Stok Album");
-        System.out.printf("%-" + ColumnWidth + "s", "Harga Album");
+        System.out.printf("%-" + IDWidth + "s", "ID ");
+        System.out.printf("%-" + ColumnWidth + "s", "Nama Produk ");
+        System.out.printf("%-" + JenisWidth + "s", "Jenis Produk ");
+        System.out.printf("%-" + ColumnWidth + "s", "Idol/Idol Group ");
+        System.out.printf("%-" + ColumnWidth + "s", "Versi Album ");
+        System.out.printf("%-" + ColumnWidth + "s", "Stok Album ");
+        System.out.printf("%-" + ColumnWidth + "s", "Harga Album ");
         System.out.println();
 
         // Mencetak baris pemisah
-        for (int i = 0; i < ColumnWidth * 7; i++) {
+        for (int i = 0; i < ColumnWidth * 6; i++) {
             System.out.print("-");
         }
         System.out.println();
 
         // Mencetak isi tabel
-            System.out.printf("%-" + ColumnWidth + "d", this.ID);
+            System.out.printf("%-" + IDWidth + "d", this.ID);
             System.out.printf("%-" + ColumnWidth + "s", this.Nama);
-            System.out.printf("%-" + ColumnWidth + "s", this.getClass().getSimpleName());
+            System.out.printf("%-" + JenisWidth + "s", this.getClass().getSimpleName());
             System.out.printf("%-" + ColumnWidth + "s", this.Idol);
             System.out.printf("%-" + ColumnWidth + "s", this.VersiAlbum);
             System.out.printf("%-" + ColumnWidth + "d", this.Stok);
             System.out.printf("%-" + ColumnWidth + "d", this.Harga);
             System.out.println();
     }
-    
 }
 
 class LightStick extends ProdukKPOP{
@@ -237,12 +238,14 @@ class LightStick extends ProdukKPOP{
     @Override
     void TampilProduk(){
         // Mendefinisikan lebar kolom
-        int ColumnWidth = 10;
+        int IDWidth = 5;
+        int JenisWidth = 15;
+        int ColumnWidth = 25;
 
         // Mencetak judul kolom
-        System.out.printf("%-" + ColumnWidth + "s", "ID");
+        System.out.printf("%-" + IDWidth + "s", "ID");
         System.out.printf("%-" + ColumnWidth + "s", "Nama Produk");
-        System.out.printf("%-" + ColumnWidth + "s", "Jenis Produk");
+        System.out.printf("%-" + JenisWidth + "s", "Jenis Produk");
         System.out.printf("%-" + ColumnWidth + "s", "Idol/Idol Group");
         System.out.printf("%-" + ColumnWidth + "s", "Termasuk Baterai");
         System.out.printf("%-" + ColumnWidth + "s", "Versi Lightstick");
@@ -250,15 +253,15 @@ class LightStick extends ProdukKPOP{
         System.out.println();
 
         // Mencetak baris pemisah
-        for (int i = 0; i < ColumnWidth * 7; i++) {
+        for (int i = 0; i < ColumnWidth * 5; i++) {
             System.out.print("-");
         }
         System.out.println();
 
         // Mencetak isi tabel
-        System.out.printf("%-" + ColumnWidth + "d", this.ID);
+        System.out.printf("%-" + IDWidth + "d", this.ID);
         System.out.printf("%-" + ColumnWidth + "s", this.Nama);
-        System.out.printf("%-" + ColumnWidth + "s", this.getClass().getSimpleName());
+        System.out.printf("%-" + JenisWidth + "s", this.getClass().getSimpleName());
         System.out.printf("%-" + ColumnWidth + "s", this.Idol);
         System.out.printf("%-" + ColumnWidth + "b", ((this.Baterai)? "Ya" : "Tidak"));
         System.out.printf("%-" + ColumnWidth + "s", this.VersiLightstick);
@@ -344,27 +347,29 @@ class Poster extends ProdukKPOP{
     @Override
     void TampilProduk(){
         // Mendefinisikan lebar kolom
-        int ColumnWidth = 10;
+        int IDWidth = 5;
+        int JenisWidth = 15;
+        int ColumnWidth = 25;
 
         // Mencetak judul kolom
-        System.out.printf("%-" + ColumnWidth + "s", "ID");
+        System.out.printf("%-" + IDWidth + "s", "ID");
         System.out.printf("%-" + ColumnWidth + "s", "Nama Produk");
-        System.out.printf("%-" + ColumnWidth + "s", "Jenis Produk");
+        System.out.printf("%-" + JenisWidth + "s", "Jenis Produk");
         System.out.printf("%-" + ColumnWidth + "s", "Idol/Idol Group");
         System.out.printf("%-" + ColumnWidth + "s", "Versi Poster");
         System.out.printf("%-" + ColumnWidth + "s", "Harga Poster");
         System.out.println();
 
         // Mencetak baris pemisah
-        for (int i = 0; i < ColumnWidth * 6; i++) {
+        for (int i = 0; i < ColumnWidth * 5; i++) {
             System.out.print("-");
         }
         System.out.println();
 
         // Mencetak isi tabel
-        System.out.printf("%-" + ColumnWidth + "d", this.ID);
+        System.out.printf("%-" + IDWidth + "d", this.ID);
         System.out.printf("%-" + ColumnWidth + "s", this.Nama);
-        System.out.printf("%-" + ColumnWidth + "s", this.getClass().getSimpleName());
+        System.out.printf("%-" + JenisWidth + "s", this.getClass().getSimpleName());
         System.out.printf("%-" + ColumnWidth + "s", this.Idol);
         System.out.printf("%-" + ColumnWidth + "s", this.VersiPoster);
         System.out.printf("%-" + ColumnWidth + "d", this.Harga);
@@ -473,12 +478,14 @@ class Postcard extends ProdukKPOP{
     @Override
     void TampilProduk(){
         // Mendefinisikan lebar kolom
-        int ColumnWidth = 10;
+        int IDWidth = 5;
+        int JenisWidth = 15;
+        int ColumnWidth = 25;
 
         // Mencetak judul kolom
-        System.out.printf("%-" + ColumnWidth + "s", "ID");
+        System.out.printf("%-" + IDWidth + "s", "ID");
         System.out.printf("%-" + ColumnWidth + "s", "Nama Produk");
-        System.out.printf("%-" + ColumnWidth + "s", "Jenis Produk");
+        System.out.printf("%-" + JenisWidth + "s", "Jenis Produk");
         System.out.printf("%-" + ColumnWidth + "s", "Idol/Idol Group");
         System.out.printf("%-" + ColumnWidth + "s", "Size Postcard");
         System.out.printf("%-" + ColumnWidth + "s", "Versi Postcard");
@@ -487,15 +494,15 @@ class Postcard extends ProdukKPOP{
         System.out.println();
 
         // Mencetak baris pemisah
-        for (int i = 0; i < ColumnWidth * 8; i++) {
+        for (int i = 0; i < ColumnWidth * 7; i++) {
             System.out.print("-");
         }
         System.out.println();
 
         // Mencetak isi tabel
-        System.out.printf("%-" + ColumnWidth + "d", this.ID);
+        System.out.printf("%-" + IDWidth + "d", this.ID);
         System.out.printf("%-" + ColumnWidth + "s", this.Nama);
-        System.out.printf("%-" + ColumnWidth + "s", this.getClass().getSimpleName());
+        System.out.printf("%-" + JenisWidth + "s", this.getClass().getSimpleName());
         System.out.printf("%-" + ColumnWidth + "s", this.Idol);
         System.out.printf("%-" + ColumnWidth + "s", this.Size);
         System.out.printf("%-" + ColumnWidth + "s", this.VersiPostcard);
@@ -606,12 +613,14 @@ class Photocard extends ProdukKPOP{
     @Override
     void TampilProduk(){
         // Mendefinisikan lebar kolom
-        int ColumnWidth = 10;
+        int IDWidth = 5;
+        int JenisWidth = 15;
+        int ColumnWidth = 25;
 
         // Mencetak judul kolom
-        System.out.printf("%-" + ColumnWidth + "s", "ID");
+        System.out.printf("%-" + IDWidth + "s", "ID");
         System.out.printf("%-" + ColumnWidth + "s", "Nama Produk");
-        System.out.printf("%-" + ColumnWidth + "s", "Jenis Produk");
+        System.out.printf("%-" + JenisWidth + "s", "Jenis Produk");
         System.out.printf("%-" + ColumnWidth + "s", "Idol/Idol Group");
         System.out.printf("%-" + ColumnWidth + "s", "Size Photocard");
         System.out.printf("%-" + ColumnWidth + "s", "Versi Photocard");
@@ -620,15 +629,15 @@ class Photocard extends ProdukKPOP{
         System.out.println();
 
         // Mencetak baris pemisah
-        for (int i = 0; i < ColumnWidth * 8; i++) {
+        for (int i = 0; i < ColumnWidth * 7; i++) {
             System.out.print("-");
         }
         System.out.println();
 
         // Mencetak isi tabel
-        System.out.printf("%-" + ColumnWidth + "d", this.ID);
+        System.out.printf("%-" + IDWidth + "d", this.ID);
         System.out.printf("%-" + ColumnWidth + "s", this.Nama);
-        System.out.printf("%-" + ColumnWidth + "s", this.getClass().getSimpleName());
+        System.out.printf("%-" + JenisWidth + "s", this.getClass().getSimpleName());
         System.out.printf("%-" + ColumnWidth + "s", this.Idol);
         System.out.printf("%-" + ColumnWidth + "s", this.Size);
         System.out.printf("%-" + ColumnWidth + "s", this.VersiPhotocard);
@@ -727,12 +736,14 @@ class Keyring extends ProdukKPOP{
     @Override
     void TampilProduk(){
         // Mendefinisikan lebar kolom
-        int ColumnWidth = 10;
+        int IDWidth = 5;
+        int JenisWidth = 15;
+        int ColumnWidth = 25;
 
         // Mencetak judul kolom
-        System.out.printf("%-" + ColumnWidth + "s", "ID");
+        System.out.printf("%-" + IDWidth + "s", "ID");
         System.out.printf("%-" + ColumnWidth + "s", "Nama Produk");
-        System.out.printf("%-" + ColumnWidth + "s", "Jenis Produk");
+        System.out.printf("%-" + JenisWidth + "s", "Jenis Produk");
         System.out.printf("%-" + ColumnWidth + "s", "Idol/Idol Group");
         System.out.printf("%-" + ColumnWidth + "s", "Size Keyring");
         System.out.printf("%-" + ColumnWidth + "s", "Versi Member");
@@ -740,15 +751,15 @@ class Keyring extends ProdukKPOP{
         System.out.println();
 
         // Mencetak baris pemisah
-        for (int i = 0; i < ColumnWidth * 7; i++) {
+        for (int i = 0; i < ColumnWidth * 6; i++) {
             System.out.print("-");
         }
         System.out.println();
 
         // Mencetak isi tabel
-        System.out.printf("%-" + ColumnWidth + "d", this.ID);
+        System.out.printf("%-" + IDWidth + "d", this.ID);
         System.out.printf("%-" + ColumnWidth + "s", this.Nama);
-        System.out.printf("%-" + ColumnWidth + "s", this.getClass().getSimpleName());
+        System.out.printf("%-" + JenisWidth + "s", this.getClass().getSimpleName());
         System.out.printf("%-" + ColumnWidth + "s", this.Idol);
         System.out.printf("%-" + ColumnWidth + "s", this.Size);
         System.out.printf("%-" + ColumnWidth + "s", this.VersiMember);
@@ -835,12 +846,14 @@ class Lanyard extends ProdukKPOP{
     @Override
     void TampilProduk(){
         // Mendefinisikan lebar kolom
-        int ColumnWidth = 10;
+        int IDWidth = 5;
+        int JenisWidth = 15;
+        int ColumnWidth = 25;
 
         // Mencetak judul kolom
-        System.out.printf("%-" + ColumnWidth + "s", "ID");
+        System.out.printf("%-" + IDWidth + "s", "ID");
         System.out.printf("%-" + ColumnWidth + "s", "Nama Produk");
-        System.out.printf("%-" + ColumnWidth + "s", "Jenis Produk");
+        System.out.printf("%-" + JenisWidth + "s", "Jenis Produk");
         System.out.printf("%-" + ColumnWidth + "s", "Idol/Idol Group");
         System.out.printf("%-" + ColumnWidth + "s", "Size Lanyard");
         System.out.printf("%-" + ColumnWidth + "s", "Versi Member");
@@ -848,15 +861,15 @@ class Lanyard extends ProdukKPOP{
         System.out.println();
 
         // Mencetak baris pemisah
-        for (int i = 0; i < ColumnWidth * 6; i++) {
+        for (int i = 0; i < ColumnWidth * 5; i++) {
             System.out.print("-");
         }
         System.out.println();
 
         // Mencetak isi tabel
-        System.out.printf("%-" + ColumnWidth + "d", this.ID);
+        System.out.printf("%-" + IDWidth + "d", this.ID);
         System.out.printf("%-" + ColumnWidth + "s", this.Nama);
-        System.out.printf("%-" + ColumnWidth + "s", this.getClass().getSimpleName());
+        System.out.printf("%-" + JenisWidth + "s", this.getClass().getSimpleName());
         System.out.printf("%-" + ColumnWidth + "s", this.Idol);
         System.out.printf("%-" + ColumnWidth + "s", this.Bahan);
         System.out.printf("%-" + ColumnWidth + "d", this.Harga);

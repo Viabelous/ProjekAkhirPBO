@@ -90,6 +90,7 @@ public class Toko {
                 i++;
             }
 
+            System.out.println("\n");
             int Opsi = Main.CheckInt();
             if(Opsi == 0) return;
             if(Opsi != -1){
@@ -174,7 +175,7 @@ public class Toko {
         System.out.println("""
             | ---------------------------------------- |
             |  //       Menu Manajemen Toko        \\\\  |
-            | ||\t\t""" + this.Nama + "\t\t|| |\n" + """
+            | ||\t""" + this.Nama + "\t\t\t|| |\n" + """
             | ||                                    || |
             | ||     (1)-. Ubah Informasi Toko      || |
             | ||     (2)-. Manajemen Seller Toko    || |

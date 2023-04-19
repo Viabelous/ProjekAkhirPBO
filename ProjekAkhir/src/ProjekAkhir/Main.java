@@ -16,7 +16,7 @@ import java.util.ArrayList;
         -. Mangan
 
     [Butuh Konfirmasi]
-        -. Gaperlu ya arrayList baru
+        -. Tampilan Produknya ga sesuai sama fungsi yang ada di masing2 classnya, malah fungsi album terus yang kepake
 
 */
 
