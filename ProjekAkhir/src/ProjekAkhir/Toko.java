@@ -198,7 +198,7 @@ public class Toko {
                     this.UbahToko();
                 }
                 case 2 -> {
-            // Toko.ManajeSeller();
+//             Toko.ManajeSeller();
                 }
                 case 3 -> {
                     Main.Clear();
@@ -322,7 +322,7 @@ public class Toko {
                     | ---------------------------------------- |
                     |  //                                  \\\\  |
                     | ||                                    || |
-                            Nama Toko      :    """ + NamaToko + "\n" +
+                             Nama Toko""" + "    : " + NamaToko + "\n" +
                    """
                    \t Lokasi Toko""" + "  : " + KotaToko + "\n" +
                    """
@@ -359,7 +359,7 @@ public class Toko {
                     | ---------------------------------------- |
                     |  //                                  \\\\  |
                     | ||                                    || |
-                            Nama Toko      :    """ + NewNamaToko + "\n" +
+                             Nama Toko""" + "    : " + NewNamaToko + "\n" +
                    """
                    \t Lokasi Toko""" + "  : " + NewKotaToko + "\n" +
                    """
