@@ -134,7 +134,7 @@ public class Main {
         DaftarToko.add(new Toko(1, "Toko Sukamiskin", "Busan"));
         DaftarToko.get(0).TambahProduk(new Album(1, "Birthday (Smini Ver)", "Red Velvet","Smini Ver", 4, 300000));
         DaftarToko.get(0).TambahProduk(new Album(2, "Birthday (Digipack Ver)", "Red Velvet","Digipack Ver", 4, 280000 ));
-        DaftarToko.get(0).TambahProduk(new LightStick(3, "LightStick EXO", "EXO", true, "Ver 2", 826000));
+        DaftarToko.get(0).TambahProduk(new LightStick(3, "LightStick EXO", "EXO", true, "Ver 2", 1, 826000));
         DaftarToko.get(0).TambahProduk(new Album(4, "Asterum", "PLAVE","", 5, 180000 ));
         capIDProduk += 4;
         
