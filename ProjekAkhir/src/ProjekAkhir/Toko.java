@@ -79,9 +79,9 @@ public class Toko {
             Main.Clear();
             int i  = 1;
 
+            System.out.println("[99] Kembali");
             if(Main.Menu.equals("Seller") || Main.Menu.equals("Admin"))
-                System.out.println("\n[99] Manajemen Toko");
-            System.out.println("[0] Kembali");
+                System.out.println("[0] Manajemen Toko");
 
             System.out.println("\nProduk Dijual:");
             for (Produk Dagangan : DaftarProduk) {
@@ -92,7 +92,7 @@ public class Toko {
 
             System.out.println("\n");
             int Opsi = Main.CheckInt();
-            if(Opsi == 0) return;
+            if(Opsi == 99) return;
             if(Opsi != -1){
                 
                 switch(Main.Menu){
@@ -100,8 +100,8 @@ public class Toko {
                         // Buy
                     }
                     case "Seller", "Admin" -> {
-                        // Opsi 99 untuk Manajemen Toko
-                        if(Opsi == 99) this.MenuManajemenToko();
+                        // Opsi 0 untuk Manajemen Toko
+                        if(Opsi == 0) this.MenuManajemenToko();
                         ManajemenProduk(this.DaftarProduk.get(Opsi+1));
                     }
                 }
@@ -172,46 +172,71 @@ public class Toko {
         Main.Clear();
         
         //Sout dibedakan untuk admin dan untuk seller
-        System.out.println("""
+        if (Main.Menu.equals("Admin")){
+            System.out.println("""
             | ---------------------------------------- |
             |  //       Menu Manajemen Toko        \\\\  |
             | ||\t""" + this.Nama + "\t\t\t|| |\n" + """
             | ||                                    || |
+            | ||     (99)-. Kembali                 || |
             | ||     (1)-. Ubah Informasi Toko      || |
             | ||     (2)-. Manajemen Seller Toko    || |
             | ||     (3)-. Tambah Produk            || |
             | ||     (4)-. Lihat Pesanan            || |
             | ||     (5)-. Hapus Toko               || |
-            | ||     (99)-. Kembali                 || |
             |  \\\\                                  //  |
             | ---------------------------------------- |
                             """);
 
-        System.out.print(" :>> ");
-        Opsi = CheckInt();
+            System.out.print(" :>> ");
+            Opsi = CheckInt();
 
-        switch (Opsi){
-            case 1:
-                //this.TampilDeskripsi();
-                this.UbahToko();
-                break;
-            case 2:
-                // Toko.ManajeSeller();
-                break;
-            case 3:
-                this.MenuTambahProduk();
-                break;
-            case 4:
-                // lihatPesanan();
-                break;
-            case 5:
-                this.HapusToko();
-                break;
-            case 99:
-                break;
-            default:
-                break;
+            switch (Opsi) {
+                case 1 -> {
+                    Main.Clear();
+                    this.TampilDeskripsi();
+                    this.UbahToko();
+                }
+                case 2 -> {
+            // Toko.ManajeSeller();
+                }
+                case 3 -> {
+                    Main.Clear();
+                    this.MenuTambahProduk();
+                }
+                case 4 -> {
+            // lihatPesanan();
+                }
+                case 5 -> this.HapusToko();
+                case 99 -> {return;}
+            }
+        }
 
+        if (Main.Menu.equals("Seller")){ System.out.println("""
+            | ---------------------------------------- |
+            |  //       Menu Manajemen Toko        \\\\  |
+            | ||                                    || |
+            | ||     (99)-. Kembali                 || |
+            | ||     (1)-. Ubah Informasi Toko      || |
+            | ||     (2)-. Tambah Produk            || |
+            | ||     (3)-. Lihat Pesanan            || |
+            |  \\\\                                  //  |
+            | ---------------------------------------- |
+                            """);
+        
+            System.out.print(" :>> ");
+            Opsi = CheckInt();
+
+            switch (Opsi){
+                case 1 -> {
+                    this.TampilDeskripsi();
+                    this.UbahToko();
+                }
+                case 2 -> this.MenuTambahProduk();
+                case 3 -> {// lihatPesanan();
+                }
+                case 99 -> {return;}
+            }
         }
     }
    
@@ -280,16 +305,32 @@ public class Toko {
     
     
     // Procedure untuk menambah toko di daftar toko
-    static public Toko TambahToko() throws IOException {
+    static public Toko TambahToko() throws IOException, InterruptedException {
         String NamaToko, KotaToko;
         
-        System.out.print(" Masukkan nama toko     :");
+        System.out.println("---------------------------------------\n");
+        System.out.print(" Masukkan nama toko   : ");
         NamaToko = br.readLine();
         if (NamaToko.equals("")) throw new IllegalArgumentException();
         
-        System.out.print(" Masukkan kota toko     :");
+        System.out.print(" Masukkan kota toko   : ");
         KotaToko = br.readLine();
         if (NamaToko.equals("")) throw new IllegalArgumentException();
+        
+        Main.Clear();
+        System.out.println("""
+                    | ---------------------------------------- |
+                    |  //                                  \\\\  |
+                    | ||                                    || |
+                            Nama Toko      :    """ + NamaToko + "\n" +
+                   """
+                   \t Lokasi Toko""" + "  : " + KotaToko + "\n" +
+                   """
+                    | ||                                    || |
+                    |  \\\\                                  //  |
+                    | ---------------------------------------- |
+                           """);
+        br.readLine();
         
         Main.capIDToko++;
         
@@ -298,27 +339,44 @@ public class Toko {
      
     
     // Procedure untuk mengubah informasi toko
-    public void UbahToko() throws IOException {
+    public void UbahToko() throws IOException, InterruptedException {
         String NewNamaToko, NewKotaToko;
         
-        System.out.print(" Masukkan nama toko     :");
+        System.out.println("---------------------------------------\n");
+        System.out.print(" Masukkan nama toko     : ");
         NewNamaToko = br.readLine();
         if (NewNamaToko.equals("")) throw new IllegalArgumentException();
             
-        System.out.print(" Masukkan kota toko     :");
+        System.out.print(" Masukkan kota toko     : ");
         NewKotaToko = br.readLine();
         if (NewKotaToko.equals("")) throw new IllegalArgumentException();
         
         this.Nama = NewNamaToko;
         this.Kota = NewKotaToko;
+        
+        Main.Clear();
+        System.out.println("""
+                    | ---------------------------------------- |
+                    |  //                                  \\\\  |
+                    | ||                                    || |
+                            Nama Toko      :    """ + NewNamaToko + "\n" +
+                   """
+                   \t Lokasi Toko""" + "  : " + NewKotaToko + "\n" +
+                   """
+                    | ||                                    || |
+                    |  \\\\                                  //  |
+                    | ---------------------------------------- |
+                           """);
+        br.readLine();
+        
     }
     
     
     // Rawan error
     public void HapusToko() throws IOException {
-        System.out.println("Yakin hapus toko (Y/N)?");
-        System.out.println("(Menghapus toko ini akan sekaligus menghapus Seller)");
-        System.out.print(":>> ");
+        System.out.println(" Yakin hapus toko (Y/N)?");
+        System.out.println(" (Menghapus toko ini akan sekaligus menghapus Seller)");
+        System.out.print(" :>> ");
         
         String Conf = br.readLine();
         if(Conf == null) Conf = "N";
