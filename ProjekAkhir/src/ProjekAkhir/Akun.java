@@ -318,39 +318,60 @@ class Admin extends Akun{
         }
     }
     
-    void ubahProfil() throws IOException {
+    void ubahProfil() throws IOException, InterruptedException {
         String NewNama, NewUsn, NewPass, NewEmail;
+        
+        Main.Clear();
         System.out.println("""
+            | ---------------------------------------- |   
+            |   //         Menu Ubah Profil        \\\\  |
+            |  ||                                   || |
+            |  ||        (99)-. Kembali             || |
+            |  ||        (1)-. Ubah Data Akun       || |
+            |  ||                                   || |
+            |   \\\\                                 //  |
+            | ---------------------------------------- |
+                           """);
+        
+        System.out.print(" :>> ");
+        Opsi = CheckInt();
+        
+        switch (Opsi) {
+            case 99 -> {return;}
+            case 1 -> {
+                Main.Clear();
+                System.out.print("""
                     | ---------------------------------------- |
                     |  //                                  \\\\  |
                     | ||                                    || |
-                    \t Masukkan nama        : 
                            """);
-//        System.out.print("");
-        NewNama = br.readLine();
-        if (NewNama.equals("")) throw new IllegalArgumentException();
-            
-        System.out.print("\t Masukkan username    : ");
-        NewUsn = br.readLine();
-        if (NewUsn.equals("")) throw new IllegalArgumentException();
-            
-        System.out.print("\t Masukkan password    : ");
-        NewPass = br.readLine();
-        if (NewPass.equals("")) throw new IllegalArgumentException();
-            
-        System.out.print("\t Masukkan email       : ");
-        NewEmail = br.readLine();
-        if (NewEmail.equals("")) throw new IllegalArgumentException();
-        System.out.println("""
+                System.out.print("\t Masukkan nama      :");
+                NewNama = br.readLine();
+                if (NewNama.equals("")) throw new IllegalArgumentException();
+
+                System.out.print("\t Masukkan username  : ");
+                NewUsn = br.readLine();
+                if (NewUsn.equals("")) throw new IllegalArgumentException();
+
+                System.out.print("\t Masukkan password  : ");
+                NewPass = br.readLine();
+                if (NewPass.equals("")) throw new IllegalArgumentException();
+
+                System.out.print("\t Masukkan email     : ");
+                NewEmail = br.readLine();
+                if (NewEmail.equals("")) throw new IllegalArgumentException();
+                System.out.println("""
                     | ||                                    || |
                     |  \\\\                                  //  |
                     | ---------------------------------------- |
                            """);
-        
-        this.Nama = NewNama;
-        this.Usn = NewUsn;
-        this.Pass = NewPass;
-        this.Email = NewEmail;
+
+                this.Nama = NewNama;
+                this.Usn = NewUsn;
+                this.Pass = NewPass;
+                this.Email = NewEmail;
+            }
+        }
     }
 }
 
