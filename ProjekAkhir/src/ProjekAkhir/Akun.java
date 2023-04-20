@@ -286,9 +286,9 @@ class Admin extends Akun{
             |  ||        (99)-. Kembali             || |
             |  ||        (0)-. Tambah Seller        || |
             |  ||                                   || |
-            |  ||        --. Hapus Seller .--       || |
+            |  ||         -. Hapus Seller .-        || |
                            """
-       + "\n|  ||                                   || |\n");
+       + "| ||                                   || |\n");
         
         for (int i=0; i < Main.DaftarAkun.size(); i++){
             System.out.println("| ||\t\t (" + i+1 + ") " + Main.DaftarAkun.get(i).Usn + "\t\t|| |");
@@ -319,7 +319,38 @@ class Admin extends Akun{
     }
     
     void ubahProfil() throws IOException {
+        String NewNama, NewUsn, NewPass, NewEmail;
+        System.out.println("""
+                    | ---------------------------------------- |
+                    |  //                                  \\\\  |
+                    | ||                                    || |
+                    \t Masukkan nama        : 
+                           """);
+//        System.out.print("");
+        NewNama = br.readLine();
+        if (NewNama.equals("")) throw new IllegalArgumentException();
+            
+        System.out.print("\t Masukkan username    : ");
+        NewUsn = br.readLine();
+        if (NewUsn.equals("")) throw new IllegalArgumentException();
+            
+        System.out.print("\t Masukkan password    : ");
+        NewPass = br.readLine();
+        if (NewPass.equals("")) throw new IllegalArgumentException();
+            
+        System.out.print("\t Masukkan email       : ");
+        NewEmail = br.readLine();
+        if (NewEmail.equals("")) throw new IllegalArgumentException();
+        System.out.println("""
+                    | ||                                    || |
+                    |  \\\\                                  //  |
+                    | ---------------------------------------- |
+                           """);
         
+        this.Nama = NewNama;
+        this.Usn = NewUsn;
+        this.Pass = NewPass;
+        this.Email = NewEmail;
     }
 }
 
