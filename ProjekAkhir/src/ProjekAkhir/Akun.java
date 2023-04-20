@@ -339,37 +339,46 @@ class Admin extends Akun{
         switch (Opsi) {
             case 99 -> {return;}
             case 1 -> {
-                Main.Clear();
-                System.out.print("""
-                    | ---------------------------------------- |
-                    |  //                                  \\\\  |
-                    | ||                                    || |
-                           """);
-                System.out.print("\t Masukkan nama      :");
+                System.out.println("---------------------------------------\n");
+                System.out.print(" Masukkan nama     : ");
                 NewNama = br.readLine();
                 if (NewNama.equals("")) throw new IllegalArgumentException();
 
-                System.out.print("\t Masukkan username  : ");
+                System.out.print(" Masukkan Username : ");
                 NewUsn = br.readLine();
                 if (NewUsn.equals("")) throw new IllegalArgumentException();
 
-                System.out.print("\t Masukkan password  : ");
+                System.out.print(" Masukkan Password : ");
                 NewPass = br.readLine();
                 if (NewPass.equals("")) throw new IllegalArgumentException();
 
-                System.out.print("\t Masukkan email     : ");
+                System.out.print(" Masukkan Email    : ");
                 NewEmail = br.readLine();
                 if (NewEmail.equals("")) throw new IllegalArgumentException();
-                System.out.println("""
-                    | ||                                    || |
-                    |  \\\\                                  //  |
-                    | ---------------------------------------- |
-                           """);
-
+                
                 this.Nama = NewNama;
                 this.Usn = NewUsn;
                 this.Pass = NewPass;
                 this.Email = NewEmail;
+                
+                Main.Clear();
+                System.out.println("""
+                    | ---------------------------------------- |
+                    |  //                                  \\\\  |
+                    | ||                                    || |
+                             Nama      :    """ + NewNama + "\n" +
+                    """
+                    \t Username""" + "  : " + NewUsn + "\n" +
+                    """
+                    \t Password""" + "  : "  + NewPass + "\n" +
+                    """
+                    \t Email""" + "     : "  + NewEmail + "\n" +
+                    """
+                    | ||                                    || |
+                    |  \\\\                                  //  |
+                    | ---------------------------------------- |
+                           """);
+                br.readLine();
             }
         }
     }
