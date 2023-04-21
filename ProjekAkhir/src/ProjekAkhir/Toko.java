@@ -256,15 +256,17 @@ public class Toko {
                             (5) Photocard
                             (6) Keyring
                             (7) Lanyard
+                            (8) Kimchi
+                            (9) Tteokbokki
 		|  ||                                     || |
 		|   \\\\                                   //  |
 		| ------------------------------------------ |
                             """);
 
         System.out.print(" :>> ");
-        int pilihan = Integer.parseInt(br.readLine());
+        Opsi = CheckInt();
 
-        switch (pilihan) {
+        switch (Opsi) {
             case 1 -> {
                 Album AlbumBaru = null;
                 this.TambahProduk(AlbumBaru.TambahProduk());
