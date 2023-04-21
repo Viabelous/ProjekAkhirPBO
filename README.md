@@ -1,14 +1,13 @@
 # PROJEK AKHIR PBO
+**Manajemen Korean Market**
 ```
 ............................................  
-Anggota:  
-<a> 2109106037  Agustina Dwi Maharani
-<a> 2109106039  Ibnu Yafi Arya Wardana
-<k> 2109106040  Natalie Fuad
-<a> 2109106042  Hadie Pratama Tulili
+Contributors:
 
-	<a> Anggota
-	<k> Ketua
+<Anggota> 	2109106037  Agustina Dwi Maharani 		{Seller, Produk}
+<Anggota> 	2109106039  Ibnu Yafi Arya Wardana 		{Customer, Design UX}
+ <Ketua>	2109106040  Natalie Fuad 			{Admin}
+<Anggota>	2109106042  Hadie Pratama Tulili 		{Autentikasi, UI}
 ............................................  
 ```
 **Program Manajemen Korean Market** adalah sebuah program multi-user tentang pasar terkait produk-produk Korea (Selatan) berisikan banyak toko yang masing-masingnya dapat diakses oleh Costumer untuk memilih dan membeli produk diinginkan.
@@ -34,13 +33,16 @@ graph
 A[Customer] -- 1 --> B(Toko-Toko)
 B --99 --> BA(Kembali)
 B -- <> --> BB(Pilih Toko)
-BB -- 99 --> BBA(Kembali)
-BB -- <> --> BBB(Pesan Produk)
+	BB -- 99 --> BBA(Kembali)
+	BB -- <> --> BBB(Pesan Produk)
 
 A -- 2 --> C(Tas Belanja)
 C -- 99 --> CA(Kembali)
-C -- 0 --> CB(Lakukan Pembelian)
-C -- <> --> CC(Keluarkan Barang dari Tas)
+C -- 0 --> CB(Hapus Invalid)
+C -- <> --> CC(Proses Barang)
+	CC -- 99 --> CCA(Kembali)
+	CC -- 1 --> CCB(Ubah Jumlah)
+	CC -- 2 --> CCC(Proses Pesan)
 
 A -- 3 --> D(Riwayat Pembelian)
 A -- 4 --> E(Ubah Profil)
