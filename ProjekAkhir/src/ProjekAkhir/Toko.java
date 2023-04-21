@@ -91,7 +91,8 @@ public class Toko {
                 try{
                     switch(Main.Menu){
                         case "Customer" -> {
-                            //buy
+                            BeliProduk(this.DaftarProduk.get(Opsi-1));
+                            if(Main.PortToBag == true) return;
                         }
                         case "Seller", "Admin" -> {
                             // Opsi 0 untuk Manajemen Toko
@@ -130,24 +131,29 @@ public class Toko {
     }
     
     
-    public void BeliProduk(Produk Prod) throws IOException{
-        Prod.TambahProduk();
+    public void BeliProduk(Produk Prod) throws IOException, InterruptedException{
+        Main.Clear();
+        Prod.TampilProduk();
         
         System.out.println("\nBeli Produk (Y/N)? ");
         System.out.print("    :>> ");
-        if(br.readLine().equals("Y")){
+        if(br.readLine().toUpperCase().equals("Y")){
             System.out.println("Masukkan jumlah produk dibeli: ");
             System.out.println("(Jumlah diminta tidak dapat lebih dari stok yang ada)");
-            System.out.println("    :>> ");
+            System.out.print("    :>> ");
             int StokBeli = Main.CheckInt();
             if(StokBeli <= 0 || StokBeli > Prod.Stok){
                 System.out.println("Gagal masuk Tas Belanja");
+                br.readLine();
             }
             else{
                 ((Customer)Main.DaftarAkun.get(Main.AkunSequential(Main.IDAktif)))
                         .TasBelanjaAdd(new Belanja(Prod.ID, this.ID, StokBeli));
                 System.out.println(" Berhasil dimasukkan ke keranjang!");
-                // Nanti beri pilihan buat arahkan ke tas belanja langsung.
+                
+                System.out.println("\n Langsung menuju keranjang (Y/N)? ");
+                System.out.print("    :>> ");
+                if(br.readLine().equals("Y")) Main.PortToBag = true;
             }
         }
     }
@@ -169,6 +175,7 @@ public class Toko {
     public static void MenuPilihToko() throws IOException, InterruptedException{
         while(true){
             Main.Clear();
+            if(Main.PortToBag == true) return;
             if(Main.Menu.equals("Admin")) System.out.println(" [0] Tambah Toko");
             System.out.println(" [99] Kembali");
             System.out.println("------------------------");

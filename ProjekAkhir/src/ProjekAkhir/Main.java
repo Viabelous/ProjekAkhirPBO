@@ -13,11 +13,26 @@ import java.util.ArrayList;
 /*
     Di sini letakkan catatan, apa yang kurang atau semacamnya
     [Belum]
-        -. Mangan
+        -. Manajemen Seller (--> admin) butuh error handling indeks out of bounds
 
     [Butuh Konfirmasi]
         -. Tampilan Produknya ga sesuai sama fungsi yang ada di masing2 classnya, malah fungsi album terus yang kepake
 
+*/
+
+/*
+USN DAN PASS AKUN DEFAULT (karena Yafi sering lupa UwU)
+< Customer >
+    Usn: Viabel
+    Pass: Vivin
+
+< Seller >
+    Usn: Agus
+    Pass: Sun1004
+
+< Admin> 
+    Usn: NTLee
+    Pass: SolidSolid
 */
 
 public class Main {
@@ -33,6 +48,7 @@ public class Main {
     static int capIDAkun = 1; //Untuk menyimpan ID terakhir tersimpan di Data Akun
     static int capIDProduk = 0; //Untuk menyimpan ID terakhir tersimpan di Data Produk
     static int capIDToko = 0; //Untuk menyimpan ID terakhir tersimpan di Data Toko
+    static boolean PortToBag = false;
     
     // Deklarasi Variabel Array
     static ArrayList<Akun> DaftarAkun = new ArrayList<>(); //Untuk menyimpan data akun
@@ -67,6 +83,19 @@ public class Main {
             i += 1;
         }
         return -1;
+    }
+    
+    public static Produk BarangSequential(int ID){
+        for (Toko IsiToko : DaftarToko)
+            for (Produk IsiProduk : IsiToko.DaftarProduk)
+                if(IsiProduk.ID == ID) return IsiProduk;
+        
+        return null;
+    }
+    
+    
+    public static Akun getActiveUserIndex(){
+        return DaftarAkun.get(AkunSequential(IDAktif));
     }
     
     // Prosedur Untuk Clear Screen
@@ -192,7 +221,7 @@ public class Main {
                                    | ------------------------------------------ |
                                    |   //      Silahkan Login, Kawan :)     \\\\  |
                                    |  ||                                     || |
-                                               Username  : """ + Username + """      
+                                               Username  : """ + (" ") + Username + """      
 
                                     |  ||       Password  :                   || |
                                     |  ||                                     || |
@@ -208,7 +237,7 @@ public class Main {
                                    | ------------------------------------------ |
                                    |   //      Silahkan Login, Kawan :)     \\\\  |
                                    |  ||                                     || |
-                                               Username  : """ + Username + """      
+                                               Username  : """ + (" ") + Username + """      
 
                                         \t    Password  :   """ + " " + Password + """ 
 
@@ -276,7 +305,7 @@ public class Main {
                 
                     System.out.println("""
                        | ----------------------------------------------- |
-                       |   //        Selamat Datang, """ + Menu + " :)     \\\\  |" + 
+                       |   //        Selamat Datang, """ + (" ") + Menu + " :)     \\\\  |" + 
                        """
 
                         |  ||                                          || |
@@ -293,8 +322,11 @@ public class Main {
                     Opsi = CheckInt();
 
                     switch(Opsi) {
-                        case 1 -> Toko.MenuPilihToko();
-                        case 2 -> {}
+                        case 1 -> {
+                            Toko.MenuPilihToko();
+                            if(PortToBag == true)((Customer)getActiveUserIndex()).FeelMyBag();
+                        }
+                        case 2 -> ((Customer)getActiveUserIndex()).FeelMyBag();
                         case 3 -> {}
                         case 4 -> {}
                         case 5 -> Menu = "Login";
@@ -310,7 +342,7 @@ public class Main {
 
                     System.out.println("""
                        | ---------------------------------------- |
-                       |   //    Selamat Datang, """ + Menu + " :)      \\\\  |" + 
+                       |   //    Selamat Datang, """ + (" ") + Menu + " :)      \\\\  |" + 
                         """
 
                         |  ||                                   || |
@@ -345,7 +377,7 @@ public class Main {
 
                     System.out.println("""
                        | -------------------------------------- |
-                       |   //   Selamat Datang, """ + Menu + " :)   \\\\  |" + 
+                       |   //   Selamat Datang, """ + (" ") + Menu + " :)   \\\\  |" + 
                         """
 
                         |  ||                                 || |

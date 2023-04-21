@@ -1,7 +1,6 @@
 package ProjekAkhir;
 
 import static ProjekAkhir.Main.CheckInt;
-import static ProjekAkhir.Main.DaftarAkun;
 import static ProjekAkhir.Main.Opsi;
 import static ProjekAkhir.Main.br;
 import java.io.IOException;
@@ -74,7 +73,7 @@ class Customer extends Akun implements MultiableAcc{
     
     private String NoHP;
     private String Alamat;
-    private ArrayList<Belanja> TasBelanja;
+    private ArrayList<Belanja> TasBelanja = new ArrayList<>();
     
     Customer(){
         super("Customer");
@@ -179,6 +178,41 @@ class Customer extends Akun implements MultiableAcc{
     public void TasBelanjaAdd(Belanja ProdBelanja){
         this.TasBelanja.add(ProdBelanja);
     }
+    
+    // Prosedur untuk menampilkan isi tas belanja
+    public void FeelMyBag() throws IOException, InterruptedException{
+        Main.PortToBag = false;
+        
+        if(this.TasBelanja.isEmpty()){
+            System.out.println(" -- Tas Belanjamu Kosong -- ");
+            br.readLine();
+        }else{
+            Main.Clear();
+            System.out.println(" (Jika status barang tertulis invalid, maka stok kurang.)");
+            System.out.printf("%-" + 5 + "s", "No.");
+            System.out.printf("%-" + 35 + "s", "Nama Barang");
+            System.out.printf("%-" + 10 + "s", "Jumlah");
+            System.out.printf("%-" + 20 + "s", "Harga");
+            System.out.printf("%-" + 20 + "s", "Status Barang");
+            
+            System.out.println();
+            for (int j = 0; j < 20 * 5; j++) {
+                System.out.print("-");
+            }
+            System.out.println();
+            
+            int i = 0;
+        
+            for (Belanja BarangBelanja : TasBelanja){
+                i++;
+                BarangBelanja.TampilTas(i);
+            }
+            
+            System.out.println("[99] Kembali");
+            br.readLine();
+        }
+    }
+    
 }
 
 
@@ -266,8 +300,6 @@ class Seller extends Akun implements MultiableAcc{
 
 class Admin extends Akun{
     
-    Seller seller = new Seller();
-    
     Admin(int ID, String NamaAdmin, String Username,
           String Pass, String Email){
         super("Admin");
@@ -278,45 +310,47 @@ class Admin extends Akun{
         this.Email = Email;
     }
     
-        void manajemenSeller() throws IOException, InterruptedException {
+    void manajemenSeller() throws IOException, InterruptedException {
+        while(true){
 
-        Main.Clear();
-        System.out.print("""
-             | ---------------------------------------- |
-             |   //    Menu Utama Manajemen Seller  \\\\  |
-             |  ||                                   || |
-             |  ||        (99)-. Kembali             || |
-             |  ||        (0)-. Tambah Seller        || |
-             |  ||                                   || |
-             |  ||         -. Hapus Seller .-        || |
-             | ||                                   || |
-             """);
-        
-        for (int i=0; i < Main.DaftarAkun.size(); i++){
-            System.out.println("| ||\t\t (" + i+1 + ") " + Main.DaftarAkun.get(i).Usn + "\t\t|| |");
-            }
-                
-        System.out.println("""
-            |  ||                                   || |
-            |   \\\\                                 //  |
-            | ---------------------------------------- |
-            """);
+            Main.Clear();
+            System.out.print("""
+                 | ---------------------------------------- |
+                 |   //    Menu Utama Manajemen Seller  \\\\  |
+                 |  ||                                   || |
+                 |  ||        (99)-. Kembali             || |
+                 |  ||        (0)-. Tambah Seller        || |
+                 |  ||                                   || |
+                 |  ||         -. Hapus Seller .-        || |
+                 | ||                                   || |
+                 """);
 
-        System.out.print(" :>> ");
-        Opsi = CheckInt();
-        
-        switch (Opsi) {
-            case 99:
-                break;
-            case 0:
-                seller.TambahAkun();
-                break;
-            default:
-                boolean validation = seller.HapusAkun();
-                
-                if (!validation){
-                    Main.DaftarAkun.remove(Opsi-1);
+            for (int i=0; i < Main.DaftarAkun.size(); i++){
+                System.out.println("| ||\t\t (" + i+1 + ") " + Main.DaftarAkun.get(i).Usn + "\t\t|| |");
                 }
+
+            System.out.println("""
+                |  ||                                   || |
+                |   \\\\                                 //  |
+                | ---------------------------------------- |
+                """);
+
+            System.out.print(" :>> ");
+            Opsi = CheckInt();
+            
+            
+            // need error handling
+            switch (Opsi) {
+                case 99 -> {break;}
+                case 0 -> (new Seller()).TambahAkun();
+                default -> {
+                    boolean validation = (new Seller()).HapusAkun();
+
+                    if (validation){
+                        Main.DaftarAkun.remove(Opsi-1);
+                    }
+                }
+            }
         }
     }
     
