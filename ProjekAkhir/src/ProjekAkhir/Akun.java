@@ -1,6 +1,7 @@
 package ProjekAkhir;
 
 import static ProjekAkhir.Main.CheckInt;
+import static ProjekAkhir.Main.DaftarAkun;
 import static ProjekAkhir.Main.Opsi;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -318,7 +319,7 @@ class Admin extends Akun{
     }
     
     void ubahProfil() throws IOException, InterruptedException {
-        String NewNama, NewUsn, NewPass, NewEmail;
+        String NewNama, NewUsn, NewPass, NewEmail, KonfirPass;
         
         Main.Clear();
         System.out.println("""
@@ -338,6 +339,41 @@ class Admin extends Akun{
         switch (Opsi) {
             case 99 -> {return;}
             case 1 -> {
+                Main.Clear();
+                
+                System.out.println("\tSilahkan masukkan password\n\t    sebelum ubah data");
+                System.out.println("------------------------------------------\n");
+                System.out.print(" Masukkan Password   : ");
+                KonfirPass = br.readLine();
+                System.out.println("-----------------------------------\n");
+                if (KonfirPass.equals("")) throw new IllegalArgumentException();
+                
+                if(!Main.DaftarAkun.get(0).getPass().equals(KonfirPass)){
+                    System.out.println("\n\tPassword salah");
+                    br.readLine();
+                    break;
+                }
+                
+                Main.Clear();
+                System.out.println("""
+                    \n| ---------------------------------------- |
+                    |  //                                  \\\\  |
+                    | ||                                    || |
+                             Nama""" + "      : " + Main.DaftarAkun.get(0).Nama + "\n" +
+                    """
+                    \t Username""" + "  : " + Main.DaftarAkun.get(0).Usn + "\n" +
+                    """
+                    \t Password""" + "  : ************  \n" +
+                    """
+                    \t Email""" + "     : "  + Main.DaftarAkun.get(0).Email + "\n" +
+                    """
+                    | ||                                    || |
+                    |  \\\\                                  //  |
+                    | ---------------------------------------- |
+                           """);
+                
+                
+                System.out.println("\n\tMasukkan Data Akun Baru");
                 System.out.println("---------------------------------------\n");
                 System.out.print(" Masukkan nama     : ");
                 NewNama = br.readLine();
@@ -360,16 +396,20 @@ class Admin extends Akun{
                 this.Pass = NewPass;
                 this.Email = NewEmail;
                 
+                
                 Main.Clear();
+                System.out.println("--------------------------------------------");
+                System.out.println("\t     Berhasil ubah akun\n");
+                
                 System.out.println("""
                     | ---------------------------------------- |
                     |  //                                  \\\\  |
                     | ||                                    || |
-                             Nama      :    """ + NewNama + "\n" +
+                             Nama""" + "      : " + NewNama + "\n" +
                     """
                     \t Username""" + "  : " + NewUsn + "\n" +
                     """
-                    \t Password""" + "  : "  + NewPass + "\n" +
+                    \t Password""" + "  : ************  \n" +
                     """
                     \t Email""" + "     : "  + NewEmail + "\n" +
                     """
