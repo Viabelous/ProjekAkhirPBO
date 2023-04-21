@@ -1,14 +1,15 @@
 # PROJEK AKHIR PBO
 **Manajemen Korean Market**
 ```
-............................................  
-Contributors:
+ Contributors:
 
-<Anggota> 	2109106037  Agustina Dwi Maharani 		{Seller, Produk}
-<Anggota> 	2109106039  Ibnu Yafi Arya Wardana 		{Customer, Design UX}
- <Ketua>	2109106040  Natalie Fuad 			{Admin}
-<Anggota>	2109106042  Hadie Pratama Tulili 		{Autentikasi, UI}
-............................................  
+  Jabatan  |     NIM    |           Nama         |     Tanggung Jawab
+__________________________________________________________________________
+  Anggota  | 2109106037 | Agustina Dwi Maharani  | Seller, Produk
+  Anggota  | 2109106039 | Ibnu Yafi Arya Wardana | Customer, Design UX
+   Ketua   | 2109106040 | Natalie Fuad 		 | Admin
+  Anggota  | 2109106042 | Hadie Pratama Tulili 	 | Autentikasi, UI
+ __________________________________________________________________________
 ```
 **Program Manajemen Korean Market** adalah sebuah program multi-user tentang pasar terkait produk-produk Korea (Selatan) berisikan banyak toko yang masing-masingnya dapat diakses oleh Costumer untuk memilih dan membeli produk diinginkan.
     
