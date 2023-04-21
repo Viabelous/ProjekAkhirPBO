@@ -31,14 +31,16 @@ abstract class ProdukKPOP extends Produk{
 class Album extends ProdukKPOP{
     
     String VersiAlbum;
-     
-    Album(int ID, String NamaProduk, String NamaIdol, String VersiAlbumProduk, int StokProduk, int HargaProduk){
-        this.ID = ID;
+    
+    // Hapus Nanti
+    Produk TambahProduk(String NamaProduk, String NamaIdol, String VersiAlbumProduk, int StokProduk, int HargaProduk){
+        this.ID = Main.capIDProduk;
         this.Nama = NamaProduk;
         this.Idol = NamaIdol;
         this.VersiAlbum = VersiAlbumProduk;
         this.Stok = StokProduk;
         this.Harga = HargaProduk;
+        return this;
     }
         
     @Override
@@ -56,14 +58,21 @@ class Album extends ProdukKPOP{
             String VersiAlbumProduk = br.readLine();
             
             System.out.print("Masukkan Stok Album : ");
-            int StokProduk =  Main.CheckInt();
+            int StokProduk = Main.CheckInt();
             if (StokProduk <= 0) throw new IllegalArgumentException();
             
             System.out.print("Masukkan Harga Album :Rp. ");
             int HargaProduk =  Main.CheckInt();
             if (HargaProduk <= 0) throw new IllegalArgumentException();
             
-            return new Album(Main.capIDProduk, NamaProduk, NamaIdol, VersiAlbumProduk, StokProduk, HargaProduk);
+            this.ID = Main.capIDProduk;
+            this.Nama = NamaProduk;
+            this.Idol = NamaIdol;
+            this.VersiAlbum = VersiAlbumProduk;
+            this.Stok = StokProduk;
+            this.Harga = HargaProduk;
+            
+            return this;
             
         } catch (IOException | IllegalArgumentException e){
                 System.out.println(" Terjadi error saat menginput data.");
@@ -112,7 +121,6 @@ class Album extends ProdukKPOP{
         this.VersiAlbum = VersiAlbumBaru;
         this.Stok = StokProdukBaru;
         this.Harga = HargaBaru;
-        
     } 
     
     @Override
@@ -154,14 +162,16 @@ class LightStick extends ProdukKPOP{
     Boolean Baterai;
     String VersiLightstick;
     
-    LightStick(int ID, String NamaProduk, String NamaIdol, Boolean DilengkapiBaterai, String VersiLightstickProduk, int StokProduk, int HargaProduk){
-        this.ID = ID;
+    // Hapus Nanti
+    Produk TambahProduk(String NamaProduk, String NamaIdol, Boolean DilengkapiBaterai, String VersiLightstickProduk, int StokProduk, int HargaProduk){
+        this.ID = Main.capIDProduk;
         this.Nama = NamaProduk;
         this.Idol = NamaIdol;
         this.Baterai = DilengkapiBaterai;
         this.VersiLightstick = VersiLightstickProduk;
         this.Stok = StokProduk;
         this.Harga = HargaProduk;
+        return this;
     }
     
     @Override
@@ -176,7 +186,7 @@ class LightStick extends ProdukKPOP{
             if (NamaIdol.equals("")) throw new IllegalArgumentException();
             
             System.out.print("Berisikan Baterai (Y/N)?");
-            boolean DilengkapiBaterai = ((br.readLine().equals("Y")));
+            boolean DilengkapiBaterai = br.readLine().equals("Y");
             
             System.out.print("Masukkan Versi LightStick : ");
             String VersiLightstickProduk = br.readLine();
@@ -189,8 +199,15 @@ class LightStick extends ProdukKPOP{
             int HargaProduk =  Main.CheckInt();
             if (HargaProduk <= 0) throw new IllegalArgumentException();
             
-            return new LightStick(Main.capIDProduk, NamaProduk, NamaIdol, DilengkapiBaterai, VersiLightstickProduk, StokProduk, HargaProduk);
+            this.ID = Main.capIDProduk;
+            this.Nama = NamaProduk;
+            this.Idol = NamaIdol;
+            this.Baterai = DilengkapiBaterai;
+            this.VersiLightstick = VersiLightstickProduk;
+            this.Stok = StokProduk;
+            this.Harga = HargaProduk;
             
+            return this;
             
         } catch (IOException | IllegalArgumentException e){
                 System.out.println(" Terjadi error saat menginput data.");
@@ -287,15 +304,7 @@ class LightStick extends ProdukKPOP{
 
 class Poster extends ProdukKPOP{
     String VersiPoster;
-
-    Poster(int ID, String NamaProduk, String NamaIdol, String VerPoster, int StokProduk, int HargaProduk){
-        this.ID = ID;
-        this.Nama = NamaProduk;        
-        this.Idol = NamaIdol;
-        this.VersiPoster = VerPoster;
-        this.Stok = StokProduk;
-        this.Harga = HargaProduk;
-    }
+    
     @Override
     Produk TambahProduk(){
         try{
@@ -318,8 +327,14 @@ class Poster extends ProdukKPOP{
             int HargaProduk =  Main.CheckInt();
             if (HargaProduk <= 0) throw new IllegalArgumentException();
             
-            return new Poster(Main.capIDProduk, NamaProduk, NamaIdol, VerPoster, StokProduk, HargaProduk);
+            this.ID = Main.capIDProduk;
+            this.Nama = NamaProduk;
+            this.Idol = NamaIdol;
+            this.VersiPoster = VerPoster;
+            this.Stok = StokProduk;
+            this.Harga = HargaProduk;
             
+            return this;
             
         } catch (IOException | IllegalArgumentException e){
                 System.out.println(" Terjadi error saat menginput data.");
@@ -410,16 +425,6 @@ class Postcard extends ProdukKPOP{
     String VersiMember;
     String Size;
 
-    Postcard(int ID, String NamaProduk, String NamaIdol, String SizePostcard, String VerPostcard, String VerMember, int StokProduk, int HargaProduk){
-        this.ID = ID;
-        this.Nama = NamaProduk;
-        this.Idol = NamaIdol;
-        this.Size = SizePostcard;
-        this.VersiPostcard = VerPostcard;
-        this.VersiMember = VerMember;
-        this.Stok = StokProduk;
-        this.Harga = HargaProduk;
-    }
     @Override
     Produk TambahProduk(){
         try{
@@ -449,7 +454,16 @@ class Postcard extends ProdukKPOP{
             int HargaProduk =  Main.CheckInt();
             if (HargaProduk <= 0) throw new IllegalArgumentException();
             
-            return new Postcard(Main.capIDProduk, NamaProduk, NamaIdol, SizePostcard, VerPostcard, VerMember, StokProduk, HargaProduk);
+            this.ID = Main.capIDProduk;
+            this.Nama = NamaProduk;
+            this.Idol = NamaIdol;
+            this.Size = SizePostcard;
+            this.VersiPostcard = VerPostcard;
+            this.VersiMember = VerMember;
+            this.Stok = StokProduk;
+            this.Harga = HargaProduk;
+            
+            return this;
             
             
         } catch (IOException | IllegalArgumentException e){
@@ -559,16 +573,6 @@ class Photocard extends ProdukKPOP{
     String VersiMember;
     String Size;
 
-    Photocard(int ID, String NamaProduk, String NamaIdol, String SizePhotocard, String VerPhotocard, String VerMember, int StokProduk, int HargaProduk){
-        this.ID = ID;
-        this.Nama = NamaProduk;
-        this.Idol = NamaIdol;
-        this.Size = SizePhotocard;
-        this.VersiPhotocard = VerPhotocard;
-        this.VersiMember = VerMember;
-        this.Stok = StokProduk;
-        this.Harga = HargaProduk;
-    }
     @Override
     Produk TambahProduk(){
         try{
@@ -598,7 +602,16 @@ class Photocard extends ProdukKPOP{
             int HargaProduk =  Main.CheckInt();
             if (HargaProduk <= 0) throw new IllegalArgumentException();
             
-            return new Photocard(Main.capIDProduk, NamaProduk, NamaIdol, SizePhotocard, VerPhotocard, VerMember, StokProduk, HargaProduk);
+            this.ID = Main.capIDProduk;
+            this.Nama = NamaProduk;
+            this.Idol = NamaIdol;
+            this.Size = SizePhotocard;
+            this.VersiPhotocard = VerPhotocard;
+            this.VersiMember = VerMember;
+            this.Stok = StokProduk;
+            this.Harga = HargaProduk;
+            
+            return this;
             
             
         } catch (IOException | IllegalArgumentException e){
@@ -707,15 +720,6 @@ class Keyring extends ProdukKPOP{
     String VersiMember;
     String Size;
 
-    Keyring(int ID, String NamaProduk, String NamaIdol,  String SizeKeyring, String VerMember, int StokProduk, int HargaProduk){
-        this.ID = ID;
-        this.Nama = NamaProduk;
-        this.Idol = NamaIdol;
-        this.Size = SizeKeyring;
-        this.VersiMember = VerMember;
-        this.Stok = StokProduk;
-        this.Harga = HargaProduk;
-    }
     @Override
     Produk TambahProduk(){
         try{
@@ -742,7 +746,15 @@ class Keyring extends ProdukKPOP{
             int HargaProduk =  Main.CheckInt();
             if (HargaProduk <= 0) throw new IllegalArgumentException();
             
-            return new Keyring(Main.capIDProduk, NamaProduk, NamaIdol, SizeKeyring, VerMember, StokProduk,  HargaProduk);
+            this.ID = Main.capIDProduk;
+            this.Nama = NamaProduk;
+            this.Idol = NamaIdol;
+            this.Size = SizeKeyring;
+            this.VersiMember = VerMember;
+            this.Stok = StokProduk;
+            this.Harga = HargaProduk;
+            
+            return this;
             
             
         } catch (IOException | IllegalArgumentException e){
@@ -841,14 +853,6 @@ class Keyring extends ProdukKPOP{
 class Lanyard extends ProdukKPOP{
     String Bahan;
 
-    Lanyard(int ID, String NamaProduk, String NamaIdol, String BahanLanyard, int StokProduk, int HargaProduk){
-        this.ID = ID;
-        this.Nama = NamaProduk;
-        this.Idol = NamaIdol;
-        this.Bahan = BahanLanyard;
-        this.Stok = StokProduk;
-        this.Harga = HargaProduk;
-    }
     @Override
     Produk TambahProduk(){
         try{
@@ -872,8 +876,14 @@ class Lanyard extends ProdukKPOP{
             int HargaProduk =  Main.CheckInt();
             if (HargaProduk <= 0) throw new IllegalArgumentException();
             
-            return new Lanyard(Main.capIDProduk, NamaProduk, NamaIdol, BahanLanyard, StokProduk,  HargaProduk);
+            this.ID = Main.capIDProduk;
+            this.Nama = NamaProduk;
+            this.Idol = NamaIdol;
+            this.Bahan = BahanLanyard;
+            this.Stok = StokProduk;
+            this.Harga = HargaProduk;
             
+            return this;
             
         } catch (IOException | IllegalArgumentException e){
                 System.out.println(" Terjadi error saat menginput data.");
@@ -959,22 +969,15 @@ class Lanyard extends ProdukKPOP{
     }
 }
 
-class Kimchi extends ProdukKPOP{
+class Kimchi extends Produk{
     String Bahan;
 
-    Kimchi(int ID, String NamaProduk, String BahanKimchi, int StokProduk, int HargaProduk){
-        this.ID = ID;
-        this.Nama = NamaProduk;
-        this.Bahan = BahanKimchi;
-        this.Stok = StokProduk;
-        this.Harga = HargaProduk;
-    }
     @Override
     Produk TambahProduk(){
         try{
-            System.out.print("Masukkan Nama Produk : ");
-            String NamaProduk = br.readLine();
-            if (NamaProduk.equals("")) throw new IllegalArgumentException();
+            System.out.print("Masukkan Nama Kimchi : ");
+            String NamaKimchi = br.readLine();
+            if (NamaKimchi.equals("")) throw new IllegalArgumentException();
             
             System.out.print("Masukkan Bahan Kimchi : ");
             String BahanKimchi = br.readLine();
@@ -988,7 +991,13 @@ class Kimchi extends ProdukKPOP{
             int HargaProduk =  Main.CheckInt();
             if (HargaProduk <= 0) throw new IllegalArgumentException();
             
-            return new Kimchi(Main.capIDProduk, NamaProduk, BahanKimchi, StokProduk,  HargaProduk);
+            this.ID = Main.capIDProduk;
+            this.Nama = NamaKimchi;
+            this.Bahan = BahanKimchi;
+            this.Stok = StokProduk;
+            this.Harga = HargaProduk;
+            
+            return this;
             
             
         } catch (IOException | IllegalArgumentException e){
@@ -1002,14 +1011,14 @@ class Kimchi extends ProdukKPOP{
         System.out.println(" Kosongkan jika tidak ingin mengubah data.");
         System.out.println(" Isi dengan 99 untuk kembali");
 
-        System.out.println("Nama Produk Baru: " + this.Nama);
-        System.out.print("Nama Produk Lama: ");
+        System.out.println("Nama Kimchi Lama: " + this.Nama);
+        System.out.print("Nama Kimchi Baru: ");
         String NamaBaru = br.readLine();
         if (NamaBaru.equals("99")) return;
         else if (NamaBaru.equals("")) NamaBaru = this.Nama;
         
-        System.out.println("Versi Bahan Kimchi: " + this.Bahan);
-        System.out.print("Versi Bahan Kimchi: ");
+        System.out.println("Bahan Kimchi Lama: " + this.Bahan);
+        System.out.print("Bahan Kimchi Baru: ");
         String BahanKimchiBaru = br.readLine();
         if (BahanKimchiBaru.equals("99")) return;
         else if (BahanKimchiBaru.equals("")) BahanKimchiBaru = this.Bahan;
@@ -1042,7 +1051,7 @@ class Kimchi extends ProdukKPOP{
 
         // Mencetak judul kolom
         System.out.printf("%-" + IDWidth + "s", "ID");
-        System.out.printf("%-" + ColumnWidth + "s", "Nama Produk");
+        System.out.printf("%-" + ColumnWidth + "s", "Nama Kimchi");
         System.out.printf("%-" + JenisWidth + "s", "Jenis Produk");
         System.out.printf("%-" + ColumnWidth + "s", "Bahan Kimchi");
         System.out.printf("%-" + ColumnWidth + "s", "Stok Kimchi ");
@@ -1066,16 +1075,9 @@ class Kimchi extends ProdukKPOP{
     }
 }
 
-class Tteokbokki extends ProdukKPOP{
+class Tteokbokki extends Produk{
     String Bahan;
 
-    Tteokbokki(int ID, String NamaProduk, String BahanTteokbokki, int StokProduk, int HargaProduk){
-        this.ID = ID;
-        this.Nama = NamaProduk;
-        this.Bahan = BahanTteokbokki;
-        this.Stok = StokProduk;
-        this.Harga = HargaProduk;
-    }
     @Override
     Produk TambahProduk(){
         try{
@@ -1095,8 +1097,13 @@ class Tteokbokki extends ProdukKPOP{
             int HargaProduk =  Main.CheckInt();
             if (HargaProduk <= 0) throw new IllegalArgumentException();
             
-            return new Tteokbokki(Main.capIDProduk, NamaProduk, BahanTteokbokki, StokProduk,  HargaProduk);
+            this.ID = Main.capIDProduk;
+            this.Nama = NamaProduk;
+            this.Bahan = BahanTteokbokki;
+            this.Stok = StokProduk;
+            this.Harga = HargaProduk;
             
+            return this;
             
         } catch (IOException | IllegalArgumentException e){
                 System.out.println(" Terjadi error saat menginput data.");
@@ -1173,18 +1180,10 @@ class Tteokbokki extends ProdukKPOP{
     }
 }
 
-class Ramen extends ProdukKPOP{
+class Ramen extends Produk{
     String Bahan;
     String Jenis;
 
-    Ramen(int ID, String NamaProduk, String BahanTteokbokki, String JenisRamen,int StokProduk, int HargaProduk){
-        this.ID = ID;
-        this.Nama = NamaProduk;
-        this.Bahan = BahanTteokbokki;
-        this.Jenis = JenisRamen;
-        this.Stok = StokProduk;
-        this.Harga = HargaProduk;
-    }
     @Override
     Produk TambahProduk(){
         try{
@@ -1208,8 +1207,14 @@ class Ramen extends ProdukKPOP{
             int HargaProduk =  Main.CheckInt();
             if (HargaProduk <= 0) throw new IllegalArgumentException();
             
-            return new Ramen(Main.capIDProduk, NamaProduk, BahanRamen,JenisRamen, StokProduk,  HargaProduk);
+            this.ID = Main.capIDProduk;
+            this.Nama = NamaProduk;
+            this.Bahan = BahanRamen;
+            this.Jenis = JenisRamen;
+            this.Stok = StokProduk;
+            this.Harga = HargaProduk;
             
+            return this;
             
         } catch (IOException | IllegalArgumentException e){
                 System.out.println(" Terjadi error saat menginput data.");

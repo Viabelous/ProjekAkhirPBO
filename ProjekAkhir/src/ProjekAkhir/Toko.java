@@ -63,7 +63,6 @@ public class Toko {
         if(Item == null) return;
         this.DaftarProduk.add(Item);
         Main.capIDProduk += 1;
-        DaftarProduk.add(Item);
     }
     
     
@@ -77,7 +76,7 @@ public class Toko {
     public void TampilProduk() throws IOException, InterruptedException{
         while(true){
             Main.Clear();
-            int i  = 1;
+            int i = 1;
 
             System.out.println("[99] Kembali");
             if(Main.Menu.equals("Seller") || Main.Menu.equals("Admin"))
@@ -94,16 +93,20 @@ public class Toko {
             int Opsi = Main.CheckInt();
             if(Opsi == 99) return;
             if(Opsi != -1){
-                
-                switch(Main.Menu){
-                    case "Customer" -> {
-                        // Buy
+                try{
+                    switch(Main.Menu){
+                        case "Customer" -> {
+                            // Buy
+                        }
+                        case "Seller", "Admin" -> {
+                            // Opsi 0 untuk Manajemen Toko
+                            if(Opsi == 0) this.MenuManajemenToko();
+                            else ManajemenProduk(this.DaftarProduk.get(Opsi-1));
+                        }
                     }
-                    case "Seller", "Admin" -> {
-                        // Opsi 0 untuk Manajemen Toko
-                        if(Opsi == 0) this.MenuManajemenToko();
-                        ManajemenProduk(this.DaftarProduk.get(Opsi+1));
-                    }
+                } catch(IndexOutOfBoundsException e){
+                    System.out.println(" Produk tersebut tidak ada");
+                    br.readLine();
                 }
                 
             }
@@ -114,7 +117,9 @@ public class Toko {
     // Procedure untuk mengubah info produk,
     // Respon setelah Admin atau Seller memilih produk
     public void ManajemenProduk(Produk Prod) throws IOException, InterruptedException{
-        while(true){
+        boolean del = false;
+        
+        while(del == false){
             Main.Clear();
             Prod.TampilProduk();
             System.out.println(" [1] Ubah Produk");
@@ -123,7 +128,7 @@ public class Toko {
             int Jawab = Main.CheckInt();
             switch(Jawab){
                 case 1 -> Prod.UbahProduk();
-                case 2 -> HapusProduk(Prod);
+                case 2 -> del = HapusProduk(Prod);
                 case 99 -> {return;}
             }
         }
@@ -131,15 +136,15 @@ public class Toko {
     
     
     // Akan dikembangkan Nanti
-    public void HapusProduk(Produk Prod) throws IOException{
+    public boolean HapusProduk(Produk Prod) throws IOException{
         System.out.println(" Yakin Hapus Produk (Y/N)? ");
         System.out.print(" :>> ");
         String Jawab = br.readLine();
-        if(!Jawab.equals("Y")) return;
-        Prod = null;
+        if(!Jawab.equals("Y")) return false;
         this.DaftarProduk.remove(Prod);
+        Prod = null;
         System.out.println(" Produk berhasil dihapus.");
-        
+        return true;
     }
     
     
@@ -248,7 +253,8 @@ public class Toko {
 		| ------------------------------------------ |
 		|   //     Create Produk Toko          \\\\  |	
 		|  ||                                     || |
-                            Menu Manajemen Produk
+                            Pilih Produk
+                            (99) Kembali
                             (1) Album
                             (2) Lightstick 
                             (3) Poster 
@@ -258,6 +264,7 @@ public class Toko {
                             (7) Lanyard
                             (8) Kimchi
                             (9) Tteokbokki
+                            (10) Ramen
 		|  ||                                     || |
 		|   \\\\                                   //  |
 		| ------------------------------------------ |
@@ -267,45 +274,20 @@ public class Toko {
         Opsi = CheckInt();
 
         switch (Opsi) {
-            case 1 -> {
-                Album AlbumBaru = null;
-                this.TambahProduk(AlbumBaru.TambahProduk());
-            }
-            
-            case 2 -> {
-                LightStick LightStickBaru = null;
-                this.TambahProduk(LightStickBaru.TambahProduk());
-            }
-            
-            case 3 -> {
-                Poster PosterBaru = null;
-                this.TambahProduk(PosterBaru.TambahProduk());
-            }
-            
-            case 4 -> {
-                Postcard PostcardBaru = null;
-                this.TambahProduk(PostcardBaru.TambahProduk());
-            }
-            
-            case 5 -> {
-                Photocard PhotocardBaru = null;
-                this.TambahProduk(PhotocardBaru.TambahProduk());
-            }
-            
-            case 6 -> {
-                Keyring KeyringBaru = null;
-                this.TambahProduk(KeyringBaru.TambahProduk());
-            }
-            
-            case 7 -> {
-                Lanyard LanyardBaru = null;
-                this.TambahProduk(LanyardBaru.TambahProduk());
-            }
-            
+            case 1 -> this.TambahProduk((new Album()).TambahProduk());
+            case 2 -> this.TambahProduk((new LightStick()).TambahProduk());
+            case 3 -> this.TambahProduk((new Poster()).TambahProduk());
+            case 4 -> this.TambahProduk((new Postcard()).TambahProduk());
+            case 5 -> this.TambahProduk((new Photocard()).TambahProduk());
+            case 6 -> this.TambahProduk((new Keyring()).TambahProduk());
+            case 7 -> this.TambahProduk((new Lanyard()).TambahProduk());
+            case 8 -> this.TambahProduk((new Kimchi()).TambahProduk());
+            case 9 -> this.TambahProduk((new Tteokbokki()).TambahProduk());
+            case 10 -> this.TambahProduk((new Ramen()).TambahProduk());
+            case 99 -> {return;}
         }
     }
-    
-    
+        
     // Procedure untuk menambah toko di daftar toko
     static public Toko TambahToko() throws IOException, InterruptedException {
         String NamaToko, KotaToko;
@@ -321,10 +303,10 @@ public class Toko {
         
         Main.Clear();
         System.out.println("""
-                    | ---------------------------------------- |
-                    |  //                                  \\\\  |
-                    | ||                                    || |
-                             Nama Toko""" + "    : " + NamaToko + "\n" +
+                   | ---------------------------------------- |
+                   |  //                                  \\\\  |
+                   | ||                                    || |
+                            Nama Toko    : """ + NamaToko + "\n" +
                    """
                    \t Lokasi Toko""" + "  : " + KotaToko + "\n" +
                    """
@@ -358,10 +340,10 @@ public class Toko {
         
         Main.Clear();
         System.out.println("""
-                    | ---------------------------------------- |
-                    |  //                                  \\\\  |
-                    | ||                                    || |
-                             Nama Toko""" + "    : " + NewNamaToko + "\n" +
+                   | ---------------------------------------- |
+                   |  //                                  \\\\  |
+                   | ||                                    || |
+                            Nama Toko    : """ + NewNamaToko + "\n" +
                    """
                    \t Lokasi Toko""" + "  : " + NewKotaToko + "\n" +
                    """
@@ -375,17 +357,22 @@ public class Toko {
     
     
     // Rawan error
-    public void HapusToko() throws IOException {
+    public boolean HapusToko() throws IOException {
         System.out.println(" Yakin hapus toko (Y/N)?");
-        System.out.println(" (Menghapus toko ini akan sekaligus menghapus Seller)");
+        System.out.println(" (Menghapus toko ini akan sekaligus melepas kaitan Seller)");
         System.out.print(" :>> ");
         
         String Conf = br.readLine();
         if(Conf == null) Conf = "N";
+        else{
+            if(Conf.equals("Y")){
+                // Lepas Kaitan Seller
+            }
+        }
         
-        boolean validation = Conf.equals("Y");
-
-        //if (validation)Main.DaftarToko.remove(index-1);
+        return Conf.equals("Y");
+        
+        
     }
 }
 

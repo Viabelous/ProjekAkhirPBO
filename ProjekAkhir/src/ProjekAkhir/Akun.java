@@ -206,7 +206,6 @@ class Seller extends Akun implements MultiableAcc{
                     }
                 }
             }
-
             
             
             System.out.print(" Pass     : ");
