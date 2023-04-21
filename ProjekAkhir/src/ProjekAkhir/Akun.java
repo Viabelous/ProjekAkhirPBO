@@ -3,9 +3,9 @@ package ProjekAkhir;
 import static ProjekAkhir.Main.CheckInt;
 import static ProjekAkhir.Main.DaftarAkun;
 import static ProjekAkhir.Main.Opsi;
-import java.io.BufferedReader;
+import static ProjekAkhir.Main.br;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 /**
  *
@@ -23,10 +23,7 @@ abstract class Akun {
         this.Otoritas = Otoritas;
     }
     
-    InputStreamReader isr = new InputStreamReader(System.in);
-    BufferedReader br = new BufferedReader(isr);
-    
-    //abstract void UbahInfo();
+    // abstract void ubah info()
 
     public int getID() {
         return ID;
@@ -77,6 +74,7 @@ class Customer extends Akun implements MultiableAcc{
     
     private String NoHP;
     private String Alamat;
+    private ArrayList<Belanja> TasBelanja;
     
     Customer(){
         super("Customer");
@@ -176,6 +174,10 @@ class Customer extends Akun implements MultiableAcc{
 
     public void setAlamat(String Alamat) {
         this.Alamat = Alamat;
+    }
+    
+    public void TasBelanjaAdd(Belanja ProdBelanja){
+        this.TasBelanja.add(ProdBelanja);
     }
 }
 
@@ -280,15 +282,15 @@ class Admin extends Akun{
 
         Main.Clear();
         System.out.print("""
-            | ---------------------------------------- |   
-            |   //    Menu Utama Manajemen Seller  \\\\  |
-            |  ||                                   || |
-            |  ||        (99)-. Kembali             || |
-            |  ||        (0)-. Tambah Seller        || |
-            |  ||                                   || |
-            |  ||         -. Hapus Seller .-        || |
-                           """
-       + "| ||                                   || |\n");
+             | ---------------------------------------- |
+             |   //    Menu Utama Manajemen Seller  \\\\  |
+             |  ||                                   || |
+             |  ||        (99)-. Kembali             || |
+             |  ||        (0)-. Tambah Seller        || |
+             |  ||                                   || |
+             |  ||         -. Hapus Seller .-        || |
+             | ||                                   || |
+             """);
         
         for (int i=0; i < Main.DaftarAkun.size(); i++){
             System.out.println("| ||\t\t (" + i+1 + ") " + Main.DaftarAkun.get(i).Usn + "\t\t|| |");
@@ -356,10 +358,10 @@ class Admin extends Akun{
                 
                 Main.Clear();
                 System.out.println("""
-                    \n| ---------------------------------------- |
-                    |  //                                  \\\\  |
-                    | ||                                    || |
-                             Nama""" + "      : " + Main.DaftarAkun.get(0).Nama + "\n" +
+                   | ---------------------------------------- |
+                   |  //                                  \\\\  |
+                   | ||                                    || |
+                            Nama      : """ + Main.DaftarAkun.get(0).Nama + "\n" +
                     """
                     \t Username""" + "  : " + Main.DaftarAkun.get(0).Usn + "\n" +
                     """
@@ -405,7 +407,7 @@ class Admin extends Akun{
                     | ---------------------------------------- |
                     |  //                                  \\\\  |
                     | ||                                    || |
-                             Nama""" + "      : " + NewNama + "\n" +
+                            Nama      : """ + NewNama + "\n" +
                     """
                     \t Username""" + "  : " + NewUsn + "\n" +
                     """

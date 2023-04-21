@@ -1,9 +1,7 @@
 package ProjekAkhir;
 
-import static ProjekAkhir.Produk.br;
-import java.io.BufferedReader;
+import static ProjekAkhir.Main.br;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 /**
  *
@@ -14,9 +12,6 @@ abstract class Produk {
     String Nama;
     int Stok;
     int Harga;
-    
-    static InputStreamReader isr = new InputStreamReader(System.in);
-    static BufferedReader br = new BufferedReader(isr);
 
     abstract Produk TambahProduk();
     abstract void UbahProduk() throws IOException;

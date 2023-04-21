@@ -2,8 +2,7 @@ package ProjekAkhir;
 
 import static ProjekAkhir.Main.CheckInt;
 import static ProjekAkhir.Main.Opsi;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import static ProjekAkhir.Main.br;
 import java.util.ArrayList;
 import java.io.IOException;
 
@@ -25,10 +24,6 @@ public class Toko {
         this.Nama = NamaToko;
         this.Kota = LetakKota;
     }
-    
-    static InputStreamReader isr = new InputStreamReader(System.in);
-    static BufferedReader br = new BufferedReader(isr);
-    
     
     // Procedure untuk menampilkan semua toko yang ada
     public static void TampilSemuaToko(){
@@ -96,7 +91,7 @@ public class Toko {
                 try{
                     switch(Main.Menu){
                         case "Customer" -> {
-                            // Buy
+                            //buy
                         }
                         case "Seller", "Admin" -> {
                             // Opsi 0 untuk Manajemen Toko
@@ -135,7 +130,29 @@ public class Toko {
     }
     
     
-    // Akan dikembangkan Nanti
+    public void BeliProduk(Produk Prod) throws IOException{
+        Prod.TambahProduk();
+        
+        System.out.println("\nBeli Produk (Y/N)? ");
+        System.out.print("    :>> ");
+        if(br.readLine().equals("Y")){
+            System.out.println("Masukkan jumlah produk dibeli: ");
+            System.out.println("(Jumlah diminta tidak dapat lebih dari stok yang ada)");
+            System.out.println("    :>> ");
+            int StokBeli = Main.CheckInt();
+            if(StokBeli <= 0 || StokBeli > Prod.Stok){
+                System.out.println("Gagal masuk Tas Belanja");
+            }
+            else{
+                ((Customer)Main.DaftarAkun.get(Main.AkunSequential(Main.IDAktif)))
+                        .TasBelanjaAdd(new Belanja(Prod.ID, this.ID, StokBeli));
+                System.out.println(" Berhasil dimasukkan ke keranjang!");
+                // Nanti beri pilihan buat arahkan ke tas belanja langsung.
+            }
+        }
+    }
+    
+
     public boolean HapusProduk(Produk Prod) throws IOException{
         System.out.println(" Yakin Hapus Produk (Y/N)? ");
         System.out.print(" :>> ");

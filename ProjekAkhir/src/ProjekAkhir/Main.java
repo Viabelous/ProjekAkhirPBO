@@ -111,6 +111,7 @@ public class Main {
         return User;
     }
 
+    // Hapus nanti
     public static Customer DefaultCostumerAcc(String UsnA, String PassA, String NamaA, String EmailA, String Nomor, String Addr){
        Customer User = new Customer();
         
@@ -292,7 +293,7 @@ public class Main {
                     Opsi = CheckInt();
 
                     switch(Opsi) {
-                        case 1 -> {}
+                        case 1 -> Toko.MenuPilihToko();
                         case 2 -> {}
                         case 3 -> {}
                         case 4 -> {}
