@@ -66,6 +66,18 @@ public class Toko {
         IDSeller.add(IDPenjual);
     }
     
+    
+    public void HapusSeller(int IndexID) throws IOException{
+        System.out.println("Yakin hapus seller dari toko (Y/N)?");
+        System.out.println(":>> ");
+        
+        String Conf = br.readLine();
+        if(Conf == null) Conf = "N";
+        
+        if (Conf.equals("Y")) Main.DaftarToko.remove(IndexID-1);
+    }
+    
+    
     // Procedure untuk menampilkan semua produk di toko,
     // Respon setelah admin atau customer pilih toko, dan/atau seller pilih Tokoku
     public void TampilProduk() throws IOException, InterruptedException{
@@ -227,7 +239,7 @@ public class Toko {
                     this.UbahToko();
                 }
                 case 2 -> {
-//             Toko.ManajeSeller();
+                    this.ManajemenSellerToko();
                 }
                 case 3 -> {
                     Main.Clear();
@@ -307,10 +319,45 @@ public class Toko {
             case 7 -> this.TambahProduk((new Lanyard()).TambahProduk());
             case 8 -> this.TambahProduk((new Kimchi()).TambahProduk());
             case 9 -> this.TambahProduk((new Tteokbokki()).TambahProduk());
-            case 10 -> this.TambahProduk((new Ramen()).TambahProduk());
+            case 10 -> this.TambahProduk((new Ramyeon()).TambahProduk());
             case 99 -> {return;}
         }
     }
+    
+    
+    // Produce untuk menambah/menghapus seller dari toko
+    void ManajemenSellerToko() throws IOException, InterruptedException {
+        Main.Clear();
+        
+        System.out.println("""
+            | ---------------------------------------- |
+            |  //       Menu Manajemen Toko        \\\\  |
+            | ||                                    || |
+            | ||     (99)-. Kembali                 || |
+            | ||     (1)-. Tambah Seller Toko       || |
+            | ||     (2)-. Hapus Seller Toko        || |
+            |  \\\\                                  //  |
+            | ---------------------------------------- |
+                            """);
+        
+            System.out.print(" :>> ");
+            Opsi = CheckInt();
+            
+            switch (Opsi) {
+                case 99: return;
+                case 1:
+//                    TampilSellerToko();
+                    System.out.println(" Pilih seller yang ingin ditambahkan");
+                    System.out.print(" :>> ");
+                    Opsi = CheckInt();
+                    
+                    this.TambahSeller(Opsi);
+                case 2: 
+//                    TampilSellerToko();
+                    this.HapusSeller(Opsi);
+            }
+    }
+
         
     // Procedure untuk menambah toko di daftar toko
     static public Toko TambahToko() throws IOException, InterruptedException {
