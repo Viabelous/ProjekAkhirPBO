@@ -966,6 +966,7 @@ class Lanyard extends ProdukKPOP{
 
 class Kimchi extends Produk{
     String Bahan;
+    String Berat; 
 
     @Override
     Produk TambahProduk(){
@@ -978,6 +979,10 @@ class Kimchi extends Produk{
             String BahanKimchi = br.readLine();
             if (BahanKimchi.equals("")) throw new IllegalArgumentException();
             
+            System.out.print("Masukkan Berat Kimchi : ");
+            String BeratKimchi = br.readLine();
+            if (BeratKimchi.equals("")) throw new IllegalArgumentException();
+            
             System.out.print("Masukkan Stok Kimchi : ");
             int StokProduk =  Main.CheckInt();
             if (StokProduk <= 0) throw new IllegalArgumentException();
@@ -989,6 +994,7 @@ class Kimchi extends Produk{
             this.ID = Main.capIDProduk;
             this.Nama = NamaKimchi;
             this.Bahan = BahanKimchi;
+            this.Berat = BeratKimchi;
             this.Stok = StokProduk;
             this.Harga = HargaProduk;
             
@@ -1017,6 +1023,12 @@ class Kimchi extends Produk{
         String BahanKimchiBaru = br.readLine();
         if (BahanKimchiBaru.equals("99")) return;
         else if (BahanKimchiBaru.equals("")) BahanKimchiBaru = this.Bahan;
+ 
+        System.out.println("Berat Kimchi Lama: " + this.Berat);
+        System.out.print("Berat Kimchi Baru: ");
+        String BeratKimchiBaru = br.readLine();
+        if (BeratKimchiBaru.equals("99")) return;
+        else if (BeratKimchiBaru.equals("")) BeratKimchiBaru = this.Berat;
         
         System.out.println("Masukkan Stok Kimchi Lama:  " + this.Stok);
         System.out.print("Masukkan Stok Kimchi Baru:  ");
@@ -1032,6 +1044,7 @@ class Kimchi extends Produk{
         
         this.Nama = NamaBaru;
         this.Bahan = BahanKimchiBaru;
+        this.Berat = BeratKimchiBaru;
         this.Stok = StokProdukBaru;
         this.Harga = HargaBaru;
         
@@ -1049,6 +1062,7 @@ class Kimchi extends Produk{
         System.out.printf("%-" + ColumnWidth + "s", "Nama Kimchi");
         System.out.printf("%-" + JenisWidth + "s", "Jenis Produk");
         System.out.printf("%-" + ColumnWidth + "s", "Bahan Kimchi");
+        System.out.printf("%-" + ColumnWidth + "s", "Berat Kimchi ");
         System.out.printf("%-" + ColumnWidth + "s", "Stok Kimchi ");
         System.out.printf("%-" + ColumnWidth + "s", "Harga Kimchi");
         System.out.println();
@@ -1064,6 +1078,7 @@ class Kimchi extends Produk{
         System.out.printf("%-" + ColumnWidth + "s", this.Nama);
         System.out.printf("%-" + JenisWidth + "s", this.getClass().getSimpleName());
         System.out.printf("%-" + ColumnWidth + "s", this.Bahan);
+        System.out.printf("%-" + ColumnWidth + "s", this.Berat);
         System.out.printf("%-" + ColumnWidth + "d", this.Stok);
         System.out.printf("%-" + ColumnWidth + "d", this.Harga);
         System.out.println();
@@ -1072,7 +1087,8 @@ class Kimchi extends Produk{
 
 class Tteokbokki extends Produk{
     String Bahan;
-
+    String Berat; 
+    
     @Override
     Produk TambahProduk(){
         try{
@@ -1083,6 +1099,10 @@ class Tteokbokki extends Produk{
             System.out.print("Masukkan Bahan Tteokbokki : ");
             String BahanTteokbokki = br.readLine();
             if (BahanTteokbokki.equals("")) throw new IllegalArgumentException();
+
+            System.out.print("Masukkan Bahan Tteokbokki : ");
+            String BeratTteokbokki = br.readLine();
+            if (BeratTteokbokki.equals("")) throw new IllegalArgumentException();
             
             System.out.print("Masukkan Stok Tteokbokki : ");
             int StokProduk =  Main.CheckInt();
@@ -1095,6 +1115,7 @@ class Tteokbokki extends Produk{
             this.ID = Main.capIDProduk;
             this.Nama = NamaProduk;
             this.Bahan = BahanTteokbokki;
+            this.Berat = BeratTteokbokki;
             this.Stok = StokProduk;
             this.Harga = HargaProduk;
             
@@ -1117,26 +1138,33 @@ class Tteokbokki extends Produk{
         if (NamaBaru.equals("99")) return;
         else if (NamaBaru.equals("")) NamaBaru = this.Nama;
         
-        System.out.println("Versi Bahan Kimchi: " + this.Bahan);
-        System.out.print("Versi Bahan Kimchi: ");
+        System.out.println("Bahan Tteokbokki Lama: " + this.Bahan);
+        System.out.print("Bahan Tteokbokki Baru: ");
         String BahanTteokbokkiBaru = br.readLine();
         if (BahanTteokbokkiBaru.equals("99")) return;
         else if (BahanTteokbokkiBaru.equals("")) BahanTteokbokkiBaru = this.Bahan;
+
+        System.out.println("Berat Tteokbokki Lama: " + this.Berat);
+        System.out.print("Berat Tteokbokki Baru: ");
+        String BeratTteokbokkiBaru = br.readLine();
+        if (BeratTteokbokkiBaru.equals("99")) return;
+        else if (BeratTteokbokkiBaru.equals("")) BeratTteokbokkiBaru = this.Berat;
         
-        System.out.println("Masukkan Stok Kimchi Lama:  " + this.Stok);
-        System.out.print("Masukkan Stok Kimchi Baru:  ");
+        System.out.println("Masukkan Stok Tteokbokki Lama:  " + this.Stok);
+        System.out.print("Masukkan Stok Tteokbokki Baru:  ");
         int StokProdukBaru =  Main.CheckInt();
         if (StokProdukBaru == 99) return;
         else if (StokProdukBaru <= 0) StokProdukBaru = this.Stok;
 
-        System.out.println("Masukkan Harga Kimchi Lama: Rp. " + this.Harga);
-        System.out.print("Masukkan Harga Kimchi Baru: Rp. ");
+        System.out.println("Masukkan Harga Tteokbokki Lama: Rp. " + this.Harga);
+        System.out.print("Masukkan Harga Tteokbokki Baru: Rp. ");
         int HargaBaru =  Main.CheckInt();
         if (HargaBaru == 99) return;
         else if (HargaBaru <= 0) HargaBaru = this.Harga;
         
         this.Nama = NamaBaru;
         this.Bahan = BahanTteokbokkiBaru;
+        this.Berat = BeratTteokbokkiBaru;
         this.Stok = StokProdukBaru;
         this.Harga = HargaBaru;
         
@@ -1154,6 +1182,7 @@ class Tteokbokki extends Produk{
         System.out.printf("%-" + ColumnWidth + "s", "Nama Produk");
         System.out.printf("%-" + JenisWidth + "s", "Jenis Produk");
         System.out.printf("%-" + ColumnWidth + "s", "Bahan Tteokbokki");
+        System.out.printf("%-" + ColumnWidth + "s", "Berat Tteokbokki");
         System.out.printf("%-" + ColumnWidth + "s", "Stok Tteokbokki ");
         System.out.printf("%-" + ColumnWidth + "s", "Harga Tteokbokki");
         System.out.println();
@@ -1169,15 +1198,17 @@ class Tteokbokki extends Produk{
         System.out.printf("%-" + ColumnWidth + "s", this.Nama);
         System.out.printf("%-" + JenisWidth + "s", this.getClass().getSimpleName());
         System.out.printf("%-" + ColumnWidth + "s", this.Bahan);
+        System.out.printf("%-" + ColumnWidth + "s", this.Berat);
         System.out.printf("%-" + ColumnWidth + "d", this.Stok);
         System.out.printf("%-" + ColumnWidth + "d", this.Harga);
         System.out.println();
     }
 }
 
-class Ramen extends Produk{
+class Ramyeon  extends Produk{
     String Bahan;
     String Jenis;
+    String Berat;
 
     @Override
     Produk TambahProduk(){
@@ -1186,19 +1217,23 @@ class Ramen extends Produk{
             String NamaProduk = br.readLine();
             if (NamaProduk.equals("")) throw new IllegalArgumentException();
             
-            System.out.print("Masukkan Bahan Ramen : ");
+            System.out.print("Masukkan Bahan Ramyeon : ");
             String BahanRamen = br.readLine();
             if (BahanRamen.equals("")) throw new IllegalArgumentException();
      
-            System.out.print("Masukkan Jenis Ramen : ");
+            System.out.print("Masukkan Jenis Ramyeon : ");
             String JenisRamen = br.readLine();
-            if (BahanRamen.equals("")) throw new IllegalArgumentException();
+            if (JenisRamen.equals("")) throw new IllegalArgumentException();
+
+            System.out.print("Masukkan Berat Ramyeon : ");
+            String BeratRamen = br.readLine();
+            if (BeratRamen.equals("")) throw new IllegalArgumentException();
             
-            System.out.print("Masukkan Stok Ramen : ");
+            System.out.print("Masukkan Stok Ramyeon : ");
             int StokProduk =  Main.CheckInt();
             if (StokProduk <= 0) throw new IllegalArgumentException();
             
-            System.out.print("Masukkan Harga Ramen :Rp. ");
+            System.out.print("Masukkan Harga Ramyeon :Rp. ");
             int HargaProduk =  Main.CheckInt();
             if (HargaProduk <= 0) throw new IllegalArgumentException();
             
@@ -1206,6 +1241,7 @@ class Ramen extends Produk{
             this.Nama = NamaProduk;
             this.Bahan = BahanRamen;
             this.Jenis = JenisRamen;
+            this.Berat = BeratRamen;
             this.Stok = StokProduk;
             this.Harga = HargaProduk;
             
@@ -1228,26 +1264,32 @@ class Ramen extends Produk{
         if (NamaBaru.equals("99")) return;
         else if (NamaBaru.equals("")) NamaBaru = this.Nama;
         
-        System.out.println("Versi Bahan Ramen: " + this.Bahan);
-        System.out.print("Versi Bahan Ramen: ");
+        System.out.println("Bahan Ramyeon Lama: " + this.Bahan);
+        System.out.print("Bahan Ramyeon Baru: ");
         String BahanRamenBaru = br.readLine();
         if (BahanRamenBaru.equals("99")) return;
         else if (BahanRamenBaru.equals("")) BahanRamenBaru = this.Bahan;
         
-        System.out.println("Versi Bahan Ramen: " + this.Bahan);
-        System.out.print("Versi Bahan Ramen: ");
+        System.out.println("Jenis Ramyeon Lama: " + this.Jenis);
+        System.out.print("Jenis Ramyeon Baru: ");
         String JenisRamenBaru = br.readLine();
         if (JenisRamenBaru.equals("99")) return;
-        else if (JenisRamenBaru.equals("")) JenisRamenBaru = this.Bahan;       
+        else if (JenisRamenBaru.equals("")) JenisRamenBaru = this.Jenis;       
         
-        System.out.println("Masukkan Stok Ramen Lama:  " + this.Stok);
-        System.out.print("Masukkan Stok Ramen Baru:  ");
+        System.out.println("Berat Ramyeon Lama: " + this.Berat);
+        System.out.print("Berat Ramyeon Baru: ");
+        String BeratRamenBaru = br.readLine();
+        if (BeratRamenBaru.equals("99")) return;
+        else if (BeratRamenBaru.equals("")) BeratRamenBaru = this.Berat;     
+        
+        System.out.println("Masukkan Stok Ramyeon Lama:  " + this.Stok);
+        System.out.print("Masukkan Stok Ramyeon Baru:  ");
         int StokProdukBaru =  Main.CheckInt();
         if (StokProdukBaru == 99) return;
         else if (StokProdukBaru <= 0) StokProdukBaru = this.Stok;
 
-        System.out.println("Masukkan Harga Ramen Lama: Rp. " + this.Harga);
-        System.out.print("Masukkan Harga Ramen Baru: Rp. ");
+        System.out.println("Masukkan Harga Ramyeon Lama: Rp. " + this.Harga);
+        System.out.print("Masukkan Harga Ramyeon Baru: Rp. ");
         int HargaBaru =  Main.CheckInt();
         if (HargaBaru == 99) return;
         else if (HargaBaru <= 0) HargaBaru = this.Harga;
@@ -1255,6 +1297,7 @@ class Ramen extends Produk{
         this.Nama = NamaBaru;
         this.Bahan = BahanRamenBaru;
         this.Jenis = JenisRamenBaru;
+         this.Berat = BeratRamenBaru;
         this.Stok = StokProdukBaru;
         this.Harga = HargaBaru;
         
@@ -1271,10 +1314,11 @@ class Ramen extends Produk{
         System.out.printf("%-" + IDWidth + "s", "ID");
         System.out.printf("%-" + ColumnWidth + "s", "Nama Produk");
         System.out.printf("%-" + JenisWidth + "s", "Jenis Produk");
-        System.out.printf("%-" + ColumnWidth + "s", "Bahan Ramen");
-        System.out.printf("%-" + ColumnWidth + "s", "Jenis Ramen");
-        System.out.printf("%-" + ColumnWidth + "s", "Stok Ramen ");
-        System.out.printf("%-" + ColumnWidth + "s", "Harga Ramen");
+        System.out.printf("%-" + ColumnWidth + "s", "Bahan Ramyeon");
+        System.out.printf("%-" + ColumnWidth + "s", "Jenis Ramyeon");
+         System.out.printf("%-" + ColumnWidth + "s", "Berat Ramyeon");
+        System.out.printf("%-" + ColumnWidth + "s", "Stok Ramyeon ");
+        System.out.printf("%-" + ColumnWidth + "s", "Harga Ramyeon");
         System.out.println();
 
         // Mencetak baris pemisah
@@ -1289,8 +1333,130 @@ class Ramen extends Produk{
         System.out.printf("%-" + JenisWidth + "s", this.getClass().getSimpleName());
         System.out.printf("%-" + ColumnWidth + "s", this.Bahan);
         System.out.printf("%-" + ColumnWidth + "s", this.Jenis);
+        System.out.printf("%-" + ColumnWidth + "s", this.Berat);
         System.out.printf("%-" + ColumnWidth + "d", this.Stok);
         System.out.printf("%-" + ColumnWidth + "d", this.Harga);
         System.out.println();
     }
 }
+
+class Fishcake extends Produk{
+    String Bahan;
+    String Berat;
+
+    @Override
+    Produk TambahProduk(){
+        try{
+            System.out.print("Masukkan Nama Produk : ");
+            String NamaProduk = br.readLine();
+            if (NamaProduk.equals("")) throw new IllegalArgumentException();
+            
+            System.out.print("Masukkan Bahan Utama Fishcake : ");
+            String BahanFishcake = br.readLine();
+            if (BahanFishcake.equals("")) throw new IllegalArgumentException();
+     
+            System.out.print("Masukkan Berat Makanan : ");
+            String BeratFishcake = br.readLine();
+            if (BeratFishcake.equals("")) throw new IllegalArgumentException();
+            
+            System.out.print("Masukkan Stok Fishcake : ");
+            int StokProduk =  Main.CheckInt();
+            if (StokProduk <= 0) throw new IllegalArgumentException();
+            
+            System.out.print("Masukkan Harga Fishcake :Rp. ");
+            int HargaProduk =  Main.CheckInt();
+            if (HargaProduk <= 0) throw new IllegalArgumentException();
+            
+            this.ID = Main.capIDProduk;
+            this.Nama = NamaProduk;
+            this.Bahan = BahanFishcake;
+            this.Berat = BeratFishcake;
+            this.Stok = StokProduk;
+            this.Harga = HargaProduk;
+            
+            return this;
+            
+        } catch (IOException | IllegalArgumentException e){
+                System.out.println(" Terjadi error saat menginput data.");
+                return null;
+        }
+        
+    }
+    @Override
+    void UbahProduk() throws IOException{
+        System.out.println(" Kosongkan jika tidak ingin mengubah data.");
+        System.out.println(" Isi dengan 99 untuk kembali");
+
+        System.out.println("Nama Produk Baru: " + this.Nama);
+        System.out.print("Nama Produk Lama: ");
+        String NamaBaru = br.readLine();
+        if (NamaBaru.equals("99")) return;
+        else if (NamaBaru.equals("")) NamaBaru = this.Nama;
+        
+        System.out.println("Bahan Fishcake Lama: " + this.Bahan);
+        System.out.print("Bahan Fishcake Baru: ");
+        String BahanFishcakeBaru = br.readLine();
+        if (BahanFishcakeBaru.equals("99")) return;
+        else if (BahanFishcakeBaru.equals("")) BahanFishcakeBaru = this.Bahan;
+        
+        System.out.println("Berat Makanan Lama: " + this.Berat);
+        System.out.print("Berat Makanan Baru: ");
+        String BeratFishcakeBaru = br.readLine();
+        if (BeratFishcakeBaru.equals("99")) return;
+        else if (BeratFishcakeBaru.equals("")) BeratFishcakeBaru = this.Berat;       
+        
+        System.out.println("Masukkan Stok Fishcake Lama:  " + this.Stok);
+        System.out.print("Masukkan Stok Fishcake Baru:  ");
+        int StokProdukBaru =  Main.CheckInt();
+        if (StokProdukBaru == 99) return;
+        else if (StokProdukBaru <= 0) StokProdukBaru = this.Stok;
+
+        System.out.println("Masukkan Harga Fishcake Lama: Rp. " + this.Harga);
+        System.out.print("Masukkan Harga Fishcake Baru: Rp. ");
+        int HargaBaru =  Main.CheckInt();
+        if (HargaBaru == 99) return;
+        else if (HargaBaru <= 0) HargaBaru = this.Harga;
+        
+        this.Nama = NamaBaru;
+        this.Bahan = BahanFishcakeBaru;
+        this.Berat = BeratFishcakeBaru;
+        this.Stok = StokProdukBaru;
+        this.Harga = HargaBaru;
+        
+    }
+    
+    @Override
+    void TampilProduk(){
+        // Mendefinisikan lebar kolom
+        int IDWidth = 5;
+        int JenisWidth = 15;
+        int ColumnWidth = 25;
+
+        // Mencetak judul kolom
+        System.out.printf("%-" + IDWidth + "s", "ID");
+        System.out.printf("%-" + ColumnWidth + "s", "Nama Produk");
+        System.out.printf("%-" + JenisWidth + "s", "Jenis Produk");
+        System.out.printf("%-" + ColumnWidth + "s", "Bahan Fishcake");
+        System.out.printf("%-" + ColumnWidth + "s", "Berat Fishcake");
+        System.out.printf("%-" + ColumnWidth + "s", "Stok Fishcake ");
+        System.out.printf("%-" + ColumnWidth + "s", "Harga Fishcake");
+        System.out.println();
+
+        // Mencetak baris pemisah
+        for (int i = 0; i < ColumnWidth * 5; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+
+        // Mencetak isi tabel
+        System.out.printf("%-" + IDWidth + "d", this.ID);
+        System.out.printf("%-" + ColumnWidth + "s", this.Nama);
+        System.out.printf("%-" + JenisWidth + "s", this.getClass().getSimpleName());
+        System.out.printf("%-" + ColumnWidth + "s", this.Bahan);
+        System.out.printf("%-" + ColumnWidth + "s", this.Berat);
+        System.out.printf("%-" + ColumnWidth + "d", this.Stok);
+        System.out.printf("%-" + ColumnWidth + "d", this.Harga);
+        System.out.println();
+    }
+}
+
