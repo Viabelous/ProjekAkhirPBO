@@ -45,8 +45,7 @@ public class Toko {
         for (int Seller : IDSeller){
             int index = Main.AkunSequential(Seller) ;
             System.out.print(" -. ");
-            System.out.print(" [" + Seller + "] ");
-            Main.DaftarAkun.get(index).getNama();
+            System.out.print(" [" + Seller + "] " + Main.DaftarAkun.get(index).getNama());
             System.out.println("");
             
         }
@@ -68,13 +67,13 @@ public class Toko {
     
     
     public void HapusSeller(int IndexID) throws IOException{
-        System.out.println("Yakin hapus seller dari toko (Y/N)?");
-        System.out.println(":>> ");
+        System.out.println(" Yakin hapus seller dari toko (Y/N)?");
+        System.out.print(" :>> ");
         
         String Conf = br.readLine();
         if(Conf == null) Conf = "N";
         
-        if (Conf.equals("Y")) Main.DaftarToko.remove(IndexID-1);
+        if (Conf.equals("Y")) IDSeller.remove(IndexID-1);
     }
     
     
@@ -188,8 +187,8 @@ public class Toko {
         while(true){
             Main.Clear();
             if(Main.PortToBag == true) return;
-            if(Main.Menu.equals("Admin")) System.out.println(" [0] Tambah Toko");
             System.out.println(" [99] Kembali");
+            if(Main.Menu.equals("Admin")) System.out.println(" [0] Tambah Toko");
             System.out.println("------------------------");
             Toko.TampilSemuaToko();
             System.out.println("\n Pilih Toko");
@@ -349,12 +348,18 @@ public class Toko {
 //                    TampilSellerToko();
                     System.out.println(" Pilih seller yang ingin ditambahkan");
                     System.out.print(" :>> ");
-                    Opsi = CheckInt();
+                    int IDAdd = CheckInt();
                     
-                    this.TambahSeller(Opsi);
+                    this.TambahSeller(IDAdd);
+                    break;
                 case 2: 
 //                    TampilSellerToko();
-                    this.HapusSeller(Opsi);
+                    System.out.println(" Pilih seller yang ingin dihapus dari toko");
+                    System.out.print(" :>> ");
+                    int IDDel = CheckInt();
+                    
+                    this.HapusSeller(IDDel);
+                    break;
             }
     }
 

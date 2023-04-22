@@ -341,7 +341,7 @@ class Admin extends Akun{
             
             // need error handling
             switch (Opsi) {
-                case 99 -> {break;}
+                case 99 -> {return;}
                 case 0 -> (new Seller()).TambahAkun();
                 default -> {
                     boolean validation = (new Seller()).HapusAkun();
