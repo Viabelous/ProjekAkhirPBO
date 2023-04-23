@@ -301,21 +301,9 @@ public class Toko {
                             (9) Tteokbokki
                             (10) Ramyeon
                             (11) Fishcake
-                            (12) Gochujang
-                            (13) Soy Sauce
-                            (14) Sesame Seed
-                            (15) JinGanjang                           
-                            (16) Bulgogi
-                            (17) Buldak
-                            (18) Pepero
-                            (19) Crown 
-                            (20) Nongshim
-                            (21) Chungwoo 
-                            (22) Woongjin
-                            (23) Binggrae
-                            (24) Pororo
-                            (25) Vegemil
-                            (26) EDIYA
+                            (12) KoreanSauce
+                            (13) KoreanDrink
+                            (14) KoreanSnack
 		|  ||                                     || |
 		|   \\\\                                   //  |
 		| ------------------------------------------ |
@@ -336,27 +324,15 @@ public class Toko {
             case 9 -> this.TambahProduk((new Tteokbokki()).TambahProduk());
             case 10 -> this.TambahProduk((new Ramyeon()).TambahProduk());
             case 11 -> this.TambahProduk((new Fishcake()).TambahProduk());
-            case 12 -> this.TambahProduk((new Gochujang()).TambahProduk());
-            case 13 -> this.TambahProduk((new SoySauce()).TambahProduk());
-            case 14 -> this.TambahProduk((new SesameSeed()).TambahProduk());
-            case 15 -> this.TambahProduk((new JinGanjang()).TambahProduk());
-            case 16 -> this.TambahProduk((new Bulgogi()).TambahProduk());
-            case 17 -> this.TambahProduk((new Buldak()).TambahProduk());
-            case 18 -> this.TambahProduk((new Pepero()).TambahProduk());
-            case 19 -> this.TambahProduk((new Crown ()).TambahProduk());
-            case 20 -> this.TambahProduk((new Nongshim()).TambahProduk());
-            case 21 -> this.TambahProduk((new Chungwoo ()).TambahProduk());
-            case 22 -> this.TambahProduk((new Woongjin()).TambahProduk());
-            case 23 -> this.TambahProduk((new Binggrae()).TambahProduk());
-            case 24 -> this.TambahProduk((new Pororo()).TambahProduk());
-            case 25 -> this.TambahProduk((new Vegemil()).TambahProduk());
-            case 26 -> this.TambahProduk((new EDIYA()).TambahProduk());
+            case 12 -> this.TambahProduk((new KoreanSauce()).TambahProduk());
+            case 13 -> this.TambahProduk((new KoreanDrink()).TambahProduk());
+            case 14 -> this.TambahProduk((new KoreanSnack()).TambahProduk());
 
             case 928 -> {return;}
         }
     }
     
-    
+////    
     // Produce untuk menambah/menghapus seller dari toko
     void ManajemenSellerToko() throws IOException, InterruptedException {
         Main.Clear();
