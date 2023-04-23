@@ -142,6 +142,7 @@ public class Toko {
     }
     
     
+    // Prosedur untuk Costumer membeli produk
     public void BeliProduk(Produk Prod) throws IOException, InterruptedException{
         Main.Clear();
         Prod.TampilProduk();
@@ -286,25 +287,25 @@ public class Toko {
     void MenuTambahProduk() throws IOException{
         System.out.println("""
 		| ------------------------------------------ |
-		|   //     Create Produk Toko          \\\\  |	
+		|   //     Create Produk Toko          \\\\    |	
 		|  ||                                     || |
-                            Pilih Produk
-                            (99) Kembali
-                            (1) Album
-                            (2) Lightstick 
-                            (3) Poster 
-                            (4) Postcard
-                            (5) Photocard
-                            (6) Keyring
-                            (7) Lanyard
-                            (8) Kimchi
-                            (9) Tteokbokki
-                            (10) Ramyeon
-                            (11) Fishcake
-                            (12) KoreanSauce
-                            (13) KoreanDrink
-                            (14) KoreanSnack
+                |  ||       Pilih Produk                  || |
+                |  ||       (1) Album                     || |
+                |  ||       (2) Lightstick                || |
+                |  ||       (3) Poster                    || |
+                |  ||       (4) Postcard                  || |
+                |  ||       (5) Photocard                 || |
+                |  ||       (6) Keyring                   || |
+                |  ||       (7) Lanyard                   || |
+                |  ||       (8) Kimchi                    || |
+                |  ||       (9) Tteokbokki                || |
+                |  ||       (10) Ramyeon                  || |
+                |  ||       (11) Fishcake                 || |
+                |  ||       (12) KoreanSauce              || |
+                |  ||       (13) KoreanDrink              || |
+                |  ||       (14) KoreanSnack              || |
 		|  ||                                     || |
+                |  ||       (99) Kembali                  || |
 		|   \\\\                                   //  |
 		| ------------------------------------------ |
                             """);
@@ -328,7 +329,7 @@ public class Toko {
             case 13 -> this.TambahProduk((new KoreanDrink()).TambahProduk());
             case 14 -> this.TambahProduk((new KoreanSnack()).TambahProduk());
 
-            case 928 -> {return;}
+            case 99 -> {return;}
         }
     }
     

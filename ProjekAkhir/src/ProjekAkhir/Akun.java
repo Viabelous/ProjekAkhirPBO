@@ -72,6 +72,7 @@ abstract class Akun {
 class Customer extends Akun implements MultiableAcc{
     
     private String NoHP;
+    private String Kota;
     private String Alamat;
     private ArrayList<Belanja> TasBelanja = new ArrayList<>();
     
@@ -81,7 +82,7 @@ class Customer extends Akun implements MultiableAcc{
     
     @Override
     public void TambahAkun(){
-        String NamaA, UsnA, PassA, EmailA, Nomor, Addr;
+        String NamaA, UsnA, PassA, EmailA, KotaA, Nomor, Addr;
 
         try{
             System.out.print(" Username : ");
@@ -129,7 +130,11 @@ class Customer extends Akun implements MultiableAcc{
             }
             
             
-            System.out.print(" Alamat   : ");
+            System.out.print(" Kota   : ");
+            KotaA = br.readLine();
+            if (KotaA.equals("")) throw new IllegalArgumentException();
+            
+            System.out.print(" Alamat Lengkap: ");
             Addr = br.readLine();
             if (Addr.equals("")) throw new IllegalArgumentException();
             
@@ -145,6 +150,7 @@ class Customer extends Akun implements MultiableAcc{
         this.Email = EmailA;
         this.setNoHP(Nomor);
         this.setAlamat(Addr);
+        this.setKota(KotaA);
     }
     
     
@@ -173,6 +179,14 @@ class Customer extends Akun implements MultiableAcc{
 
     public void setAlamat(String Alamat) {
         this.Alamat = Alamat;
+    }
+    
+    public String getKota() {
+        return Kota;
+    }
+
+    public void setKota(String Kota) {
+        this.Kota = Kota;
     }
     
     public void TasBelanjaAdd(Belanja ProdBelanja){
@@ -210,6 +224,169 @@ class Customer extends Akun implements MultiableAcc{
             
             System.out.println("[99] Kembali");
             br.readLine();
+        }
+    }
+    
+    
+    void UbahProfil() throws IOException, InterruptedException {
+        String NewNama, NewUsn, NewPass, NewEmail, KonfirPass,
+               NewKota, NewAlamat, NewNomor;
+        
+        while(true){
+            Main.Clear();
+
+            System.out.println("""
+               | ---------------------------------------- |
+               |  //                                  \\\\  |
+               | ||                                    || |
+                        Nama      : """ + (" ") + this.Nama + "\n" +
+                """
+                \t Username""" + "  : " + this.Usn + "\n" +
+                """
+                \t Password""" + "  : ************  \n" +
+                """
+                \t Email""" + "     : "  + this.Email + "\n" +
+                """
+                \t Nomor""" + "     : "  + this.NoHP + "\n" +
+                """
+                \t Kota""" + "      : "  + this.Kota + "\n" +
+                """
+                \t Alamat""" + "    : "  + this.Alamat + "\n" +
+                """
+                | ||                                    || |
+                |  \\\\                                  //  |
+                | ---------------------------------------- |
+                       """);
+
+            System.out.println("""
+                | ---------------------------------------- |   
+                |   //         Menu Ubah Profil        \\\\  |
+                |  ||                                   || |
+                |  ||        (99)-. Kembali             || |
+                |  ||        (1)-. Ubah Data Akun       || |
+                |  ||                                   || |
+                |   \\\\                                 //  |
+                | ---------------------------------------- |
+                               """);
+
+            System.out.print(" :>> ");
+            Opsi = CheckInt();
+
+            switch (Opsi) {
+                case 99 -> {return;}
+                case 1 -> {
+                    Main.Clear();
+
+                    try{
+                    
+                        System.out.println("\tSilahkan masukkan password\n\t    sebelum ubah data");
+                        System.out.println("------------------------------------------\n");
+                        System.out.print(" Masukkan Password   : ");
+                        KonfirPass = br.readLine();
+                        System.out.println("-----------------------------------\n");
+                        if (KonfirPass.equals("")) throw new IllegalArgumentException();
+
+                        if(!this.Pass.equals(KonfirPass)){
+                            System.out.println("\n\tPassword salah");
+                            br.readLine();
+                            break;
+                        }
+
+                        Main.Clear();
+
+                        System.out.println("Ketik '99' untuk kembali");
+                        System.out.println("Ketik '0' untuk menggunakan data lama");
+                        System.out.println("\n\tMasukkan Data Akun Baru");
+                        System.out.println("---------------------------------------\n");
+                        System.out.println("Nama Lama: " + this.Nama);
+                        System.out.print("Masukkan Nama Baru: ");
+                        NewNama = br.readLine();
+                        switch (NewNama) {
+                            case "99" -> {continue;}
+                            case "0" -> NewNama = this.Nama;
+                            case "" -> throw new IllegalArgumentException();
+                        }
+
+                        System.out.println("Username Lama: " + this.Usn);
+                        System.out.print("Username Baru: ");
+                        NewUsn = br.readLine();
+                        switch (NewUsn) {
+                            case "99" -> {continue;}
+                            case "0" -> NewUsn = this.Usn;
+                            case "" -> throw new IllegalArgumentException();
+                        }
+
+                        System.out.println("Password Lama: *******");
+                        System.out.print("Password Baru: ");
+                        NewPass = br.readLine();
+                        switch (NewPass) {
+                            case "99" -> {continue;}
+                            case "0" -> NewPass = this.Pass;
+                            case "" -> throw new IllegalArgumentException();
+                        }
+
+                        System.out.println("Email Lama: " + this.Email);
+                        System.out.print("Email Baru: ");
+                        NewEmail = br.readLine();
+                        switch (NewEmail) {
+                            case "99" -> {continue;}
+                            case "0" -> NewEmail = this.Email;
+                            case "" -> throw new IllegalArgumentException();
+                        }
+
+                        System.out.println("noHP Lama: " + this.NoHP);
+                        System.out.print("noHP Baru: ");
+                        NewNomor = br.readLine();
+
+                        if (NewNomor.equals("99")) {continue;}
+                        if (NewNomor.equals("0")) NewNomor = this.NoHP;
+                        if (!NewNomor.equals("")){
+                            for (char ch : NewNomor.toCharArray()){
+                                if((int)ch < 48 || (int)ch > 57){
+                                    throw new IllegalArgumentException();
+                                }
+                            }
+                        }
+                        else{
+                            throw new IllegalArgumentException();
+                        }
+
+                        System.out.println("Kota Lama: " + this.Kota);
+                        System.out.print("Kota Baru: ");
+                        NewKota = br.readLine();
+                        switch (NewKota) {
+                            case "99" -> {continue;}
+                            case "0" -> NewKota = this.Kota;
+                            case "" -> throw new IllegalArgumentException();
+                        }
+
+                        System.out.println("Alamat Lama: " + this.Alamat);
+                        System.out.print("Alamat Baru: ");
+                        NewAlamat = br.readLine();
+                        switch (NewAlamat) {
+                            case "99" -> {continue;}
+                            case "0" -> NewAlamat = this.Alamat;
+                            case "" -> throw new IllegalArgumentException();
+                        }
+
+                        this.Nama = NewNama;
+                        this.Usn = NewUsn;
+                        this.Pass = NewPass;
+                        this.Email = NewEmail;
+                        this.NoHP = NewNomor;
+                        this.Kota = NewKota;
+                        this.Alamat = NewAlamat;
+
+
+                        Main.Clear();
+                        System.out.println("\t     Berhasil ubah akun\n");
+                        br.readLine();
+                    }
+                    catch(IllegalArgumentException e){
+                        System.out.println(" Terjadi error saat menginput data.");
+                    }
+                }
+            }
         }
     }
     
@@ -354,106 +531,118 @@ class Admin extends Akun{
         }
     }
     
-    void ubahProfil() throws IOException, InterruptedException {
+    void UbahProfil() throws IOException, InterruptedException {
         String NewNama, NewUsn, NewPass, NewEmail, KonfirPass;
         
-        Main.Clear();
-        System.out.println("""
-            | ---------------------------------------- |   
-            |   //         Menu Ubah Profil        \\\\  |
-            |  ||                                   || |
-            |  ||        (99)-. Kembali             || |
-            |  ||        (1)-. Ubah Data Akun       || |
-            |  ||                                   || |
-            |   \\\\                                 //  |
-            | ---------------------------------------- |
-                           """);
-        
-        System.out.print(" :>> ");
-        Opsi = CheckInt();
-        
-        switch (Opsi) {
-            case 99 -> {return;}
-            case 1 -> {
-                Main.Clear();
-                
-                System.out.println("\tSilahkan masukkan password\n\t    sebelum ubah data");
-                System.out.println("------------------------------------------\n");
-                System.out.print(" Masukkan Password   : ");
-                KonfirPass = br.readLine();
-                System.out.println("-----------------------------------\n");
-                if (KonfirPass.equals("")) throw new IllegalArgumentException();
-                
-                if(!Main.DaftarAkun.get(0).getPass().equals(KonfirPass)){
-                    System.out.println("\n\tPassword salah");
-                    br.readLine();
-                    break;
+        while(true){
+            Main.Clear();
+
+            System.out.println("""
+               | ---------------------------------------- |
+               |  //                                  \\\\  |
+               | ||                                    || |
+                        Nama      : """ + (" ") + this.Nama + "\n" +
+                """
+                \t Username""" + "  : " + this.Usn + "\n" +
+                """
+                \t Password""" + "  : ************  \n" +
+                """
+                \t Email""" + "     : "  + this.Email + "\n" +
+                """
+                | ||                                    || |
+                |  \\\\                                  //  |
+                | ---------------------------------------- |
+                       """);
+
+            System.out.println("""
+                | ---------------------------------------- |   
+                |   //         Menu Ubah Profil        \\\\  |
+                |  ||                                   || |
+                |  ||        (99)-. Kembali             || |
+                |  ||        (1)-. Ubah Data Akun       || |
+                |  ||                                   || |
+                |   \\\\                                 //  |
+                | ---------------------------------------- |
+                               """);
+
+            System.out.print(" :>> ");
+            Opsi = CheckInt();
+
+            switch (Opsi) {
+                case 99 -> {return;}
+                case 1 -> {
+                    Main.Clear();
+
+                    try{
+                        System.out.println("\tSilahkan masukkan password\n\t    sebelum ubah data");
+                        System.out.println("------------------------------------------\n");
+                        System.out.print(" Masukkan Password   : ");
+                        KonfirPass = br.readLine();
+                        System.out.println("-----------------------------------\n");
+                        if (KonfirPass.equals("")) throw new IllegalArgumentException();
+
+                        if(!this.Pass.equals(KonfirPass)){
+                            System.out.println("\n\tPassword salah");
+                            br.readLine();
+                            break;
+                        }
+
+                        Main.Clear();
+
+                        System.out.println("Ketik '99' untuk kembali");
+                        System.out.println("Ketik '0' untuk menggunakan data lama");
+                        System.out.println("\n\tMasukkan Data Akun Baru");
+                        System.out.println("---------------------------------------\n");
+                        System.out.println("Nama Lama: " + this.Nama);
+                        System.out.print("Masukkan Nama Baru: ");
+                        NewNama = br.readLine();
+                        switch (NewNama) {
+                            case "99" -> {continue;}
+                            case "0" -> NewNama = this.Nama;
+                            case "" -> throw new IllegalArgumentException();
+                        }
+
+                        System.out.println("Username Lama: " + this.Usn);
+                        System.out.print("Username Baru: ");
+                        NewUsn = br.readLine();
+                        switch (NewUsn) {
+                            case "99" -> {continue;}
+                            case "0" -> NewUsn = this.Usn;
+                            case "" -> throw new IllegalArgumentException();
+                        }
+
+                        System.out.println("Password Lama: *******");
+                        System.out.print("Password Baru: ");
+                        NewPass = br.readLine();
+                        switch (NewPass) {
+                            case "99" -> {continue;}
+                            case "0" -> NewPass = this.Pass;
+                            case "" -> throw new IllegalArgumentException();
+                        }
+
+                        System.out.println("Email Lama: " + this.Email);
+                        System.out.print("Email Baru: ");
+                        NewEmail = br.readLine();
+                        switch (NewEmail) {
+                            case "99" -> {continue;}
+                            case "0" -> NewEmail = this.Email;
+                            case "" -> throw new IllegalArgumentException();
+                        }
+
+                        this.Nama = NewNama;
+                        this.Usn = NewUsn;
+                        this.Pass = NewPass;
+                        this.Email = NewEmail;
+
+                        Main.Clear();
+                        System.out.println("\t     Berhasil ubah akun\n");
+                        br.readLine();
+                    }
+                    catch(IllegalArgumentException e){
+                        System.out.println(" Terjadi error saat menginput data.");
+                        br.readLine();
+                    }
                 }
-                
-                Main.Clear();
-                System.out.println("""
-                   | ---------------------------------------- |
-                   |  //                                  \\\\  |
-                   | ||                                    || |
-                            Nama      : """ + Main.DaftarAkun.get(0).Nama + "\n" +
-                    """
-                    \t Username""" + "  : " + Main.DaftarAkun.get(0).Usn + "\n" +
-                    """
-                    \t Password""" + "  : ************  \n" +
-                    """
-                    \t Email""" + "     : "  + Main.DaftarAkun.get(0).Email + "\n" +
-                    """
-                    | ||                                    || |
-                    |  \\\\                                  //  |
-                    | ---------------------------------------- |
-                           """);
-                
-                
-                System.out.println("\n\tMasukkan Data Akun Baru");
-                System.out.println("---------------------------------------\n");
-                System.out.print(" Masukkan nama     : ");
-                NewNama = br.readLine();
-                if (NewNama.equals("")) throw new IllegalArgumentException();
-
-                System.out.print(" Masukkan Username : ");
-                NewUsn = br.readLine();
-                if (NewUsn.equals("")) throw new IllegalArgumentException();
-
-                System.out.print(" Masukkan Password : ");
-                NewPass = br.readLine();
-                if (NewPass.equals("")) throw new IllegalArgumentException();
-
-                System.out.print(" Masukkan Email    : ");
-                NewEmail = br.readLine();
-                if (NewEmail.equals("")) throw new IllegalArgumentException();
-                
-                this.Nama = NewNama;
-                this.Usn = NewUsn;
-                this.Pass = NewPass;
-                this.Email = NewEmail;
-                
-                
-                Main.Clear();
-                System.out.println("--------------------------------------------");
-                System.out.println("\t     Berhasil ubah akun\n");
-                
-                System.out.println("""
-                    | ---------------------------------------- |
-                    |  //                                  \\\\  |
-                    | ||                                    || |
-                            Nama      : """ + NewNama + "\n" +
-                    """
-                    \t Username""" + "  : " + NewUsn + "\n" +
-                    """
-                    \t Password""" + "  : ************  \n" +
-                    """
-                    \t Email""" + "     : "  + NewEmail + "\n" +
-                    """
-                    | ||                                    || |
-                    |  \\\\                                  //  |
-                    | ---------------------------------------- |
-                           """);
-                br.readLine();
             }
         }
     }

@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-
 /**
  *
  * @author Viabel
@@ -16,7 +15,7 @@ import java.util.ArrayList;
         -. Manajemen Seller (--> admin) butuh error handling indeks out of bounds
 
     [Butuh Konfirmasi]
-        -. Tampilan Produknya ga sesuai sama fungsi yang ada di masing2 classnya, malah fungsi album terus yang kepake
+        -. Tampilan banyak masih minus keknya
 
 */
 
@@ -141,7 +140,7 @@ public class Main {
     }
 
     // Hapus nanti
-    public static Customer DefaultCostumerAcc(String UsnA, String PassA, String NamaA, String EmailA, String Nomor, String Addr){
+    public static Customer DefaultCostumerAcc(String UsnA, String PassA, String NamaA, String EmailA, String Nomor, String Kota, String Addr){
        Customer User = new Customer();
         
         User.setID(capIDAkun);
@@ -149,6 +148,10 @@ public class Main {
         User.setPass(PassA);
         User.setNama(NamaA);
         User.setEmail(EmailA);
+        User.setNoHP(Nomor);
+        User.setKota(Kota);
+        User.setAlamat(Addr);
+        
         capIDAkun+=1;
         
         return User;
@@ -159,14 +162,17 @@ public class Main {
         
         // Untuk Uji Coba, Mohon hapus nanti
         DaftarAkun.add(DefaultSellerAcc("Agus", "Sun1004", "Tina", "AgusNumeroUno@Naver.com", "1004", "Bumbum"));
-        DaftarAkun.add(DefaultCostumerAcc("Viabel", "Vivin", "Youvi", "YupiKenyalnya@Naver.com", "08122222", "BoomBoom"));
+        DaftarAkun.add(DefaultCostumerAcc("Viabel", "Vivin", "Youvi", "YupiKenyalnya@Naver.com", "08122222", "Samarinda", "BoomBoom"));
 
-        DaftarToko.add(new Toko(1, "Toko Sukamiskin", "Busan"));
+        DaftarToko.add(new Toko(0, "Toko Sukamiskin", "Samarinda"));
+        DaftarToko.add(new Toko(1, "Toko Rajinibadah", "Pontibapak"));
         DaftarToko.get(0).TambahProduk((new Album()).TambahProduk("Birthday (Smini Ver)", "Red Velvet","Smini Ver", 4, 300000));
         DaftarToko.get(0).TambahProduk((new Album()).TambahProduk( "Birthday (Digipack Ver)", "Red Velvet","Digipack Ver", 4, 280000 ));
         DaftarToko.get(0).TambahProduk((new LightStick()).TambahProduk("LightStick EXO", "EXO", true, "Ver 2", 1, 826000));
         DaftarToko.get(0).TambahProduk((new Album()).TambahProduk("Asterum", "PLAVE","", 5, 180000 ));
-        capIDProduk += 4;
+        DaftarToko.get(1).TambahProduk((new Album()).TambahProduk("Rise Up", "ASTRO","", 10, 320000 ));
+        
+        capIDToko += 2;
         
         DaftarToko.get(0).TambahSeller(1);
         
@@ -183,7 +189,7 @@ public class Main {
                 Clear();
                 System.out.println("""
                                     | -------------------------------------------- |
-                                    |   //  Selamat Datang Di Korean Market :) \\\\  |
+                                    |   //  Selamat Datang di Korean Market :) \\\\  |
                                     |  ||                                       || |
                                     |  ||            (1) Login                  || |
                                     |  ||            (2) Register               || |
@@ -328,7 +334,7 @@ public class Main {
                         }
                         case 2 -> ((Customer)getActiveUserIndex()).FeelMyBag();
                         case 3 -> {}
-                        case 4 -> {}
+                        case 4 -> ((Customer)getActiveUserIndex()).UbahProfil();
                         case 5 -> Menu = "Login";
 
                         default -> {continue;}
@@ -363,7 +369,7 @@ public class Main {
                         case 2 -> Adminian.manajemenSeller();
                         case 3 -> {//admin.riwayatPembelian();
                     }
-                        case 4 -> Adminian.ubahProfil();
+                        case 4 -> Adminian.UbahProfil();
                         case 5 -> Menu = "Login";
 
                         default -> {continue;}
