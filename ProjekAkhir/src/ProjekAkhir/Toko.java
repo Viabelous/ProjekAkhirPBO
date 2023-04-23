@@ -310,14 +310,12 @@ public class Toko {
                             (18) Pepero
                             (19) Crown 
                             (20) Nongshim
-                            (20) Chungwoo 
-                            (20) Woongjin
-                            (20)
-                            (20)
-                            (20)
-                            (20)
-                            (20)
-                            (20)
+                            (21) Chungwoo 
+                            (22) Woongjin
+                            (23) Binggrae
+                            (24) Pororo
+                            (25) Vegemil
+                            (26) EDIYA
 		|  ||                                     || |
 		|   \\\\                                   //  |
 		| ------------------------------------------ |
@@ -347,15 +345,13 @@ public class Toko {
             case 18 -> this.TambahProduk((new Pepero()).TambahProduk());
             case 19 -> this.TambahProduk((new Crown ()).TambahProduk());
             case 20 -> this.TambahProduk((new Nongshim()).TambahProduk());
-            case 26 -> this.TambahProduk((new Chungwoo ()).TambahProduk());
+            case 21 -> this.TambahProduk((new Chungwoo ()).TambahProduk());
             case 22 -> this.TambahProduk((new Woongjin()).TambahProduk());
-/*
-            case 23 -> this.TambahProduk((new Bulgogi()).TambahProduk());
-            case 24 -> this.TambahProduk((new Bulgogi()).TambahProduk());
-            case 25 -> this.TambahProduk((new Bulgogi()).TambahProduk());
-            case 26 -> this.TambahProduk((new Bulgogi()).TambahProduk());
-            case 27 -> this.TambahProduk((new Bulgogi()).TambahProduk());
-*/
+            case 23 -> this.TambahProduk((new Binggrae()).TambahProduk());
+            case 24 -> this.TambahProduk((new Pororo()).TambahProduk());
+            case 25 -> this.TambahProduk((new Vegemil()).TambahProduk());
+            case 26 -> this.TambahProduk((new EDIYA()).TambahProduk());
+
             case 928 -> {return;}
         }
     }
