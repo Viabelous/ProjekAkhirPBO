@@ -1,16 +1,13 @@
 # PROJEK AKHIR PBO
 **Manajemen Korean Market**
-```
- Contributors:
 
-  Jabatan  |     NIM    |           Nama         |     Tanggung Jawab
-__________________________________________________________________________
-  Anggota  | 2109106037 | Agustina Dwi Maharani  | Seller, Produk
-  Anggota  | 2109106039 | Ibnu Yafi Arya Wardana | Customer, Design UX
-   Ketua   | 2109106040 | Natalie Fuad 		 | Admin
-  Anggota  | 2109106042 | Hadie Pratama Tulili 	 | Autentikasi, UI
- __________________________________________________________________________
-```
+
+## Daftar Isi
+* [Deskripsi](#deskripsi)
+* [Alur Menu](#alur-menu)
+* [Contributors](#contributors)
+
+## Deskripsi
 **Program Manajemen Korean Market** adalah sebuah program multi-user tentang pasar terkait produk-produk Korea (Selatan) berisikan banyak toko yang masing-masingnya dapat diakses oleh Costumer untuk memilih dan membeli produk diinginkan.
     
 Program ini terdiri dari **tiga jenis** user yaitu **Admin, Seller, dan Customer**:
@@ -82,7 +79,10 @@ BCB -- 5 --> BCBG(Hapus Toko)
 A -- 2 --> C(Manajemen Seller)
 C -- 99 --> CA(Kembali)
 C -- 0 --> CB(Tambah Akun Seller)
-C -- <> --> CC(Hapus Akun Seller)
+C -- <> --> CC(Manajemen Akun Seller)
+	CC -- 99 --> CCA(Kembali)
+	CC -- 1 --> CCB(Ubah Informasi Akun)
+	CC -- 2 --> CCC(Hapus Akun)
 
 A -- 3 --> D(Riwayat Pembelian)
 D -- 99 --> DA(Kembali)
@@ -120,4 +120,20 @@ C -- 99 --> CA(Kembali)
 C -- 1 --> CB(Ubah Data Akun)
 
 A -- 3 --> D(Log Out)
+```
+
+## Contributors
+Dibuat oleh Mahasiswa Universitas Mulawarman, Jurusan Informatika, Kelas A 2021,  
+Dibimbing oleh Tegar Fitrah Naba Atthoriq (2009106085)
+```
+
+Contributors:
+ 
+  Jabatan  |     NIM    |           Nama         |     Tanggung Jawab
+__________________________________________________________________________
+  Anggota  | 2109106037 | Agustina Dwi Maharani  | Seller, Produk
+  Anggota  | 2109106039 | Ibnu Yafi Arya Wardana | Customer, Design UX
+   Ketua   | 2109106040 | Natalie Fuad 		 | Admin
+  Anggota  | 2109106042 | Hadie Pratama Tulili 	 | Autentikasi, UI
+ __________________________________________________________________________
 ```
