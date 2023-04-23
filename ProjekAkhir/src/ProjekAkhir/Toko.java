@@ -299,7 +299,25 @@ public class Toko {
                             (7) Lanyard
                             (8) Kimchi
                             (9) Tteokbokki
-                            (10) Ramen
+                            (10) Ramyeon
+                            (11) Fishcake
+                            (12) Gochujang
+                            (13) Soy Sauce
+                            (14) Sesame Seed
+                            (15) JinGanjang                           
+                            (16) Bulgogi
+                            (17) Buldak
+                            (18) Pepero
+                            (19) Crown 
+                            (20) Nongshim
+                            (20) Chungwoo 
+                            (20) Woongjin
+                            (20)
+                            (20)
+                            (20)
+                            (20)
+                            (20)
+                            (20)
 		|  ||                                     || |
 		|   \\\\                                   //  |
 		| ------------------------------------------ |
@@ -319,7 +337,26 @@ public class Toko {
             case 8 -> this.TambahProduk((new Kimchi()).TambahProduk());
             case 9 -> this.TambahProduk((new Tteokbokki()).TambahProduk());
             case 10 -> this.TambahProduk((new Ramyeon()).TambahProduk());
-            case 99 -> {return;}
+            case 11 -> this.TambahProduk((new Fishcake()).TambahProduk());
+            case 12 -> this.TambahProduk((new Gochujang()).TambahProduk());
+            case 13 -> this.TambahProduk((new SoySauce()).TambahProduk());
+            case 14 -> this.TambahProduk((new SesameSeed()).TambahProduk());
+            case 15 -> this.TambahProduk((new JinGanjang()).TambahProduk());
+            case 16 -> this.TambahProduk((new Bulgogi()).TambahProduk());
+            case 17 -> this.TambahProduk((new Buldak()).TambahProduk());
+            case 18 -> this.TambahProduk((new Pepero()).TambahProduk());
+            case 19 -> this.TambahProduk((new Crown ()).TambahProduk());
+            case 20 -> this.TambahProduk((new Nongshim()).TambahProduk());
+            case 26 -> this.TambahProduk((new Chungwoo ()).TambahProduk());
+            case 22 -> this.TambahProduk((new Woongjin()).TambahProduk());
+/*
+            case 23 -> this.TambahProduk((new Bulgogi()).TambahProduk());
+            case 24 -> this.TambahProduk((new Bulgogi()).TambahProduk());
+            case 25 -> this.TambahProduk((new Bulgogi()).TambahProduk());
+            case 26 -> this.TambahProduk((new Bulgogi()).TambahProduk());
+            case 27 -> this.TambahProduk((new Bulgogi()).TambahProduk());
+*/
+            case 928 -> {return;}
         }
     }
     

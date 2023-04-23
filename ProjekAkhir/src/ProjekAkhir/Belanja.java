@@ -39,10 +39,6 @@ public class Belanja {
         for (int j = 0; j < 20 * 5; j++) {
             System.out.print("-");
         }
-        System.out.println();
-        
-        
+        System.out.println();  
     }
-
-
 }
