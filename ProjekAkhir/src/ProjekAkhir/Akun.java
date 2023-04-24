@@ -212,6 +212,7 @@ class Customer extends Akun implements MultiableAcc{
     }
     
     
+    @Override
     public void TampilAkun(){
         System.out.println("""
            | ---------------------------------------- |
