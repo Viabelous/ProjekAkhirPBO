@@ -18,6 +18,8 @@ abstract class Akun {
     protected String Email;
     final protected String Otoritas;
     
+    abstract void TampilAkun();
+    
     protected Akun(String Otoritas){
         this.Otoritas = Otoritas;
     }
@@ -324,6 +326,34 @@ class Customer extends Akun implements MultiableAcc{
         
         return Conf.equals("Y");
     }
+    
+    
+    public void TampilAkun(){
+        System.out.println("""
+           | ---------------------------------------- |
+           |  //                                  \\\\  |
+           | ||                                    || |
+                    Nama      : """ + (" ") + this.Nama + "\n" +
+            """
+            \t Username""" + "  : " + this.Usn + "\n" +
+            """
+            \t Password""" + "  : ************  \n" +
+            """
+            \t Email""" + "     : "  + this.Email + "\n" +
+            """
+            \t Nomor""" + "     : "  + this.NoHP + "\n" +
+            """
+            \t Kota""" + "      : "  + this.Kota + "\n" +
+            """
+            \t Alamat""" + "    : "  + this.Alamat + "\n" +
+            """
+            | ||                                    || |
+            |  \\\\                                  //  |
+            | ---------------------------------------- |
+                   """);
+    }
+    
+    
 
     public String getNoHP() {
         return NoHP;
@@ -395,28 +425,7 @@ class Customer extends Akun implements MultiableAcc{
         while(true){
             Main.Clear();
 
-            System.out.println("""
-               | ---------------------------------------- |
-               |  //                                  \\\\  |
-               | ||                                    || |
-                        Nama      : """ + (" ") + this.Nama + "\n" +
-                """
-                \t Username""" + "  : " + this.Usn + "\n" +
-                """
-                \t Password""" + "  : ************  \n" +
-                """
-                \t Email""" + "     : "  + this.Email + "\n" +
-                """
-                \t Nomor""" + "     : "  + this.NoHP + "\n" +
-                """
-                \t Kota""" + "      : "  + this.Kota + "\n" +
-                """
-                \t Alamat""" + "    : "  + this.Alamat + "\n" +
-                """
-                | ||                                    || |
-                |  \\\\                                  //  |
-                | ---------------------------------------- |
-                       """);
+            this.TampilAkun();
 
             System.out.println("""
                 | ---------------------------------------- |   
@@ -554,7 +563,7 @@ class Customer extends Akun implements MultiableAcc{
 
 
 class Seller extends Akun implements MultiableAcc{
-    private String TokoKu;
+    private int TokoKu;
     
     Seller(){
         super("Seller");
@@ -684,16 +693,38 @@ class Seller extends Akun implements MultiableAcc{
         this.Pass = PassA;
         this.Nama = NamaA;
         this.Email = EmailA;
+        this.TokoKu = -1;
 
         System.out.println(" Akun Berhasil Ditambahkan !");
         br.readLine();
     }
     
     
+    public void TampilAkun(){
+        System.out.println("""
+           | ---------------------------------------- |
+           |  //                                  \\\\  |
+           | ||                                    || |
+                    Nama      : """ + (" ") + this.Nama + "\n" +
+            """
+            \t Username""" + "  : " + this.Usn + "\n" +
+            """
+            \t Password""" + "  : ************  \n" +
+            """
+            \t Email""" + "     : "  + this.Email + "\n" +
+            """
+            | ||                                    || |
+            |  \\\\                                  //  |
+            | ---------------------------------------- |
+                   """);
+    }
+    
+    
+    
     @Override
     public boolean HapusAkun() throws IOException{
         System.out.println("Yakin hapus akun (Y/N)?");
-        System.out.println("(Menghapus akun ini akan sekaligus menghapus Tokomu)");
+        System.out.println("(Menghapus akun ini akan sekaligus mengeluarkannya dari Toko)");
         System.out.println(":>> ");
         
         String Conf = br.readLine();
@@ -704,11 +735,20 @@ class Seller extends Akun implements MultiableAcc{
         
     }
 
-    public String getTokoKu() {
-        return TokoKu;
+    public int getTokoKu() {
+        int i = 0;
+        
+        if (this.TokoKu == -1) return TokoKu;
+        
+        for(Toko TokoTerhubung : Main.DaftarToko){
+            if (TokoTerhubung.ID == this.TokoKu) return i;
+            i++;
+            }
+        
+        return -1;
     }
 
-    public void setTokoKu(String TokoKu) {
+    public void setTokoKu(int TokoKu) {
         this.TokoKu = TokoKu;
     }
 }
@@ -725,6 +765,29 @@ class Admin extends Akun{
         this.Pass = Pass;
         this.Email = Email;
     }
+    
+    
+    @Override
+    public void TampilAkun(){
+        System.out.println("""
+           | ---------------------------------------- |
+           |  //                                  \\\\  |
+           | ||                                    || |
+                    Nama      : """ + (" ") + this.Nama + "\n" +
+            """
+            \t Username""" + "  : " + this.Usn + "\n" +
+            """
+            \t Password""" + "  : ************  \n" +
+            """
+            \t Email""" + "     : "  + this.Email + "\n" +
+            """
+            | ||                                    || |
+            |  \\\\                                  //  |
+            | ---------------------------------------- |
+                   """);
+    }
+    
+    
     
     void manajemenSeller() throws IOException, InterruptedException {
         while(true){
@@ -781,22 +844,7 @@ class Admin extends Akun{
         while(true){
             Main.Clear();
 
-            System.out.println("""
-               | ---------------------------------------- |
-               |  //                                  \\\\  |
-               | ||                                    || |
-                        Nama      : """ + (" ") + this.Nama + "\n" +
-                """
-                \t Username""" + "  : " + this.Usn + "\n" +
-                """
-                \t Password""" + "  : ************  \n" +
-                """
-                \t Email""" + "     : "  + this.Email + "\n" +
-                """
-                | ||                                    || |
-                |  \\\\                                  //  |
-                | ---------------------------------------- |
-                       """);
+            this.TampilAkun();
 
             System.out.println("""
                 | ---------------------------------------- |   

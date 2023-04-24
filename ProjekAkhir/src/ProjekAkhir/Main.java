@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 /**
  *
  * @author Viabel
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 /*
     Di sini letakkan catatan, apa yang kurang atau semacamnya
     [Belum]
+        -. Update Profil Seller
         -. Manajemen Seller (--> admin) butuh error handling indeks out of bounds
 
     [Butuh Konfirmasi]
@@ -28,6 +30,9 @@ USN DAN PASS AKUN DEFAULT (karena Yafi sering lupa UwU)
 < Seller >
     Usn: Agus
     Pass: Sun1004
+
+    Usn: HD2e
+    Pass: 2Lilies
 
 < Admin> 
     Usn: NTLee
@@ -109,21 +114,49 @@ public class Main {
         }
     }
     
-    // Koneksi Jar
-    public static int Tokoku(){
-        int i = 0;
-        for(Toko TokoTerhubung : DaftarToko){
-            for(int id : TokoTerhubung.IDSeller){
-                if(id == IDAktif){
-                    return i;
+    
+    //Prosedur untuk menampilkan semua seller yang ada
+    static public HashMap TampilSeller(boolean NonaffiliatedOnly){
+        HashMap<Integer, Seller> SellerMap = new HashMap<>();
+        int i = 1;
+        
+        // Tampil semua Seller
+        if(!NonaffiliatedOnly){
+            for (Akun AkunAda : DaftarAkun){
+                if(AkunAda.Otoritas.equals("Seller")){
+                    
+                    System.out.println("<" + i + "> " + AkunAda.Nama +
+                                        ((((Seller)AkunAda).getTokoKu() == -1)?
+                                        " <Tidak Terhubung Dengan Toko>" :
+                                        " " + DaftarToko.get(((Seller)AkunAda)
+                                                .getTokoKu()).Nama));
+                    SellerMap.put(i, (Seller)AkunAda);
+                    
+                    i++;
                 }
-            i++;
+
             }
         }
         
-        return -1;
+        // Tampil hanya seller tanpa toko
+        else{
+            for (Akun AkunAda : DaftarAkun){
+                if(AkunAda.getClass() == Seller.class)
+                    if(((Seller)AkunAda).getTokoKu() == -1){
+                        System.out.println("<" + i + "> " + AkunAda.Nama);
+                        SellerMap.put(i, (Seller)AkunAda);
+                        
+                        i++;
+                    }
+            }
+        }
+        
+        return SellerMap;
     }
-
+    
+    
+    
+    
     
     // Hapus nanti
     public static Seller DefaultSellerAcc(String UsnA, String PassA, String NamaA, String EmailA, String Nomor, String Addr){
@@ -134,6 +167,7 @@ public class Main {
         User.setPass(PassA);
         User.setNama(NamaA);
         User.setEmail(EmailA);
+        User.setTokoKu(-1);
         capIDAkun+=1;
         
         return User;
@@ -162,8 +196,9 @@ public class Main {
         
         // Untuk Uji Coba, Mohon hapus nanti
         DaftarAkun.add(DefaultSellerAcc("Agus", "Sun1004", "Tina", "AgusNumeroUno@Naver.com", "1004", "Bumbum"));
+        DaftarAkun.add(DefaultSellerAcc("HD2e", "2Lilies", "Hadie Pratama", "HadiePTM@yahoo.com", "0808", "Pekalongan"));
         DaftarAkun.add(DefaultCostumerAcc("Viabel", "Vivin", "Youvi", "YupiKenyalnya@Naver.com", "08122222", "Samarinda", "BoomBoom"));
-
+        
         DaftarToko.add(new Toko(0, "Toko Sukamiskin", "Samarinda"));
         DaftarToko.add(new Toko(1, "Toko Rajinibadah", "Pontibapak"));
         DaftarToko.get(0).TambahProduk((new Album()).TambahProduk("Birthday (Smini Ver)", "Red Velvet","Smini Ver", 4, 300000));
@@ -399,8 +434,11 @@ public class Main {
                     
                     switch (Opsi) {
                         case 1 -> {
-                            int IndexToko = Tokoku();
-                            if(IndexToko == -1) System.out.println("Datamu belum terhubung dengan toko manapun.");
+                            int IndexToko = ((Seller)getActiveUserIndex()).getTokoKu();
+                            if(IndexToko == -1){
+                                System.out.println("Datamu belum terhubung dengan toko manapun.");
+                                br.readLine();
+                            }
                             else DaftarToko.get(IndexToko).TampilProduk();
                         }
                         case 2 -> {}

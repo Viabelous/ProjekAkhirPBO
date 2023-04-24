@@ -5,6 +5,7 @@ import static ProjekAkhir.Main.Opsi;
 import static ProjekAkhir.Main.br;
 import java.util.ArrayList;
 import java.io.IOException;
+import java.util.HashMap;
 
 
 /**
@@ -59,30 +60,51 @@ public class Toko {
         Main.capIDProduk += 1;
     }
     
-    
-    //Void di bawah ini akan diubah nti
-    public void TambahSeller(int IDPenjual) throws IOException{
-        try {
-            IDSeller.add(IDPenjual);
-        } catch (IndexOutOfBoundsException e){
-            System.out.println(" Seller tersebut tidak ada");
-            br.readLine();
+    //Prosedur untuk menampilkan semua seller toko
+    public HashMap TampilSeller(){
+        HashMap<Integer, Seller> SellerMap = new HashMap<>();
+        int i = 1;
+        
+        // Tampilkan user Yang ada di Toko
+        for (int AkunSeller : this.IDSeller){
+            
+            Seller ThisSeller = ((Seller)Main.DaftarAkun
+                    .get(Main.AkunSequential(AkunSeller)));
+            
+            System.out.println("<" + i + "> " + ThisSeller.Nama);
+            
+            SellerMap.put(i, ThisSeller);
+            
+            i++;
+        
         }
+            
+        return SellerMap;
     }
     
     
-    public void HapusSeller(int IndexID) throws IOException{
-        try {
+    //Prosedur untuk menghubungkan akun seller ke toko
+    public void TambahSeller(int IDPenjual){
+        IDSeller.add(IDPenjual);
+        ((Seller)Main.DaftarAkun
+                .get(Main.AkunSequential(IDPenjual)))
+                .setTokoKu(this.ID);
+        
+    }
+    
+    
+    public void HapusSeller(int Index) throws IOException{
         System.out.println(" Yakin hapus seller dari toko (Y/N)?");
         System.out.print(" :>> ");
         
         String Conf = br.readLine();
         if(Conf == null) Conf = "N";
         
-        if (Conf.equals("Y")) IDSeller.remove(IndexID-1);
-        } catch (IndexOutOfBoundsException e){
-            System.out.println(" Seller tersebut tidak ada");
-            br.readLine();
+        if (Conf.equals("Y")){
+            ((Seller)Main.DaftarAkun
+                    .get(Main.AkunSequential(IDSeller.get(Index-1))))
+                    .setTokoKu(-1);
+            IDSeller.remove(Index-1);
         }
     }
     
@@ -119,7 +141,6 @@ public class Toko {
                             // Opsi 0 untuk Manajemen Toko
                             if(Opsi == 0) {
                                 this.MenuManajemenToko();
-                                return;
                             }
                             else ManajemenProduk(this.DaftarProduk.get(Opsi-1));
                         }
@@ -142,6 +163,7 @@ public class Toko {
         while(del == false){
             Main.Clear();
             Prod.TampilProduk();
+            System.out.println("");
             System.out.println(" [1] Ubah Produk");
             System.out.println(" [2] Hapus Produk");
             System.out.println(" [99] Kembali");
@@ -213,86 +235,96 @@ public class Toko {
                 case 0 -> {
                     if(Main.Menu.equals("Customer")) continue;
                     Toko.TambahToko();
+                    continue;
                 }
                 case 99 -> {return;}
             }
-            Main.DaftarToko.get(index-1).TampilProduk();
+            try{
+                Main.DaftarToko.get(index-1).TampilProduk();
+            } catch(IndexOutOfBoundsException e){
+                System.out.println(" Toko tersebut tidak ada.");
+                br.readLine();
+            }
         }
     }
     
     
     // Procedure untuk memanajemen toko SPESIFIK
     public void MenuManajemenToko() throws IOException, InterruptedException {
-        Main.Clear();
         
-        //Sout dibedakan untuk admin dan untuk seller
-        if (Main.Menu.equals("Admin")){
-            System.out.println("""
-            | ---------------------------------------- |
-            |  //       Menu Manajemen Toko        \\\\  |
-            | ||\t""" + this.Nama + "\t\t\t|| |\n" + """
-            | ||                                    || |
-            | ||     (99)-. Kembali                 || |
-            | ||     (1)-. Ubah Informasi Toko      || |
-            | ||     (2)-. Manajemen Seller Toko    || |
-            | ||     (3)-. Tambah Produk            || |
-            | ||     (4)-. Lihat Pesanan            || |
-            | ||     (5)-. Hapus Toko               || |
-            |  \\\\                                  //  |
-            | ---------------------------------------- |
-                            """);
+        while(true){
+        
+            Main.Clear();
 
-            System.out.print(" :>> ");
-            Opsi = CheckInt();
+            //Sout dibedakan untuk admin dan untuk seller
+            if (Main.Menu.equals("Admin")){
+                System.out.println("""
+                | ---------------------------------------- |
+                |  //       Menu Manajemen Toko        \\\\  |
+                | ||\t""" + this.Nama + "\t\t\t|| |\n" + """
+                | ||                                    || |
+                | ||     (99)-. Kembali                 || |
+                | ||     (1)-. Ubah Informasi Toko      || |
+                | ||     (2)-. Manajemen Seller Toko    || |
+                | ||     (3)-. Tambah Produk            || |
+                | ||     (4)-. Lihat Pesanan            || |
+                | ||     (5)-. Hapus Toko               || |
+                |  \\\\                                  //  |
+                | ---------------------------------------- |
+                                """);
 
-            switch (Opsi) {
-                case 1 -> {
-                    Main.Clear();
-                    this.TampilDeskripsi();
-                    this.UbahToko();
+                System.out.print(" :>> ");
+                Opsi = CheckInt();
+
+                switch (Opsi) {
+                    case 1 -> {
+                        Main.Clear();
+                        this.TampilDeskripsi();
+                        this.UbahToko();
+                    }
+                    case 2 -> {
+                        this.ManajemenSellerToko();
+                    }
+                    case 3 -> {
+                        Main.Clear();
+                        this.MenuTambahProduk();
+                    }
+                    case 4 -> {
+                // lihatPesanan();
+                    }
+                    case 5 -> {
+                        this.HapusToko(this.ID);
+                        return;
+                    }
+                    case 99 -> {return;}
                 }
-                case 2 -> {
-                    this.ManajemenSellerToko();
-                }
-                case 3 -> {
-                    Main.Clear();
-                    this.MenuTambahProduk();
-                }
-                case 4 -> {
-            // lihatPesanan();
-                }
-                case 5 -> {
-                    this.HapusToko(this.ID);
-                    return;
-                }
-                case 99 -> {return;}
             }
-        }
 
-        if (Main.Menu.equals("Seller")){ System.out.println("""
-            | ---------------------------------------- |
-            |  //       Menu Manajemen Toko        \\\\  |
-            | ||                                    || |
-            | ||     (99)-. Kembali                 || |
-            | ||     (1)-. Ubah Informasi Toko      || |
-            | ||     (2)-. Tambah Produk            || |
-            | ||     (3)-. Lihat Pesanan            || |
-            |  \\\\                                  //  |
-            | ---------------------------------------- |
-                            """);
-        
-            System.out.print(" :>> ");
-            Opsi = CheckInt();
+            if (Main.Menu.equals("Seller")){ System.out.println("""
+                | ---------------------------------------- |
+                |  //       Menu Manajemen Toko        \\\\  |
+                | ||                                    || |
+                | ||     (99)-. Kembali                 || |
+                | ||     (1)-. Ubah Informasi Toko      || |
+                | ||     (2)-. Tambah Produk            || |
+                | ||     (3)-. Lihat Pesanan            || |
+                |  \\\\                                  //  |
+                | ---------------------------------------- |
+                                """);
 
-            switch (Opsi){
-                case 1 -> {
-                    this.TampilDeskripsi();
-                    this.UbahToko();
+                System.out.print(" :>> ");
+                Opsi = CheckInt();
+
+                switch (Opsi){
+                    case 1 -> {
+                        this.TampilDeskripsi();
+                        this.UbahToko();
+                    }
+                    case 2 -> this.MenuTambahProduk();
+                    case 3 -> {// lihatPesanan();
+                    }
+                    case 99 -> {return;}
                 }
-                case 2 -> this.MenuTambahProduk();
-                case 3 -> {// lihatPesanan();
-                }
-                case 99 -> {return;}
             }
         }
     }
@@ -349,78 +381,84 @@ public class Toko {
         }
     }
     
-////    
+    
+    
     // Produce untuk menambah/menghapus seller dari toko
     void ManajemenSellerToko() throws IOException, InterruptedException {
-        Main.Clear();
         
-        System.out.println("""
-            | ---------------------------------------- |
-            |  //       Menu Manajemen Toko        \\\\  |
-            | ||                                    || |
-            | ||     (99)-. Kembali                 || |
-            | ||     (1)-. Tambah Seller Toko       || |
-            | ||     (2)-. Hapus Seller Toko        || |
-            |  \\\\                                  //  |
-            | ---------------------------------------- |
-                            """);
+        Seller SellerSelect;
+        HashMap<Integer, Seller> SellerMap = new HashMap<>();
         
+        while(true){
+            Main.Clear();
+            
+            SellerMap.clear();
+            
+            System.out.println("Daftar Seller:");
+            SellerMap = this.TampilSeller();
+            System.out.println((!SellerMap.isEmpty())?
+                    "Ketik nomor seller untuk mengeluarkan seller dari toko ini.\n" :
+                    " -- Belum ada seller di toko ini --\n");
+
+            System.out.println("""
+                | ---------------------------------------- |
+                |  //    Menu Manajemen Seller Toko    \\\\  |
+                | ||                                    || |
+                | ||     (99)-. Kembali                 || |
+                | ||     (0)-. Tambah Seller Toko       || |
+                | ||                                    || |
+                |  \\\\                                  //  |
+                | ---------------------------------------- |
+                                """);
+
             System.out.print(" :>> ");
             Opsi = CheckInt();
-            
+
             switch (Opsi) {
-                case 99: return;
-                case 1:
+                case 99 -> {return;}
+                
+                case 0 -> {
                     Main.Clear();
-
-                    int i=1;
-
-                    for (Integer seller : Main.DaftarToko.get(this.ID).IDSeller){
-                        if (!seller.equals(i)){
-                            System.out.println("|  ||\t\t (" + i + ") " + seller + "\t\t|| |");
-                            i++;
-                        } else {
-                            System.out.println("Belum ada seller");
-                        }
+                    
+                    SellerMap = Main.TampilSeller(true);
+                    
+                    if(SellerMap.isEmpty()){
+                        System.out.println(" -- Tidak ada Seller yang bisa ditambahkan");
+                        br.readLine();
+                        continue;
                     }
-
+                    
                     System.out.println(" Pilih seller yang ingin ditambahkan");
                     System.out.print(" :>> ");
-                    int IDAdd = CheckInt();
+                    
+                    Opsi = CheckInt();
+                    
+                    SellerSelect = SellerMap.get(Opsi);
 
-                    if (Main.DaftarAkun.contains(IDAdd)){
-                        this.TambahSeller(IDAdd);
+                    if (SellerSelect != null){
+                        this.TambahSeller(SellerSelect.ID);
+                        System.out.println(" Berhasil menambahkan seller ke toko");
+                        br.readLine();
+                        
                     } else {
                         System.out.println("----------------------------------------\n\t\tSeller tidak ada");
                         br.readLine();
                     }
-                    break;
-                case 2:
-                    Main.Clear();
-                    i=1;
+                }
+                    
+                default -> {
+                    SellerSelect = SellerMap.get(Opsi);
+                    
+                    if(SellerSelect == null){continue;}
 
-                    for (Akun seller : Main.DaftarAkun){
-                        if (seller.Otoritas.equals("Seller")){
-                            System.out.println("""
-                                    | ---------------------------------------- |
-                                    |  //                                  \\\\  |
-                                                """);
-                            System.out.println("|  ||\t\t (" + i + ") " + seller.Nama + "\t\t|| |");
-                            i++;
-                            System.out.println("""
-                                    |  \\\\                                  \\  |
-                                    | ---------------------------------------- |
-                                                """);
-                        }
-                    }
+                    Main.Clear();
                     
-                    System.out.println(" Pilih seller yang ingin dihapus dari toko");
-                    System.out.print(" :>> ");
-                    int IDDel = CheckInt();
-                    
-                    this.HapusSeller(IDDel);
-                    break;
+                    SellerSelect.TampilAkun();
+
+                    this.HapusSeller(Opsi);
+                }
             }
+        }
     }
 
         
