@@ -499,12 +499,17 @@ class Admin extends Akun{
                  |  ||        (0)-. Tambah Seller        || |
                  |  ||                                   || |
                  |  ||         -. Hapus Seller .-        || |
-                 | ||                                   || |
+                 |  ||                                   || |
                  """);
-
-            for (int i=0; i < Main.DaftarAkun.size(); i++){
-                System.out.println("| ||\t\t (" + i+1 + ") " + Main.DaftarAkun.get(i).Usn + "\t\t|| |");
+            
+            int i=1;
+                    
+            for (Akun seller : Main.DaftarAkun){
+                if (seller.Otoritas.equals("Seller")){
+                    System.out.println("|  ||\t\t (" + i + ") " + seller.Nama + "\t\t|| |");
+                    i++;
                 }
+            }
 
             System.out.println("""
                 |  ||                                   || |

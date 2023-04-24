@@ -61,12 +61,18 @@ public class Toko {
     
     
     //Void di bawah ini akan diubah nti
-    public void TambahSeller(int IDPenjual){
-        IDSeller.add(IDPenjual);
+    public void TambahSeller(int IDPenjual) throws IOException{
+        try {
+            IDSeller.add(IDPenjual);
+        } catch (IndexOutOfBoundsException e){
+            System.out.println(" Seller tersebut tidak ada");
+            br.readLine();
+        }
     }
     
     
     public void HapusSeller(int IndexID) throws IOException{
+        try {
         System.out.println(" Yakin hapus seller dari toko (Y/N)?");
         System.out.print(" :>> ");
         
@@ -74,6 +80,10 @@ public class Toko {
         if(Conf == null) Conf = "N";
         
         if (Conf.equals("Y")) IDSeller.remove(IndexID-1);
+        } catch (IndexOutOfBoundsException e){
+            System.out.println(" Seller tersebut tidak ada");
+            br.readLine();
+        }
     }
     
     
@@ -107,7 +117,10 @@ public class Toko {
                         }
                         case "Seller", "Admin" -> {
                             // Opsi 0 untuk Manajemen Toko
-                            if(Opsi == 0) this.MenuManajemenToko();
+                            if(Opsi == 0) {
+                                this.MenuManajemenToko();
+                                return;
+                            }
                             else ManajemenProduk(this.DaftarProduk.get(Opsi-1));
                         }
                     }
@@ -248,7 +261,10 @@ public class Toko {
                 case 4 -> {
             // lihatPesanan();
                 }
-                case 5 -> this.HapusToko();
+                case 5 -> {
+                    this.HapusToko(this.ID);
+                    return;
+                }
                 case 99 -> {return;}
             }
         }
@@ -355,15 +371,49 @@ public class Toko {
             switch (Opsi) {
                 case 99: return;
                 case 1:
-//                    TampilSellerToko();
+                    Main.Clear();
+
+                    int i=1;
+
+                    for (Integer seller : Main.DaftarToko.get(this.ID).IDSeller){
+                        if (!seller.equals(i)){
+                            System.out.println("|  ||\t\t (" + i + ") " + seller + "\t\t|| |");
+                            i++;
+                        } else {
+                            System.out.println("Belum ada seller");
+                        }
+                    }
+
                     System.out.println(" Pilih seller yang ingin ditambahkan");
                     System.out.print(" :>> ");
                     int IDAdd = CheckInt();
-                    
-                    this.TambahSeller(IDAdd);
+
+                    if (Main.DaftarAkun.contains(IDAdd)){
+                        this.TambahSeller(IDAdd);
+                    } else {
+                        System.out.println("----------------------------------------\n\t\tSeller tidak ada");
+                        br.readLine();
+                    }
                     break;
-                case 2: 
-//                    TampilSellerToko();
+                case 2:
+                    Main.Clear();
+                    i=1;
+
+                    for (Akun seller : Main.DaftarAkun){
+                        if (seller.Otoritas.equals("Seller")){
+                            System.out.println("""
+                                    | ---------------------------------------- |
+                                    |  //                                  \\\\  |
+                                                """);
+                            System.out.println("|  ||\t\t (" + i + ") " + seller.Nama + "\t\t|| |");
+                            i++;
+                            System.out.println("""
+                                    |  \\\\                                  \\  |
+                                    | ---------------------------------------- |
+                                                """);
+                        }
+                    }
+                    
                     System.out.println(" Pilih seller yang ingin dihapus dari toko");
                     System.out.print(" :>> ");
                     int IDDel = CheckInt();
@@ -406,7 +456,7 @@ public class Toko {
         
         return new Toko(Main.capIDToko-1, NamaToko, KotaToko);
     }
-     
+    
     
     // Procedure untuk mengubah informasi toko
     public void UbahToko() throws IOException, InterruptedException {
@@ -443,7 +493,7 @@ public class Toko {
     
     
     // Rawan error
-    public boolean HapusToko() throws IOException {
+    public boolean HapusToko(int indexToko) throws IOException {
         System.out.println(" Yakin hapus toko (Y/N)?");
         System.out.println(" (Menghapus toko ini akan sekaligus melepas kaitan Seller)");
         System.out.print(" :>> ");
@@ -452,9 +502,11 @@ public class Toko {
         if(Conf == null) Conf = "N";
         else{
             if(Conf.equals("Y")){
-                // Lepas Kaitan Seller
+                Main.DaftarToko.remove(indexToko);
             }
         }
+                System.out.println(indexToko);
+        br.readLine();
         
         return Conf.equals("Y");
         
