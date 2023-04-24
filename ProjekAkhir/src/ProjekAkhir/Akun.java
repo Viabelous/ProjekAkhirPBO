@@ -81,10 +81,27 @@ class Customer extends Akun implements MultiableAcc{
     }
     
     @Override
-    public void TambahAkun(){
+    public void TambahAkun() throws IOException, InterruptedException{
         String NamaA, UsnA, PassA, EmailA, KotaA, Nomor, Addr;
 
         try{
+            Main.Clear();
+            System.out.println("""
+                | ------------------------------------------ |
+                |   //   Silahkan Registrasi, Kawan :)   \\\\  |
+                |  ||                                     || |
+                |  ||           Username  :               || |
+                |  ||           Password  :               || |
+                |  ||           Nama      :               || |
+                |  ||           Email     :               || |
+                |  ||           Nomor     :               || |
+                |  ||           Kota      :               || |
+                |  ||           Alamat    :               || |
+                |  ||                                     || |
+                |   \\\\                                   //  |
+                | ------------------------------------------ |
+                        """);
+
             System.out.print(" Username : ");
             UsnA = br.readLine();
             if (UsnA.equals("")) throw new IllegalArgumentException();
@@ -98,21 +115,95 @@ class Customer extends Akun implements MultiableAcc{
                 }
             }
             
-            
+            Main.Clear();
+            System.out.println("""
+                | ------------------------------------------ |
+                |  //    Silahkan Registrasi, Kawan :)   \\\\  |
+                | ||                                      || |
+                 \t\tUsername""" + "  : " + UsnA + "\n" +
+                 """
+                |  ||           Password  :               || |
+                |  ||           Nama      :               || |
+                |  ||           Email     :               || |
+                |  ||           Nomor     :               || |
+                |  ||           Kota      :               || |
+                |  ||           Alamat    :               || |
+                |  ||                                     || |
+                |   \\\\                                   //  |
+                | ------------------------------------------ |
+                        """);
+
             System.out.print(" Pass     : ");
             PassA = br.readLine();
             if (PassA.equals("")) throw new IllegalArgumentException();
             
-            
+            Main.Clear();
+            System.out.println("""
+                | ------------------------------------------ |
+                |  //    Silahkan Registrasi, Kawan :)   \\\\  |
+                | ||                                      || |
+                 \t\tUsername""" + "  : " + UsnA + "\n" +
+                 """
+                 \t\tPassword""" + "  : " + PassA + "\n" +
+                 """                
+                |  ||           Nama      :               || |
+                |  ||           Email     :               || |
+                |  ||           Nomor     :               || |
+                |  ||           Kota      :               || |
+                |  ||           Alamat    :               || |
+                |  ||                                     || |
+                |   \\\\                                   //  |
+                | ------------------------------------------ |
+                        """);
+
             System.out.print(" Nama     : ");
             NamaA = br.readLine();
             if (NamaA.equals("")) throw new IllegalArgumentException();
 
-            
+            Main.Clear();
+            System.out.println("""
+                | ------------------------------------------ |
+                |  //    Silahkan Registrasi, Kawan :)   \\\\  |
+                | ||                                      || |
+                 \t\tUsername""" + "  : " + UsnA + "\n" +
+                 """
+                 \t\tPassword""" + "  : " + PassA + "\n" +
+                 """                
+                 \t\tNama""" + " \t  : " + PassA + "\n" +
+                 """  
+                |  ||           Email     :               || |
+                |  ||           Nomor     :               || |
+                |  ||           Kota      :               || |
+                |  ||           Alamat    :               || |
+                |  ||                                     || |
+                |   \\\\                                   //  |
+                | ------------------------------------------ |
+                        """);
+
             System.out.print(" Email    : ");
             EmailA = br.readLine();
             if (EmailA.equals("")) throw new IllegalArgumentException();
             
+            Main.Clear();
+            System.out.println("""
+                | ------------------------------------------ |
+                |  //    Silahkan Registrasi, Kawan :)   \\\\  |
+                | ||                                      || |
+                 \t\tUsername""" + "  : " + UsnA + "\n" +
+                 """
+                 \t\tPassword""" + "  : " + PassA + "\n" +
+                 """                
+                 \t\tNama""" + " \t  : " + PassA + "\n" +
+                 """  
+                 \t\tEmail""" + " \t  : " + EmailA + "\n" +
+                 """
+                |  ||           Nomor     :               || |
+                |  ||           Kota      :               || |
+                |  ||           Alamat    :               || |
+                |  ||                                     || |
+                |   \\\\                                   //  |
+                | ------------------------------------------ |
+                        """);
             
             System.out.print(" noHP     : ");
             Nomor = br.readLine();
@@ -129,20 +220,89 @@ class Customer extends Akun implements MultiableAcc{
                 throw new IllegalArgumentException();
             }
             
+            Main.Clear();
+            System.out.println("""
+                | ------------------------------------------ |
+                |  //    Silahkan Registrasi, Kawan :)   \\\\  |
+                | ||                                      || |
+                 \t\tUsername""" + "  : " + UsnA + "\n" +
+                 """
+                 \t\tPassword""" + "  : " + PassA + "\n" +
+                 """                
+                 \t\tNama""" + " \t  : " + PassA + "\n" +
+                 """  
+                 \t\tEmail""" + " \t  : " + EmailA + "\n" +
+                 """
+                 \t\tNomor""" + " \t  : " + Nomor + "\n" +
+                 """
+                |  ||           Kota      :               || |
+                |  ||           Alamat    :               || |
+                |  ||                                     || |
+                |   \\\\                                   //  |
+                | ------------------------------------------ |
+                        """);
             
             System.out.print(" Kota   : ");
             KotaA = br.readLine();
             if (KotaA.equals("")) throw new IllegalArgumentException();
             
+            Main.Clear();
+            System.out.println("""
+                | ------------------------------------------ |
+                |  //    Silahkan Registrasi, Kawan :)   \\\\  |
+                | ||                                      || |
+                 \t\tUsername""" + "  : " + UsnA + "\n" +
+                 """
+                 \t\tPassword""" + "  : " + PassA + "\n" +
+                 """                
+                 \t\tNama""" + " \t  : " + PassA + "\n" +
+                 """  
+                 \t\tEmail""" + " \t  : " + EmailA + "\n" +
+                 """
+                 \t\tNomor""" + " \t  : " + Nomor + "\n" +
+                 """
+                 \t\tKota""" + " \t  : " + KotaA + "\n" +
+                 """ 
+                |  ||           Alamat    :               || |
+                |  ||                                     || |
+                |   \\\\                                   //  |
+                | ------------------------------------------ |
+                        """);
+
             System.out.print(" Alamat Lengkap: ");
             Addr = br.readLine();
             if (Addr.equals("")) throw new IllegalArgumentException();
             
         } catch (IOException | IllegalArgumentException e){
                 System.out.println(" Terjadi error saat menginput data.");
+                br.readLine();
                 return;
         }
         
+        Main.Clear();
+        System.out.println("""
+            | ------------------------------------------ |
+            |  //    Silahkan Registrasi, Kawan :)   \\\\  |
+            | ||                                      || |
+             \t\tUsername""" + "  : " + UsnA + "\n" +
+             """
+             \t\tPassword""" + "  : " + PassA + "\n" +
+             """                
+             \t\tNama""" + " \t  : " + PassA + "\n" +
+             """  
+             \t\tEmail""" + " \t  : " + EmailA + "\n" +
+             """
+             \t\tNomor""" + " \t  : " + Nomor + "\n" +
+             """
+             \t\tKota""" + " \t  : " + KotaA + "\n" +
+             """ 
+             \t\tAlamat""" + "    : " + Addr + "\n" +
+             """  
+            |  ||                                     || |
+            |   \\\\                                   //  |
+            | ------------------------------------------ |
+                    """);
+
         this.ID = Main.capIDAkun;
         this.Usn = UsnA;
         this.Pass = PassA;
@@ -401,12 +561,26 @@ class Seller extends Akun implements MultiableAcc{
     }
     
     @Override
-    public void TambahAkun() throws IOException{
+    public void TambahAkun() throws IOException, InterruptedException{
         String NamaA, UsnA, PassA, EmailA;
         
         
         try{
             
+            Main.Clear();
+            System.out.println("""
+                | ------------------------------------------ |
+                |   //  Silahkan Tambah Akun, Admin :)   \\\\  |
+                |  ||                                     || |
+                |  ||           Username  :               || |
+                |  ||           Password  :               || |
+                |  ||           Nama      :               || |
+                |  ||           Email     :               || |
+                |  ||                                     || |
+                |   \\\\                                   //  |
+                | ------------------------------------------ |
+                        """);
+
             System.out.print(" Username : ");
             UsnA = br.readLine();
             if (UsnA.equals("")) throw new IllegalArgumentException();
@@ -421,16 +595,61 @@ class Seller extends Akun implements MultiableAcc{
                 }
             }
             
+            Main.Clear();
+            System.out.println("""
+                | ------------------------------------------ |
+                |   //  Silahkan Tambah Akun, Admin :)   \\\\  |
+                | ||                                      || |
+                 \t\tUsername""" + "  : " + UsnA + "\n" +
+                 """
+                |  ||           Password  :               || |
+                |  ||           Nama      :               || |
+                |  ||           Email     :               || |
+                |  ||                                     || |
+                |   \\\\                                   //  |
+                | ------------------------------------------ |
+                        """);
             
             System.out.print(" Pass     : ");
             PassA = br.readLine();
             if (PassA.equals("")) throw new IllegalArgumentException();
             
+            Main.Clear();
+            System.out.println("""
+                | ------------------------------------------ |
+                |   //  Silahkan Tambah Akun, Admin :)   \\\\  |
+                | ||                                      || |
+                 \t\tUsername""" + "  : " + UsnA + "\n" +
+                 """
+                 \t\tPassword""" + "  : " + PassA + "\n" +
+                 """                
+                |  ||           Nama      :               || |
+                |  ||           Email     :               || |
+                |  ||                                     || |
+                |   \\\\                                   //  |
+                | ------------------------------------------ |
+                        """);
             
             System.out.print(" Nama     : ");
             NamaA = br.readLine();
             if (NamaA.equals("")) throw new IllegalArgumentException();
 
+            Main.Clear();
+            System.out.println("""
+                | ------------------------------------------ |
+                |   //  Silahkan Tambah Akun, Admin :)   \\\\  |
+                | ||                                      || |
+                 \t\tUsername""" + "  : " + UsnA + "\n" +
+                 """
+                 \t\tPassword""" + "  : " + PassA + "\n" +
+                 """                
+                 \t\tNama""" + " \t  : " + PassA + "\n" +
+                 """  
+                |  ||           Email     :               || |
+                |  ||                                     || |
+                |   \\\\                                   //  |
+                | ------------------------------------------ |
+                        """);
             
             System.out.print(" Email    : ");
             EmailA = br.readLine();
@@ -441,13 +660,33 @@ class Seller extends Akun implements MultiableAcc{
             System.out.println(" Terjadi error saat menginput data.");
             return;
         }
+
+        Main.Clear();
+        System.out.println("""
+            | ------------------------------------------ |
+            |   //  Silahkan Tambah Akun, Admin :)   \\\\  |
+            | ||                                      || |
+             \t\tUsername""" + "  : " + UsnA + "\n" +
+             """
+             \t\tPassword""" + "  : " + PassA + "\n" +
+             """                
+             \t\tNama""" + " \t  : " + PassA + "\n" +
+             """  
+             \t\tEmail""" + " \t  : " + EmailA + "\n" +
+             """
+            |  ||                                     || |
+            |   \\\\                                   //  |
+            | ------------------------------------------ |
+                    """);
         
         this.ID = Main.capIDAkun;
         this.Usn = UsnA;
         this.Pass = PassA;
         this.Nama = NamaA;
         this.Email = EmailA;
-        
+
+        System.out.println(" Akun Berhasil Ditambahkan !");
+        br.readLine();
     }
     
     

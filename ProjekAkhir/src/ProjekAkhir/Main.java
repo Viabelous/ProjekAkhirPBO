@@ -240,13 +240,12 @@ public class Main {
                         
                         Clear();
                         System.out.println("""
-                                   | ------------------------------------------ |
-                                   |   //      Silahkan Login, Kawan :)     \\\\  |
-                                   |  ||                                     || |
+                                    | ------------------------------------------ |
+                                    |   //      Silahkan Login, Kawan :)     \\\\  |
+                                    |  ||                                     || |
                                                Username  : """ + (" ") + Username + """      
 
-                                        \t    Password  :   """ + " " + Password + """ 
-
+                                               Password  : ********         
                                     |  ||                                     || |
                                     |   \\\\                                   //  |
                                     | ------------------------------------------ |
@@ -277,17 +276,18 @@ public class Main {
                         
                     }
                     
-                    // Registus
+                    // Register Akun Costumer
                     case 2 -> {
                         Customer User = new Customer();
                         User.TambahAkun();
                         if(User.getUsn() == null) break;
                         DaftarAkun.add(User);
                         capIDAkun+=1;
-                        System.out.println(" Akun Berhasil Ditambahkan! :KEKW:");
+                        System.out.println(" Akun Berhasil Ditambahkan !");
+                        br.readLine();
                         }
                     
-                    // Exto
+                    // Exit
                     case 3 -> System.exit(0);
                     default -> {
                         continue;

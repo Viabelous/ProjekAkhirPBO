@@ -11,6 +11,6 @@ import java.io.IOException;
  * @author Viabel
  */
 public interface MultiableAcc {
-    void TambahAkun() throws IOException;
+    void TambahAkun() throws IOException, InterruptedException;
     boolean HapusAkun() throws IOException;
 }
