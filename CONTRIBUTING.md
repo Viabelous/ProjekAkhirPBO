@@ -45,7 +45,7 @@ Mengurus alur menu dan struktur program, mencegah terjadinya error pada program,
 Mengurus segala hal berkaitan dengan tampilan yang dilihat oleh pengguna program, memastikan pengguna mendapatkan feedback untuk semua aksi (selain kembali) yang
 dilakukan.
 
-Ringkasan pembagian tugas dapat dibaca di file [README](README.md). 
+Ringkasan pembagian tugas dapat dibaca di file [README](README.md/#contributors). 
 
 ## Batasan
 Dikarenakan waktu yang sempit untuk pelaksanaan pembuatan program ini, kontributor sebelumnya telah menyepakati untuk meniadakan konsep *GUI* dan sistem *Database*
