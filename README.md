@@ -1,5 +1,5 @@
 # PROJEK AKHIR PBO
-**Manajemen Korean Market**
+**Sistem Manajemen Korean Market**
 
 
 ## Daftar Isi
@@ -8,7 +8,7 @@
 * [Contributors](#contributors)
 
 ## Deskripsi
-**Program Manajemen Korean Market** adalah sebuah program multi-user tentang pasar terkait produk-produk Korea (Selatan) berisikan banyak toko yang masing-masingnya dapat diakses oleh Costumer untuk memilih dan membeli produk diinginkan.
+**Sistem Manajemen Korean Market** adalah sebuah program multi-user berbahasa pemrograman **Java** tentang pasar terkait produk-produk Korea (Selatan) berisikan banyak toko yang masing-masingnya dapat diakses oleh Costumer untuk memilih dan membeli produk diinginkan.
     
 Program ini terdiri dari **tiga jenis** user yaitu **Admin, Seller, dan Customer**:
 - Akun **Admin** dibuat secara ***default*** sementara akun **Seller dibuat** atau diregistrasikan oleh **Admin** yang nantinya akan dimasukkan ke dalam Toko, satu toko dapat memiliki lebih dari satu Seller yang memanajemen toko tersebut.
@@ -126,7 +126,6 @@ A -- 3 --> D(Log Out)
 Dibuat oleh Mahasiswa Universitas Mulawarman, Jurusan Informatika, Kelas A 2021,  
 Dibimbing oleh Tegar Fitrah Naba Atthoriq (2009106085)
 ```
-
 Contributors:
  
   Jabatan  |     NIM    |           Nama         |     Tanggung Jawab
@@ -137,3 +136,4 @@ __________________________________________________________________________
   Anggota  | 2109106042 | Hadie Pratama Tulili 	 | Autentikasi, UI
  __________________________________________________________________________
 ```
+Untuk penjelasan penugasan lebih lanjut, baca [Contribution Guidelines](CONTRIBUTING.md/#penjelasan-tugas).
