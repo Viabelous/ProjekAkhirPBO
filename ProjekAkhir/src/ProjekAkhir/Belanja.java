@@ -77,6 +77,14 @@ public class Belanja {
             System.out.printf("%-" + 10 + "s", "Jumlah");
             System.out.printf("%-" + 20 + "s", "Harga");
             System.out.printf("%-" + 20 + "s", "Status Barang");
+    
+            System.out.println();
+                for (int j = 0; j < 20 * 5; j++) {
+                    System.out.print("-");
+                }
+                
+            System.out.println("");
+                
             this.TampilTas(-1);
             
             System.out.println("");
@@ -93,7 +101,7 @@ public class Belanja {
                 System.out.println(" [2] Lakukan Pemesanan");
             }
                 
-            System.out.println(" :> ");
+            System.out.print(" :> ");
             Opsi = CheckInt();
             switch(Opsi){
                 case 99 -> {return;}
@@ -140,7 +148,7 @@ public class Belanja {
             if(Alamat.equals("//")) Alamat = Pbl.getAlamat();
             else if (Alamat.equals("")) throw new IllegalArgumentException();
             
-            System.out.println("Nomor Rekening: ");
+            System.out.print("Nomor Rekening: ");
             NomorRekening = br.readLine();
 
             if (!NomorRekening.equals("")){
@@ -162,6 +170,9 @@ public class Belanja {
         
         Catatan.TambahCatatan(this, Alamat, NomorRekening);
         System.out.println(" Berhasil dipesan!");
+        br.readLine();
+
+        Pbl.TasBelanjaDel(this);
         
         return true;
     }

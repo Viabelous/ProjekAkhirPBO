@@ -203,7 +203,7 @@ public class Toko {
                 
                 System.out.println("\n Langsung menuju keranjang (Y/N)? ");
                 System.out.print("    :>> ");
-                if(br.readLine().equals("Y")) Main.PortToBag = true;
+                if(br.readLine().toUpperCase().equals("Y")) Main.PortToBag = true;
             }
         }
     }

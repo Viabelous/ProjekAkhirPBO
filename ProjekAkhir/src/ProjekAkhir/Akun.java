@@ -281,34 +281,43 @@ class Customer extends Akun implements MultiableAcc{
             System.out.println(" -- Tas Belanjamu Kosong -- ");
             br.readLine();
         }else{
-            Main.Clear();
-            System.out.println(" (Jika status barang tertulis invalid, maka stok kurang.)");
-            System.out.printf("%-" + 5 + "s", "No.");
-            System.out.printf("%-" + 35 + "s", "Nama Barang");
-            System.out.printf("%-" + 10 + "s", "Jumlah");
-            System.out.printf("%-" + 20 + "s", "Harga");
-            System.out.printf("%-" + 20 + "s", "Status Barang");
-            
-            System.out.println();
-            for (int j = 0; j < 20 * 5; j++) {
-                System.out.print("-");
-            }
-            System.out.println();
-            
-            int i = 0;
-        
-            for (Belanja BarangBelanja : TasBelanja){
-                i++;
-                BarangBelanja.TampilTas(i);
-            }
-            
-            System.out.println("[99] Kembali");
-            System.out.println("(Pilih barang di tas untuk melakukan pemesanan.)");
-            
-            System.out.print(" :>> ");
-            int Opsi = Main.CheckInt();
-            if(Opsi == 99) return;
-            else{
+            while(true){
+                Main.Clear();
+                if(this.TasBelanja.isEmpty()){
+                    System.out.println(" -- Tas Belanjamu Kosong -- ");
+                    br.readLine();
+                    break;
+                }
+                System.out.println(" (Jika status barang tertulis invalid, maka stok kurang.)");
+                System.out.printf("%-" + 5 + "s", "No.");
+                System.out.printf("%-" + 35 + "s", "Nama Barang");
+                System.out.printf("%-" + 10 + "s", "Jumlah");
+                System.out.printf("%-" + 20 + "s", "Harga");
+                System.out.printf("%-" + 20 + "s", "Status Barang");
+
+                System.out.println();
+                for (int j = 0; j < 20 * 5; j++) {
+                    System.out.print("-");
+                }
+                System.out.println();
+
+                int i = 0;
+
+                for (Belanja BarangBelanja : TasBelanja){
+                    i++;
+                    BarangBelanja.TampilTas(i);
+                }
+
+                System.out.println("[99] Kembali");
+                System.out.println("(Pilih barang di tas untuk melakukan pemesanan.)");
+
+                System.out.print(" :>> ");
+                Opsi = Main.CheckInt();
+                
+                if(Opsi == 99) return;
+                else if(Opsi > this.TasBelanja.size() || Opsi < 1) continue;
+                
+                this.TasBelanja.get(Opsi-1).ProsesTas();
                 
             }
         }
