@@ -393,9 +393,8 @@ public class Main {
                         |  ||                                   || |
                         |  ||      (1)-. Manajemen Toko         || |
                         |  ||      (2)-. Manajemen Seller       || |
-                        |  ||      (3)-. Riwayat Pembelian      || |
-                        |  ||      (4)-. Ubah Profil            || |
-                        |  ||      (5)-. Log Out                || |
+                        |  ||      (3)-. Ubah Profil            || |
+                        |  ||      (4)-. Log Out                || |
                         |   \\\\                                 //  |
                         | ---------------------------------------- |
                                 """);
@@ -406,10 +405,8 @@ public class Main {
                     switch (Opsi) {
                         case 1 -> Toko.MenuPilihToko();
                         case 2 -> Adminian.manajemenSeller();
-                        case 3 -> {//admin.riwayatPembelian();
-                    }
-                        case 4 -> Adminian.UbahProfilAdmin();
-                        case 5 -> Menu = "Login";
+                        case 3 -> Adminian.UbahProfil();
+                        case 4 -> Menu = "Login";
 
                         default -> {continue;}
                     } 
@@ -445,7 +442,7 @@ public class Main {
                             }
                             else DaftarToko.get(IndexToko).TampilProduk();
                         }
-                        case 2 -> {}
+                        case 2 -> ((Seller)getActiveUserIndex()).UbahProfil();
                         case 3 -> Menu = "Login";
                         default -> {continue;}
                     }

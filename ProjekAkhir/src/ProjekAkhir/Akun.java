@@ -20,6 +20,7 @@ abstract class Akun {
     final protected String Otoritas;
     
     abstract void TampilAkun();
+    abstract void UbahProfil() throws IOException, InterruptedException;
     
     protected Akun(String Otoritas){
         this.Otoritas = Otoritas;
@@ -324,6 +325,7 @@ class Customer extends Akun implements MultiableAcc{
     }
     
     
+    @Override
     void UbahProfil() throws IOException, InterruptedException {
         String NewNama, NewUsn, NewPass, NewEmail, KonfirPass,
                NewKota, NewAlamat, NewNomor;
@@ -609,7 +611,8 @@ class Seller extends Akun implements MultiableAcc{
         this.TokoKu = TokoKu;
     }
     
-    void UbahProfilSeller() throws IOException, InterruptedException {
+    @Override
+    void UbahProfil() throws IOException, InterruptedException {
         String NewNamaSeller, NewUsnSeller, NewPassSeller, NewEmailSeller, KonfirPassSeller;
         
         while(true){
@@ -931,7 +934,8 @@ class Admin extends Akun{
     }
     
     
-    void UbahProfilAdmin() throws IOException, InterruptedException {
+    @Override
+    void UbahProfil() throws IOException, InterruptedException {
         String NewNama, NewUsn, NewPass, NewEmail, KonfirPass;
         
         while(true){
