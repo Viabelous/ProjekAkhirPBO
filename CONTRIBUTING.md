@@ -24,16 +24,16 @@ Contoh penulisan:
 Program dipisahkan dalam penugasan untuk memudahkan pembagian pengerjaan dan menghindari konflik. Kontributor selain penanggung jawab boleh membantu pengerjaan tugas
 kontributor lain **dengan syarat** mendapat izin dari penanggung jawab tugas tersebut. Beberapa method/line mungkin dapat dipakai beberapa kali sehingga disarankan untuk kontributor saling berkomunikasi agar tidak perlu menulis kode yang duplikat.
 * **Autentikasi**  `Hadie42`  
-Mengurus menu landing, login, dan register customer.
-
-* **Customer** `Yafi39`  
-Mengurus segala hal berkaitan dengan menu Customer (tidak termasuk tampilan).
-
-* **Seller** `Tina37`  
-Mengurus segala hal berkaitan dengan menu Seller (tidak termasuk tampilan).
+Mengurus menu landing, login, dan register customer (tidak termasuk tampilan).
 
 * **Admin** `Natalie40`  
+Mengurus segala hal yang berkaitan dengan menu Admin (tidak termasuk tampilan).
+
+* **Seller** `Tina37`  
 Mengurus segala hal yang berkaitan dengan menu Seller (tidak termasuk tampilan).
+
+* **Customer** `Yafi39`  
+Mengurus segala hal yang berkaitan dengan menu Customer (tidak termasuk tampilan).
 
 * **Produk** `Tina37`  
 Mengurus CRUD Produk termasuk penambahan jenis produk yang tersedia.
@@ -54,7 +54,7 @@ mengingat kurangnya bekal pengetahuan dimiliki dalam penerapan hal-hal tersebut.
 
 ## Catatan Tambahan
 Kontributor diharap telah membaca Java Style Guide sebelum mulai mengerjakan program ini. Setelahnya diharap mengikuti alur menu yang terdapat pada file
-[README](README.md/#alur-menu).
+[README](README.md/#alur-menu). Jika ingin menambah menu baru, harap dibicarakan terlebih dahulu agar dapat ditambah di graf alur menu.
 
 Apabila terdapat kesulitan atau terjadi error, dimohon mengisikan comment yang telah disediakan di file [Main](ProjekAkhir/src/ProjekAkhir/Main.java) atau menghubungi
 kontributor lainnya segera.
