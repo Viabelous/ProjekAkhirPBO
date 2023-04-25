@@ -788,13 +788,19 @@ class Admin extends Akun{
 
             System.out.print(" :>> ");
             Opsi = CheckInt();
-            
-            
+
+
             // need error handling
             switch (Opsi) {
                 case 99 -> {return;}
                 case 0 -> (new Seller()).TambahAkun();
                 default -> {
+                    if (AkunSeller.get(Opsi) == null){
+                        Main.Clear();
+                        System.out.println("\n\t    Seller tidak ada\n");
+                        br.readLine();
+                        continue;
+                    }
                     this.ManajemenAkunSeller(AkunSeller.get(Opsi));
                 }
             }
@@ -802,7 +808,7 @@ class Admin extends Akun{
     }
     
     
-    void ManajemenAkunSeller(int IndexSeller) throws IOException, InterruptedException  {
+    void ManajemenAkunSeller(int IndexSeller) throws IOException, InterruptedException  {        
         Main.Clear();
         System.out.print("""
             | ---------------------------------------- |
@@ -918,10 +924,6 @@ class Admin extends Akun{
             Main.DaftarAkun.get(IndexSeller).setUsn(NewUsnA);
             Main.DaftarAkun.get(IndexSeller).setPass(NewPassA);
             Main.DaftarAkun.get(IndexSeller).setEmail(NewEmailA);
-//            this.Nama = NewNamaA;
-//            this.Usn = NewUsnA;
-//            this.Pass = NewPassA;
-//            this.Email = NewEmailA;
 
             Main.Clear();
             System.out.println("\t     Berhasil ubah akun\n");
