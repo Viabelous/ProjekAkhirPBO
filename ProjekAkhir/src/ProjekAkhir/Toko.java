@@ -268,7 +268,7 @@ public class Toko {
                 System.out.println("""
                 | ---------------------------------------- |
                 |  //       Menu Manajemen Toko        \\\\  |
-                | ||\t""" + this.Nama + "\t\t\t|| |\n" + """
+                \t\t""" + this.Nama + "\n" + """
                 | ||                                    || |
                 | ||     (99)-. Kembali                 || |
                 | ||     (1)-. Ubah Informasi Toko      || |

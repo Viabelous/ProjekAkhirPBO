@@ -279,7 +279,7 @@ class LightStick extends ProdukKPOP{
         System.out.println();
 
         // Mencetak baris pemisah
-        for (int i = 0; i < ColumnWidth * 5; i++) {
+        for (int i = 0; i < ColumnWidth * 6; i++) {
             System.out.print("-");
         }
         System.out.println();

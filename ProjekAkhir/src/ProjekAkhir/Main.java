@@ -205,7 +205,7 @@ public class Main {
         DaftarToko.get(0).TambahProduk((new Album()).TambahProduk( "Birthday (Digipack Ver)", "Red Velvet","Digipack Ver", 4, 280000 ));
         DaftarToko.get(0).TambahProduk((new LightStick()).TambahProduk("LightStick EXO", "EXO", true, "Ver 2", 1, 826000));
         DaftarToko.get(0).TambahProduk((new Album()).TambahProduk("Asterum", "PLAVE","", 5, 180000 ));
-        DaftarToko.get(1).TambahProduk((new Album()).TambahProduk("Rise Up", "ASTRO","", 10, 320000 ));
+        DaftarToko.get(0).TambahProduk((new Album()).TambahProduk("Rise Up", "ASTRO","", 10, 320000 ));
         
         capIDToko += 2;
         
@@ -383,7 +383,7 @@ public class Main {
 
                     System.out.println("""
                        | ---------------------------------------- |
-                       |   //    Selamat Datang, """ + (" ") + Menu + " :)      \\\\  |" + 
+                       |   //    Selamat Datang, """ + (" ") + Menu + " :)     \\\\  |" + 
                         """
 
                         |  ||                                   || |
