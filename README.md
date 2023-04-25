@@ -133,7 +133,7 @@ __________________________________________________________________________
   Anggota  | 2109106037 | Agustina Dwi Maharani  | Seller, Produk
   Anggota  | 2109106039 | Ibnu Yafi Arya Wardana | Customer, Design UX
    Ketua   | 2109106040 | Natalie Fuad 		 | Admin
-  Anggota  | 2109106042 | Hadie Pratama Tulili 	 | Autentikasi, UI
+  Anggota  | 2109106043 | Hadie Pratama Tulili 	 | Autentikasi, UI
  __________________________________________________________________________
 ```
 Untuk penjelasan penugasan lebih lanjut, baca [Contribution Guidelines](CONTRIBUTING.md/#penjelasan-tugas).
