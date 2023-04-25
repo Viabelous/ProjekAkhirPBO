@@ -90,18 +90,12 @@ C -- <> --> CC(Manajemen Akun Seller)
 	CC -- 1 --> CCB(Ubah Informasi Akun)
 	CC -- 2 --> CCC(Hapus Akun)
 
-A -- 3 --> D(Riwayat Pembelian)
+A -- 3 --> D(Ubah Profil)
+
 D -- 99 --> DA(Kembali)
-D -- <> --> DB(Lihat Riwayat)
-	DB -- 99 --> DBA(Kembali)
-	DB -- 1 --> DBB(Hapus Riwayat)
+D -- 1 --> DB(Ubah Data Akun)
 
-A -- 4 --> E(Ubah Profil)
-
-E -- 99 --> EA(Kembali)
-E -- 1 --> EB(Ubah Data Akun)
-
-A -- 5 --> F(Log Out)
+A -- 4 --> E(Log Out)
 ```
   Menu utama Admin terbagi menjadi 4 jalur:
 * **Manajemen Toko-Toko**: Admin melihat toko-toko yang ada dan menambahkan toko baru, atau melihat dan/atau mengubah atribut-atribut dan/atau produk toko yang sudah ada.
