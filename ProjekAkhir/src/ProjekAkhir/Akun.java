@@ -5,6 +5,7 @@ import static ProjekAkhir.Main.Opsi;
 import static ProjekAkhir.Main.br;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -481,7 +482,7 @@ class Seller extends Akun implements MultiableAcc{
                      """
                      \t\tPassword""" + "  : " + PassA + "\n" +
                      """                
-                     \t\tNama""" + " \t  : " + PassA + "\n" +
+                     \t\tNama""" + " \t  : " + NamaA + "\n" +
                      """  
                      \t\tEmail""" + " \t  : " + EmailA + "\n" +
                      """
@@ -537,6 +538,8 @@ class Seller extends Akun implements MultiableAcc{
         this.Nama = NamaA;
         this.Email = EmailA;
         this.TokoKu = -1;
+        
+        Main.DaftarAkun.add(this);
 
         System.out.println(" Akun Berhasil Ditambahkan !");
         br.readLine();
@@ -565,6 +568,7 @@ class Seller extends Akun implements MultiableAcc{
     
     
     
+    // Keluarkan dari toko
     @Override
     public boolean HapusAkun() throws IOException{
         System.out.println("Yakin hapus akun (Y/N)?");
@@ -650,9 +654,12 @@ class Admin extends Akun{
             
             int i=1;
                     
+            HashMap<Integer, Integer> AkunSeller = new HashMap<>();
+            
             for (Akun seller : Main.DaftarAkun){
                 if (seller.Otoritas.equals("Seller")){
                     System.out.println("\t     (" + i + ") " + seller.Nama + "");
+                    AkunSeller.put(i, seller.getID());
                     i++;
                 }
             }
@@ -672,7 +679,7 @@ class Admin extends Akun{
                 case 99 -> {return;}
                 case 0 -> (new Seller()).TambahAkun();
                 default -> {
-                    this.ManajemenAkunSeller(Opsi);
+                    this.ManajemenAkunSeller(AkunSeller.get(Opsi));
                 }
             }
         }
@@ -700,11 +707,9 @@ class Admin extends Akun{
 
         switch (Opsi){
             case 99 -> {return;}
-            case 1 -> {UbahProfilSeller(Opsi);}
+            case 1 -> {UbahProfilSeller(IndexSeller);}
             case 2 -> {
-                boolean validation = (new Seller()).HapusAkun();
-
-                if (!validation){
+                if ((new Seller()).HapusAkun()){
                     Main.DaftarAkun.remove(IndexSeller);
                 }
             }

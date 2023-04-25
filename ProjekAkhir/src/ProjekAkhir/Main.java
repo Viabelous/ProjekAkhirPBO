@@ -15,6 +15,7 @@ import java.util.HashMap;
     [Belum]
         -. Update Profil Seller
         -. Manajemen Seller (--> admin) butuh error handling indeks out of bounds
+        -. Hapus Akun Seller, otomatis hapus di daftar seller toko
 
     [Butuh Konfirmasi]
         -. Tampilan banyak masih minus keknya
@@ -226,7 +227,6 @@ public class Main {
             if(Menu.equals("Login")){
                 // Isi Menu Login
                 Clear();
-                System.out.println(System.currentTimeMillis());
                 System.out.println("""
                                     | -------------------------------------------- |
                                     |   //  Selamat Datang di Korean Market :) \\\\  |
