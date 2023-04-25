@@ -477,7 +477,7 @@ class Seller extends Akun implements MultiableAcc{
     
     @Override
     public void TambahAkun() throws IOException, InterruptedException{
-        String NamaA = "", UsnA = "", PassA = "", EmailA = "";
+        String NamaSeller = "", UsnSeller = "", PassSeller = "", EmailSeller = "";
         int i = 0;
         
         try{
@@ -485,15 +485,15 @@ class Seller extends Akun implements MultiableAcc{
                 Main.Clear();
                 System.out.println("""
                     | ------------------------------------------ |
-                    |   //  Silahkan Tambah Akun, Admin :)   \\\\  |
+                    |   //  Silahkan Tambah Akun, Seller :)   \\\\  |
                     | ||                                      || |
-                    \t\tUsername  : """ + (" ") + UsnA + "\n" +
+                    \t\tUsername  : """ + (" ") + UsnSeller + "\n" +
                      """
-                     \t\tPassword""" + "  : " + PassA + "\n" +
+                     \t\tPassword""" + "  : " + PassSeller + "\n" +
                      """                
-                     \t\tNama""" + " \t  : " + NamaA + "\n" +
+                     \t\tNama""" + " \t  : " + NamaSeller + "\n" +
                      """  
-                     \t\tEmail""" + " \t  : " + EmailA + "\n" +
+                     \t\tEmail""" + " \t  : " + EmailSeller + "\n" +
                      """
                     |  ||                                     || |
                     |   \\\\                                   //  |
@@ -504,13 +504,13 @@ class Seller extends Akun implements MultiableAcc{
 
                     case 0 ->{
                         System.out.print(" Username : ");
-                        UsnA = br.readLine();
-                        if (UsnA.equals("")) throw new IllegalArgumentException();
+                        UsnSeller = br.readLine();
+                        if (UsnSeller.equals("")) throw new IllegalArgumentException();
 
 
                         for (Akun daftarAkun : Main.DaftarAkun) {
                             if (daftarAkun.getUsn() != null){
-                                if(daftarAkun.getUsn().equals(UsnA)){
+                                if(daftarAkun.getUsn().equals(UsnSeller)){
                                     System.out.println(" Username tersebut sudah ada.");
                                     return;
                                 }
@@ -519,18 +519,18 @@ class Seller extends Akun implements MultiableAcc{
                     }
                     case 1 ->{
                         System.out.print(" Pass     : ");
-                        PassA = br.readLine();
-                        if (PassA.equals("")) throw new IllegalArgumentException();
+                        PassSeller = br.readLine();
+                        if (PassSeller.equals("")) throw new IllegalArgumentException();
                     }
                     case 2 ->{
                         System.out.print(" Nama     : ");
-                        NamaA = br.readLine();
-                        if (NamaA.equals("")) throw new IllegalArgumentException();
+                        NamaSeller = br.readLine();
+                        if (NamaSeller.equals("")) throw new IllegalArgumentException();
                     }
                     case 3 ->{
                         System.out.print(" Email    : ");
-                        EmailA = br.readLine();
-                        if (EmailA.equals("")) throw new IllegalArgumentException();
+                        EmailSeller = br.readLine();
+                        if (EmailSeller.equals("")) throw new IllegalArgumentException();
                     }
                 }
 
@@ -542,10 +542,10 @@ class Seller extends Akun implements MultiableAcc{
         }
         
         this.ID = Main.capIDAkun;
-        this.Usn = UsnA;
-        this.Pass = PassA;
-        this.Nama = NamaA;
-        this.Email = EmailA;
+        this.Usn = UsnSeller;
+        this.Pass = PassSeller;
+        this.Nama = NamaSeller;
+        this.Email = EmailSeller;
         this.TokoKu = -1;
         
         Main.DaftarAkun.add(this);
@@ -608,7 +608,111 @@ class Seller extends Akun implements MultiableAcc{
     public void setTokoKu(int TokoKu) {
         this.TokoKu = TokoKu;
     }
+    
+    void UbahProfilSeller() throws IOException, InterruptedException {
+        String NewNamaSeller, NewUsnSeller, NewPassSeller, NewEmailSeller, KonfirPassSeller;
+        
+        while(true){
+            Main.Clear();
+
+            this.TampilAkun();
+
+            System.out.println("""
+                | ---------------------------------------- |   
+                |   //         Menu Ubah Profil        \\\\  |
+                |  ||                                   || |
+                |  ||     (99)-. Kembali                || |
+                |  ||     (1)-. Ubah Data Akun Seller   || |
+                |  ||                                   || |
+                |   \\                                 //  |
+                | ---------------------------------------- |
+                               """);
+
+            System.out.print(" :>> ");
+            Opsi = CheckInt();
+
+            switch (Opsi) {
+                case 99 -> {return;}
+                case 1 -> {
+                    Main.Clear();
+
+                    try{
+                    
+                        System.out.println("\tSilahkan Masukkan Password\n\t    Sebelum Ubah Data Akun");
+                        System.out.println("------------------------------------------\n");
+                        System.out.print(" Masukkan Password   : ");
+                        KonfirPassSeller = br.readLine();
+                        System.out.println("-----------------------------------\n");
+                        if (KonfirPassSeller.equals("")) throw new IllegalArgumentException();
+
+                        if(!this.Pass.equals(KonfirPassSeller)){
+                            System.out.println("\n\tMaaf Password Anda Salah");
+                            br.readLine();
+                            break;
+                        }
+
+                        Main.Clear();
+
+                        System.out.println("Ketik '99' untuk kembali");
+                        System.out.println("Ketik '0' untuk menggunakan data lama");
+                        System.out.println("\n\tMasukkan Data Akun Baru");
+                        System.out.println("---------------------------------------\n");
+                        System.out.println("Nama Lama: " + this.Nama);
+                        System.out.print("Masukkan Nama Baru: ");
+                        NewNamaSeller = br.readLine();
+                        switch (NewNamaSeller) {
+                            case "99" -> {continue;}
+                            case "0" -> NewNamaSeller = this.Nama;
+                            case "" -> throw new IllegalArgumentException();
+                        }
+
+                        System.out.println("Username Lama: " + this.Usn);
+                        System.out.print("Username Baru: ");
+                        NewUsnSeller = br.readLine();
+                        switch (NewUsnSeller) {
+                            case "99" -> {continue;}
+                            case "0" -> NewUsnSeller = this.Usn;
+                            case "" -> throw new IllegalArgumentException();
+                        }
+
+                        System.out.println("Password Lama: *******");
+                        System.out.print("Password Baru: ");
+                        NewPassSeller = br.readLine();
+                        switch (NewPassSeller) {
+                            case "99" -> {continue;}
+                            case "0" -> NewPassSeller = this.Pass;
+                            case "" -> throw new IllegalArgumentException();
+                        }
+
+                        System.out.println("Email Lama: " + this.Email);
+                        System.out.print("Email Baru: ");
+                        NewEmailSeller = br.readLine();
+                        switch (NewEmailSeller) {
+                            case "99" -> {continue;}
+                            case "0" -> NewEmailSeller = this.Email;
+                            case "" -> throw new IllegalArgumentException();
+                        }
+
+                        this.Nama = NewNamaSeller;
+                        this.Usn = NewUsnSeller;
+                        this.Pass = NewPassSeller;
+                        this.Email = NewEmailSeller;
+
+
+                        Main.Clear();
+                        System.out.println("\t     Akun Anda Berhasil Diubah\n");
+                        br.readLine();
+                    }
+                    catch(IllegalArgumentException e){
+                        System.out.println(" Maaf Terjadi Kesalahan Saat Menginput Data.");
+                    }
+                }
+            }
+        }
+    }
+    
 }
+
 
 
 class Admin extends Akun{
