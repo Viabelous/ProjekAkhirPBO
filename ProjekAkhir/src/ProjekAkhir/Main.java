@@ -52,11 +52,13 @@ public class Main {
     static int capIDAkun = 1; //Untuk menyimpan ID terakhir tersimpan di Data Akun
     static int capIDProduk = 0; //Untuk menyimpan ID terakhir tersimpan di Data Produk
     static int capIDToko = 0; //Untuk menyimpan ID terakhir tersimpan di Data Toko
+    static int capIDCat = 0;
     static boolean PortToBag = false;
     
     // Deklarasi Variabel Array
     static ArrayList<Akun> DaftarAkun = new ArrayList<>(); //Untuk menyimpan data akun
     static ArrayList<Toko> DaftarToko = new ArrayList<>(); //Untuk menyimpan data toko
+    static ArrayList<Catatan> DaftarCatatan = new ArrayList<>(); //Untuk menyimpan data catatan yang ada
     
     public static int CheckInt(){
         try{
@@ -190,6 +192,8 @@ public class Main {
         
         return User;
     }
+    
+    
     // --------------------------------------- MAIN ZONE ---------------------------------------
     public static void main(String[] args) throws IOException, InterruptedException {
         DaftarAkun.add(Adminian);
@@ -205,7 +209,7 @@ public class Main {
         DaftarToko.get(0).TambahProduk((new Album()).TambahProduk( "Birthday (Digipack Ver)", "Red Velvet","Digipack Ver", 4, 280000 ));
         DaftarToko.get(0).TambahProduk((new LightStick()).TambahProduk("LightStick EXO", "EXO", true, "Ver 2", 1, 826000));
         DaftarToko.get(0).TambahProduk((new Album()).TambahProduk("Asterum", "PLAVE","", 5, 180000 ));
-        DaftarToko.get(0).TambahProduk((new Album()).TambahProduk("Rise Up", "ASTRO","", 10, 320000 ));
+        DaftarToko.get(1).TambahProduk((new Album()).TambahProduk("Rise Up", "ASTRO","", 10, 320000 ));
         
         capIDToko += 2;
         
@@ -222,6 +226,7 @@ public class Main {
             if(Menu.equals("Login")){
                 // Isi Menu Login
                 Clear();
+                System.out.println(System.currentTimeMillis());
                 System.out.println("""
                                     | -------------------------------------------- |
                                     |   //  Selamat Datang di Korean Market :) \\\\  |
@@ -256,6 +261,7 @@ public class Main {
 
                         System.out.print("Masukkan Username: ");
                         String Username = br.readLine();
+                        if(Username.equals("")) continue;
 
                         Clear();
                         System.out.println("""
@@ -272,6 +278,7 @@ public class Main {
                         
                         System.out.print("Masukkan Password: ");
                         String Password = br.readLine();
+                        if(Password.equals("")) continue;
                         
                         Clear();
                         System.out.println("""
@@ -285,9 +292,6 @@ public class Main {
                                     |   \\\\                                   //  |
                                     | ------------------------------------------ |
                                             """);
-
-                        // Anti Null Value
-                        if(Username.equals("") || Password.equals("")) break;
                         
                         // Cek Username dan Password
                         Opsi = AkunSequential(Username);

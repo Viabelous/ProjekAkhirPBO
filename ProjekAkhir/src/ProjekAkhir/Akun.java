@@ -268,6 +268,10 @@ class Customer extends Akun implements MultiableAcc{
         this.TasBelanja.add(ProdBelanja);
     }
     
+    public void TasBelanjaDel(Belanja ProdBelanja){
+        this.TasBelanja.remove(ProdBelanja);
+    }
+    
     // Prosedur untuk menampilkan isi tas belanja
     public void FeelMyBag() throws IOException, InterruptedException{
         Main.PortToBag = false;
@@ -298,7 +302,14 @@ class Customer extends Akun implements MultiableAcc{
             }
             
             System.out.println("[99] Kembali");
-            br.readLine();
+            System.out.println("(Pilih barang di tas untuk melakukan pemesanan.)");
+            
+            System.out.print(" :>> ");
+            int Opsi = Main.CheckInt();
+            if(Opsi == 99) return;
+            else{
+                
+            }
         }
     }
     
