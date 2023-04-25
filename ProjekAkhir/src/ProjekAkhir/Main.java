@@ -408,7 +408,7 @@ public class Main {
                         case 2 -> Adminian.manajemenSeller();
                         case 3 -> {//admin.riwayatPembelian();
                     }
-                        case 4 -> Adminian.UbahProfil();
+                        case 4 -> Adminian.UbahProfilAdmin();
                         case 5 -> Menu = "Login";
 
                         default -> {continue;}

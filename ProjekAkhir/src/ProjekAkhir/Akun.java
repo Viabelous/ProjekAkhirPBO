@@ -638,21 +638,21 @@ class Admin extends Akun{
 
             Main.Clear();
             System.out.print("""
-                 | ---------------------------------------- |
-                 |   //    Menu Utama Manajemen Seller  \\\\  |
-                 |  ||                                   || |
-                 |  ||        (99)-. Kembali             || |
-                 |  ||        (0)-. Tambah Seller        || |
-                 |  ||                                   || |
-                 |  ||         -. Hapus Seller .-        || |
-                 |  ||                                   || |
+                | ---------------------------------------- |
+                |   //    Menu Utama Manajemen Seller  \\\\  |
+                |  ||                                   || |
+                |  ||        (99)-. Kembali             || |
+                |  ||        (0)-. Tambah Seller        || |
+                |  ||                                   || |
+                |  ||    -. Manajemen Akun Seller .-    || |
+                |  ||                                   || |
                  """);
             
             int i=1;
                     
             for (Akun seller : Main.DaftarAkun){
                 if (seller.Otoritas.equals("Seller")){
-                    System.out.println("|  ||\t\t (" + i + ") " + seller.Nama + "\t\t|| |");
+                    System.out.println("\t     (" + i + ") " + seller.Nama + "");
                     i++;
                 }
             }
@@ -672,17 +672,148 @@ class Admin extends Akun{
                 case 99 -> {return;}
                 case 0 -> (new Seller()).TambahAkun();
                 default -> {
-                    boolean validation = (new Seller()).HapusAkun();
-
-                    if (validation){
-                        Main.DaftarAkun.remove(Opsi-1);
-                    }
+                    this.ManajemenAkunSeller(Opsi);
                 }
             }
         }
     }
     
-    void UbahProfil() throws IOException, InterruptedException {
+    
+    void ManajemenAkunSeller(int IndexSeller) throws IOException, InterruptedException  {
+        Main.Clear();
+        System.out.print("""
+            | ---------------------------------------- |
+            |   //    Menu Manajemen Akun Seller   \\\\  |
+            \t\t        """ + Main.DaftarAkun.get(IndexSeller).Nama + "\n" +
+            """
+            |  ||                                   || |
+            |  ||     (99)-. Kembali                || |
+            |  ||     (1)-. Ubah Informasi Akun     || |
+            |  ||     (2)-. Hapus Akun              || |
+            |  ||                                   || |
+            |   \\\\                                 //  |
+            | ---------------------------------------- |
+            """);
+
+        System.out.print(" :>> ");
+        Opsi = CheckInt();
+
+        switch (Opsi){
+            case 99 -> {return;}
+            case 1 -> {UbahProfilSeller(Opsi);}
+            case 2 -> {
+                boolean validation = (new Seller()).HapusAkun();
+
+                if (!validation){
+                    Main.DaftarAkun.remove(IndexSeller);
+                }
+            }
+        }
+    }
+
+    
+    void UbahProfilSeller(int IndexSeller) throws IOException, InterruptedException {
+        String NewUsnA, NewPassA, NewNamaA, NewEmailA, KonfirPass;
+        
+        Main.Clear();
+
+        System.out.println("""
+           | ---------------------------------------- |
+           |  //                                  \\\\  |
+           | ||                                    || |
+                    Nama      : """ + (" ") + Main.DaftarAkun.get(IndexSeller).Nama + "\n" +
+            """
+            \t Username""" + "  : " + Main.DaftarAkun.get(IndexSeller).Usn + "\n" +
+            """
+            \t Password""" + "  : ************  \n" +
+            """
+            \t Email""" + "     : "  + Main.DaftarAkun.get(IndexSeller).Email + "\n" +
+            """
+            | ||                                    || |
+            |  \\\\                                  //  |
+            | ---------------------------------------- |
+                   """);
+
+        br.readLine();
+        Main.Clear();
+
+        try{
+            System.out.println("\tSilahkan masukkan password\n\t    sebelum ubah data");
+            System.out.println("------------------------------------------\n");
+            System.out.print(" Masukkan Password   : ");
+            KonfirPass = br.readLine();
+            System.out.println("-----------------------------------\n");
+            if (KonfirPass.equals("")) throw new IllegalArgumentException();
+
+            if(!this.Pass.equals(KonfirPass)){
+                System.out.println("\n\tPassword salah");
+                br.readLine();
+                return;
+            }
+
+            Main.Clear();
+
+            System.out.println("Ketik '99' untuk kembali");
+            System.out.println("Ketik '0' untuk menggunakan data lama");
+            System.out.println("\n\tMasukkan Data Akun Baru");
+            System.out.println("---------------------------------------\n");
+            System.out.println("Nama Lama: " + Main.DaftarAkun.get(IndexSeller).Nama);
+            System.out.print("Masukkan Nama Baru: ");
+            NewNamaA = br.readLine();
+            switch (NewNamaA) {
+                case "99" -> {return;}
+                case "0" -> NewNamaA = Main.DaftarAkun.get(IndexSeller).Nama;
+                case "" -> throw new IllegalArgumentException();
+            }
+
+            System.out.println("Username Lama: " + Main.DaftarAkun.get(IndexSeller).Usn);
+            System.out.print("Username Baru: ");
+            NewUsnA = br.readLine();
+            switch (NewUsnA) {
+                case "99" -> {return;}
+                case "0" -> NewUsnA = Main.DaftarAkun.get(IndexSeller).Usn;
+                case "" -> throw new IllegalArgumentException();
+            }
+
+            System.out.println("Password Lama: *******");
+            System.out.print("Password Baru: ");
+            NewPassA = br.readLine();
+            switch (NewPassA) {
+                case "99" -> {return;}
+                case "0" -> NewPassA = Main.DaftarAkun.get(IndexSeller).Pass;
+                case "" -> throw new IllegalArgumentException();
+            }
+
+            System.out.println("Email Lama: " + Main.DaftarAkun.get(IndexSeller).Email);
+            System.out.print("Email Baru: ");
+            NewEmailA = br.readLine();
+            switch (NewEmailA) {
+                case "99" -> {return;}
+                case "0" -> NewEmailA = Main.DaftarAkun.get(IndexSeller).Email;
+                case "" -> throw new IllegalArgumentException();
+            }
+
+            Main.DaftarAkun.get(IndexSeller).setNama(NewNamaA);
+            Main.DaftarAkun.get(IndexSeller).setUsn(NewUsnA);
+            Main.DaftarAkun.get(IndexSeller).setPass(NewPassA);
+            Main.DaftarAkun.get(IndexSeller).setEmail(NewEmailA);
+//            this.Nama = NewNamaA;
+//            this.Usn = NewUsnA;
+//            this.Pass = NewPassA;
+//            this.Email = NewEmailA;
+
+            Main.Clear();
+            System.out.println("\t     Berhasil ubah akun\n");
+            br.readLine();
+        }
+        catch(IllegalArgumentException e){
+            System.out.println(" Terjadi error saat menginput data.");
+            br.readLine();
+        }
+    }
+    
+    
+    void UbahProfilAdmin() throws IOException, InterruptedException {
         String NewNama, NewUsn, NewPass, NewEmail, KonfirPass;
         
         while(true){
