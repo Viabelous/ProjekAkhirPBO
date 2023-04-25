@@ -23,7 +23,7 @@ Contoh penulisan:
 ## Penjelasan Tugas
 Program dipisahkan dalam penugasan untuk memudahkan pembagian pengerjaan dan menghindari konflik. Kontributor selain penanggung jawab boleh membantu pengerjaan tugas
 kontributor lain **dengan syarat** mendapat izin dari penanggung jawab tugas tersebut. Beberapa method/line mungkin dapat dipakai beberapa kali sehingga disarankan untuk kontributor saling berkomunikasi agar tidak perlu menulis kode yang duplikat.
-* **Autentikasi**  `Hadie42`  
+* **Autentikasi**  `Hadie43`  
 Mengurus menu landing, login, dan register customer (tidak termasuk tampilan).
 
 * **Admin** `Natalie40`  
@@ -41,7 +41,7 @@ Mengurus CRUD Produk termasuk penambahan jenis produk yang tersedia.
 * **Design UX** `Yafi39`  
 Mengurus alur menu dan struktur program, mencegah terjadinya error pada program, dan hal-hal lainnya yang dapat memengaruhi pengalaman pengguna dalam memakai program.
 
-* **UI** `Hadie42`  
+* **UI** `Hadie43`  
 Mengurus segala hal berkaitan dengan tampilan yang dilihat oleh pengguna program, memastikan pengguna mendapatkan feedback untuk semua aksi (selain kembali) yang
 dilakukan.
 
