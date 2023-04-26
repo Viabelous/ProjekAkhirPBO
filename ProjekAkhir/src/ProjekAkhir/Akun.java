@@ -483,19 +483,19 @@ class Seller extends Akun implements MultiableAcc{
         int i = 0;
         
         try{
-            while(i < 4){
+            while(i < 5){
                 Main.Clear();
                 System.out.println("""
                     | ------------------------------------------ |
-                    |   //  Silahkan Tambah Akun, Seller :)   \\\\  |
+                    |   //  Silahkan Tambah Akun, Seller :)   \\\\ |
                     | ||                                      || |
-                    \t\tUsername  : """ + (" ") + UsnSeller + "\n" +
+                    \tUsername  : """ + (" ") + UsnSeller + "\n" +
                      """
-                     \t\tPassword""" + "  : " + PassSeller + "\n" +
+                     \tPassword""" + "  : " + PassSeller + "\n" +
                      """                
-                     \t\tNama""" + " \t  : " + NamaSeller + "\n" +
+                     \tNama""" + " \t  : " + NamaSeller + "\n" +
                      """  
-                     \t\tEmail""" + " \t  : " + EmailSeller + "\n" +
+                     \tEmail""" + " \t  : " + EmailSeller + "\n" +
                      """
                     |  ||                                     || |
                     |   \\\\                                   //  |
@@ -534,6 +534,10 @@ class Seller extends Akun implements MultiableAcc{
                         EmailSeller = br.readLine();
                         if (EmailSeller.equals("")) throw new IllegalArgumentException();
                     }
+                    case 4 ->{
+                        System.out.println(" Akun Berhasil Ditambahkan !");
+                        br.readLine();
+                    }
                 }
 
                 i++;
@@ -551,9 +555,6 @@ class Seller extends Akun implements MultiableAcc{
         this.TokoKu = -1;
         
         Main.DaftarAkun.add(this);
-
-        System.out.println(" Akun Berhasil Ditambahkan !");
-        br.readLine();
     }
     
     
