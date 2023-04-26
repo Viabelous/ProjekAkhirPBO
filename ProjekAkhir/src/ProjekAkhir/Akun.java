@@ -847,7 +847,6 @@ class Admin extends Akun{
                 case 0 -> (new Seller()).TambahAkun();
                 default -> {
                     if (AkunSeller.get(Opsi) == null){
-                        Main.Clear();
                         System.out.println("\n\t    Seller tidak ada\n");
                         br.readLine();
                         continue;
