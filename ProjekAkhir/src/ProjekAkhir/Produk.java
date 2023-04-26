@@ -4,7 +4,6 @@ import static ProjekAkhir.Main.br;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-
 /**
  *
  * @author Viabel
@@ -1968,13 +1967,12 @@ class CustomKPOP extends ProdukKPOP{
     void TampilProduk(){
         // Mendefinisikan lebar kolom
         int IDWidth = 5;
-        int JenisWidth = 15;
         int ColumnWidth = 25;
 
         // Mencetak judul kolom
         System.out.printf("%-" + IDWidth + "s", "ID ");
         System.out.printf("%-" + ColumnWidth + "s", "Nama Produk ");
-        System.out.printf("%-" + JenisWidth + "s", "Kategori Produk ");
+        System.out.printf("%-" + ColumnWidth + "s", "Kategori Produk ");
         System.out.printf("%-" + ColumnWidth + "s", "Idol/Idol Group ");
         System.out.printf("%-" + ColumnWidth + "s", "Stok Produk ");
         System.out.printf("%-" + ColumnWidth + "s", "Harga Produk ");
@@ -1989,7 +1987,7 @@ class CustomKPOP extends ProdukKPOP{
         // Mencetak isi tabel
             System.out.printf("%-" + IDWidth + "d", this.ID);
             System.out.printf("%-" + ColumnWidth + "s", this.Nama);
-            System.out.printf("%-" + JenisWidth + "s", this.Kategori);
+            System.out.printf("%-" + ColumnWidth + "s", this.Kategori);
             System.out.printf("%-" + ColumnWidth + "s", this.Idol);
             System.out.printf("%-" + ColumnWidth + "d", this.Stok);
             System.out.printf("%-" + ColumnWidth + "d", this.Harga);
@@ -2102,13 +2100,12 @@ class CustomFood extends Produk{
     void TampilProduk(){
         // Mendefinisikan lebar kolom
         int IDWidth = 5;
-        int JenisWidth = 15;
         int ColumnWidth = 25;
 
         // Mencetak judul kolom
         System.out.printf("%-" + IDWidth + "s", "ID ");
         System.out.printf("%-" + ColumnWidth + "s", "Nama Produk ");
-        System.out.printf("%-" + JenisWidth + "s", "Kategori Produk ");
+        System.out.printf("%-" + ColumnWidth + "s", "Kategori Produk ");
         System.out.printf("%-" + ColumnWidth + "s", "Stok Produk ");
         System.out.printf("%-" + ColumnWidth + "s", "Harga Produk ");
         System.out.println();
@@ -2122,7 +2119,7 @@ class CustomFood extends Produk{
         // Mencetak isi tabel
             System.out.printf("%-" + IDWidth + "d", this.ID);
             System.out.printf("%-" + ColumnWidth + "s", this.Nama);
-            System.out.printf("%-" + JenisWidth + "s", this.Kategori);
+            System.out.printf("%-" + ColumnWidth + "s", this.Kategori);
             System.out.printf("%-" + ColumnWidth + "d", this.Stok);
             System.out.printf("%-" + ColumnWidth + "d", this.Harga);
             System.out.println();
