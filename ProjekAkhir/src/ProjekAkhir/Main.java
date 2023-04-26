@@ -13,10 +13,10 @@ import java.util.HashMap;
 /*
     Di sini letakkan catatan, apa yang kurang atau semacamnya
     [Belum]
-        -. Hapus Akun Cust
-        -. Produk Custom
+        -. Hapus Akun Cust >> Cust
+        -. Setelah dari tambah produk, beralih ke daftar produk >> UX
         -. Kirim Pesanan >> Seller / Admin
-        -. Hapus Akun Seller, otomatis hapus di daftar seller toko
+        -. Hapus Akun Seller, otomatis hapus di daftar seller toko >> Admin
 
     [Butuh Konfirmasi]
         -. 

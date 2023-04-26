@@ -334,32 +334,34 @@ public class Toko {
         Main.Clear();
         while(true){
             System.out.println("""
-                    | ------------------------------------------ |
-                    |   //     Create Produk Toko            \\\\  |	
-                    |  ||                                     || |
-                    |  ||       Pilih Produk                  || |
-                    |  ||       (1) Album                     || |
-                    |  ||       (2) Lightstick                || |
-                    |  ||       (3) Poster                    || |
-                    |  ||       (4) Postcard                  || |
-                    |  ||       (5) Photocard                 || |
-                    |  ||       (6) Keyring                   || |
-                    |  ||       (7) Lanyard                   || |
-                    |  ||       (8) Kimchi                    || |
-                    |  ||       (9) Tteokbokki                || |
-                    |  ||       (10) Ramyeon                  || |
-                    |  ||       (11) Fishcake                 || |
-                    |  ||       (12) KoreanSauce              || |
-                    |  ||       (13) KoreanDrink              || |
-                    |  ||       (14) KoreanSnack              || |
-                    |  ||                                     || |
-                    |  ||       (99) Kembali                  || |
-                    |   \\\\                                   //  |
-                    | ------------------------------------------ |
+                    | ----------------------------------------------- |
+                    |   //             Create Produk Toko         \\\\  |	
+                    |  ||                                          || |
+                    |  ||       Pilih Produk                       || |
+                    |  ||       (1) Album                          || |
+                    |  ||       (2) Lightstick                     || |
+                    |  ||       (3) Poster                         || |
+                    |  ||       (4) Postcard                       || |
+                    |  ||       (5) Photocard                      || |
+                    |  ||       (6) Keyring                        || |
+                    |  ||       (7) Lanyard                        || |
+                    |  ||       (8) Produk KPOP Lainnya            || |
+                    |  ||       (9) Tteokbokki                     || |
+                    |  ||       (10) Ramyeon                       || |
+                    |  ||       (11) Fishcake                      || |
+                    |  ||       (12) KoreanSauce                   || |
+                    |  ||       (13) KoreanDrink                   || |
+                    |  ||       (14) KoreanSnack                   || |
+                    |  ||       (15) Makanan/Minuman Lainnya       || |
+                    |  ||                                          || |
+                    |  ||       (99) Kembali                       || |
+                    |   \\\\                                        //  |
+                    | ----------------------------------------------- |
                                 """);
 
             System.out.print("  :>> ");
             Opsi = CheckInt();
+            Main.Clear();
 
             switch (Opsi) {
                 case 1 -> this.TambahProduk((new Album()).TambahProduk());
@@ -369,16 +371,19 @@ public class Toko {
                 case 5 -> this.TambahProduk((new Photocard()).TambahProduk());
                 case 6 -> this.TambahProduk((new Keyring()).TambahProduk());
                 case 7 -> this.TambahProduk((new Lanyard()).TambahProduk());
-                case 8 -> this.TambahProduk((new Kimchi()).TambahProduk());
-                case 9 -> this.TambahProduk((new Tteokbokki()).TambahProduk());
-                case 10 -> this.TambahProduk((new Ramyeon()).TambahProduk());
-                case 11 -> this.TambahProduk((new Fishcake()).TambahProduk());
-                case 12 -> this.TambahProduk((new KoreanSauce()).TambahProduk());
-                case 13 -> this.TambahProduk((new KoreanDrink()).TambahProduk());
-                case 14 -> this.TambahProduk((new KoreanSnack()).TambahProduk());
+                case 8 -> this.TambahProduk((new CustomKPOP()).TambahProduk());
+                case 9 -> this.TambahProduk((new Kimchi()).TambahProduk());
+                case 10 -> this.TambahProduk((new Tteokbokki()).TambahProduk());
+                case 11 -> this.TambahProduk((new Ramyeon()).TambahProduk());
+                case 12 -> this.TambahProduk((new Fishcake()).TambahProduk());
+                case 13 -> this.TambahProduk((new KoreanSauce()).TambahProduk());
+                case 14 -> this.TambahProduk((new KoreanDrink()).TambahProduk());
+                case 15 -> this.TambahProduk((new KoreanSnack()).TambahProduk());
+                case 16 -> this.TambahProduk((new CustomFood()).TambahProduk()); //
 
                 case 99 -> {return;}
             }
+            
         }
     }
     
