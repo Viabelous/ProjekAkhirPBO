@@ -1,6 +1,9 @@
 
 package ProjekAkhir;
 
+import static ProjekAkhir.Main.CheckInt;
+import static ProjekAkhir.Main.Opsi;
+import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime; 
 
@@ -72,4 +75,36 @@ public class Catatan {
         System.out.println(" -----------------------");
     }
     
+    void TampilPesanan() throws IOException, InterruptedException{
+        while(true){
+            Main.Clear();
+
+            System.out.println("""
+                | ---------------------------------------- |
+                |  //        Menu Lihat Pesanan        \\\\  |
+                | ||                                    || |
+                | ||           [99] Kembali             || |
+                | ||                                    || |
+                | ||        -. Daftar Pesanan .-        || |
+                """);
+            
+                    for (int i = 0; i < Main.DaftarCatatan.size(); i++){
+                        System.out.println("\n\t\t" + Main.DaftarCatatan.get(i).IDCust);
+                    }
+                    
+                System.out.println("""
+                |  ||                                   || |
+                |   \\\\                                 //  |
+                | ---------------------------------------- |
+                """);
+                
+            System.out.print(" :>> ");
+            Opsi = CheckInt();
+            
+            switch (Opsi) {
+                case 99 -> {return;}
+                default -> {this.TampilCatatan();}
+            }
+        }
+    }
 }
