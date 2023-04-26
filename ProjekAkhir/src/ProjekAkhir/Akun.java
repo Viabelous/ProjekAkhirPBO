@@ -791,7 +791,6 @@ class Admin extends Akun{
             Opsi = CheckInt();
 
 
-            // need error handling
             switch (Opsi) {
                 case 99 -> {return;}
                 case 0 -> (new Seller()).TambahAkun();

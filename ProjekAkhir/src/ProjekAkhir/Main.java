@@ -372,7 +372,7 @@ public class Main {
                             if(PortToBag == true)((Customer)getActiveUserIndex()).FeelMyBag();
                         }
                         case 2 -> ((Customer)getActiveUserIndex()).FeelMyBag();
-                        case 3 -> {}
+                        case 3 -> {Catatan.TampilPembelian();}
                         case 4 -> ((Customer)getActiveUserIndex()).UbahProfil();
                         case 5 -> Menu = "Login";
 

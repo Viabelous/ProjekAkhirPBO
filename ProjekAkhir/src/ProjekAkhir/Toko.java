@@ -296,8 +296,7 @@ public class Toko {
                         Main.Clear();
                         this.MenuTambahProduk();
                     }
-                    case 4 -> {
-                // lihatPesanan();
+                    case 4 -> {Catatan.TampilPesanan();
                     }
                     case 5 -> {
                         if(this.HapusToko()) return false;
@@ -327,7 +326,7 @@ public class Toko {
                         this.UbahToko();
                     }
                     case 2 -> this.MenuTambahProduk();
-                    case 3 -> {// lihatPesanan();
+                    case 3 -> {Catatan.TampilPesanan();
                     }
                     case 99 -> {return true;}
                 }

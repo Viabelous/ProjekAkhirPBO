@@ -65,17 +65,29 @@ public class Catatan {
        
     }
     
-    void TampilCatatan(){
+    public static void TampilCatatan(int IndexPembelian){
         System.out.println(" -- Catatan Pembelian -- ");
-        System.out.println("ID     : " + this.IDCat);
-        System.out.println("Tanggal: " + this.Waktu);
-        System.out.println("Status : " + this.Status);
+        System.out.println("ID     : " + Main.DaftarCatatan.get(IndexPembelian-1).IDCat);
+        System.out.println("Tanggal: " + Main.DaftarCatatan.get(IndexPembelian-1).Waktu);
+        System.out.println("Status : " + Main.DaftarCatatan.get(IndexPembelian-1).Status);
         System.out.println(" ----------------------- \n");
-        System.out.println(this.Isi);
+        System.out.println(Main.DaftarCatatan.get(IndexPembelian-1).Isi);
         System.out.println(" -----------------------");
     }
     
-    void TampilPesanan() throws IOException, InterruptedException{
+    public static void TampilCatatanPesanan(int IndexPesanan){
+        // belum diganti masi binggung
+        System.out.println(" -- Catatan Pesanan -- ");
+        System.out.println("ID     : " + Main.DaftarCatatan.get(IndexPesanan).IDCat);
+        System.out.println("Tanggal: " + Main.DaftarCatatan.get(IndexPesanan).Waktu);
+        System.out.println("Status : " + Main.DaftarCatatan.get(IndexPesanan).Status);
+        System.out.println(" ----------------------- \n");
+        System.out.println(Main.DaftarCatatan.get(IndexPesanan).Isi);
+        System.out.println(" -----------------------");
+    }
+    
+    
+    public static void TampilPesanan() throws IOException, InterruptedException{
         while(true){
             Main.Clear();
 
@@ -88,11 +100,12 @@ public class Catatan {
                 | ||        -. Daftar Pesanan .-        || |
                 """);
             
-                    for (int i = 0; i < Main.DaftarCatatan.size(); i++){
-                        System.out.println("\n\t\t" + Main.DaftarCatatan.get(i).IDCust);
-                    }
-                    
-                System.out.println("""
+            for (int i = 0; i < Main.DaftarCatatan.size(); i++){
+                //mau nampilin id/nama cust
+                System.out.println("\n\t   [" + i+1 + "] ID Customer : (" + Main.DaftarCatatan.get(i).IDCat + ")");
+            }
+
+            System.out.println("""
                 |  ||                                   || |
                 |   \\\\                                 //  |
                 | ---------------------------------------- |
@@ -103,7 +116,39 @@ public class Catatan {
             
             switch (Opsi) {
                 case 99 -> {return;}
-                default -> {this.TampilCatatan();}
+                default -> Catatan.TampilCatatanPesanan(Opsi);
+            }
+        }
+    }
+    
+    
+    public static void TampilPembelian() throws IOException, InterruptedException{
+        while(true){
+            Main.Clear();
+
+            System.out.println("""
+                | ---------------------------------------- |
+                |  //      Menu Riwayat Pembelian      \\\\  |
+                | ||                                    || |
+                | ||           [99] Kembali             || |
+                               """);
+            
+            for (int i=0; i < Main.DaftarCatatan.size(); i++){
+                //mau nampilin nama toko dri barang yg cust pesan
+                System.out.println("\n\t   [" + i+1 + "]" + Main.DaftarCatatan.get(i).IDToko);
+            }
+            
+            System.out.println("""
+                |   \\\\                                 //  |
+                | ---------------------------------------- |
+                """);
+                
+            System.out.print(" :>> ");
+            Opsi = CheckInt();
+            
+            switch (Opsi) {
+                case 99 -> {return;}
+                default -> Catatan.TampilCatatan(Opsi);
             }
         }
     }
