@@ -73,6 +73,8 @@ abstract class Akun {
     }
 }
 
+// ---------------------------------------------------- CUSTOMER -------------------------------------------------
+
 class Customer extends Akun implements MultiableAcc{
     
     private String NoHP;
@@ -210,7 +212,7 @@ class Customer extends Akun implements MultiableAcc{
         String Conf = br.readLine();
         if(Conf == null) Conf = "N";
         
-        return Conf.equals("Y");
+        return Conf.toUpperCase().equals("Y");
     }
     
     
@@ -467,8 +469,55 @@ class Customer extends Akun implements MultiableAcc{
         }
     }
     
+    public void TampilRiwayatPembelian() throws IOException, InterruptedException{
+        
+        HashMap<Integer, Catatan> CtnMap = new HashMap<>();
+        
+        while(true){
+            Main.Clear();
+            CtnMap.clear();
+
+            System.out.println("""
+                | ---------------------------------------- |
+                |  //      Menu Riwayat Pembelian      \\\\  |
+                | ||                                    || |
+                | ||           [99] Kembali             || |
+                               """);
+            
+            int i = 1;
+            
+            for(Catatan ctn : Main.DaftarCatatan){
+                if(ctn.getIDCust() == this.ID){
+                    System.out.println("\n\t   [" + i + "] " + ctn.TampilPreview());
+                    CtnMap.put(i, ctn);
+                    i++;
+                }
+            }
+            
+            System.out.println("""
+                |   \\\\                                 //  |
+                | ---------------------------------------- |
+                """);
+                
+            System.out.print(" :>> ");
+            Opsi = CheckInt();
+            
+            switch (Opsi) {
+                case 99 -> {return;}
+                default -> {
+                    if(CtnMap.get(Opsi) == null) return;
+                    CtnMap.get(Opsi).TampilCatatan();
+                }
+                    
+            }
+        }
+    }
+    
 }
 
+
+
+// ---------------------------------------------------- SELLER -------------------------------------------------
 
 class Seller extends Akun implements MultiableAcc{
     private int TokoKu;
@@ -590,7 +639,7 @@ class Seller extends Akun implements MultiableAcc{
         String Conf = br.readLine();
         if(Conf == null) Conf = "N";
         
-        return Conf.equals("Y");
+        return Conf.toUpperCase().equals("Y");
         
         
     }
@@ -717,6 +766,8 @@ class Seller extends Akun implements MultiableAcc{
     
 }
 
+
+// ---------------------------------------------------- ADMIN -------------------------------------------------
 
 
 class Admin extends Akun{

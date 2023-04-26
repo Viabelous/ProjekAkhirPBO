@@ -100,7 +100,7 @@ public class Toko {
         String Conf = br.readLine();
         if(Conf == null) Conf = "N";
         
-        if (Conf.equals("Y")){
+        if (Conf.toUpperCase().equals("Y")){
             ((Seller)Main.DaftarAkun
                     .get(Main.AkunSequential(IDSeller.get(Index-1))))
                     .setTokoKu(-1);
@@ -213,9 +213,8 @@ public class Toko {
         System.out.println(" Yakin Hapus Produk (Y/N)? ");
         System.out.print(" :>> ");
         String Jawab = br.readLine();
-        if(!Jawab.equals("Y")) return false;
+        if(!Jawab.toUpperCase().equals("Y")) return false;
         this.DaftarProduk.remove(Prod);
-        Prod = null;
         System.out.println(" Produk berhasil dihapus.");
         return true;
     }
@@ -289,18 +288,13 @@ public class Toko {
                         this.TampilDeskripsi();
                         this.UbahToko();
                     }
-                    case 2 -> {
-                        this.ManajemenSellerToko();
-                    }
+                    case 2 -> this.ManajemenSellerToko();
                     case 3 -> {
                         Main.Clear();
                         this.MenuTambahProduk();
                     }
-                    case 4 -> {Catatan.TampilPesanan();
-                    }
-                    case 5 -> {
-                        if(this.HapusToko()) return false;
-                    }
+                    case 4 -> TampilPesanan();
+                    case 5 -> {if(this.HapusToko()) return false;}
                     case 99 -> {return true;}
                 }
             }
@@ -326,8 +320,7 @@ public class Toko {
                         this.UbahToko();
                     }
                     case 2 -> this.MenuTambahProduk();
-                    case 3 -> {Catatan.TampilPesanan();
-                    }
+                    case 3 -> TampilPesanan();
                     case 99 -> {return true;}
                 }
             }
@@ -569,7 +562,7 @@ public class Toko {
         
         String Conf = br.readLine();
         if(Conf == null) Conf = "N";
-        else if(Conf.equals("Y")){
+        else if(Conf.toUpperCase().equals("Y")){
                 for(int IDP : this.IDSeller)
                    ((Seller)Main.DaftarAkun
                    .get(Main.AkunSequential(IDP)))
@@ -578,8 +571,53 @@ public class Toko {
                 Main.DaftarToko.remove(this);
         }
         
-        return Conf.equals("Y");
+        return Conf.toUpperCase().equals("Y");   
+    }
+    
+    public void TampilPesanan() throws IOException, InterruptedException{
         
+        HashMap<Integer, Catatan> CtnMap = new HashMap<>();
         
+        while(true){
+            Main.Clear();
+            CtnMap.clear();
+
+            System.out.println("""
+                | ---------------------------------------- |
+                |  //        Menu Lihat Pesanan        \\\\  |
+                | ||                                    || |
+                | ||           [99] Kembali             || |
+                | ||                                    || |
+                | ||        -. Daftar Pesanan .-        || |
+                """);
+            
+            int i = 1;
+            
+            for(Catatan ctn : Main.DaftarCatatan){
+                if(ctn.getIDToko() == this.ID){
+                    System.out.println("\n\t   [" + i + "] " + ctn.TampilPreview());
+                    CtnMap.put(i, ctn);
+                    i++;
+                
+                }
+            }
+
+            System.out.println("""
+                |  ||                                   || |
+                |   \\\\                                 //  |
+                | ---------------------------------------- |
+                """);
+                
+            System.out.print(" :>> ");
+            Opsi = CheckInt();
+            
+            switch (Opsi) {
+                case 99 -> {return;}
+                default -> {
+                    if(CtnMap.get(Opsi) == null) return;
+                    CtnMap.get(Opsi).TampilCatatan();
+                }
+            }
+        }
     }
 }

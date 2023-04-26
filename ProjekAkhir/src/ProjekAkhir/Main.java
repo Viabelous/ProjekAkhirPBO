@@ -13,12 +13,13 @@ import java.util.HashMap;
 /*
     Di sini letakkan catatan, apa yang kurang atau semacamnya
     [Belum]
-        -. Update Profil Seller
-        -. Manajemen Seller (--> admin) butuh error handling indeks out of bounds
+        -. Hapus Akun Cust
+        -. Produk Custom
+        -. Kirim Pesanan >> Seller / Admin
         -. Hapus Akun Seller, otomatis hapus di daftar seller toko
 
     [Butuh Konfirmasi]
-        -. Tampilan banyak masih minus keknya
+        -. 
 
 */
 
@@ -372,7 +373,7 @@ public class Main {
                             if(PortToBag == true)((Customer)getActiveUserIndex()).FeelMyBag();
                         }
                         case 2 -> ((Customer)getActiveUserIndex()).FeelMyBag();
-                        case 3 -> {Catatan.TampilPembelian();}
+                        case 3 -> ((Customer)getActiveUserIndex()).TampilRiwayatPembelian();
                         case 4 -> ((Customer)getActiveUserIndex()).UbahProfil();
                         case 5 -> Menu = "Login";
 
