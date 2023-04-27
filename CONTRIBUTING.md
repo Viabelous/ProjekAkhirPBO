@@ -27,16 +27,16 @@ kontributor lain **dengan syarat** mendapat izin dari penanggung jawab tugas ter
 Mengurus menu landing, login, dan register customer (tidak termasuk tampilan).
 
 * **Admin** `Natalie40`  
-Mengurus segala hal yang berkaitan dengan menu Admin (tidak termasuk tampilan).
+Mengurus segala hal yang berkaitan dengan menu dan interaksi Admin (tidak termasuk tampilan).
 
 * **Seller** `Tina37`  
-Mengurus segala hal yang berkaitan dengan menu Seller (tidak termasuk tampilan).
+Mengurus segala hal yang berkaitan dengan menu dan interaksi Seller (tidak termasuk tampilan).
 
 * **Customer** `Yafi39`  
-Mengurus segala hal yang berkaitan dengan menu Customer (tidak termasuk tampilan).
+Mengurus segala hal yang berkaitan dengan menu dan interaksi Customer (tidak termasuk tampilan).
 
 * **Produk** `Tina37`  
-Mengurus CRUD Produk termasuk penambahan jenis produk yang tersedia.
+Mengurus CRUD Produk termasuk penambahan jenis produk yang tersedia. Secara ringkas, mengurus semua kode class Produk.
 
 * **Design UX** `Yafi39`  
 Mengurus alur menu dan struktur program, mencegah terjadinya error pada program, dan hal-hal lainnya yang dapat memengaruhi pengalaman pengguna dalam memakai program.
