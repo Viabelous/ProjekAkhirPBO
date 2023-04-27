@@ -1,3 +1,4 @@
+
 # PROJEK AKHIR PBO KELOMPOK A2-4 2021
 **Sistem Manajemen Korean Market**
 
@@ -34,7 +35,19 @@ B -- <> --> BB(Pilih Toko)
 	BB -- 99 --> BBA(Kembali)
 	BB -- <> --> BBB(Pesan Produk)
 
-A -- 2 --> C(Tas Belanja)
+A -- 2 --> G(Jalan Pintas)
+G --99 --> GA(Kembali)
+G -- 1 --> GB(Cari Kategori)
+G -- 2 --> GC(Cari Idol)
+G -- 3 --> GD(Cari Nama)
+	GB -- 99 --> GBack(Kembali)
+	GB -- <> --> GProc(Pesan Produk)
+	GC -- 99 --> GBack(Kembali)
+	GC -- <> --> GProc(Pesan Produk)
+	GD -- 99 --> GBack(Kembali)
+	GD -- <> --> GProc(Pesan Produk)
+
+A -- 3 --> C(Tas Belanja)
 C -- 99 --> CA(Kembali)
 C -- <> --> CC(Proses Barang)
 	CC -- 99 --> CCA(Kembali)
@@ -42,16 +55,17 @@ C -- <> --> CC(Proses Barang)
 	CC -- 2 --> CCC(Ubah Jumlah)
 	CC -- 3 --> CCD(Proses Pesan)
 
-A -- 3 --> D(Riwayat Pembelian)
-A -- 4 --> E(Ubah Profil)
+A -- 4 --> D(Riwayat Pembelian)
+A -- 5 --> E(Ubah Profil)
 E -- 99 --> EA(Kembali)
 E -- 1 --> EB(Ubah Data Akun)
 E -- 2 --> EC(Hapus Akun)
 
-A -- 5 --> F(Log Out)
+A -- 6 --> F(Log Out)
 ```
-Menu utama Customer terbagi menjadi 5 jalur:
+Menu utama Customer terbagi menjadi 6 jalur:
 * **Toko-Toko**: Customer melihat toko-toko yang ada dan kemudian memilih produk yang disediakan oleh toko terpilih.
+* **Jalan Pintas**: Customer dapat mencari produk berdasarkan pilihan tertentu tanpa perlu mencari ke toko satu-persatu.
 * **Tas Belanja**: Produk yang telah dipilih oleh Customer masuk ke tas belanja, Customer mengakses menu tas belanja untuk melakukan proses pembelian produk.
 * **Riwayat Pembelian**: Customer melihat catatan pembelian dari produk yang sebelum-sebelumnya telah dipesan.
 * **Ubah Profil**: Customer melihat, mengubah, dan/atau menghapus akun.
