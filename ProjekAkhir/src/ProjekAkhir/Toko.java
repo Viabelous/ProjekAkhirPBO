@@ -112,9 +112,16 @@ public class Toko {
     // Procedure untuk menampilkan semua produk di toko,
     // Respon setelah admin atau customer pilih toko, dan/atau seller pilih Tokoku
     public void TampilProduk() throws IOException, InterruptedException{
+        
+        HashMap<Integer, Integer> ProdMap = new HashMap<>();
+        
         while(true){
+            
+            ProdMap.clear();
+            
             Main.Clear();
             int i = 1;
+            int j = 0;
 
             System.out.println("[99] Kembali");
             if(Main.Menu.equals("Seller") || Main.Menu.equals("Admin"))
@@ -122,7 +129,10 @@ public class Toko {
 
             System.out.println("\nProduk Dijual:");
             for (Produk Dagangan : DaftarProduk) {
+                j++;
+                if(Main.Menu.equals("Customer") && Dagangan.Stok <= 0) continue; 
                 System.out.println("\t(" + i + ") " + Dagangan.Nama + " ---- " + Dagangan.Harga);
+                ProdMap.put(i, j-1);
 
                 i++;
             }
@@ -135,9 +145,11 @@ public class Toko {
             if(Opsi == 99) return;
             if(Opsi != -1){
                 try{
+                    if(ProdMap.get(Opsi) == null)
+                        throw new IndexOutOfBoundsException();
                     switch(Main.Menu){
                         case "Customer" -> {
-                            BeliProduk(this.DaftarProduk.get(Opsi-1));
+                            BeliProduk(this.DaftarProduk.get(ProdMap.get(Opsi)));
                             if(Main.PortToBag == true) return;
                         }
                         case "Seller", "Admin" -> {
@@ -145,7 +157,7 @@ public class Toko {
                             if(Opsi == 0) {
                                 if(!this.MenuManajemenToko()) return;
                             }
-                            else ManajemenProduk(this.DaftarProduk.get(Opsi-1));
+                            else ManajemenProduk(this.DaftarProduk.get((ProdMap.get(Opsi))));
                         }
                     }
                 } catch(IndexOutOfBoundsException e){
@@ -620,7 +632,31 @@ public class Toko {
                 case 99 -> {return;}
                 default -> {
                     if(CtnMap.get(Opsi) == null) return;
-                    CtnMap.get(Opsi).TampilCatatan();
+                    boolean loop = true;
+                    while(loop){
+                        Main.Clear();
+                        CtnMap.get(Opsi).TampilCatatan();
+                        System.out.println(" [99] Kembali");
+                        System.out.println(" [1] Kirim Pesanan");
+                        System.out.print(" :>> ");
+                        int OpsiSec = CheckInt();
+
+                        switch(OpsiSec){
+                            case 99 -> {loop = false;}
+                            case 1 -> {
+                                Main.BarangSequential(CtnMap
+                                        .get(Opsi)
+                                        .getStruk()
+                                        .getIDB()).Stok -= CtnMap.get(Opsi)
+                                                                 .getStruk()
+                                                                 .getStok();
+                                CtnMap.get(Opsi).setStatus("Dikirim");
+                                System.out.println(" Berhasil dikirim!");
+                                br.readLine();
+                                loop = false;
+                            }
+                        }
+                    }
                 }
             }
         }

@@ -1,8 +1,6 @@
 
 package ProjekAkhir;
 
-import static ProjekAkhir.Main.CheckInt;
-import static ProjekAkhir.Main.Opsi;
 import static ProjekAkhir.Main.br;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
@@ -16,12 +14,14 @@ public class Catatan {
     private int IDCat;
     private int IDCust;
     private int IDToko;
+    private Belanja Struk;
     private String Waktu;
     private String Isi;
     private String Status;
     
-    Catatan(int IDCustomer, int IDToko, String IsiCatatan){
+    Catatan(int IDCustomer, int IDToko, Belanja Struk, String IsiCatatan){
         this.IDCust = IDCustomer;
+        this.Struk = Struk;
         this.Isi = IsiCatatan;
         this.IDToko = IDToko;
     }
@@ -40,7 +40,7 @@ public class Catatan {
               CIsi += "\nNama Pembeli      : " + ((Customer)Main.getActiveUserIndex()).getNama();
               CIsi += "\nID Toko           : " + TokoProd.ID;
               CIsi += "\nNama Toko         : " + TokoProd.Nama;
-              CIsi += "\nID Barang dibeli  : " + TokoProd.Nama;
+              CIsi += "\nID Barang dibeli  : " + Struk.getIDB();
               CIsi += "\nNama Barang dibeli: " + Prod.Nama;
               CIsi += "\nBanyak dibeli     : " + Struk.getStok();
               CIsi += "\nHarga Total       : " + Struk.getHarga();
@@ -48,7 +48,7 @@ public class Catatan {
               CIsi += "\nNomor Rekening    : " + NomorRekening;
         
         
-        new Catatan(Main.IDAktif, Struk.getIDT(), CIsi).TambahCatatan();
+        new Catatan(Main.IDAktif, Struk.getIDT(), Struk, CIsi).TambahCatatan();
     }
     
     
@@ -83,7 +83,7 @@ public class Catatan {
         System.out.println(" ----------------------- \n");
         System.out.println(this.Isi);
         System.out.println(" -----------------------");
-        br.readLine();
+        if(Main.Menu.equals("Customer")) br.readLine();
     }
 
     public int getIDCat() {
@@ -132,5 +132,14 @@ public class Catatan {
 
     public void setStatus(String Status) {
         this.Status = Status;
+    
+    }
+
+    public Belanja getStruk() {
+        return Struk;
+    }
+
+    public void setStruk(Belanja Struk) {
+        this.Struk = Struk;
     }
 }

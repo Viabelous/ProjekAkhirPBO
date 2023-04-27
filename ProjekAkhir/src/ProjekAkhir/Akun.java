@@ -207,7 +207,7 @@ class Customer extends Akun implements MultiableAcc{
     @Override
     public boolean HapusAkun() throws IOException{
         System.out.println("Yakin hapus akun (Y/N)?");
-        System.out.println(":>> ");
+        System.out.print(":>> ");
         
         String Conf = br.readLine();
         if(Conf == null) Conf = "N";
@@ -343,6 +343,7 @@ class Customer extends Akun implements MultiableAcc{
                 |  ||                                   || |
                 |  ||        (99)-. Kembali             || |
                 |  ||        (1)-. Ubah Data Akun       || |
+                |  ||        (2)-. Hapus Akun           || |    
                 |  ||                                   || |
                 |   \\\\                                 //  |
                 | ---------------------------------------- |
@@ -463,6 +464,15 @@ class Customer extends Akun implements MultiableAcc{
                     }
                     catch(IllegalArgumentException e){
                         System.out.println(" Terjadi error saat menginput data.");
+                    }
+                }
+                case 2 -> {
+                    if(this.HapusAkun()){
+                        Main.Menu = "Login";
+                        Main.DaftarAkun.remove(this);
+                        System.out.println(" Akun Berhasil Dihapus!");
+                        br.readLine();
+                        return;
                     }
                 }
             }

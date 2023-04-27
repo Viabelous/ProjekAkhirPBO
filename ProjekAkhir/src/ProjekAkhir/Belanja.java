@@ -89,8 +89,8 @@ public class Belanja {
             
             System.out.println("");
             System.out.println(" [99] Kembali");
-            System.out.println(" [0] Keluarkan dari tas belanja");
-            System.out.println(" [1] Ubah banyak pembelian");
+            System.out.println(" [1] Keluarkan dari tas belanja");
+            System.out.println(" [2] Ubah banyak pembelian");
             
             if(Prod.Stok < this.getStok()){
                 System.out.println(" Dikarenakan stok diminta kurang dari banyak yang diinginkan, ");
@@ -98,14 +98,14 @@ public class Belanja {
                 System.out.println(" Stok Tersedia: " + Prod.Stok);
             }
             else{
-                System.out.println(" [2] Lakukan Pemesanan");
+                System.out.println(" [3] Lakukan Pemesanan");
             }
                 
             System.out.print(" :> ");
             Opsi = CheckInt();
             switch(Opsi){
                 case 99 -> {return;}
-                case 0 -> {
+                case 1 -> {
                     Customer Pbl = (Customer)getActiveUserIndex();
 
                     Pbl.TasBelanjaDel(this);
@@ -113,7 +113,7 @@ public class Belanja {
                     return;
                     }
 
-                case 1 -> {
+                case 2 -> {
                     System.out.print("\nMasukkan banyak pesanan baru: ");
                     Opsi = CheckInt();
                     if(Opsi <= 0 || Opsi > Prod.Stok)
@@ -125,7 +125,7 @@ public class Belanja {
                     br.readLine();
                 }
                 
-                case 2 -> {
+                case 3 -> {
                     if(Prod.Stok < this.getStok()) continue;
                     if (this.ProsesBarang()) return;
                 }

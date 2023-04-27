@@ -183,7 +183,7 @@ class LightStick extends ProdukKPOP{
             if (NamaIdol.equals("")) throw new IllegalArgumentException();
             
             System.out.print("Berisikan Baterai (Y/N)?");
-            boolean DilengkapiBaterai = br.readLine().equals("Y");
+            boolean DilengkapiBaterai = br.readLine().toUpperCase().equals("Y");
             
             System.out.print("Masukkan Versi LightStick : ");
             String VersiLightstickProduk = br.readLine();
@@ -231,7 +231,7 @@ class LightStick extends ProdukKPOP{
         
         System.out.println("Kondisi Baterai Lama: " + ((this.Baterai)? "" : "Tidak ") + "Termasuk Baterai");
         System.out.print("Berisikan Baterai (Y/N)?");
-        String DilengkapiBateraiBaru = br.readLine();
+        String DilengkapiBateraiBaru = br.readLine().toUpperCase();
         if (DilengkapiBateraiBaru.equals("99")) return;
         else if (!(DilengkapiBateraiBaru.equals("Y") || DilengkapiBateraiBaru.equals("N"))) DilengkapiBateraiBaru = "N";
 
@@ -255,7 +255,7 @@ class LightStick extends ProdukKPOP{
         
         this.Nama = NamaBaru;
         this.Idol = IdolBaru;
-        this.Baterai = ((DilengkapiBateraiBaru.equals("Y"))? !this.Baterai : this.Baterai);
+        this.Baterai = ((DilengkapiBateraiBaru.toUpperCase().equals("Y"))? true : false);
         this.VersiLightstick = VersiLightstickBaru;
         this.Stok = StokProdukBaru;
         this.Harga = HargaBaru;

@@ -13,9 +13,7 @@ import java.util.HashMap;
 /*
     Di sini letakkan catatan, apa yang kurang atau semacamnya
     [Belum]
-        -. Hapus Akun Cust >> Cust
         -. Setelah dari tambah produk, beralih ke daftar produk >> UX
-        -. Kirim Pesanan >> Seller / Admin
         -. Hapus Akun Seller, otomatis hapus di daftar seller toko >> Admin
 
     [Butuh Konfirmasi]
@@ -212,6 +210,7 @@ public class Main {
         DaftarToko.get(0).TambahProduk((new LightStick()).TambahProduk("LightStick EXO", "EXO", true, "Ver 2", 1, 826000));
         DaftarToko.get(0).TambahProduk((new Album()).TambahProduk("Asterum", "PLAVE","", 5, 180000 ));
         DaftarToko.get(1).TambahProduk((new Album()).TambahProduk("Rise Up", "ASTRO","", 10, 320000 ));
+        DaftarToko.get(1).TambahProduk((new Album()).TambahProduk("Formula of Love: O+T=<3", "Twice","FULL OF LOVE Ver", 0, 310000 ));
         
         capIDToko += 2;
         
