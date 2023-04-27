@@ -354,10 +354,11 @@ public class Main {
 
                         |  ||                                          || |
                         |  ||      (1)-. Menuju Toko                   || |
-                        |  ||      (2)-. Menuju Tas Belanjaku          || |
-                        |  ||      (3)-. Baca Riwayat Pembelianku      || |
-                        |  ||      (4)-. Ubah Profilku                 || |
-                        |  ||      (5)-. Log Out                       || |
+                        |  ||      (2)-. Menuju Jalan Pintas           || |
+                        |  ||      (3)-. Menuju Tas Belanjaku          || |
+                        |  ||      (4)-. Baca Riwayat Pembelianku      || |
+                        |  ||      (5)-. Ubah Profilku                 || |
+                        |  ||      (6)-. Log Out                       || |
                         |   \\\\                                        //  |
                         | ----------------------------------------------- |
                                 """);
@@ -370,10 +371,14 @@ public class Main {
                             Toko.MenuPilihToko();
                             if(PortToBag == true)((Customer)getActiveUserIndex()).FeelMyBag();
                         }
-                        case 2 -> ((Customer)getActiveUserIndex()).FeelMyBag();
-                        case 3 -> ((Customer)getActiveUserIndex()).TampilRiwayatPembelian();
-                        case 4 -> ((Customer)getActiveUserIndex()).UbahProfil();
-                        case 5 -> Menu = "Login";
+                        case 2 -> {
+                            Toko.ShortCut();
+                            if(PortToBag == true)((Customer)getActiveUserIndex()).FeelMyBag();
+                        }
+                        case 3 -> ((Customer)getActiveUserIndex()).FeelMyBag();
+                        case 4 -> ((Customer)getActiveUserIndex()).TampilRiwayatPembelian();
+                        case 5 -> ((Customer)getActiveUserIndex()).UbahProfil();
+                        case 6 -> Menu = "Login";
 
                         default -> {continue;}
                     }

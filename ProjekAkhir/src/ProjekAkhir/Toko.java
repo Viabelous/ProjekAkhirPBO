@@ -666,6 +666,7 @@ public class Toko {
     static void ShortCut() throws IOException, InterruptedException{
         Main.Clear();
         while(true){
+            if(Main.PortToBag == true) return;
             System.out.println("""
                     | ----------------------------------------------- |
                     |   //                Jalan Pintas            \\\\  |	
@@ -688,14 +689,17 @@ public class Toko {
                 case 1 -> TampilPerKategori();
                 case 2 -> {
                     System.out.println(" Masukkan Nama Idol/Idol Group yang ingin dicari: ");
+                    System.out.print(" :>> ");
                     String Cari = br.readLine();
-                    ProdukTertentu(Cari, 2);
+                    TampilShortCut(Cari, 2);
                 }
                 case 3 -> {
                     System.out.println(" Masukkan Nama Produk yang ingin dicari: ");
+                    System.out.print(" :>> ");
                     String Cari = br.readLine();
-                    ProdukTertentu(Cari, 3);
+                    TampilShortCut(Cari, 3);
                 }
+                case 99 -> {return;}
             }
         }
     }
@@ -703,6 +707,7 @@ public class Toko {
     static void TampilPerKategori() throws IOException, InterruptedException{
         Main.Clear();
         while(true){
+            if(Main.PortToBag == true) return;
             System.out.println("""
                     | ----------------------------------------------- |
                     |   //             Pilih Kategori Dicari       \\\\  |	
@@ -728,21 +733,42 @@ public class Toko {
 
             System.out.print("  :>> ");
             Opsi = CheckInt();
-            Main.Clear();      
+            Main.Clear();
+            
+            switch (Opsi) {
+                case 1 -> TampilShortCut("Album", 1);
+                case 2 -> TampilShortCut("Lightstick", 1);
+                case 3 -> TampilShortCut("Poster", 1);
+                case 4 -> TampilShortCut("Postcard", 1);
+                case 5 -> TampilShortCut("Photocard", 1);
+                case 6 -> TampilShortCut("Keyring", 1);
+                case 7 -> TampilShortCut("Lanyard", 1);
+                case 8 -> TampilShortCut("Kimchi", 1);
+                case 9 -> TampilShortCut("Tteokbokki", 1);
+                case 10 -> TampilShortCut("Ramyeon", 1);
+                case 11 -> TampilShortCut("Fishcake", 1);
+                case 12 -> TampilShortCut("KoreanSauce", 1);
+                case 13 -> TampilShortCut("KoreanDrink", 1);
+                case 14 -> TampilShortCut("KoreanSnack", 1);
+
+                case 99 -> {return;}
+            }
         }    
     }
     
     static HashMap<Integer, HashMap<Produk, Toko>> ProdukTertentu(String Cari, int Jalur){
         HashMap<Integer, HashMap<Produk, Toko>> IntoMap = new HashMap<>();
         
-        int i = 0;
+        int i = 1;
         
         switch (Jalur) {
             case 1 -> {
                 for(Toko TK : Main.DaftarToko)
                     for(Produk PR : TK.DaftarProduk)
                         if(PR.getClass().getSimpleName().equals(Cari)){
-                            IntoMap.put(1,new HashMap<>(){{put(PR, TK);}});
+                            if(PR.Stok <= 0) continue;
+                            System.out.println("\t["+i+"] " + PR.Nama + "  --<"+TK.Nama+">");
+                            IntoMap.put(i,new HashMap<>(){{put(PR, TK);}});
                             i++;
                         }
             }
@@ -751,6 +777,8 @@ public class Toko {
                     for(Produk PR : TK.DaftarProduk)
                         if(PR.getClass().getSuperclass() == ProdukKPOP.class)
                             if(((ProdukKPOP)PR).Idol.toLowerCase().contains(Cari.toLowerCase())){
+                                if(PR.Stok <= 0) continue;
+                                System.out.println("\t["+i+"] " + PR.Nama + "  --<"+TK.Nama+">");
                                 IntoMap.put(1,new HashMap<>(){{put(PR, TK);}});
                                 i++;
                             }
@@ -759,11 +787,51 @@ public class Toko {
                 for(Toko TK : Main.DaftarToko)
                     for(Produk PR : TK.DaftarProduk)
                         if(PR.Nama.toLowerCase().contains(Cari.toLowerCase())){
+                            if(PR.Stok <= 0) continue;
+                            System.out.println("\t["+i+"] " + PR.Nama + "  --<"+TK.Nama+">");
                             IntoMap.put(1,new HashMap<>(){{put(PR, TK);}});
                             i++;
                         }
             }
         }
         return IntoMap;
+    }
+    
+    static void TampilShortCut(String Cari, int Jalur) throws IOException, InterruptedException{
+        
+        HashMap<Integer, HashMap<Produk, Toko>> ProdMap = new HashMap<>();
+        
+        while(true){
+            ProdMap.clear();
+            Main.Clear();
+
+            System.out.println("[99] Kembali");
+            System.out.println("\nProduk Ditemukan:");
+            ProdMap = ProdukTertentu(Cari, Jalur);
+
+            if(ProdMap.isEmpty()){
+                System.out.println(" -- Tidak Ditemukan Produk Dicari -- ");
+            }
+
+            System.out.println("\n");
+            int Opsi = Main.CheckInt();
+            if(Opsi == 99) return;
+            if(Opsi != -1){
+                try{
+                    if(ProdMap.get(Opsi) == null) throw new IndexOutOfBoundsException();
+                    
+                    Produk Prod = (Produk)ProdMap.get(Opsi).keySet().toArray()[0];
+                    
+                    ((Toko)ProdMap.get(Opsi).values().toArray()[0]).BeliProduk(Prod);
+                    if(Main.PortToBag == true) return;
+                     
+                } catch(IndexOutOfBoundsException e){
+                    System.out.println(" Produk tersebut tidak ada");
+                    br.readLine();
+                }
+                
+            }
+        }
+        
     }
 }
