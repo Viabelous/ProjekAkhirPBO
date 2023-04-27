@@ -1,10 +1,13 @@
 
 package ProjekAkhir;
 
+import static ProjekAkhir.Main.Opsi;
+import static ProjekAkhir.Main.CheckInt;
 import static ProjekAkhir.Main.br;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime; 
+import java.util.HashMap;
 
 /**
  *
@@ -85,6 +88,73 @@ public class Catatan {
         System.out.println(" -----------------------");
         if(Main.Menu.equals("Customer")) br.readLine();
     }
+    
+    static void TampilRiwayatPembelian(int ID) throws IOException, InterruptedException{
+        
+        HashMap<Integer, Catatan> CtnMap = new HashMap<>();
+        
+        while(true){
+            Main.Clear();
+            CtnMap.clear();
+
+            System.out.println("""
+                | ---------------------------------------------------------------- |
+                |  //                  Menu Riwayat Pembelian                  \\\\  |
+                | ||                                                            || |
+                | ||                       [99] Kembali                         || |
+                               """);
+            
+            int i = 1;
+            
+            if(Main.Menu.equals("Customer")){
+                Customer Cust = (Customer)Main.DaftarAkun.get(Main.AkunSequential(ID));
+                for(Catatan ctn : Main.DaftarCatatan){ 
+                    if(ctn.getIDCust() == Cust.getID() && ctn.Status.equals("dikirim")){
+                        System.out.println("\n\t   [" + i + "] " + ctn.TampilPreview());
+                        CtnMap.put(i, ctn);
+                        i++;
+                    }
+                }
+            }
+            else{
+                Toko Tk = null;
+                for(Toko tk : Main.DaftarToko){
+                    if(tk.ID == ID){
+                        Tk = tk;
+                        break;
+                    }
+                }
+                
+                for(Catatan ctn : Main.DaftarCatatan){ 
+                    if(ctn.getIDToko() == Tk.ID){
+                        System.out.println("\n\t   [" + i + "] " + ctn.TampilPreview());
+                        CtnMap.put(i, ctn);
+                        i++;
+                    }
+                }
+            }
+                          
+            System.out.println("""
+                | ||                                                            || |
+                |  \\\\                                                          //  |
+                | ---------------------------------------------------------------- |
+                """);
+                
+            System.out.print(" :>> ");
+            Opsi = CheckInt();
+            
+            switch (Opsi) {
+                case 99 -> {return;}
+                default -> {
+                    if(CtnMap.get(Opsi) == null) return;
+                    CtnMap.get(Opsi).TampilCatatan();
+                }
+                    
+            }
+        }
+    }
+    
+    
 
     public int getIDCat() {
         return IDCat;

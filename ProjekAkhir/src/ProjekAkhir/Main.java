@@ -376,7 +376,7 @@ public class Main {
                             if(PortToBag == true)((Customer)getActiveUserIndex()).FeelMyBag();
                         }
                         case 3 -> ((Customer)getActiveUserIndex()).FeelMyBag();
-                        case 4 -> ((Customer)getActiveUserIndex()).TampilRiwayatPembelian();
+                        case 4 -> Catatan.TampilRiwayatPembelian(IDAktif);
                         case 5 -> ((Customer)getActiveUserIndex()).UbahProfil();
                         case 6 -> Menu = "Login";
 
