@@ -109,7 +109,7 @@ public class Catatan {
             if(Main.Menu.equals("Customer")){
                 Customer Cust = (Customer)Main.DaftarAkun.get(Main.AkunSequential(ID));
                 for(Catatan ctn : Main.DaftarCatatan){ 
-                    if(ctn.getIDCust() == Cust.getID() && ctn.Status.equals("dikirim")){
+                    if(ctn.getIDCust() == Cust.getID()){
                         System.out.println("\n\t   [" + i + "] " + ctn.TampilPreview());
                         CtnMap.put(i, ctn);
                         i++;
@@ -126,7 +126,7 @@ public class Catatan {
                 }
                 
                 for(Catatan ctn : Main.DaftarCatatan){ 
-                    if(ctn.getIDToko() == Tk.ID){
+                    if(ctn.getIDToko() == Tk.ID && ctn.Status.equals("Dikirim")){
                         System.out.println("\n\t   [" + i + "] " + ctn.TampilPreview());
                         CtnMap.put(i, ctn);
                         i++;

@@ -13,7 +13,7 @@ import java.util.HashMap;
 /*
     Di sini letakkan catatan, apa yang kurang atau semacamnya
     [Belum]
-        -. Setelah dari tambah produk, beralih ke daftar produk >> UX
+        -. 
 
     [Butuh Konfirmasi]
         -. 
@@ -53,6 +53,7 @@ public class Main {
     static int capIDToko = 0; //Untuk menyimpan ID terakhir tersimpan di Data Toko
     static int capIDCat = 0;
     static boolean PortToBag = false;
+    static boolean PortToList = false;
     
     // Deklarasi Variabel Array
     static ArrayList<Akun> DaftarAkun = new ArrayList<>(); //Untuk menyimpan data akun

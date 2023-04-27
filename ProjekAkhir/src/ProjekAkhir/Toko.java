@@ -58,6 +58,7 @@ public class Toko {
         if(Item == null) return;
         this.DaftarProduk.add(Item);
         Main.capIDProduk += 1;
+        Main.PortToList = true;
     }
     
     //Prosedur untuk menampilkan semua seller toko
@@ -116,6 +117,8 @@ public class Toko {
         HashMap<Integer, Integer> ProdMap = new HashMap<>();
         
         while(true){
+            
+            Main.PortToList = false;
             
             ProdMap.clear();
             
@@ -274,9 +277,9 @@ public class Toko {
     // Boolean untuk penghapusan
     public boolean MenuManajemenToko() throws IOException, InterruptedException {
         
-        while(true){
-        
+        while(true){            
             Main.Clear();
+            if(Main.PortToList) return true;
 
             //Sout dibedakan untuk admin dan untuk seller
             if (Main.Menu.equals("Admin")){
@@ -353,6 +356,7 @@ public class Toko {
     void MenuTambahProduk() throws IOException, InterruptedException{
         Main.Clear();
         while(true){
+            if(Main.PortToList) return;
             System.out.println("""
                     | ----------------------------------------------- |
                     |   //             Create Produk Toko         \\\\  |	
