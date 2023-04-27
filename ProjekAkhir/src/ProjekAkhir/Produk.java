@@ -997,7 +997,7 @@ class Lanyard extends ProdukKPOP{
 
 class Kimchi extends Produk{
     String Bahan;
-    String Berat; 
+    int Berat; 
 
     @Override
     Produk TambahProduk(){
@@ -1011,8 +1011,8 @@ class Kimchi extends Produk{
             if (BahanKimchi.equals("")) throw new IllegalArgumentException();
             
             System.out.print("Masukkan Berat Kimchi : ");
-            String BeratKimchi = br.readLine();
-            if (BeratKimchi.equals("")) throw new IllegalArgumentException();
+            int BeratKimchi =  Main.CheckInt();
+            if (BeratKimchi <= 0) throw new IllegalArgumentException();
             
             System.out.print("Masukkan Stok Kimchi : ");
             int StokProduk =  Main.CheckInt();
@@ -1055,11 +1055,11 @@ class Kimchi extends Produk{
         if (BahanKimchiBaru.equals("99")) return;
         else if (BahanKimchiBaru.equals("")) BahanKimchiBaru = this.Bahan;
  
-        System.out.println("Berat Kimchi Lama: " + this.Berat);
-        System.out.print("Masukkan Berat Kimchi Baru: ");
-        String BeratKimchiBaru = br.readLine();
-        if (BeratKimchiBaru.equals("99")) return;
-        else if (BeratKimchiBaru.equals("")) BeratKimchiBaru = this.Berat;
+        System.out.println("Berat Kimchi Lama:  " + this.Berat);
+        System.out.print("Masukkan Berat Kimchi Baru:  ");
+        int BeratKimchiBaru =  Main.CheckInt();
+        if (BeratKimchiBaru == 99) return;
+        else if (BeratKimchiBaru <= 0) BeratKimchiBaru = this.Berat;
         
         System.out.println("Stok Kimchi Lama:  " + this.Stok);
         System.out.print("Masukkan Stok Kimchi Baru:  ");
@@ -1118,7 +1118,7 @@ class Kimchi extends Produk{
 
 class Tteokbokki extends Produk{
     String Bahan;
-    String Berat; 
+    int Berat; 
     
     @Override
     Produk TambahProduk(){
@@ -1131,9 +1131,9 @@ class Tteokbokki extends Produk{
             String BahanTteokbokki = br.readLine();
             if (BahanTteokbokki.equals("")) throw new IllegalArgumentException();
 
-            System.out.print("Masukkan Bahan Tteokbokki : ");
-            String BeratTteokbokki = br.readLine();
-            if (BeratTteokbokki.equals("")) throw new IllegalArgumentException();
+            System.out.print("Masukkan Berat Tteokbokki : ");
+            int BeratTteokbokki =  Main.CheckInt();
+            if (BeratTteokbokki <= 0) throw new IllegalArgumentException();
             
             System.out.print("Masukkan Stok Tteokbokki : ");
             int StokProduk =  Main.CheckInt();
@@ -1175,11 +1175,11 @@ class Tteokbokki extends Produk{
         if (BahanTteokbokkiBaru.equals("99")) return;
         else if (BahanTteokbokkiBaru.equals("")) BahanTteokbokkiBaru = this.Bahan;
 
-        System.out.println("Berat Tteokbokki Lama: " + this.Berat);
-        System.out.print("Masukkan Berat Tteokbokki Baru: ");
-        String BeratTteokbokkiBaru = br.readLine();
-        if (BeratTteokbokkiBaru.equals("99")) return;
-        else if (BeratTteokbokkiBaru.equals("")) BeratTteokbokkiBaru = this.Berat;
+        System.out.println("Berat Tteokbokki Lama:  " + this.Berat);
+        System.out.print("Masukkan Berat Tteokbokki Baru:  ");
+        int BeratTteokbokkiBaru =  Main.CheckInt();
+        if (BeratTteokbokkiBaru == 99) return;
+        else if (BeratTteokbokkiBaru <= 0) BeratTteokbokkiBaru = this.Berat;
         
         System.out.println("Stok Tteokbokki Lama:  " + this.Stok);
         System.out.print("Masukkan Stok Tteokbokki Baru:  ");
@@ -1239,7 +1239,7 @@ class Tteokbokki extends Produk{
 class Ramyeon  extends Produk{
     String Bahan;
     String Jenis;
-    String Berat;
+    int Berat;
 
     @Override
     Produk TambahProduk(){
@@ -1257,8 +1257,8 @@ class Ramyeon  extends Produk{
             if (JenisRamen.equals("")) throw new IllegalArgumentException();
 
             System.out.print("Masukkan Berat Ramyeon : ");
-            String BeratRamen = br.readLine();
-            if (BeratRamen.equals("")) throw new IllegalArgumentException();
+            int BeratRamen =  Main.CheckInt();
+            if (BeratRamen <= 0) throw new IllegalArgumentException();
             
             System.out.print("Masukkan Stok Ramyeon : ");
             int StokProduk =  Main.CheckInt();
@@ -1307,11 +1307,11 @@ class Ramyeon  extends Produk{
         if (JenisRamenBaru.equals("99")) return;
         else if (JenisRamenBaru.equals("")) JenisRamenBaru = this.Jenis;       
         
-        System.out.println("Berat Ramyeon Lama: " + this.Berat);
-        System.out.print("Masukkan Berat Ramyeon Baru: ");
-        String BeratRamenBaru = br.readLine();
-        if (BeratRamenBaru.equals("99")) return;
-        else if (BeratRamenBaru.equals("")) BeratRamenBaru = this.Berat;     
+        System.out.println("Berat Ramyeon Lama:  " + this.Berat);
+        System.out.print("Masukkan Berat Ramyeon Baru:  ");
+        int BeratRamenBaru =  Main.CheckInt();
+        if (BeratRamenBaru == 99) return;
+        else if (BeratRamenBaru <= 0) BeratRamenBaru = this.Berat;    
         
         System.out.println("Stok Ramyeon Lama:  " + this.Stok);
         System.out.print("Masukkan Stok Ramyeon Baru:  ");
@@ -1373,7 +1373,7 @@ class Ramyeon  extends Produk{
 
 class Fishcake extends Produk{
     String Bahan;
-    String Berat;
+    int Berat;
 
     @Override
     Produk TambahProduk(){
@@ -1386,9 +1386,9 @@ class Fishcake extends Produk{
             String BahanFishcake = br.readLine();
             if (BahanFishcake.equals("")) throw new IllegalArgumentException();
      
-            System.out.print("Masukkan Berat Makanan : ");
-            String BeratFishcake = br.readLine();
-            if (BeratFishcake.equals("")) throw new IllegalArgumentException();
+            System.out.print("Masukkan Berat Fishcake : ");
+            int BeratFishcake =  Main.CheckInt();
+            if (BeratFishcake <= 0) throw new IllegalArgumentException();
             
             System.out.print("Masukkan Stok Fishcake : ");
             int StokProduk =  Main.CheckInt();
@@ -1430,11 +1430,11 @@ class Fishcake extends Produk{
         if (BahanFishcakeBaru.equals("99")) return;
         else if (BahanFishcakeBaru.equals("")) BahanFishcakeBaru = this.Bahan;
         
-        System.out.println("Berat Fishcake Lama: " + this.Berat);
-        System.out.print("Masukkan Berat Fishcake Baru: ");
-        String BeratFishcakeBaru = br.readLine();
-        if (BeratFishcakeBaru.equals("99")) return;
-        else if (BeratFishcakeBaru.equals("")) BeratFishcakeBaru = this.Berat;       
+        System.out.println("Berat Fishcake Lama:  " + this.Berat);
+        System.out.print("Masukkan Berat Fishcake Baru:  ");
+        int BeratFishcakeBaru =  Main.CheckInt();
+        if (BeratFishcakeBaru == 99) return;
+        else if (BeratFishcakeBaru <= 0) BeratFishcakeBaru = this.Berat;     
         
         System.out.println("Stok Fishcake Lama:  " + this.Stok);
         System.out.print("Masukkan Stok Fishcake Baru:  ");
@@ -1493,7 +1493,7 @@ class Fishcake extends Produk{
 
 class KoreanSauce extends Produk{
     String Jenis;
-    String Berat;
+    int Berat;
     
     @Override
     Produk TambahProduk(){
@@ -1507,8 +1507,8 @@ class KoreanSauce extends Produk{
             if (JenisSauce.equals("")) throw new IllegalArgumentException();
             
             System.out.print("Masukkan Isi Bersih Sauce (ml) : ");
-            String BeratSauce = br.readLine();
-            if (BeratSauce.equals("")) throw new IllegalArgumentException();           
+            int BeratSauce =  Main.CheckInt();
+            if (BeratSauce <= 0) throw new IllegalArgumentException();           
             
             System.out.print("Masukkan Stok Sauce : ");
             int StokSauce =  Main.CheckInt();
@@ -1552,9 +1552,9 @@ class KoreanSauce extends Produk{
         
         System.out.println("Isi Bersih Sauce(ml) Lama: " + this.Berat);
         System.out.print("Masukkan Isi Bersih Sauce(ml) Baru: ");
-        String BeratSauceBaru = br.readLine();
-        if (BeratSauceBaru.equals("99")) return;
-        else if (BeratSauceBaru.equals("")) BeratSauceBaru = this.Berat;       
+        int BeratSauceBaru =  Main.CheckInt();
+        if (BeratSauceBaru == 99) return;
+        else if (BeratSauceBaru <= 0) BeratSauceBaru = this.Berat;        
         
         System.out.println("Stok Sauce Lama:  " + this.Stok);
         System.out.print("Masukkan Stok Sauce Baru:  ");
@@ -1612,7 +1612,7 @@ class KoreanSauce extends Produk{
 
 class KoreanDrink extends Produk{
     String Varian;    
-    String Berat;
+    int Berat;
 
     @Override
     Produk TambahProduk(){
@@ -1626,8 +1626,8 @@ class KoreanDrink extends Produk{
             if (VarianMinuman.equals("")) throw new IllegalArgumentException();
      
             System.out.print("Masukkan Berat Minuman : ");
-            String BeratMinuman = br.readLine();
-            if (BeratMinuman.equals("")) throw new IllegalArgumentException();
+            int BeratMinuman =  Main.CheckInt();
+            if (BeratMinuman <= 0) throw new IllegalArgumentException();
             
             System.out.print("Masukkan Stok Minuman : ");
             int StokProduk =  Main.CheckInt();
@@ -1671,9 +1671,9 @@ class KoreanDrink extends Produk{
         
         System.out.println("Berat Minuman Lama: " + this.Berat);
         System.out.print("Masukkan Berat Minuman Baru: ");
-        String BeratMinumanBaru = br.readLine();
-        if (BeratMinumanBaru.equals("99")) return;
-        else if (BeratMinumanBaru.equals("")) BeratMinumanBaru = this.Berat;       
+        int BeratMinumanBaru =  Main.CheckInt();
+        if (BeratMinumanBaru == 99) return;
+        else if (BeratMinumanBaru <= 0) BeratMinumanBaru = this.Berat;     
         
         System.out.println("Stok Minuman Lama:  " + this.Stok);
         System.out.print("Masukkan Stok Minuman Baru:  ");
@@ -1732,7 +1732,7 @@ class KoreanDrink extends Produk{
 
 class KoreanSnack extends Produk{
     String Varian;    
-    String Berat;
+    int Berat;
 
     @Override
     Produk TambahProduk(){
@@ -1746,8 +1746,8 @@ class KoreanSnack extends Produk{
             if (VarianSnack.equals("")) throw new IllegalArgumentException();
      
             System.out.print("Masukkan Berat Snack (mg) : ");
-            String BeratSnack = br.readLine();
-            if (BeratSnack.equals("")) throw new IllegalArgumentException();
+            int BeratSnack =  Main.CheckInt();
+            if (BeratSnack <= 0) throw new IllegalArgumentException();
             
             System.out.print("Masukkan Stok Snack : ");
             int StokSnack =  Main.CheckInt();
@@ -1791,9 +1791,9 @@ class KoreanSnack extends Produk{
         
         System.out.println("Berat Snack Lama (mg): " + this.Berat);
         System.out.print("Masukkan Berat Snack Baru (mg): ");
-        String BeratSnackBaru = br.readLine();
-        if (BeratSnackBaru.equals("99")) return;
-        else if (BeratSnackBaru.equals("")) BeratSnackBaru = this.Berat;       
+        int BeratSnackBaru =  Main.CheckInt();
+        if (BeratSnackBaru == 99) return;
+        else if (BeratSnackBaru <= 0) BeratSnackBaru = this.Berat;       
         
         System.out.println("Stok Snack Lama:  " + this.Stok);
         System.out.print("Masukkan Stok Snack Baru:  ");
