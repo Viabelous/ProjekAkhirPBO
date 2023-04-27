@@ -61,7 +61,7 @@ E -- 99 --> EA(Kembali)
 E -- 1 --> EB(Ubah Data Akun)
 E -- 2 --> EC(Hapus Akun)
 
-A -- 6 --> F(Log Out)
+A -- 5 --> F(Log Out)
 ```
 Menu utama Customer terbagi menjadi 6 jalur:
 * **Toko-Toko**: Customer melihat toko-toko yang ada dan kemudian memilih produk yang disediakan oleh toko terpilih.
@@ -98,7 +98,8 @@ BCB -- 4 --> BCBF(Lihat Pesanan)
    	BCBF -- <> --> BCBFB(Detail Pesanan)
 		BCBFB -- 99 --> BCBFBA(Kembali)
 		BCBFB -- 1 --> BCBFBB(Kirim Pesanan)
-BCB -- 5 --> BCBG(Hapus Toko)
+BCB -- 5 --> BCBG(Lihat Riwayat)
+BCB -- 6 --> BCBH(Hapus Toko)
 
 A -- 2 --> C(Manajemen Seller)
 C -- 99 --> CA(Kembali)
@@ -142,6 +143,7 @@ BB -- 3 --> BBD(Lihat Pesanan)
 	BBD -- <> --> BBDB(Detail Pesanan)
 		BBDB -- 99 --> BBDBA(Kembali)
 		BBDB -- 1 -->  BBDBB(Kirim Pesanan)
+BB -- 4 --> BBE(Lihat Riwayat)
 
 A -- 2 --> C(Ubah Profil)
 C -- 99 --> CA(Kembali)
