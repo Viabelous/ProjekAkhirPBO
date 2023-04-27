@@ -715,7 +715,7 @@ public class Toko {
                     |  ||       (6) Keyring                        || |
                     |  ||       (7) Lanyard                        || |
                     |  ||       (8) Tteokbokki                     || |
-                    |  ||       (9) Ramyeon                       || |
+                    |  ||       (9) Ramyeon                        || |
                     |  ||       (10) Fishcake                      || |
                     |  ||       (11) KoreanSauce                   || |
                     |  ||       (12) KoreanDrink                   || |
