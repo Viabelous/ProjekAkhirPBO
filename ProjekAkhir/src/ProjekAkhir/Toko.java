@@ -602,16 +602,14 @@ public class Toko {
         while(true){
             Main.Clear();
             CtnMap.clear();
-
-            System.out.println("""
-                | ---------------------------------------- |
-                |  //        Menu Lihat Pesanan        \\\\  |
-                | ||                                    || |
-                | ||           [99] Kembali             || |
-                | ||                                    || |
-                | ||        -. Daftar Pesanan .-        || |
-                """);
             
+            System.out.println("""
+                | ---------------------------------------------------------------- |
+                |  //                    Menu Lihat Pesanan                    \\\\  |
+                | ||                                                            || |
+                | ||                       [99] Kembali                         || |
+                                """);
+
             int i = 1;
             
             for(Catatan ctn : Main.DaftarCatatan){
@@ -619,16 +617,15 @@ public class Toko {
                     System.out.println("\n\t   [" + i + "] " + ctn.TampilPreview());
                     CtnMap.put(i, ctn);
                     i++;
-                
                 }
             }
-
+            
             System.out.println("""
-                |  ||                                   || |
-                |   \\\\                                 //  |
-                | ---------------------------------------- |
+                | ||                                                            || |
+                |  \\\\                                                          //  |
+                | ---------------------------------------------------------------- |
                 """);
-                
+    
             System.out.print(" :>> ");
             Opsi = CheckInt();
             
