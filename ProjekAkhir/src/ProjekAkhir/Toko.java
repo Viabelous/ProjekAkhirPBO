@@ -3,6 +3,7 @@ package ProjekAkhir;
 import static ProjekAkhir.Main.CheckInt;
 import static ProjekAkhir.Main.Opsi;
 import static ProjekAkhir.Main.br;
+import static ProjekAkhir.Main.getActiveUserIndex;
 import java.util.ArrayList;
 import java.io.IOException;
 import java.util.HashMap;
@@ -290,7 +291,8 @@ public class Toko {
                 | ||     (2)-. Manajemen Seller Toko    || |
                 | ||     (3)-. Tambah Produk            || |
                 | ||     (4)-. Lihat Pesanan            || |
-                | ||     (5)-. Hapus Toko               || |
+                | ||     (5)-. Lihat Pembeian           || |
+                | ||     (6)-. Hapus Toko               || |
                 |  \\\\                                  //  |
                 | ---------------------------------------- |
                                 """);
@@ -310,7 +312,8 @@ public class Toko {
                         this.MenuTambahProduk();
                     }
                     case 4 -> TampilPesanan();
-                    case 5 -> {if(this.HapusToko()) return false;}
+                    case 5 -> {}
+                    case 6 -> {if(this.HapusToko()) return false;}
                     case 99 -> {return true;}
                 }
             }
@@ -323,6 +326,7 @@ public class Toko {
                 | ||     (1)-. Ubah Informasi Toko      || |
                 | ||     (2)-. Tambah Produk            || |
                 | ||     (3)-. Lihat Pesanan            || |
+                | ||     (4)-. Lihat Pembelian          || |
                 |  \\\\                                  //  |
                 | ---------------------------------------- |
                                 """);
@@ -337,6 +341,7 @@ public class Toko {
                     }
                     case 2 -> this.MenuTambahProduk();
                     case 3 -> TampilPesanan();
+                    case 4 -> {}
                     case 99 -> {return true;}
                 }
             }
