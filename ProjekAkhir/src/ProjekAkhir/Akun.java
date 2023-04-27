@@ -640,7 +640,6 @@ class Seller extends Akun implements MultiableAcc{
     
     
     
-    // Keluarkan dari toko
     @Override
     public boolean HapusAkun() throws IOException{
         System.out.println("Yakin hapus akun (Y/N)?");
@@ -651,8 +650,6 @@ class Seller extends Akun implements MultiableAcc{
         if(Conf == null) Conf = "N";
         
         return Conf.toUpperCase().equals("Y");
-        
-        
     }
 
     public int getTokoKu() {
@@ -892,14 +889,19 @@ class Admin extends Akun{
             case 99 -> {return;}
             case 1 -> {UbahProfilSeller(IndexSeller);}
             case 2 -> {
-                int i = 0;
                 if ((new Seller()).HapusAkun()){
-                    Main.DaftarAkun.remove(IndexSeller);
-                    for (int IDseller : Main.DaftarToko.get(i).IDSeller){
-                        if (IDseller == IndexSeller){
-                            Main.DaftarToko.get(i).IDSeller.remove(IDseller);
+                    System.out.println("Akun Berhasil Dihapus!");
+                    int i = 0;
+                    int TokoSeller = ((Seller)Main.DaftarAkun.get(IndexSeller)).getTokoKu();
+                    for (int IDseller : Main.DaftarToko.get(TokoSeller).IDSeller){
+                        if (IDseller == Main.DaftarAkun.get(IndexSeller).getID()){
+                            Main.DaftarToko.get(TokoSeller).IDSeller.remove(i);
+                            break;
                         }
+                        i++;
                     }
+                    Main.DaftarAkun.remove(IndexSeller);
+                    return;
                 }
             }
         }
