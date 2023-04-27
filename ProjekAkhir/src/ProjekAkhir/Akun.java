@@ -506,7 +506,7 @@ class Customer extends Akun implements MultiableAcc{
             
             System.out.println("""
                 | ||                                                            || |
-                |   \\\\                                                         //  |
+                |  \\\\                                                          //  |
                 | ---------------------------------------------------------------- |
                 """);
                 
