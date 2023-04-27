@@ -14,7 +14,6 @@ import java.util.HashMap;
     Di sini letakkan catatan, apa yang kurang atau semacamnya
     [Belum]
         -. Setelah dari tambah produk, beralih ke daftar produk >> UX
-        -. Hapus Akun Seller, otomatis hapus di daftar seller toko >> Admin
 
     [Butuh Konfirmasi]
         -. 
