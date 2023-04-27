@@ -814,8 +814,12 @@ class Admin extends Akun{
     
     
     void manajemenSeller() throws IOException, InterruptedException {
+        HashMap<Integer, Integer> AkunSeller = new HashMap<>();
+        
         while(true){
-
+            
+            AkunSeller.clear();
+            
             Main.Clear();
             System.out.print("""
                 | ---------------------------------------- |
@@ -828,9 +832,7 @@ class Admin extends Akun{
                 |  ||                                   || |
                  """);
             
-            int i=1;
-                    
-            HashMap<Integer, Integer> AkunSeller = new HashMap<>();
+            int i = 1;
             
             for (Akun seller : Main.DaftarAkun){
                 if (seller.Otoritas.equals("Seller")){
@@ -859,7 +861,7 @@ class Admin extends Akun{
                         br.readLine();
                         continue;
                     }
-                    this.ManajemenAkunSeller(AkunSeller.get(Opsi));
+                    this.ManajemenAkunSeller(Main.AkunSequential(AkunSeller.get(Opsi)));
                 }
             }
         }
@@ -893,12 +895,14 @@ class Admin extends Akun{
                     System.out.println("Akun Berhasil Dihapus!");
                     int i = 0;
                     int TokoSeller = ((Seller)Main.DaftarAkun.get(IndexSeller)).getTokoKu();
-                    for (int IDseller : Main.DaftarToko.get(TokoSeller).IDSeller){
-                        if (IDseller == Main.DaftarAkun.get(IndexSeller).getID()){
-                            Main.DaftarToko.get(TokoSeller).IDSeller.remove(i);
-                            break;
+                    if(TokoSeller != -1){
+                        for (int IDseller : Main.DaftarToko.get(TokoSeller).IDSeller){
+                            if (IDseller == Main.DaftarAkun.get(IndexSeller).getID()){
+                                Main.DaftarToko.get(TokoSeller).IDSeller.remove(i);
+                                break;
+                            }
+                            i++;
                         }
-                        i++;
                     }
                     Main.DaftarAkun.remove(IndexSeller);
                     return;
