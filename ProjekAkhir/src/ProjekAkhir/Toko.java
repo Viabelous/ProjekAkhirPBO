@@ -145,8 +145,12 @@ public class Toko {
             if(Opsi == 99) return;
             if(Opsi != -1){
                 try{
-                    if(ProdMap.get(Opsi) == null)
-                        throw new IndexOutOfBoundsException();
+                    if(ProdMap.get(Opsi) == null){
+                        if(Main.Menu.equals("Customer"))
+                            throw new IndexOutOfBoundsException();
+                        else if(Opsi != 0)
+                            throw new IndexOutOfBoundsException();
+                    }        
                     switch(Main.Menu){
                         case "Customer" -> {
                             BeliProduk(this.DaftarProduk.get(ProdMap.get(Opsi)));
