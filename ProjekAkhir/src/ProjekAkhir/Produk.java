@@ -3,10 +3,7 @@ package ProjekAkhir;
 import static ProjekAkhir.Main.br;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import static ProjekAkhir.Main.getActiveUserIndex;
-
-/**
+import java.util.Arrays;/**
  *
  * @author Viabel
  */
@@ -16,7 +13,7 @@ abstract class Produk {
     int Stok;
     int Harga;
 
-    abstract Produk TambahProduk();
+    abstract Produk TambahProduk() throws IOException, InterruptedException;
     abstract void UbahProduk() throws IOException;
     abstract void TampilProduk();
     
@@ -42,7 +39,8 @@ class Album extends ProdukKPOP{
     }
         
     @Override
-    Produk TambahProduk(){
+    Produk TambahProduk() throws IOException, InterruptedException{
+        Main.Clear();
         try{
             System.out.print("Masukkan Nama Produk : ");
             String NamaProduk = br.readLine();
@@ -173,7 +171,8 @@ class LightStick extends ProdukKPOP{
     }
     
     @Override
-    Produk TambahProduk(){
+    Produk TambahProduk() throws IOException, InterruptedException{
+        Main.Clear();
         try{
             System.out.print("Masukkan Nama Produk : ");
             String NamaProduk = br.readLine();
@@ -306,7 +305,8 @@ class Poster extends ProdukKPOP{
     int Lebar;
     
     @Override
-    Produk TambahProduk(){
+    Produk TambahProduk() throws IOException, InterruptedException{
+        Main.Clear();
         try{
             System.out.print("Masukkan Nama Produk : ");
             String NamaProduk = br.readLine();
@@ -454,7 +454,8 @@ class Postcard extends ProdukKPOP{
     String Size;
 
     @Override
-    Produk TambahProduk(){
+    Produk TambahProduk() throws IOException, InterruptedException{
+        Main.Clear();
         try{
             System.out.print("Masukkan Nama Produk : ");
             String NamaProduk = br.readLine();
@@ -602,7 +603,8 @@ class Photocard extends ProdukKPOP{
     String Size;
 
     @Override
-    Produk TambahProduk(){
+    Produk TambahProduk() throws IOException, InterruptedException{
+        Main.Clear();
         try{
             System.out.print("Masukkan Nama Produk : ");
             String NamaProduk = br.readLine();
@@ -749,7 +751,8 @@ class Keyring extends ProdukKPOP{
     String Size;
 
     @Override
-    Produk TambahProduk(){
+    Produk TambahProduk() throws IOException, InterruptedException{
+        Main.Clear();
         try{
             System.out.print("Masukkan Nama Produk : ");
             String NamaProduk = br.readLine();
@@ -882,7 +885,8 @@ class Lanyard extends ProdukKPOP{
     String Bahan;
 
     @Override
-    Produk TambahProduk(){
+    Produk TambahProduk() throws IOException, InterruptedException{
+        Main.Clear();
         try{
             System.out.print("Masukkan Nama Produk : ");
             String NamaProduk = br.readLine();
@@ -1002,7 +1006,8 @@ class Kimchi extends Produk{
     int Berat; 
 
     @Override
-    Produk TambahProduk(){
+    Produk TambahProduk() throws IOException, InterruptedException{
+        Main.Clear();
         try{
             System.out.print("Masukkan Nama Kimchi : ");
             String NamaKimchi = br.readLine();
@@ -1123,7 +1128,8 @@ class Tteokbokki extends Produk{
     int Berat; 
     
     @Override
-    Produk TambahProduk(){
+    Produk TambahProduk() throws IOException, InterruptedException{
+        Main.Clear();
         try{
             System.out.print("Masukkan Nama Produk : ");
             String NamaProduk = br.readLine();
@@ -1244,7 +1250,8 @@ class Ramyeon  extends Produk{
     int Berat;
 
     @Override
-    Produk TambahProduk(){
+    Produk TambahProduk() throws IOException, InterruptedException{
+        Main.Clear();
         try{
             System.out.print("Masukkan Nama Produk : ");
             String NamaProduk = br.readLine();
@@ -1378,7 +1385,8 @@ class Fishcake extends Produk{
     int Berat;
 
     @Override
-    Produk TambahProduk(){
+    Produk TambahProduk() throws IOException, InterruptedException{
+        Main.Clear();
         try{
             System.out.print("Masukkan Nama Produk : ");
             String NamaProduk = br.readLine();
@@ -1498,7 +1506,8 @@ class KoreanSauce extends Produk{
     int Berat;
     
     @Override
-    Produk TambahProduk(){
+    Produk TambahProduk() throws IOException, InterruptedException{
+        Main.Clear();
         try{
             System.out.print("Masukkan Nama Produk : ");
             String NamaProduk = br.readLine();
@@ -1617,7 +1626,8 @@ class KoreanDrink extends Produk{
     int Berat;
 
     @Override
-    Produk TambahProduk(){
+    Produk TambahProduk() throws IOException, InterruptedException{
+        Main.Clear();
         try{
             System.out.print("Masukkan Nama Produk : ");
             String NamaProduk = br.readLine();
@@ -1737,7 +1747,8 @@ class KoreanSnack extends Produk{
     int Berat;
 
     @Override
-    Produk TambahProduk(){
+    Produk TambahProduk() throws IOException, InterruptedException{
+        Main.Clear();
         try{
             System.out.print("Masukkan Nama Produk : ");
             String NamaProduk = br.readLine();
@@ -1856,7 +1867,8 @@ class CustomKPOP extends ProdukKPOP{
     String Kategori;
         
     @Override
-    Produk TambahProduk(){
+    Produk TambahProduk() throws IOException, InterruptedException{
+        Main.Clear();
         ArrayList<String> Prod = new ArrayList<>(Arrays.asList(
         "ALBUM", "LIGHTSTICK", "LIGHT STICK", "POSTER",
         "POSTCARD", "POST CARD", "PHOTOCARD", "PHOTO CARD", 
@@ -2001,7 +2013,8 @@ class CustomFood extends Produk{
     String Kategori;
         
     @Override
-    Produk TambahProduk(){
+    Produk TambahProduk() throws IOException, InterruptedException{
+        Main.Clear();
         ArrayList<String> Prod = new ArrayList<>(Arrays.asList(
         "ALBUM", "LIGHTSTICK", "LIGHT STICK", "POSTER",
         "POSTCARD", "POST CARD", "PHOTOCARD", "PHOTO CARD", 
