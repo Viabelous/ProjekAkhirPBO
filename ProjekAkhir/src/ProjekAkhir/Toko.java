@@ -665,4 +665,108 @@ public class Toko {
             }
         }
     }
+    
+    static void ShortCut() throws IOException, InterruptedException{
+        Main.Clear();
+        while(true){
+            System.out.println("""
+                    | ----------------------------------------------- |
+                    |   //                Jalan Pintas            \\\\  |	
+                    |  ||                                          || |
+                    |  ||       Tampilkan Semua Produk             || |
+                    |  ||       (1) Kategori Tertentu              || |
+                    |  ||       (2) Idol/Idol Group Tertentu       || |
+                    |  ||       (3) Dengan Nama Tertentu           || |
+                    |  ||                                          || |
+                    |  ||       (99) Kembali                       || |
+                    |   \\\\                                        //  |
+                    | ----------------------------------------------- |
+                                """);
+
+            System.out.print("  :>> ");
+            Opsi = CheckInt();
+            Main.Clear();
+            
+            switch(Opsi){
+                case 1 -> TampilPerKategori();
+                case 2 -> {
+                    System.out.println(" Masukkan Nama Idol/Idol Group yang ingin dicari: ");
+                    String Cari = br.readLine();
+                    ProdukTertentu(Cari, 2);
+                }
+                case 3 -> {
+                    System.out.println(" Masukkan Nama Produk yang ingin dicari: ");
+                    String Cari = br.readLine();
+                    ProdukTertentu(Cari, 3);
+                }
+            }
+        }
+    }
+    
+    static void TampilPerKategori() throws IOException, InterruptedException{
+        Main.Clear();
+        while(true){
+            System.out.println("""
+                    | ----------------------------------------------- |
+                    |   //             Pilih Kategori Dicari       \\\\  |	
+                    |  ||                                          || |
+                    |  ||       (1) Album                          || |
+                    |  ||       (2) Lightstick                     || |
+                    |  ||       (3) Poster                         || |
+                    |  ||       (4) Postcard                       || |
+                    |  ||       (5) Photocard                      || |
+                    |  ||       (6) Keyring                        || |
+                    |  ||       (7) Lanyard                        || |
+                    |  ||       (8) Tteokbokki                     || |
+                    |  ||       (9) Ramyeon                       || |
+                    |  ||       (10) Fishcake                      || |
+                    |  ||       (11) KoreanSauce                   || |
+                    |  ||       (12) KoreanDrink                   || |
+                    |  ||       (13) KoreanSnack                   || |
+                    |  ||                                          || |
+                    |  ||       (99) Kembali                       || |
+                    |   \\\\                                        //  |
+                    | ----------------------------------------------- |
+                                """);
+
+            System.out.print("  :>> ");
+            Opsi = CheckInt();
+            Main.Clear();      
+        }    
+    }
+    
+    static HashMap<Integer, HashMap<Produk, Toko>> ProdukTertentu(String Cari, int Jalur){
+        HashMap<Integer, HashMap<Produk, Toko>> IntoMap = new HashMap<>();
+        
+        int i = 0;
+        
+        switch (Jalur) {
+            case 1 -> {
+                for(Toko TK : Main.DaftarToko)
+                    for(Produk PR : TK.DaftarProduk)
+                        if(PR.getClass().getSimpleName().equals(Cari)){
+                            IntoMap.put(1,new HashMap<>(){{put(PR, TK);}});
+                            i++;
+                        }
+            }
+            case 2 -> {
+                for(Toko TK : Main.DaftarToko)
+                    for(Produk PR : TK.DaftarProduk)
+                        if(PR.getClass().getSuperclass() == ProdukKPOP.class)
+                            if(((ProdukKPOP)PR).Idol.toLowerCase().contains(Cari.toLowerCase())){
+                                IntoMap.put(1,new HashMap<>(){{put(PR, TK);}});
+                                i++;
+                            }
+            }
+            default -> {
+                for(Toko TK : Main.DaftarToko)
+                    for(Produk PR : TK.DaftarProduk)
+                        if(PR.Nama.toLowerCase().contains(Cari.toLowerCase())){
+                            IntoMap.put(1,new HashMap<>(){{put(PR, TK);}});
+                            i++;
+                        }
+            }
+        }
+        return IntoMap;
+    }
 }
