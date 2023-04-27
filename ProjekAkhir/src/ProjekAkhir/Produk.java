@@ -4,6 +4,8 @@ import static ProjekAkhir.Main.br;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import static ProjekAkhir.Main.getActiveUserIndex;
+
 /**
  *
  * @author Viabel
@@ -276,7 +278,7 @@ class LightStick extends ProdukKPOP{
         System.out.printf("%-" + ColumnWidth + "s", "Termasuk Baterai");
         System.out.printf("%-" + ColumnWidth + "s", "Versi Lightstick");
         System.out.printf("%-" + ColumnWidth + "s", "Stok Lightstick ");
-        System.out.printf("%-" + ColumnWidth + "s", "Harga Album");
+        System.out.printf("%-" + ColumnWidth + "s", "Harga Lightstick");
         System.out.println();
 
         // Mencetak baris pemisah
@@ -670,7 +672,7 @@ class Photocard extends ProdukKPOP{
         else if (SizePhotocardBaru.equals("")) SizePhotocardBaru = this.Size;
         
         System.out.println("Versi Photocard Lama: " + this.VersiPhotocard);
-        System.out.print("Masukkan Versi Postcard Baru: ");
+        System.out.print("Masukkan Versi Photocard Baru: ");
         String VerPhotocardBaru = br.readLine();
         if (VerPhotocardBaru.equals("99")) return;
         else if (VerPhotocardBaru.equals("")) VerPhotocardBaru = this.VersiPhotocard;
@@ -807,7 +809,7 @@ class Keyring extends ProdukKPOP{
         else if (IdolBaru.equals("")) IdolBaru = this.Idol;
         
         System.out.println("Size Keyring Lama: " + this.Size);
-        System.out.print("Masukkan Versi Postcard Baru: ");
+        System.out.print("Masukkan Versi Keyring Baru: ");
         String SizeKeyringBaru = br.readLine();
         if (SizeKeyringBaru.equals("99")) return;
         else if (SizeKeyringBaru.equals("")) SizeKeyringBaru = this.Size;
@@ -935,7 +937,7 @@ class Lanyard extends ProdukKPOP{
         else if (IdolBaru.equals("")) IdolBaru = this.Idol;
         
         System.out.println("Versi Bahan Lanyard: " + this.Bahan);
-        System.out.print("Masukkan Versi Bahan Baru: ");
+        System.out.print("Masukkan Versi Bahan Lanyard Baru: ");
         String BahanLanyard = br.readLine();
         if (BahanLanyard.equals("99")) return;
         else if (BahanLanyard.equals("")) BahanLanyard = this.Bahan;
