@@ -488,10 +488,10 @@ class Customer extends Akun implements MultiableAcc{
             CtnMap.clear();
 
             System.out.println("""
-                | ---------------------------------------- |
-                |  //      Menu Riwayat Pembelian      \\\\  |
-                | ||                                    || |
-                | ||           [99] Kembali             || |
+                | ---------------------------------------------------------------- |
+                |  //                  Menu Riwayat Pembelian                  \\\\  |
+                | ||                                                            || |
+                | ||                       [99] Kembali                         || |
                                """);
             
             int i = 1;
@@ -505,8 +505,9 @@ class Customer extends Akun implements MultiableAcc{
             }
             
             System.out.println("""
-                |   \\\\                                 //  |
-                | ---------------------------------------- |
+                | ||                                                            || |
+                |   \\\\                                                         //  |
+                | ---------------------------------------------------------------- |
                 """);
                 
             System.out.print(" :>> ");
