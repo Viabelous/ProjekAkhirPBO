@@ -892,9 +892,14 @@ class Admin extends Akun{
             case 99 -> {return;}
             case 1 -> {UbahProfilSeller(IndexSeller);}
             case 2 -> {
+                int i = 0;
                 if ((new Seller()).HapusAkun()){
                     Main.DaftarAkun.remove(IndexSeller);
-                    Main.DaftarToko.get(IndexSeller-1).IDSeller.remove(IndexSeller-1);
+                    for (int IDseller : Main.DaftarToko.get(i).IDSeller){
+                        if (IDseller == IndexSeller){
+                            Main.DaftarToko.get(i).IDSeller.remove(IDseller);
+                        }
+                    }
                 }
             }
         }
