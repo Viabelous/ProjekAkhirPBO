@@ -664,8 +664,8 @@ public class Toko {
     }
     
     static void ShortCut() throws IOException, InterruptedException{
-        Main.Clear();
         while(true){
+            Main.Clear();
             if(Main.PortToBag == true) return;
             System.out.println("""
                     | ----------------------------------------------- |
@@ -683,7 +683,6 @@ public class Toko {
 
             System.out.print("  :>> ");
             Opsi = CheckInt();
-            Main.Clear();
             
             switch(Opsi){
                 case 1 -> TampilPerKategori();
@@ -705,8 +704,8 @@ public class Toko {
     }
     
     static void TampilPerKategori() throws IOException, InterruptedException{
-        Main.Clear();
         while(true){
+            Main.Clear();
             if(Main.PortToBag == true) return;
             System.out.println("""
                     | ----------------------------------------------- |
@@ -765,7 +764,7 @@ public class Toko {
             case 1 -> {
                 for(Toko TK : Main.DaftarToko)
                     for(Produk PR : TK.DaftarProduk)
-                        if(PR.getClass().getSimpleName().equals(Cari)){
+                        if(PR.getClass().getSimpleName().toLowerCase().equals(Cari.toLowerCase())){
                             if(PR.Stok <= 0) continue;
                             System.out.println("\t["+i+"] " + PR.Nama + "  --<"+TK.Nama+">");
                             IntoMap.put(i,new HashMap<>(){{put(PR, TK);}});
